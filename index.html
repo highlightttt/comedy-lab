@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jesse's Comedy Lab 🎤</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --border: #222222;
+  --text: #f0f0f0;
+  --text-muted: #888888;
+  --accent: #ff4d4d;
+  --accent-2: #ff6b35;
+  --accent-3: #ffd700;
+  --green: #00e676;
+  --blue: #448aff;
+  --purple: #b388ff;
+  --pink: #ff80ab;
+  --gradient-1: linear-gradient(135deg, #ff4d4d, #ff6b35);
+  --gradient-2: linear-gradient(135deg, #448aff, #b388ff);
+  --gradient-3: linear-gradient(135deg, #00e676, #00bfa5);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Cursor follower */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,77,77,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(255,77,77,0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(68,138,255,0.05) 0%, transparent 50%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(3deg) scale(1.05); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  background: rgba(17,17,17,0.5);
+}
+
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 1.05;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.03em;
+}
+
+.hero h1 .gradient-text {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.scroll-indicator svg { width: 20px; height: 20px; stroke: var(--text-muted); }
+
+/* Navigation */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+}
+
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 1rem 1.2rem;
+  white-space: nowrap;
+  transition: all 0.3s;
+  border-bottom: 2px solid transparent;
+  letter-spacing: 0.02em;
+}
+
+.nav a:hover {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* Original Material */
+.original-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.original-material {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.original-material::before {
+  content: 'ORIGINAL SET';
+  position: absolute;
+  top: 0; right: 0;
+  padding: 6px 16px;
+  background: var(--surface-2);
+  border-bottom-left-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.original-material .star { color: var(--accent-3); }
+.original-material .note { color: var(--pink); font-style: italic; }
+.original-material .setup { color: var(--text); }
+
+/* Insights */
+.insights-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.insight-block {
+  margin-bottom: 8rem;
+  scroll-margin-top: 80px;
+}
+
+.insight-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+.insight-number {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-variant-numeric: tabular-nums;
+}
+
+.insight-block:nth-child(2n) .insight-number { background: var(--gradient-2); -webkit-background-clip: text; background-clip: text; }
+.insight-block:nth-child(3n) .insight-number { background: var(--gradient-3); -webkit-background-clip: text; background-clip: text; }
+
+.insight-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.insight-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border);
+}
+
+/* Subsections */
+.subsection {
+  margin-bottom: 2.5rem;
+}
+
+.subsection-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subsection-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Reference jokes */
+.ref-jokes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ref-joke {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  transition: all 0.25s;
+}
+
+.ref-joke:hover {
+  border-color: #333;
+  transform: translateX(4px);
+}
+
+.ref-comedian {
+  color: var(--accent-3);
+  font-weight: 500;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.ref-text { color: var(--text-muted); }
+
+.ref-link {
+  color: var(--blue);
+  text-decoration: none;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.ref-joke:hover .ref-link { opacity: 1; }
+
+/* Original jokes grid */
+.jokes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+}
+
+.joke-card {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text);
+  position: relative;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+.joke-card:hover {
+  border-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.joke-card .joke-num {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 0.65rem;
+  color: #333;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stats bar */
+.stats-bar {
+  display: flex;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.stat {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* Notes section */
+.notes-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem 8rem;
+}
+
+.note-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-3);
+  border-radius: 0 12px 12px 0;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+.note-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--accent-3);
+}
+
+.note-card p, .note-card li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.note-card ul { padding-left: 1.2rem; }
+.note-card li { margin-bottom: 0.3rem; }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #333;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .insight-header { grid-template-columns: 1fr; }
+  .insight-number { font-size: 2.5rem; }
+  .jokes-grid { grid-template-columns: 1fr; }
+  .ref-joke { grid-template-columns: 1fr; gap: 4px; }
+  .ref-link { opacity: 1; }
+  .original-material { padding: 1.5rem; font-size: 0.8rem; }
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> Comedy Writing Lab</div>
+  <h1>Jesse's <span class="gradient-text">Stand-Up</span><br>Material</h1>
+  <p class="hero-sub">Microsoft · Diversity · Culture Clashes<br>12 insights · 120+ original one-liners</p>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#original">Original Set</a>
+    <a href="#i1">01 Diversity</a>
+    <a href="#i2">02 Names</a>
+    <a href="#i3">03 Chinese Office</a>
+    <a href="#i4">04 Microwave Wars</a>
+    <a href="#i5">05 Work Ethic</a>
+    <a href="#i6">06 Frugality</a>
+    <a href="#i7">07 Accents</a>
+    <a href="#i8">08 Products</a>
+    <a href="#i9">09 Tiger Parents</a>
+    <a href="#i10">10 Saying No</a>
+    <a href="#i11">11 Small Talk</a>
+    <a href="#i12">12 Holidays</a>
+    <a href="#notes">Notes</a>
+  </div>
+</nav>
+
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Insights</div></div>
+  <div class="stat"><div class="stat-num">120</div><div class="stat-label">Original Jokes</div></div>
+  <div class="stat"><div class="stat-num">60</div><div class="stat-label">References</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Potential</div></div>
+</div>
+
+<!-- ORIGINAL MATERIAL -->
+<section class="original-section reveal" id="original">
+  <div class="section-label">Your Existing Set</div>
+  <div class="original-material">
+    <p class="setup">I work for Microsoft, But it doesn't feel like an American company at all. I've worked here for a year and haven't seen a single American <span class="star">🌟</span></p>
+    <br>
+    <p class="setup">There are three types of people in the office: Chinese, Indian, and the rest, who are Chinese and Indian living in the U.S.</p>
+    <br>
+    <p class="setup">There are so many Chinese in the company, they provide hot water with Goji berry</p>
+    <br>
+    <p class="setup">And there are so many Indians, 20% of my colleagues are named Rajesh</p>
+    <br>
+    <p class="setup">Americans are a minority at Microsoft, sometimes we hire a couple of them, for diversity. <span class="star">🌟</span></p>
+    <br>
+    <p class="setup">Just like NBA hired Yao Ming <span class="star">🌟</span></p>
+    <br>
+    <p class="note">*这两个梗有一些人笑了，可以说慢一点清楚一点</p>
+    <br>
+    <p class="setup">There is one American in our team, he was the only white guy in the office, if you visit our office, it's very easy to find him, he looks like an exchange student</p>
+    <br>
+    <p class="note">*这里没什么反应，下次说清楚点</p>
+    <br>
+    <p class="setup">It's always nice to see different cultures in the office, and food is a great representation of culture. I'm always curious to see what people eat.</p>
+    <br>
+    <p class="setup">There are Chinese food, Indian food, and white people food</p>
+    <br>
+    <p class="setup">There is a microwave in the office, everyone uses it to reheat lunch. Usually Chinese and Indian use it first, cuz we love to eat. The problem is, Chinese and Indian food usually have chili oil and curry, so everyday during lunch time, the office smells like Chinatown.</p>
+    <br>
+    <p class="setup">But my American colleague loves it, he is <strong>very happy</strong> about it. After we use the microwave, he throws his food into it right away, cuz this is the only way to make his sandwich have some flavors.</p>
+    <br>
+    <p class="setup">I'm joking, he never reheats sandwiches</p>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<div class="insights-container">
+
+  <!-- INSIGHT 1 -->
+  <div class="insight-block reveal" id="i1">
+    <div class="insight-header">
+      <div class="insight-number">01</div>
+      <div>
+        <div class="insight-title">Tech "Diversity" = Chinese + Indian</div>
+        <div class="insight-desc">公司天天喊diversity，但办公室放眼望去全是亚洲面孔，美国人反而成了少数民族。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"Silicon Valley is the most diverse place in America… if you only count two countries."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+silicon+valley+diversity" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"People say there's no diversity in tech. That's not true — we have Chinese AND Indian people."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+tech+diversity" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"I work in tech. My company says we're diverse — we have people from Beijing AND Shanghai."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+tech+diversity" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Kumail Nanjiani</span>
+          <span class="ref-text">"Tech companies love diversity. They have Indians who went to IIT AND Indians who went to Stanford."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=kumail+nanjiani+tech+diversity+silicon+valley" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"It's like the United Nations… if the UN only had two members."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+silicon+valley+diversity" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>Microsoft says they value diversity. They do — they have Indians from the north AND Indians from the south.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My company had a Diversity Day. It was just Chinese New Year and Diwali back to back.</div>
+        <div class="joke-card"><span class="joke-num">03</span>HR sent an email: "We need more diversity." My Chinese manager forwarded it to his Indian manager. Problem solved.</div>
+        <div class="joke-card"><span class="joke-num">04</span>At Microsoft, white people don't need allies. They need a support group.</div>
+        <div class="joke-card"><span class="joke-num">05</span>We had a diversity survey. The options were: Chinese, Indian, Other Chinese, Other Indian.</div>
+        <div class="joke-card"><span class="joke-num">06</span>Microsoft's diversity report: "We have employees from over 100 cities… in China and India."</div>
+        <div class="joke-card"><span class="joke-num">07</span>I told my American friend I work at Microsoft. He said, "Oh cool, do you work with Americans?" I said, "Sometimes we Zoom with them."</div>
+        <div class="joke-card"><span class="joke-num">08</span>Our office has a diversity hire. His name is John. Just John.</div>
+        <div class="joke-card"><span class="joke-num">09</span>Microsoft HR said we're 40% Asian. I looked around — that means 60% of Asians are just hiding.</div>
+        <div class="joke-card"><span class="joke-num">10</span>My company celebrates diversity every day. Monday is Chinese food, Tuesday is Indian food, Wednesday is Chinese-Indian fusion because we ran out of cultures.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 2 -->
+  <div class="insight-block reveal" id="i2">
+    <div class="insight-header">
+      <div class="insight-number">02</div>
+      <div>
+        <div class="insight-title">Indian Names Are WiFi Passwords</div>
+        <div class="insight-desc">一堆Raj、Pradeep、Srinivasan... 对外国人来说像在记WiFi密码。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Every Indian guy is either Raj, Vijay, or some name that sounds like you're clearing your throat."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indian+names" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"My name is Hasan Minhaj. If you can say Ansel Elgort, you can say my name."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+name+pronunciation" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Aziz Ansari</span>
+          <span class="ref-text">"People at Starbucks just write 'A' on my cup. I've accepted it."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=aziz+ansari+starbucks+name" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"Americans will learn to pronounce Tchaikovsky but give up on Chang."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+asian+name+pronunciation" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Vir Das</span>
+          <span class="ref-text">"Indian names aren't hard. You just don't care enough to try."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=vir+das+indian+names+pronunciation" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>I have three colleagues named Raj. We call them Raj 1, Raj 2, and the other Raj. HR calls this diversity.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My Indian colleague told me his full name. By the time he finished, the meeting was over.</div>
+        <div class="joke-card"><span class="joke-num">03</span>I tried to memorize my Indian colleagues' names. Now I understand why India invented meditation — you need inner peace for that.</div>
+        <div class="joke-card"><span class="joke-num">04</span>My Indian teammate's name has 14 letters. His nickname is "S." We don't talk about the other 13.</div>
+        <div class="joke-card"><span class="joke-num">05</span>I asked my colleague, "Is it Srinivasan or Srinivasaan?" He said, "Yes."</div>
+        <div class="joke-card"><span class="joke-num">06</span>In my team, we have Pradeep, Pradeesh, and Pradheep. Different people. I've sent the wrong Slack message to all three.</div>
+        <div class="joke-card"><span class="joke-num">07</span>My Indian colleague changed his name to Steve for work. His mom calls him. The phone says "Steve." She hangs up — she doesn't know any Steve.</div>
+        <div class="joke-card"><span class="joke-num">08</span>I learned all my Indian colleagues' names. Took me 6 months. Then they all changed teams.</div>
+        <div class="joke-card"><span class="joke-num">09</span>Indian names are not hard to pronounce. They're hard to START pronouncing. Once you commit, it just flows.</div>
+        <div class="joke-card"><span class="joke-num">10</span>My American boss tried to say Venkatanarasimharajuvaripeta. He now just points.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 3 -->
+  <div class="insight-block reveal" id="i3">
+    <div class="insight-header">
+      <div class="insight-number">03</div>
+      <div>
+        <div class="insight-title">The Office Is Becoming China</div>
+        <div class="insight-desc">中国人多到一定程度，办公室开始有保温杯、枸杞、午睡、甚至广场舞的氛围。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese people bring thermoses everywhere. We treat cold water like it's poison."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+hot+water+thermos" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"My mom thinks cold water will kill you. I grew up thinking ice was a weapon."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+cold+water+chinese+mom" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ali Wong</span>
+          <span class="ref-text">"Chinese moms pack enough food to feed the whole office. Then judge everyone else's lunch."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ali+wong+chinese+mom+food" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Joe Wong</span>
+          <span class="ref-text">"In China, drinking hot water is medicine. In America, it's just sad tea."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=joe+wong+comedian+chinese+hot+water" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ken Jeong</span>
+          <span class="ref-text">"You know there's a lot of Asians at work when the break room has a rice cooker."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ken+jeong+asian+office+rice+cooker" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>There are so many Chinese at Microsoft, the water cooler has a hot water option now. We won.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My Chinese colleague brings a thermos with goji berries. He's 28 but he hydrates like he's 78.</div>
+        <div class="joke-card"><span class="joke-num">03</span>You know Microsoft is basically Chinese when the office started smelling like hot pot on Fridays.</div>
+        <div class="joke-card"><span class="joke-num">04</span>Our break room has a rice cooker, a hot water dispenser, and a microwave that smells like five dynasties of Chinese cooking.</div>
+        <div class="joke-card"><span class="joke-num">05</span>My Chinese colleague takes a nap after lunch every day. HR tried to stop it. Now HR takes naps too.</div>
+        <div class="joke-card"><span class="joke-num">06</span>There are so many Chinese at Microsoft, someone put a "remove shoes" sign at the entrance. Management is still figuring out who.</div>
+        <div class="joke-card"><span class="joke-num">07</span>The break room has green tea, oolong tea, pu-erh tea. And one bag of Lipton for the American guy. He doesn't drink it. Nobody drinks it.</div>
+        <div class="joke-card"><span class="joke-num">08</span>My Chinese colleague brought a whole fish for lunch. Just a fish, staring at us. I think it was also doing a standup set.</div>
+        <div class="joke-card"><span class="joke-num">09</span>You know the office is Chinese-dominated when the most heated Slack argument is about which province has the best food.</div>
+        <div class="joke-card"><span class="joke-num">10</span>Microsoft provides free coffee. The Chinese employees provided their own hot water boiler. Priorities.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 4 -->
+  <div class="insight-block reveal" id="i4">
+    <div class="insight-header">
+      <div class="insight-number">04</div>
+      <div>
+        <div class="insight-title">The Microwave Wars</div>
+        <div class="insight-desc">中国菜、印度菜味道炸裂，微波炉成了战场，美国同事的三明治毫无存在感。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"You can tell who works where by what the microwave smells like."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+office+microwave+food" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"Reheating Indian food in the office microwave is a power move. The whole floor knows you're there."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+indian+food+office+microwave" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ali Wong</span>
+          <span class="ref-text">"I reheat fish in the office microwave. That's not rude — that's culture."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ali+wong+reheat+fish+office+microwave" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"White people eat sad lunches. A sandwich and an existential crisis."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+white+people+food+sad+lunch" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Nate Bargatze</span>
+          <span class="ref-text">"I bring a sandwich to work. It's bread and disappointment."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=nate+bargatze+sandwich+lunch+work" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>The microwave at our office has PTSD. It's seen things. Chili oil things.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My American colleague eats a cold sandwich every day. No seasoning, no sauce, no joy. Just bread holding bread.</div>
+        <div class="joke-card"><span class="joke-num">03</span>After Chinese and Indian people use the microwave, my American colleague puts his sandwich in. Not to heat it — to give it a personality.</div>
+        <div class="joke-card"><span class="joke-num">04</span>There's an unwritten rule: the microwave belongs to China and India from 12 to 1. America gets it after, pre-seasoned.</div>
+        <div class="joke-card"><span class="joke-num">05</span>My American friend said, "Your food smells amazing." I said, "Your food doesn't smell at all. That's the problem."</div>
+        <div class="joke-card"><span class="joke-num">06</span>The office microwave has layers of flavor history. It's basically a wok now.</div>
+        <div class="joke-card"><span class="joke-num">07</span>My colleague heated curry in the microwave. The smoke alarm went off. HR sent an email about "cultural sensitivity." The smoke alarm, not the colleague.</div>
+        <div class="joke-card"><span class="joke-num">08</span>White people lunch is a salad and sadness. Chinese lunch is a four-course meal in Tupperware. Indian lunch is a tiffin box with seven compartments. We're not in the same sport.</div>
+        <div class="joke-card"><span class="joke-num">09</span>My American colleague saw my lunch and said, "That looks complicated." Bro, you put cheese between bread. Yours looks like you gave up.</div>
+        <div class="joke-card"><span class="joke-num">10</span>The office microwave after an Indian colleague uses it: you don't need to add spice to your food anymore. Just put it in. The microwave remembers.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 5 -->
+  <div class="insight-block reveal" id="i5">
+    <div class="insight-header">
+      <div class="insight-number">05</div>
+      <div>
+        <div class="insight-title">The Grind Never Stops</div>
+        <div class="insight-desc">中国人和印度人都是工作狂，美国同事准点下班像逃命一样。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Asian parents didn't move to another country so you could have work-life balance."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+asian+parents+work+life+balance" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"Indians don't have work-life balance. We have work-work balance."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+work+life+balance+indian" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"My mom thinks 9-to-5 is part-time."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+asian+mom+work+hours" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ali Wong</span>
+          <span class="ref-text">"I'm Asian. Resting is not in my DNA. Guilt is."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ali+wong+asian+work+ethic+rest" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Kumail Nanjiani</span>
+          <span class="ref-text">"In tech, everyone works late. But the Indians and Chinese are doing it voluntarily. That's the scary part."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=kumail+nanjiani+tech+working+late+silicon+valley" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>At 5pm, the Americans leave. At 7pm, the office is Chinese and Indian. At 9pm, it's just Indian. At 11pm, it's one Indian guy on a call with Bangalore.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My American colleague said he works hard. He leaves at 5. My Chinese colleague heard that and laughed — at 11pm, from his desk.</div>
+        <div class="joke-card"><span class="joke-num">03</span>Work-life balance? My Chinese colleague thought that was a type of yoga.</div>
+        <div class="joke-card"><span class="joke-num">04</span>My Indian colleague has two monitors, three keyboards, and four Zoom calls open. He's not busy — that's his minimum.</div>
+        <div class="joke-card"><span class="joke-num">05</span>Americans invented the 40-hour work week. Chinese and Indians use that as a warm-up.</div>
+        <div class="joke-card"><span class="joke-num">06</span>My manager said, "Don't overwork yourself." My Chinese DNA did not understand the sentence.</div>
+        <div class="joke-card"><span class="joke-num">07</span>An American colleague took a mental health day. My Chinese colleague asked, "What's that? Is it a holiday?"</div>
+        <div class="joke-card"><span class="joke-num">08</span>Chinese and Indian employees don't compete with each other for promotions. That would be too slow. They compete with themselves from yesterday.</div>
+        <div class="joke-card"><span class="joke-num">09</span>My American friend logs off at 5 and says "family time." My Indian colleague logs off at 5... from his first job. His second shift starts at 6.</div>
+        <div class="joke-card"><span class="joke-num">10</span>HR sent an email: "Please don't work on weekends." The Chinese employees translated it as: "Please don't GET CAUGHT working on weekends."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 6 -->
+  <div class="insight-block reveal" id="i6">
+    <div class="insight-header">
+      <div class="insight-number">06</div>
+      <div>
+        <div class="insight-title">The Frugal Engineers</div>
+        <div class="insight-desc">拿着高薪但精打细算到极致，coupon和折扣是人生信仰。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Indians are not cheap. We're... economical."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indians+cheap+economical" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese people will drive 40 minutes to save $2 on groceries."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+cheap+saving+money" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ali Wong</span>
+          <span class="ref-text">"I'm Chinese. I reuse Ziploc bags. That's not cheap — that's sustainability before it was cool."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ali+wong+chinese+cheap+reuse+ziploc" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"My dad has a coupon from 2003. He's waiting for the right moment."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+dad+coupon+cheap" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"My mom returns fruit. Not to the store — to the tree."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+chinese+mom+cheap+returns" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>Chinese and Indian engineers at Microsoft make $200K a year and split a Costco membership four ways.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My Indian colleague found a free food event in Building 5. By the time I got there, there were 200 Indians. News travels fast when it's free.</div>
+        <div class="joke-card"><span class="joke-num">03</span>My Chinese colleague earns $300K and brings lunch from home every day. He's not saving money — he's winning.</div>
+        <div class="joke-card"><span class="joke-num">04</span>You haven't seen real negotiation until you've seen a Chinese and Indian colleague argue about splitting a lunch bill to the exact cent.</div>
+        <div class="joke-card"><span class="joke-num">05</span>My Indian colleague has a spreadsheet for coupons. It has more data than our actual product.</div>
+        <div class="joke-card"><span class="joke-num">06</span>Chinese and Indians don't buy coffee at Starbucks. We have free coffee at the office. That's $5 a day, $1,825 a year. Yes, we did the math.</div>
+        <div class="joke-card"><span class="joke-num">07</span>My Chinese teammate flew to India for vacation because the flight was $50 cheaper going through Tokyo. Total detour: 14 hours. Savings: $50. Worth it: absolutely.</div>
+        <div class="joke-card"><span class="joke-num">08</span>Amazon Prime Day is Christmas for Chinese and Indian engineers. We prepare wishlists in October.</div>
+        <div class="joke-card"><span class="joke-num">09</span>My Indian colleague's phone has 47 coupon apps. His actual phone storage is just coupons.</div>
+        <div class="joke-card"><span class="joke-num">10</span>A Chinese engineer and an Indian engineer walk into a restaurant. They both pull out a coupon. The waiter gets two coupons. The restaurant goes bankrupt.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 7 -->
+  <div class="insight-block reveal" id="i7">
+    <div class="insight-header">
+      <div class="insight-number">07</div>
+      <div>
+        <div class="insight-title">Lost in Translation</div>
+        <div class="insight-desc">大家都说英语，但每个人的英语听起来像不同的语言。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Indian English is just English with extra spice."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indian+accent+english" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese accent is just efficiency. We remove unnecessary syllables."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+accent+english" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"Every country thinks their English is the real English."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+english+accents+countries" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"My accent changes depending on who I'm talking to. With my parents, I sound Indian. At work, I sound like NPR."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+accent+code+switching" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"My dad's English is perfect... in Cantonese grammar."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+dad+english+cantonese" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>In meetings, we have three interpreters: one for Chinese English, one for Indian English, and one for the American who can't understand either.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My Chinese colleague says "definitely" as "deaf-nightly." I don't correct him. I'm scared of him.</div>
+        <div class="joke-card"><span class="joke-num">03</span>We had a meeting with Chinese, Indian, and American teammates. Everyone spoke English. Nobody understood each other. We communicated through Slack.</div>
+        <div class="joke-card"><span class="joke-num">04</span>My Indian colleague's accent is so strong, even Siri switched to Hindi automatically.</div>
+        <div class="joke-card"><span class="joke-num">05</span>I learned English for 20 years. Came to America. Realized I was learning the wrong English. The RIGHT English is whatever my Indian manager speaks.</div>
+        <div class="joke-card"><span class="joke-num">06</span>Chinese accent deletes consonants. Indian accent adds syllables. American accent adds confidence. None of them are correct.</div>
+        <div class="joke-card"><span class="joke-num">07</span>My Indian colleague pronounces "development" as "day-WELL-up-ment" with so much passion. I say it the boring way now and feel nothing.</div>
+        <div class="joke-card"><span class="joke-num">08</span>I thought my English was bad until I heard my Chinese colleague say "Wi-Fi" as "wee-fee." Now I feel better.</div>
+        <div class="joke-card"><span class="joke-num">09</span>Every international team meeting is basically a listening comprehension exam that nobody passes.</div>
+        <div class="joke-card"><span class="joke-num">10</span>My American colleague put on subtitles during our Zoom call. With us. His own teammates. Fair enough, honestly.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 8 -->
+  <div class="insight-block reveal" id="i8">
+    <div class="insight-header">
+      <div class="insight-number">08</div>
+      <div>
+        <div class="insight-title">Who Built This Product?</div>
+        <div class="insight-desc">产品设计链路跨三个文化，所以没人真正理解用户。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Microsoft products work perfectly... if you don't use them."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+microsoft+products+tech" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jerry Seinfeld</span>
+          <span class="ref-text">"Windows is proof that monopolies don't have to try."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jerry+seinfeld+microsoft+windows+jokes" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"Microsoft Teams is what happens when you design software by committee — an international committee."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+microsoft+teams+jokes" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Conan O'Brien</span>
+          <span class="ref-text">"Microsoft released an update. It updated the part that was working."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=conan+obrien+microsoft+update+jokes" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"Tech companies test products on users. Microsoft tests users' patience."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+microsoft+tech+products" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>Microsoft products are designed by Indians, built by Chinese, and used by Americans. No one in this chain talks to each other. That's the feature.</div>
+        <div class="joke-card"><span class="joke-num">02</span>Outlook was designed by someone who has never received an email in their life.</div>
+        <div class="joke-card"><span class="joke-num">03</span>My Indian manager approved the design. My Chinese team built it. The American user said, "What is this?" Three cultures, zero communication.</div>
+        <div class="joke-card"><span class="joke-num">04</span>Windows updates at the worst time because the developer who programmed it works in a different time zone and does not care about yours.</div>
+        <div class="joke-card"><span class="joke-num">05</span>Microsoft Teams has 300 features. I use 2. The other 298 were each one person's manager's idea.</div>
+        <div class="joke-card"><span class="joke-num">06</span>The reason Microsoft products feel confusing is because they were built by people who think in three different languages and agreed in a fourth.</div>
+        <div class="joke-card"><span class="joke-num">07</span>We user-tested our product in China. 5 stars. Tested in India. 5 stars. Tested in America. 1 star. We shipped it.</div>
+        <div class="joke-card"><span class="joke-num">08</span>Our product roadmap goes through Bangalore, Shanghai, and Redmond. By the time it arrives, it's not a roadmap — it's a world tour.</div>
+        <div class="joke-card"><span class="joke-num">09</span>Bing is what happens when Chinese engineers build a search engine for Americans based on specs from an Indian PM who uses Google.</div>
+        <div class="joke-card"><span class="joke-num">10</span>Every Microsoft product is a compromise. Not a design compromise — a cultural compromise. Three cultures said "yes" to three different things.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 9 -->
+  <div class="insight-block reveal" id="i9">
+    <div class="insight-header">
+      <div class="insight-number">09</div>
+      <div>
+        <div class="insight-title">Tiger Parents Inc.</div>
+        <div class="insight-desc">中印家长鸡娃，重理科不学艺术，人生只有三个选项。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Indian parents have three career options for their kids: doctor, engineer, disappointment."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indian+parents+doctor+engineer" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ali Wong</span>
+          <span class="ref-text">"Asian parents don't say 'follow your dreams.' They say 'follow the money.'"</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ali+wong+asian+parents+career+dreams" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"I told my dad I wanted to do comedy. He said, 'That's funny.' He wasn't laughing."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+dad+comedy+career+asian" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese parents see a B+ and start planning the funeral."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+parents+grades+B+" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"My dad wanted me to be a doctor. I became a comedian. Same thing — I deal with people in pain."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+dad+doctor+comedian" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>Chinese and Indian parents agree on one thing: art is a hobby, not a career. The only painting they approve of is painting a bright future with a medical degree.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My Indian colleague plays violin beautifully. His parents still introduce him as "my son, the engineer."</div>
+        <div class="joke-card"><span class="joke-num">03</span>Chinese parents: "You can be anything you want — doctor, lawyer, or engineer. Pick one." Indian parents: same email, different font.</div>
+        <div class="joke-card"><span class="joke-num">04</span>I told my Chinese mom I wanted to study art. She said, "You can study art... after you get your PhD in computer science."</div>
+        <div class="joke-card"><span class="joke-num">05</span>At Microsoft, half the engineers secretly wanted to be artists. The other half secretly wanted to be doctors. None of them wanted to be engineers. But here we are.</div>
+        <div class="joke-card"><span class="joke-num">06</span>Indian parents see their kid drawing and think, "Ah, future architect." Chinese parents see their kid drawing and think, "Ah, wasted study time."</div>
+        <div class="joke-card"><span class="joke-num">07</span>My colleague's kid got into art school. His Indian parents told the relatives he got into "design engineering."</div>
+        <div class="joke-card"><span class="joke-num">08</span>Chinese kids learn piano not for music — for college applications. The piano knows. It can tell.</div>
+        <div class="joke-card"><span class="joke-num">09</span>In Chinese and Indian families, "creative" is not a compliment. It means "unemployable."</div>
+        <div class="joke-card"><span class="joke-num">10</span>My Indian colleague's son wanted to be a DJ. His dad said, "Fine, DJ — Doctor Junior."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 10 -->
+  <div class="insight-block reveal" id="i10">
+    <div class="insight-header">
+      <div class="insight-number">10</div>
+      <div>
+        <div class="insight-title">The Art of Saying No</div>
+        <div class="insight-desc">美国人直接说no，中国人绕圈子暗示no，印度人说yes但意思是no。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Indians never say no. They shake their head in a way that means yes, no, and maybe at the same time."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indian+head+shake+yes+no" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese people don't say no. They say 'we'll see,' which means 'absolutely not.'"</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+saying+no+indirect" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"In Indian culture, 'I'll try' means 'I won't.' 'Let me check' means 'No.' 'Sure' means 'Only if you ask three more times.'"</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+indian+culture+saying+no+indirect" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"Americans are direct. Everyone else is polite. Same result — nothing gets done."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+americans+direct+communication" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ali Wong</span>
+          <span class="ref-text">"My mom doesn't say no. She says 'Aiya' and that's worse than no."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ali+wong+asian+mom+aiya+saying+no" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>Americans say no. Chinese say "let me think about it" (they already thought — it's no). Indians say "yes, definitely" (it's also no).</div>
+        <div class="joke-card"><span class="joke-num">02</span>Three ways to say no in a meeting: American: "No." Chinese: "This is interesting, let's discuss offline." Indian: "Yes, we can do that" — and then nothing happens.</div>
+        <div class="joke-card"><span class="joke-num">03</span>I asked my Indian colleague if he could finish by Friday. He said, "I will try my best." It's Tuesday. Of 2027.</div>
+        <div class="joke-card"><span class="joke-num">04</span>Chinese people reject you so gently, you don't realize it happened until three weeks later.</div>
+        <div class="joke-card"><span class="joke-num">05</span>My American boss says no and moves on. My Chinese colleague says "hmm, maybe" and you spend a week figuring out it was no. My Indian colleague says "sure, no problem" and you spend a month.</div>
+        <div class="joke-card"><span class="joke-num">06</span>At Microsoft, "Let's circle back" is American for no. "Let's align offline" is Indian for no. Silence is Chinese for no. Nobody just says no.</div>
+        <div class="joke-card"><span class="joke-num">07</span>My Chinese colleague said "This proposal is very interesting." I got excited. My American colleague whispered, "That means he hates it."</div>
+        <div class="joke-card"><span class="joke-num">08</span>Indian head wobble: the original encryption. Only Indians can decrypt it. The rest of us just smile and wait.</div>
+        <div class="joke-card"><span class="joke-num">09</span>If a Chinese person says "we'll see," cancel the project. If an Indian person says "it's challenging but possible," also cancel the project.</div>
+        <div class="joke-card"><span class="joke-num">10</span>I pitched an idea. My American boss said no in 2 seconds. My Chinese boss would've let me present for 30 minutes and THEN say no — politely, in an email, two days later.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 11 -->
+  <div class="insight-block reveal" id="i11">
+    <div class="insight-header">
+      <div class="insight-number">11</div>
+      <div>
+        <div class="insight-title">Small Talk, Big Differences</div>
+        <div class="insight-desc">美国人聊天气，印度人聊你的人生，中国人不聊。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"Americans will talk about the weather for 20 minutes with a stranger."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+americans+small+talk+weather" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese people don't do small talk. We do small silence."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+small+talk+silence" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"Indian aunties don't do small talk. They go straight to 'Why aren't you married?'"</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+indian+aunties+small+talk+married" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Indian greeting: 'Hello, how much money do you make?'"</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indian+greeting+money+salary" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jimmy O. Yang</span>
+          <span class="ref-text">"In China, 'Have you eaten?' IS the small talk. That's as deep as it gets."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jimmy+o+yang+chinese+have+you+eaten+greeting" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>American small talk: "How about this weather?" Indian small talk: "How much is your rent?" Chinese small talk: "Have you eaten?" Three cultures, three priorities.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My American colleague asks "How are you?" He doesn't want an answer. My Indian colleague asks "How are you?" He wants your whole life story. My Chinese colleague doesn't ask.</div>
+        <div class="joke-card"><span class="joke-num">03</span>Americans say "Let's grab coffee sometime." They never do. Indians say "Come to my house for dinner." They mean it. Chinese say nothing. Also valid.</div>
+        <div class="joke-card"><span class="joke-num">04</span>Indian small talk escalates fast. "Hello" to "Are you married?" in 45 seconds. Olympic record.</div>
+        <div class="joke-card"><span class="joke-num">05</span>My Chinese colleague's version of small talk is a head nod in the elevator. Conversation over. Both satisfied.</div>
+        <div class="joke-card"><span class="joke-num">06</span>Americans: "Nice weather today." Indians: "How's your family? Your parents healthy? Your sister married yet?" Chinese: *opens laptop*</div>
+        <div class="joke-card"><span class="joke-num">07</span>I tried small talk with my Chinese colleague. I said, "Hey, how's it going?" He said, "Good." That was our deepest conversation in six months.</div>
+        <div class="joke-card"><span class="joke-num">08</span>An Indian colleague I met for 5 minutes knows more about my life than my American friends of 5 years.</div>
+        <div class="joke-card"><span class="joke-num">09</span>Small talk at Microsoft: Americans talk about sports, Indians talk about visa status, Chinese talk about housing prices. Nobody listens to each other.</div>
+        <div class="joke-card"><span class="joke-num">10</span>My American colleague said "We should hang out!" three years ago. We have not hung out. My Indian colleague said "Come over Saturday." I went. There were 40 people there. It was a wedding.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHT 12 -->
+  <div class="insight-block reveal" id="i12">
+    <div class="insight-header">
+      <div class="insight-number">12</div>
+      <div>
+        <div class="insight-title">The Holiday Calendar From Hell</div>
+        <div class="insight-desc">各国节日太多，总有人在请假，项目永远延期。</div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Reference Jokes</div>
+      <div class="ref-jokes">
+        <div class="ref-joke">
+          <span class="ref-comedian">Ronny Chieng</span>
+          <span class="ref-text">"Chinese New Year is 15 days long. That's not a holiday — that's a lifestyle."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=ronny+chieng+chinese+new+year+holiday+long" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Hasan Minhaj</span>
+          <span class="ref-text">"Eid, Diwali, Christmas — at my office, someone is always celebrating and someone is always offended."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=hasan+minhaj+eid+diwali+christmas+office+holidays" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Trevor Noah</span>
+          <span class="ref-text">"Every culture has a holiday that involves eating too much. That's the real universal language."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=trevor+noah+cultural+holidays+eating+food" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Russell Peters</span>
+          <span class="ref-text">"Indians have so many festivals, half the year is a holiday."</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=russell+peters+indian+festivals+holidays+many" target="_blank">Watch →</a>
+        </div>
+        <div class="ref-joke">
+          <span class="ref-comedian">Jerry Seinfeld</span>
+          <span class="ref-text">"Every month there's a holiday now. Who's approving these?"</span>
+          <a class="ref-link" href="https://www.youtube.com/results?search_query=jerry+seinfeld+too+many+holidays+jokes" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+    <div class="subsection">
+      <div class="subsection-label">Original One-Liners</div>
+      <div class="jokes-grid">
+        <div class="joke-card"><span class="joke-num">01</span>At Microsoft, between Chinese New Year, Diwali, Eid, Thanksgiving, and Christmas, nobody works from October to February. Productivity peaks in March. For one week.</div>
+        <div class="joke-card"><span class="joke-num">02</span>My Chinese colleague took off for Mid-Autumn Festival. My Indian colleague took off for Diwali. My American colleague took off because they took off.</div>
+        <div class="joke-card"><span class="joke-num">03</span>We have so many cultural holidays, our shared calendar looks like the UN General Assembly schedule.</div>
+        <div class="joke-card"><span class="joke-num">04</span>My manager tried to schedule an all-hands meeting. Between Chinese holidays, Indian holidays, and American holidays, the only available day was a Saturday. Nobody came.</div>
+        <div class="joke-card"><span class="joke-num">05</span>Chinese New Year: 2 weeks off. Diwali: 1 week off. Thanksgiving: 1 week off. The project deadline: moved 6 times.</div>
+        <div class="joke-card"><span class="joke-num">06</span>HR sent a list of recognized holidays. It was 47 entries. We still get emails saying, "You missed my holiday."</div>
+        <div class="joke-card"><span class="joke-num">07</span>My Indian colleague celebrates every regional Indian festival. There are 29 states. He's off a lot.</div>
+        <div class="joke-card"><span class="joke-num">08</span>I don't know what holiday it is today, but someone's out, someone brought sweets, and someone is burning something in the break room.</div>
+        <div class="joke-card"><span class="joke-num">09</span>At Microsoft, "I'm taking off for a cultural holiday" is the most used PTO reason. HR stopped verifying. They can't keep up.</div>
+        <div class="joke-card"><span class="joke-num">10</span>The only day everyone is in the office is the day free food is provided. That's the real universal holiday.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NOTES -->
+<section class="notes-section reveal" id="notes">
+  <div class="section-label">Performance Notes</div>
+  
+  <div class="note-card">
+    <h3>🌟 Strongest Bits in Your Current Set</h3>
+    <ul>
+      <li><strong>"Americans are a minority, we hire them for diversity"</strong> — 完美的预期翻转，这是你的closer material</li>
+      <li><strong>"Sandwich have some flavors" + "he never reheats sandwiches"</strong> — 双punchline结构很干净，tag收得好</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h3>🔧 Needs Work</h3>
+    <ul>
+      <li><strong>"Exchange student"</strong> — 画面感好但setup要更清晰。试试: "He's the only white guy. He walks around looking confused, smiling at everyone — like an exchange student on his first day."</li>
+      <li><strong>枸杞 hot water</strong> — 可以加tag: "...with goji berry. That's not a perk — that's a cry for help."</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h3>💡 Next Steps</h3>
+    <ul>
+      <li>从12个洞察中挑5-6个串成一个完整的5-10分钟set</li>
+      <li>给每个段子找到callback机会，让整个set有连贯性</li>
+      <li>在open mic上试炸点，标记🌟和需要改进的地方</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Built by Bob 🤖 for Jesse's Comedy Lab · 2026
+</footer>
+
+<script>
+// Cursor glow
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
