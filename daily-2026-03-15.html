@@ -708,6 +708,17 @@ function loadFeedback() {
 function saveFeedback(data) {
   localStorage.setItem(FB_KEY, JSON.stringify(data));
   updateBar(data);
+  // Auto-sync to local feedback server (if running)
+  syncToServer(data);
+}
+
+function syncToServer(data) {
+  const page = document.title || window.location.pathname;
+  fetch('http://127.0.0.1:8765', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ page: page, votes: data })
+  }).catch(() => {}); // silent fail if server not running
 }
 
 function updateBar(data) {
