@@ -287,11 +287,13 @@ a.ref-card:hover::after { opacity: 1; }
 .fb-btn {
   background: none; border: 1px solid transparent; border-radius: 6px;
   cursor: pointer; font-size: 0.85rem; padding: 2px 6px;
-  opacity: 0.3; transition: all 0.2s; line-height: 1;
+  opacity: 0; transition: all 0.2s; line-height: 1;
 }
-.fb-btn:hover { opacity: 0.8; border-color: #333; }
-.fb-btn.active-up { opacity: 1; background: rgba(48,209,88,0.15); border-color: var(--green); }
-.fb-btn.active-down { opacity: 1; background: rgba(255,59,48,0.15); border-color: var(--red); }
+.fb-wrap:hover .fb-btn { opacity: 0.5; }
+.fb-btn:hover { opacity: 0.8 !important; border-color: #333; }
+li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0.5; }
+.fb-btn.active-up { opacity: 1 !important; background: rgba(48,209,88,0.15); border-color: var(--green); }
+.fb-btn.active-down { opacity: 1 !important; background: rgba(255,59,48,0.15); border-color: var(--red); }
 .ref-card .fb-wrap { position: absolute; bottom: 8px; right: 8px; }
 .ref-card { position: relative; }
 a.ref-card { position: relative; }
