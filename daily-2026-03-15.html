@@ -281,6 +281,39 @@ a.ref-card { transition: border-color 0.3s, transform 0.2s; display: block; }
 a.ref-card:hover { border-color: var(--gold) !important; transform: translateY(-2px); }
 a.ref-card::after { content: '🔗 Watch →'; display: block; margin-top: 8px; font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.2s; }
 a.ref-card:hover::after { opacity: 1; }
+
+/* Feedback buttons */
+.fb-wrap { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
+.fb-btn {
+  background: none; border: 1px solid transparent; border-radius: 6px;
+  cursor: pointer; font-size: 0.85rem; padding: 2px 6px;
+  opacity: 0.3; transition: all 0.2s; line-height: 1;
+}
+.fb-btn:hover { opacity: 0.8; border-color: #333; }
+.fb-btn.active-up { opacity: 1; background: rgba(48,209,88,0.15); border-color: var(--green); }
+.fb-btn.active-down { opacity: 1; background: rgba(255,59,48,0.15); border-color: var(--red); }
+.ref-card .fb-wrap { position: absolute; bottom: 8px; right: 8px; }
+.ref-card { position: relative; }
+a.ref-card { position: relative; }
+
+/* Feedback export bar */
+.fb-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(14,14,14,0.95); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border); padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.8rem; color: var(--text-muted);
+  transform: translateY(100%); transition: transform 0.3s;
+}
+.fb-bar.visible { transform: translateY(0); }
+.fb-bar .count { color: var(--green); font-weight: 600; }
+.fb-bar button {
+  background: var(--green); color: #000; border: none; border-radius: 8px;
+  padding: 8px 20px; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+  font-family: inherit;
+}
+.fb-bar button:hover { opacity: 0.85; }
+
 </style>
 </head>
 <body>
@@ -328,26 +361,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://youtu.be/me4BZBsHwZs" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Louis CK</div><div class="joke">经典段子吐槽飞机WiFi——以前飞机是最后的自由，现在连30000英尺高空都逃不掉工作。"Everything is amazing and nobody's happy."</div></a>
-        <a href="https://www.youtube.com/watch?v=G8OM2TdkaHg" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Louis CK</div><div class="joke">专场《Hilarious》中关于手机和飞行的段子——手机如何让我们永远在线，再也没有"联系不上"的借口。</div></a>
-        <a href="https://www.youtube.com/watch?v=pDNqDLUzQ38" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Sebastian Maniscalco</div><div class="joke">教爸爸用网络——老一辈人对科技的困惑vs年轻人被科技绑架的对比，"我爸下班就是下班，我下班只是换个地方上班"。</div></a>
-        <a href="https://www.youtube.com/watch?v=oUUVRa2SNWU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">Netflix精选15分钟合集——钱信伊吐槽现代科技生活，包括远程工作和永远在线的焦虑。</div></a>
-        <a href="https://www.youtube.com/watch?v=RJlhclmU_f8" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Gary Gulman</div><div class="joke">专场《In This Economy?》30分钟精选——吐槽现代工作文化，邮件如何从"节省时间的工具"变成"第二份工作"。</div></a>
+        <a href="https://youtu.be/me4BZBsHwZs" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Louis CK</div><div class="joke">经典段子吐槽飞机WiFi——以前飞机是最后的自由，现在连30000英尺高空都逃不掉工作。"Everything is amazing and nobody's happy."</div><span class="fb-wrap" data-jid="ref-1" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=G8OM2TdkaHg" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Louis CK</div><div class="joke">专场《Hilarious》中关于手机和飞行的段子——手机如何让我们永远在线，再也没有"联系不上"的借口。</div><span class="fb-wrap" data-jid="ref-2" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=pDNqDLUzQ38" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Sebastian Maniscalco</div><div class="joke">教爸爸用网络——老一辈人对科技的困惑vs年轻人被科技绑架的对比，"我爸下班就是下班，我下班只是换个地方上班"。</div><span class="fb-wrap" data-jid="ref-3" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=oUUVRa2SNWU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">Netflix精选15分钟合集——钱信伊吐槽现代科技生活，包括远程工作和永远在线的焦虑。</div><span class="fb-wrap" data-jid="ref-4" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=RJlhclmU_f8" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Gary Gulman</div><div class="joke">专场《In This Economy?》30分钟精选——吐槽现代工作文化，邮件如何从"节省时间的工具"变成"第二份工作"。</div><span class="fb-wrap" data-jid="ref-5" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>多亏了AI，我通勤时间从"我的时间"变成了"带薪加班"。唯一的区别是——没有带薪。<span class="tag tag-hot">🔥</span></li>
-        <li>以前地铁上刷抖音，现在地铁上review代码。我升级了吗？不，我只是找到了一种更焦虑的方式坐地铁。</li>
-        <li>Thanks to OpenClaw, I can now work on the subway. Great, another place where I'm underpaid and underground.<span class="tag tag-hot">🔥</span></li>
-        <li>以前通勤是从家到公司，现在通勤是从一个工位到另一个移动工位。地铁座位就是我的standing desk——因为没座。</li>
-        <li>我老板说"你通勤一小时，真浪费时间"。我说别担心，我在地铁上已经干了两小时的活了。</li>
-        <li>科技的进步就是：50年前人类登月了，现在我可以在马桶上开会了。<span class="tag tag-meta">META</span></li>
-        <li>以前迟到的借口是"堵车"。现在你堵车也能work from car，所以迟到的借口变成了"网络不好"。</li>
-        <li>效率工具的终极目标：让你连做梦都觉得自己在摸鱼。</li>
-        <li>我在地铁上coding，旁边大爷看了一眼说"年轻人真努力"。大爷，这不是努力，这是996的DLC。<span class="tag tag-hot">🔥</span></li>
-        <li>以前work-life balance是回家不想工作。现在是在任何地方都能工作，所以在任何地方都不想工作。</li>
+        <li>多亏了AI，我通勤时间从"我的时间"变成了"带薪加班"。唯一的区别是——没有带薪。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前地铁上刷抖音，现在地铁上review代码。我升级了吗？不，我只是找到了一种更焦虑的方式坐地铁。<span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Thanks to OpenClaw, I can now work on the subway. Great, another place where I'm underpaid and underground.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前通勤是从家到公司，现在通勤是从一个工位到另一个移动工位。地铁座位就是我的standing desk——因为没座。<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我老板说"你通勤一小时，真浪费时间"。我说别担心，我在地铁上已经干了两小时的活了。<span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>科技的进步就是：50年前人类登月了，现在我可以在马桶上开会了。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前迟到的借口是"堵车"。现在你堵车也能work from car，所以迟到的借口变成了"网络不好"。<span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>效率工具的终极目标：让你连做梦都觉得自己在摸鱼。<span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我在地铁上coding，旁边大爷看了一眼说"年轻人真努力"。大爷，这不是努力，这是996的DLC。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前work-life balance是回家不想工作。现在是在任何地方都能工作，所以在任何地方都不想工作。<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -365,26 +398,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/watch?v=gJns8wDwWno" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Russell Peters</div><div class="joke">专场《Deported》——Russell Peters 经典吐槽各国语言的隐藏dirty含义，印地语单词翻译成英语后画风突变。</div></a>
-        <a href="https://www.youtube.com/watch?v=8Md2rfTtKdI" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">Trevor Noah 讲7种语言的口音课——不同语言听起来的感觉完全不同，有些语言天生自带"危险"气质。</div></a>
-        <a href="https://www.youtube.com/watch?v=yWI61kpFEAA" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">The Daily Show幕后精华——Trevor Noah模仿各国口音，展示语言的文化滤镜如何改变同一句话的含义。</div></a>
-        <a href="https://www.youtube.com/playlist?list=PLyZvha5jwvOlpTucef6daeRh_baqZqv9I" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jimmy O. Yang</div><div class="joke">Jimmy O. Yang YouTube合集——讲亚洲奶奶说话的方式，老人家的日常用语翻译成英文就是"rated R content"。</div></a>
-        <a href="https://www.youtube.com/shorts/R1bcvxVesvg" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">Ali Wong短视频——华裔文化中食物和身体的隐喻，"吃豆腐"到底是什么意思？文化翻译的尴尬瞬间。</div></a>
+        <a href="https://www.youtube.com/watch?v=gJns8wDwWno" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Russell Peters</div><div class="joke">专场《Deported》——Russell Peters 经典吐槽各国语言的隐藏dirty含义，印地语单词翻译成英语后画风突变。</div><span class="fb-wrap" data-jid="ref-6" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=8Md2rfTtKdI" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">Trevor Noah 讲7种语言的口音课——不同语言听起来的感觉完全不同，有些语言天生自带"危险"气质。</div><span class="fb-wrap" data-jid="ref-7" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=yWI61kpFEAA" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">The Daily Show幕后精华——Trevor Noah模仿各国口音，展示语言的文化滤镜如何改变同一句话的含义。</div><span class="fb-wrap" data-jid="ref-8" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/playlist?list=PLyZvha5jwvOlpTucef6daeRh_baqZqv9I" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jimmy O. Yang</div><div class="joke">Jimmy O. Yang YouTube合集——讲亚洲奶奶说话的方式，老人家的日常用语翻译成英文就是"rated R content"。</div><span class="fb-wrap" data-jid="ref-9" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/shorts/R1bcvxVesvg" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">Ali Wong短视频——华裔文化中食物和身体的隐喻，"吃豆腐"到底是什么意思？文化翻译的尴尬瞬间。</div><span class="fb-wrap" data-jid="ref-10" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>中文里"使出吃奶的劲"形容努力。翻译成英文就是"suck tits with all your might"。这不是谚语，这是OnlyFans的slogan。<span class="tag tag-hot">🔥</span></li>
-        <li>"床头打架床尾和"——这是形容夫妻感情好的。你说这是成语我信，你说这是小黄书的章节标题我也信。</li>
-        <li>古人说"食色性也"。你看，老祖宗早就把吃饭和sex放一起了。所以中国人约会吃火锅，是文化传承。<span class="tag tag-meta">META</span></li>
-        <li>"如鱼得水"——a fish getting wet。你们确定这是在说刘备和诸葛亮？</li>
-        <li>"欲擒故纵"——playing hard to get。孙子兵法，也是Tinder兵法。<span class="tag tag-hot">🔥</span></li>
-        <li>Chinese dirty talk is easy. Just read ancient poetry out loud. "春宵一刻值千金"——one moment of spring night is worth a thousand gold。这是苏轼说的。苏轼，北宋的Cardi B。</li>
-        <li>"鹤立鸡群"——a crane standing among chickens。我不翻译了，你们自己想。<span class="tag tag-dark">DARK</span></li>
-        <li>"打铁趁热"——strike it while it's hot。听起来像锻炼身体的建议，也像bedroom advice。</li>
-        <li>所以其实古人不是正经，古人只是在用谚语flirt。他们没有Tinder，但他们有《诗经》。《诗经》就是3000年前的dating app。<span class="tag tag-hot">🔥</span></li>
-        <li>"不入虎穴，焉得虎子"——if you don't enter the tiger's cave, you won't get the tiger cub。这要是纹在身上，西方人觉得是motivational quote，中国人觉得你很虎。</li>
+        <li>中文里"使出吃奶的劲"形容努力。翻译成英文就是"suck tits with all your might"。这不是谚语，这是OnlyFans的slogan。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"床头打架床尾和"——这是形容夫妻感情好的。你说这是成语我信，你说这是小黄书的章节标题我也信。<span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>古人说"食色性也"。你看，老祖宗早就把吃饭和sex放一起了。所以中国人约会吃火锅，是文化传承。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"如鱼得水"——a fish getting wet。你们确定这是在说刘备和诸葛亮？<span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"欲擒故纵"——playing hard to get。孙子兵法，也是Tinder兵法。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Chinese dirty talk is easy. Just read ancient poetry out loud. "春宵一刻值千金"——one moment of spring night is worth a thousand gold。这是苏轼说的。苏轼，北宋的Cardi B。<span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"鹤立鸡群"——a crane standing among chickens。我不翻译了，你们自己想。<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"打铁趁热"——strike it while it's hot。听起来像锻炼身体的建议，也像bedroom advice。<span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>所以其实古人不是正经，古人只是在用谚语flirt。他们没有Tinder，但他们有《诗经》。《诗经》就是3000年前的dating app。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"不入虎穴，焉得虎子"——if you don't enter the tiger's cave, you won't get the tiger cub。这要是纹在身上，西方人觉得是motivational quote，中国人觉得你很虎。<span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -402,26 +435,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/watch?v=M3VRy2IJ7Zc" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">Trevor Noah vs Siri口音大战——Siri听不懂南非口音，AI助手的"个性"取决于它能不能理解你。</div></a>
-        <a href="https://www.youtube.com/watch?v=8Md2rfTtKdI" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">英语口音教学——不同国家说英语的方式就像不同AI的回答风格，有的礼貌有的直接有的完全听不懂。</div></a>
-        <a href="https://www.youtube.com/watch?v=Iyhbg65hHTY" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">Hasan Minhaj深度访谈——他的喜剧风格如何体现"当你的'缺陷'变成你的优势"，正如AI各有性格。</div></a>
-        <a href="https://www.youtube.com/watch?v=frXoue9evqw" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Amit Tandon</div><div class="joke">专场片段《科技太多了》——印度喜剧人吐槽科技发展过了头，AI和各种app的性格比人类同事还复杂。</div></a>
-        <a href="https://www.netflix.com/title/81267396" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">Netflix专场《Love to Hate It》——钱信伊吐槽科技文化，从亚洲视角看AI和硅谷的荒诞。</div></a>
+        <a href="https://www.youtube.com/watch?v=M3VRy2IJ7Zc" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">Trevor Noah vs Siri口音大战——Siri听不懂南非口音，AI助手的"个性"取决于它能不能理解你。</div><span class="fb-wrap" data-jid="ref-11" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=8Md2rfTtKdI" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">英语口音教学——不同国家说英语的方式就像不同AI的回答风格，有的礼貌有的直接有的完全听不懂。</div><span class="fb-wrap" data-jid="ref-12" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=Iyhbg65hHTY" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">Hasan Minhaj深度访谈——他的喜剧风格如何体现"当你的'缺陷'变成你的优势"，正如AI各有性格。</div><span class="fb-wrap" data-jid="ref-13" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=frXoue9evqw" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Amit Tandon</div><div class="joke">专场片段《科技太多了》——印度喜剧人吐槽科技发展过了头，AI和各种app的性格比人类同事还复杂。</div><span class="fb-wrap" data-jid="ref-14" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.netflix.com/title/81267396" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">Netflix专场《Love to Hate It》——钱信伊吐槽科技文化，从亚洲视角看AI和硅谷的荒诞。</div><span class="fb-wrap" data-jid="ref-15" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>ChatGPT回答问题像我的印度同事——先说"Great question"，然后用2000字告诉你他理解了你的问题，但没有回答。<span class="tag tag-hot">🔥</span></li>
-        <li>Gemini像美国同事：很casual，很confident，经常是错的。但错得很有魅力。<span class="tag tag-hot">🔥</span></li>
-        <li>Copilot像中国同事：你问他意见，他说"都行"。你让他选，他说"你定吧"。代码写完了，他说"仅供参考"。</li>
-        <li>ChatGPT: "I'd be happy to help!" 印度同事: "Sure, let me look into it!" 六个月后你还在等。</li>
-        <li>Claude像法国同事——非常有思想，非常有原则，但是经常拒绝工作。"I don't feel comfortable doing that." Brother, it's a spreadsheet.<span class="tag tag-hot">🔥</span></li>
-        <li>If there was a German AI, it would just say "No." Very efficient. Very accurate. Zero warmth.</li>
-        <li>我问Copilot一个问题，它给了三个答案让我自己选。这不是AI，这是中国式领导——永远不做最终决定。<span class="tag tag-meta">META</span></li>
-        <li>ChatGPT的"Let me think step by step"就像印度同事开会——你知道他会说30分钟，但你不知道他什么时候会说到重点。</li>
-        <li>Gemini有时候会自信地给你一个完全错误的答案。这就是美国同事的核心能力：wrong but confident。<span class="tag tag-callback">CALLBACK</span></li>
-        <li>等日本公司出AI，回答问题之前先鞠三个躬，然后道歉说"抱歉让您久等了"，然后告诉你服务器维护中。</li>
+        <li>ChatGPT回答问题像我的印度同事——先说"Great question"，然后用2000字告诉你他理解了你的问题，但没有回答。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Gemini像美国同事：很casual，很confident，经常是错的。但错得很有魅力。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Copilot像中国同事：你问他意见，他说"都行"。你让他选，他说"你定吧"。代码写完了，他说"仅供参考"。<span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>ChatGPT: "I'd be happy to help!" 印度同事: "Sure, let me look into it!" 六个月后你还在等。<span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Claude像法国同事——非常有思想，非常有原则，但是经常拒绝工作。"I don't feel comfortable doing that." Brother, it's a spreadsheet.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>If there was a German AI, it would just say "No." Very efficient. Very accurate. Zero warmth.<span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我问Copilot一个问题，它给了三个答案让我自己选。这不是AI，这是中国式领导——永远不做最终决定。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>ChatGPT的"Let me think step by step"就像印度同事开会——你知道他会说30分钟，但你不知道他什么时候会说到重点。<span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Gemini有时候会自信地给你一个完全错误的答案。这就是美国同事的核心能力：wrong but confident。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>等日本公司出AI，回答问题之前先鞠三个躬，然后道歉说"抱歉让您久等了"，然后告诉你服务器维护中。<span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -439,26 +472,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/watch?v=ZsllIRsJJWI" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Don McMillan</div><div class="joke">工程师喜剧人吐槽公司职级通胀——CEO、VP，title越来越多，含金量越来越低。用数据图表讲段子。</div></a>
-        <a href="https://www.youtube.com/watch?v=tnlNUZqFzgY" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chris Rock</div><div class="joke">经典段子"Job vs Career"——有的人有career，有的人只有job。你的title再高级，干的还是同样的活。</div></a>
-        <a href="https://www.youtube.com/watch?v=j1eFI7p09mQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chris Rock</div><div class="joke">《Kill The Messenger》片段——"A Real Bad Job"，吐槽那些听起来很厉害但实际上毫无意义的工作职位。</div></a>
-        <a href="https://www.facebook.com/61563561952440/videos/1207390210932381/" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Business Casualty</div><div class="joke">喜剧短片——"当职位名称失去意义"，Vice President of Global Sales Enablement到底是干什么的？没人知道。</div></a>
-        <a href="https://www.youtube.com/watch?v=hQigUH0vZSE" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chuck Nice</div><div class="joke">TED演讲式喜剧——科技的意外后果，包括公司给每个人一个fancy title来代替加薪的荒诞现象。</div></a>
+        <a href="https://www.youtube.com/watch?v=ZsllIRsJJWI" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Don McMillan</div><div class="joke">工程师喜剧人吐槽公司职级通胀——CEO、VP，title越来越多，含金量越来越低。用数据图表讲段子。</div><span class="fb-wrap" data-jid="ref-16" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=tnlNUZqFzgY" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chris Rock</div><div class="joke">经典段子"Job vs Career"——有的人有career，有的人只有job。你的title再高级，干的还是同样的活。</div><span class="fb-wrap" data-jid="ref-17" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=j1eFI7p09mQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chris Rock</div><div class="joke">《Kill The Messenger》片段——"A Real Bad Job"，吐槽那些听起来很厉害但实际上毫无意义的工作职位。</div><span class="fb-wrap" data-jid="ref-18" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.facebook.com/61563561952440/videos/1207390210932381/" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Business Casualty</div><div class="joke">喜剧短片——"当职位名称失去意义"，Vice President of Global Sales Enablement到底是干什么的？没人知道。</div><span class="fb-wrap" data-jid="ref-19" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=hQigUH0vZSE" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chuck Nice</div><div class="joke">TED演讲式喜剧——科技的意外后果，包括公司给每个人一个fancy title来代替加薪的荒诞现象。</div><span class="fb-wrap" data-jid="ref-20" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>美国只有1个President，微软有200多个。所以在微软当President，比在美国当President容易。竞争少，不用选举，也不用发推特。<span class="tag tag-hot">🔥</span></li>
-        <li>公司职级贬值比人民币还快。Senior一年贬值30%。你2020年的Staff Engineer，到2026年约等于一个实习生。</li>
-        <li>LinkedIn上人人都是VP。如果VP有通货膨胀率，Fed应该加息了。<span class="tag tag-meta">META</span></li>
-        <li>我妈问我在微软什么职位。我说SDE2。她说"听起来像一个导弹型号"。我说"差不多，都是被发射出去就不管了"。</li>
-        <li>以前"经理"是管人的。现在"经理"是一个manage自己的人。一个人的团队，叫individual contributor。听起来很独立，其实就是没人愿意跟你一组。<span class="tag tag-hot">🔥</span></li>
-        <li>微软的职级：SDE → SDE2 → Senior → Principal → Partner → VP → President。你以为是升职？不，这是打怪升级。通关大概需要40年和3次mid-life crisis。</li>
-        <li>"Head of"是最虚的title。Head of Innovation——创新了什么？Head of Strategy——策略是什么？Head of Nothing——这才诚实。</li>
-        <li>我的名片上写着"Software Engineer II"。我妈以为II是罗马数字，觉得我是第二代传人。妈，这是说我还在第二关。<span class="tag tag-callback">CALLBACK</span></li>
-        <li>有的公司给你title不给你钱。恭喜你升职了！Senior了！薪水呢？"Senior的薪水"。所以是原来的薪水加个形容词？</li>
-        <li>在中国互联网公司，P7听起来像特工代号。"我是P7。" "你是MI6的？" "不，我是阿里巴巴的。比MI6还卷。"<span class="tag tag-hot">🔥</span></li>
+        <li>美国只有1个President，微软有200多个。所以在微软当President，比在美国当President容易。竞争少，不用选举，也不用发推特。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-31"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>公司职级贬值比人民币还快。Senior一年贬值30%。你2020年的Staff Engineer，到2026年约等于一个实习生。<span class="fb-wrap" data-jid="joke-32"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>LinkedIn上人人都是VP。如果VP有通货膨胀率，Fed应该加息了。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-33"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我妈问我在微软什么职位。我说SDE2。她说"听起来像一个导弹型号"。我说"差不多，都是被发射出去就不管了"。<span class="fb-wrap" data-jid="joke-34"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前"经理"是管人的。现在"经理"是一个manage自己的人。一个人的团队，叫individual contributor。听起来很独立，其实就是没人愿意跟你一组。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-35"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>微软的职级：SDE → SDE2 → Senior → Principal → Partner → VP → President。你以为是升职？不，这是打怪升级。通关大概需要40年和3次mid-life crisis。<span class="fb-wrap" data-jid="joke-36"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"Head of"是最虚的title。Head of Innovation——创新了什么？Head of Strategy——策略是什么？Head of Nothing——这才诚实。<span class="fb-wrap" data-jid="joke-37"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我的名片上写着"Software Engineer II"。我妈以为II是罗马数字，觉得我是第二代传人。妈，这是说我还在第二关。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-38"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>有的公司给你title不给你钱。恭喜你升职了！Senior了！薪水呢？"Senior的薪水"。所以是原来的薪水加个形容词？<span class="fb-wrap" data-jid="joke-39"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>在中国互联网公司，P7听起来像特工代号。"我是P7。" "你是MI6的？" "不，我是阿里巴巴的。比MI6还卷。"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-40"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -476,26 +509,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/@LowballJim/videos" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jimmy O. Yang</div><div class="joke">Jimmy O. Yang YouTube频道——上海菜Mukbang、亚洲美食测评，"When You Wake Up Asian"系列爆笑。</div></a>
-        <a href="https://www.kron4.com/news/bay-area/ali-wong-dines-at-recently-revived-san-francisco-pho-staple/" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">Ali Wong去旧金山吃$110一碗的Pho——湾区美食文化的代表，本地美食=移民美食。</div></a>
-        <a href="https://www.interviewmagazine.com/culture/kumail-nanjiani-silicon-valley-carbs-comic-con-cheat-days" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Kumail Nanjiani</div><div class="joke">Kumail Nanjiani访谈谈硅谷的碳水和cheat day——《硅谷》演员眼中科技城的食物文化。</div></a>
-        <a href="https://www.youtube.com/watch?v=gJns8wDwWno" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Russell Peters</div><div class="joke">专场《Deported》——Russell Peters在孟买拍摄，讲述移民如何用食物征服新城市，到哪都能找到家乡味。</div></a>
-        <a href="https://www.youtube.com/watch?v=oUUVRa2SNWU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">15分钟精选合集——钱信伊从马来西亚人的视角吐槽美国食物，"你们叫这个food？"</div></a>
+        <a href="https://www.youtube.com/@LowballJim/videos" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jimmy O. Yang</div><div class="joke">Jimmy O. Yang YouTube频道——上海菜Mukbang、亚洲美食测评，"When You Wake Up Asian"系列爆笑。</div><span class="fb-wrap" data-jid="ref-21" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.kron4.com/news/bay-area/ali-wong-dines-at-recently-revived-san-francisco-pho-staple/" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">Ali Wong去旧金山吃$110一碗的Pho——湾区美食文化的代表，本地美食=移民美食。</div><span class="fb-wrap" data-jid="ref-22" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.interviewmagazine.com/culture/kumail-nanjiani-silicon-valley-carbs-comic-con-cheat-days" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Kumail Nanjiani</div><div class="joke">Kumail Nanjiani访谈谈硅谷的碳水和cheat day——《硅谷》演员眼中科技城的食物文化。</div><span class="fb-wrap" data-jid="ref-23" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=gJns8wDwWno" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Russell Peters</div><div class="joke">专场《Deported》——Russell Peters在孟买拍摄，讲述移民如何用食物征服新城市，到哪都能找到家乡味。</div><span class="fb-wrap" data-jid="ref-24" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=oUUVRa2SNWU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">15分钟精选合集——钱信伊从马来西亚人的视角吐槽美国食物，"你们叫这个food？"</div><span class="fb-wrap" data-jid="ref-25" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>有人问我Redmond有什么local food。我说Chinese and Indian。他说"那不是local food"。我说"那你看看local people"。<span class="tag tag-hot">🔥</span></li>
-        <li>Redmond的food court：兰州拉面，南印度dosa，四川火锅，biryani。唯一的美国食物是Subway。因为没人去吃。</li>
-        <li>Redmond的Yelp排行榜top 10：7家中餐，2家印度菜，1家pho。American food排第11——是Costco food court。<span class="tag tag-meta">META</span></li>
-        <li>你想知道一个科技公司在哪个城市开了office？看看哪里突然多了10家奶茶店。</li>
-        <li>Redmond唯一的cultural clash不是种族歧视，是午餐时间微波炉里的咖喱味vs花椒味。这是真正的东西方冲突。<span class="tag tag-callback">CALLBACK</span></li>
-        <li>Microsoft把总部放在Redmond，Redmond就变成了一个大食堂。菜单取决于这个季度H1B批了多少。</li>
-        <li>我跟我美国朋友说来Redmond旅游吧，可以体验authentic亚洲美食。他说"我以为要去亚洲才能体验"。我说"Redmond就是亚洲，只不过有Costco"。<span class="tag tag-hot">🔥</span></li>
-        <li>Redmond的白人居民现在吃辣比我还能吃。这就是proximity effect——你住在四川人旁边久了，舌头也会入乡随俗。</li>
-        <li>想体验authentic American food？别去Redmond。去Applebee's。那里的食物很美国——份量大，味道可选，全是微波炉加热的。</li>
-        <li>Redmond farmers market卖的都是bok choy和bitter melon。白人farmer看了看说"I don't know what these are but they sell great"。<span class="tag tag-dark">DARK</span></li>
+        <li>有人问我Redmond有什么local food。我说Chinese and Indian。他说"那不是local food"。我说"那你看看local people"。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-41"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Redmond的food court：兰州拉面，南印度dosa，四川火锅，biryani。唯一的美国食物是Subway。因为没人去吃。<span class="fb-wrap" data-jid="joke-42"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Redmond的Yelp排行榜top 10：7家中餐，2家印度菜，1家pho。American food排第11——是Costco food court。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-43"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>你想知道一个科技公司在哪个城市开了office？看看哪里突然多了10家奶茶店。<span class="fb-wrap" data-jid="joke-44"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Redmond唯一的cultural clash不是种族歧视，是午餐时间微波炉里的咖喱味vs花椒味。这是真正的东西方冲突。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-45"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Microsoft把总部放在Redmond，Redmond就变成了一个大食堂。菜单取决于这个季度H1B批了多少。<span class="fb-wrap" data-jid="joke-46"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我跟我美国朋友说来Redmond旅游吧，可以体验authentic亚洲美食。他说"我以为要去亚洲才能体验"。我说"Redmond就是亚洲，只不过有Costco"。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-47"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Redmond的白人居民现在吃辣比我还能吃。这就是proximity effect——你住在四川人旁边久了，舌头也会入乡随俗。<span class="fb-wrap" data-jid="joke-48"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>想体验authentic American food？别去Redmond。去Applebee's。那里的食物很美国——份量大，味道可选，全是微波炉加热的。<span class="fb-wrap" data-jid="joke-49"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Redmond farmers market卖的都是bok choy和bitter melon。白人farmer看了看说"I don't know what these are but they sell great"。<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-50"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -513,26 +546,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.tiktok.com/@theprimeagen/video/7382255627390799134" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">ThePrimeagen</div><div class="joke">程序员网红讲四个显示器coding——"用四块屏幕并不会让你写出更好的代码，只会让你更高效地摸鱼"。</div></a>
-        <a href="https://en.wikipedia.org/wiki/Bo_Burnham:_Inside" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">Netflix特辑《Inside》——一个人对着屏幕创作的孤独感，内容创作从外面看像艺术，从里面看像精神崩溃。</div></a>
-        <a href="https://www.youtube.com/watch?v=w-sCrOLYoDo" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">视频分析《Inside》中的"Content"——为什么我们对着多个屏幕越来越忙，却越来越空虚。</div></a>
-        <a href="https://www.youtube.com/watch?v=rcgrl66TnAQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Michael Kosta</div><div class="joke">The Daily Show片段——吐槽我们过度依赖科技，"以前用一台电脑，现在五个屏幕还觉得不够"。</div></a>
-        <a href="https://www.youtube.com/watch?v=hQigUH0vZSE" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chuck Nice</div><div class="joke">TED喜剧演讲——科技的意外后果，看起来很酷的多屏幕设置其实只是在不同窗口之间来回切换的焦虑。</div></a>
+        <a href="https://www.tiktok.com/@theprimeagen/video/7382255627390799134" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">ThePrimeagen</div><div class="joke">程序员网红讲四个显示器coding——"用四块屏幕并不会让你写出更好的代码，只会让你更高效地摸鱼"。</div><span class="fb-wrap" data-jid="ref-26" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://en.wikipedia.org/wiki/Bo_Burnham:_Inside" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">Netflix特辑《Inside》——一个人对着屏幕创作的孤独感，内容创作从外面看像艺术，从里面看像精神崩溃。</div><span class="fb-wrap" data-jid="ref-27" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=w-sCrOLYoDo" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">视频分析《Inside》中的"Content"——为什么我们对着多个屏幕越来越忙，却越来越空虚。</div><span class="fb-wrap" data-jid="ref-28" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=rcgrl66TnAQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Michael Kosta</div><div class="joke">The Daily Show片段——吐槽我们过度依赖科技，"以前用一台电脑，现在五个屏幕还觉得不够"。</div><span class="fb-wrap" data-jid="ref-29" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=hQigUH0vZSE" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chuck Nice</div><div class="joke">TED喜剧演讲——科技的意外后果，看起来很酷的多屏幕设置其实只是在不同窗口之间来回切换的焦虑。</div><span class="fb-wrap" data-jid="ref-30" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>我vibe coding的时候面前5个屏幕，左敲右敲，像在打架子鼓。区别是架子鼓手至少知道自己在弹什么。<span class="tag tag-hot">🔥</span></li>
-        <li>Vibe coding就是让AI写代码，你负责表演。你不是程序员，你是程序员的经纪人。</li>
-        <li>我在咖啡厅vibe coding，旁边的人看我5个屏幕，问"你是做什么的？"我说"我是个指挥家"。我指挥AI干活。<span class="tag tag-meta">META</span></li>
-        <li>Vibe coding = 90% tab切换 + 10% 按回车。这不是编程，这是高级版的"同意用户协议"。<span class="tag tag-hot">🔥</span></li>
-        <li>以前coding是写代码。现在vibe coding是写prompt，然后假装看懂了AI生成的代码。"嗯，looks good to me." 我都不知道它干了什么。</li>
-        <li>架子鼓手至少要练习。Vibe coder不用——你只需要一个好的AI模型和一个自信的表情。</li>
-        <li>我老婆看我vibe coding说"你好忙啊"。我说"是啊"。其实我在等3个AI同时给我写3个不同的错误答案。</li>
-        <li>DJ打碟，观众嗨。我vibe coding，只有GitHub Copilot在鼓掌——"Suggestion accepted!" <span class="tag tag-callback">CALLBACK</span></li>
-        <li>多屏幕vibe coding的真相：左边屏幕ChatGPT，右边屏幕Cursor，中间屏幕——Stack Overflow。有些传统不能丢。</li>
-        <li>如果vibe coding算一种乐器，那我是全世界最好的vibe coder。因为这个乐器不需要任何技术，只需要很多显示器。<span class="tag tag-hot">🔥</span></li>
+        <li>我vibe coding的时候面前5个屏幕，左敲右敲，像在打架子鼓。区别是架子鼓手至少知道自己在弹什么。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-51"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Vibe coding就是让AI写代码，你负责表演。你不是程序员，你是程序员的经纪人。<span class="fb-wrap" data-jid="joke-52"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我在咖啡厅vibe coding，旁边的人看我5个屏幕，问"你是做什么的？"我说"我是个指挥家"。我指挥AI干活。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-53"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Vibe coding = 90% tab切换 + 10% 按回车。这不是编程，这是高级版的"同意用户协议"。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-54"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前coding是写代码。现在vibe coding是写prompt，然后假装看懂了AI生成的代码。"嗯，looks good to me." 我都不知道它干了什么。<span class="fb-wrap" data-jid="joke-55"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>架子鼓手至少要练习。Vibe coder不用——你只需要一个好的AI模型和一个自信的表情。<span class="fb-wrap" data-jid="joke-56"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我老婆看我vibe coding说"你好忙啊"。我说"是啊"。其实我在等3个AI同时给我写3个不同的错误答案。<span class="fb-wrap" data-jid="joke-57"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>DJ打碟，观众嗨。我vibe coding，只有GitHub Copilot在鼓掌——"Suggestion accepted!" <span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-58"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>多屏幕vibe coding的真相：左边屏幕ChatGPT，右边屏幕Cursor，中间屏幕——Stack Overflow。有些传统不能丢。<span class="fb-wrap" data-jid="joke-59"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>如果vibe coding算一种乐器，那我是全世界最好的vibe coder。因为这个乐器不需要任何技术，只需要很多显示器。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-60"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -550,26 +583,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/watch?v=rNyQNg7AjxQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Comedy Sketch</div><div class="joke">"If Dating Was Like A Job Interview"——约会变面试的完整小品，女方像HR一样问"你的五年规划是什么"。</div></a>
-        <a href="https://www.youtube.com/shorts/sLm-hRbGjXU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Sezar Alkassab</div><div class="joke">英国喜剧人短视频——"Dating Is Like A Job Interview"，约会就是一场你不知道有没有第二轮的面试。</div></a>
-        <a href="https://www.youtube.com/watch?v=yBRHkUU-7JU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Taylor Tomlinson</div><div class="joke">Netflix专场《Quarter-Life Crisis》片段——吐槽男朋友的"出轨边缘行为"，女生的背调能力堪比FBI。</div></a>
-        <a href="https://www.youtube.com/watch?v=OoMWznsHgbo" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Iliza Shlesinger</div><div class="joke">单口专场——吐槽约会中的抱怨，女生问"你上段感情怎么回事"就像HR问"你为什么离开上一家公司"。</div></a>
-        <a href="https://www.youtube.com/watch?v=QC6jhhlzpiw" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">Netflix专场《Single Lady》预告——Ali Wong离婚后重返约会市场，"约会就是重新投简历"。</div></a>
+        <a href="https://www.youtube.com/watch?v=rNyQNg7AjxQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Comedy Sketch</div><div class="joke">"If Dating Was Like A Job Interview"——约会变面试的完整小品，女方像HR一样问"你的五年规划是什么"。</div><span class="fb-wrap" data-jid="ref-31" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/shorts/sLm-hRbGjXU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Sezar Alkassab</div><div class="joke">英国喜剧人短视频——"Dating Is Like A Job Interview"，约会就是一场你不知道有没有第二轮的面试。</div><span class="fb-wrap" data-jid="ref-32" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=yBRHkUU-7JU" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Taylor Tomlinson</div><div class="joke">Netflix专场《Quarter-Life Crisis》片段——吐槽男朋友的"出轨边缘行为"，女生的背调能力堪比FBI。</div><span class="fb-wrap" data-jid="ref-33" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=OoMWznsHgbo" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Iliza Shlesinger</div><div class="joke">单口专场——吐槽约会中的抱怨，女生问"你上段感情怎么回事"就像HR问"你为什么离开上一家公司"。</div><span class="fb-wrap" data-jid="ref-34" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=QC6jhhlzpiw" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">Netflix专场《Single Lady》预告——Ali Wong离婚后重返约会市场，"约会就是重新投简历"。</div><span class="fb-wrap" data-jid="ref-35" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>谈恋爱就是面试。女朋友是HR，你是candidate。"为什么和前任分手？"这是behavioral question。请用STAR方法回答。<span class="tag tag-hot">🔥</span></li>
-        <li>约会就像面试：你要穿得体面，准备好答案，全程保持微笑。唯一区别是面试失败了你不用删对方微信。</li>
-        <li>"你几段恋爱经历？"这不是在问感情史，这是在看你的resume有几段work experience。太少说明没人要你，太多说明你不稳定。<span class="tag tag-hot">🔥</span></li>
-        <li>"你对未来有什么规划？"——这问题约会和面试一模一样。正确答案也一样："I'm flexible and open to growth."</li>
-        <li>和前任分手的原因，就是面试里的"你上份工作为什么离职"。你不能说真话。"因为她crazy。" "Sir, we don't speak negatively about previous employers here."<span class="tag tag-hot">🔥</span></li>
-        <li>恋爱的试用期是三个月。三个月后HR会review你的performance。KPI包括：记住纪念日、回消息速度、以及朋友圈点赞频率。</li>
-        <li>男生的dating profile就是resume。身高是学历，收入是工作经验，照片是professional headshot。你P图就是简历造假。<span class="tag tag-meta">META</span></li>
-        <li>"你的优点和缺点是什么？"——约会经典问题。正确答案："我的缺点是太爱你了。" 这个回答在面试里会被淘汰，在约会里是满分。</li>
-        <li>分手就是被裁员。"It's not you, it's the company restructuring." 你信吗？<span class="tag tag-dark">DARK</span></li>
-        <li>有的男生同时约几个女生，叫"海投"。有的女生同时见几个男生，叫"多轮面试"。说法不同，本质一样：都在找最优解。<span class="tag tag-hot">🔥</span></li>
+        <li>谈恋爱就是面试。女朋友是HR，你是candidate。"为什么和前任分手？"这是behavioral question。请用STAR方法回答。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-61"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>约会就像面试：你要穿得体面，准备好答案，全程保持微笑。唯一区别是面试失败了你不用删对方微信。<span class="fb-wrap" data-jid="joke-62"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"你几段恋爱经历？"这不是在问感情史，这是在看你的resume有几段work experience。太少说明没人要你，太多说明你不稳定。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-63"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"你对未来有什么规划？"——这问题约会和面试一模一样。正确答案也一样："I'm flexible and open to growth."<span class="fb-wrap" data-jid="joke-64"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>和前任分手的原因，就是面试里的"你上份工作为什么离职"。你不能说真话。"因为她crazy。" "Sir, we don't speak negatively about previous employers here."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-65"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>恋爱的试用期是三个月。三个月后HR会review你的performance。KPI包括：记住纪念日、回消息速度、以及朋友圈点赞频率。<span class="fb-wrap" data-jid="joke-66"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>男生的dating profile就是resume。身高是学历，收入是工作经验，照片是professional headshot。你P图就是简历造假。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-67"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"你的优点和缺点是什么？"——约会经典问题。正确答案："我的缺点是太爱你了。" 这个回答在面试里会被淘汰，在约会里是满分。<span class="fb-wrap" data-jid="joke-68"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>分手就是被裁员。"It's not you, it's the company restructuring." 你信吗？<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-69"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>有的男生同时约几个女生，叫"海投"。有的女生同时见几个男生，叫"多轮面试"。说法不同，本质一样：都在找最优解。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-70"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -587,26 +620,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/watch?v=frXoue9evqw" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Amit Tandon</div><div class="joke">印度喜剧人专场《科技太多了》——科技发展到某个点就该停了，app越多人越忙，35岁以上的人深有体会。</div></a>
-        <a href="https://www.youtube.com/watch?v=rcgrl66TnAQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Michael Kosta</div><div class="joke">The Daily Show——我们过度依赖科技，每个新工具都承诺"节省时间"，结果你花更多时间学怎么用它。</div></a>
-        <a href="https://www.youtube.com/watch?v=hQigUH0vZSE" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chuck Nice</div><div class="joke">TED喜剧演讲——科技的意外后果：洗碗机省了洗碗时间，但你得花时间修洗碗机。效率工具的悖论。</div></a>
-        <a href="https://www.youtube.com/watch?v=Bo6_dAo4uCM" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Nate Bargatze</div><div class="joke">Nate Bargatze承认没老婆就不会用微波炉——科技越先进，人类越无助。买了一堆工具还是不会用。</div></a>
-        <a href="https://www.youtube.com/watch?v=w-sCrOLYoDo" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">《Inside》深度分析——互联网本该连接和解放我们，结果我们更connected也更不自由了。订阅越多越空虚。</div></a>
+        <a href="https://www.youtube.com/watch?v=frXoue9evqw" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Amit Tandon</div><div class="joke">印度喜剧人专场《科技太多了》——科技发展到某个点就该停了，app越多人越忙，35岁以上的人深有体会。</div><span class="fb-wrap" data-jid="ref-36" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=rcgrl66TnAQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Michael Kosta</div><div class="joke">The Daily Show——我们过度依赖科技，每个新工具都承诺"节省时间"，结果你花更多时间学怎么用它。</div><span class="fb-wrap" data-jid="ref-37" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=hQigUH0vZSE" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chuck Nice</div><div class="joke">TED喜剧演讲——科技的意外后果：洗碗机省了洗碗时间，但你得花时间修洗碗机。效率工具的悖论。</div><span class="fb-wrap" data-jid="ref-38" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=Bo6_dAo4uCM" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Nate Bargatze</div><div class="joke">Nate Bargatze承认没老婆就不会用微波炉——科技越先进，人类越无助。买了一堆工具还是不会用。</div><span class="fb-wrap" data-jid="ref-39" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=w-sCrOLYoDo" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">《Inside》深度分析——互联网本该连接和解放我们，结果我们更connected也更不自由了。订阅越多越空虚。</div><span class="fb-wrap" data-jid="ref-40" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>我每个月AI订阅：ChatGPT $20，Cursor $20，Claude $20。我花了$60让自己更忙了。这不是订阅，这是给自己买了三个虚拟老板。<span class="tag tag-hot">🔥</span></li>
-        <li>AI帮我提高效率的方式是：让我发现原来还有这么多事情可以做。以前不会的事情不用做，现在AI会了，你也得会了。</li>
-        <li>洗碗机让你不用洗碗，但你得洗洗碗机。AI让你不用写代码，但你得学怎么跟AI说话。时间守恒定律。<span class="tag tag-meta">META</span></li>
-        <li>以前不会PS，设计需求可以推掉。现在有了Midjourney，老板说"不是有AI吗？"——AI给我创造了新的工作。</li>
-        <li>我订阅的AI比我的朋友还多。而且AI比我的朋友还可靠——至少它们每个月准时找我要钱。<span class="tag tag-hot">🔥</span></li>
-        <li>效率工具的商业模式：让你觉得你需要更高效→你花钱买工具→工具帮你做更多事→你更忙→你觉得你需要更高效。这是一个subscription trap。</li>
-        <li>我跟AI的关系就像信用卡：它让你觉得你能力变大了，但账单每个月都在涨。</li>
-        <li>以前摸鱼的借口是"这个我不会"。现在AI都会了，你没有借口了。AI不是工具，AI是摸鱼终结者。<span class="tag tag-hot">🔥</span></li>
-        <li>我学AI是为了work-life balance。结果balance没有，work多了一倍。AI改变了我的生活——从一份工作变成了两份。</li>
-        <li>效率悖论：越高效→做更多事→更忙→需要更高效的工具→花更多钱。这个循环的终点是：你破产了，但To-Do List清空了。<span class="tag tag-dark">DARK</span></li>
+        <li>我每个月AI订阅：ChatGPT $20，Cursor $20，Claude $20。我花了$60让自己更忙了。这不是订阅，这是给自己买了三个虚拟老板。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-71"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>AI帮我提高效率的方式是：让我发现原来还有这么多事情可以做。以前不会的事情不用做，现在AI会了，你也得会了。<span class="fb-wrap" data-jid="joke-72"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>洗碗机让你不用洗碗，但你得洗洗碗机。AI让你不用写代码，但你得学怎么跟AI说话。时间守恒定律。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-73"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前不会PS，设计需求可以推掉。现在有了Midjourney，老板说"不是有AI吗？"——AI给我创造了新的工作。<span class="fb-wrap" data-jid="joke-74"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我订阅的AI比我的朋友还多。而且AI比我的朋友还可靠——至少它们每个月准时找我要钱。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-75"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>效率工具的商业模式：让你觉得你需要更高效→你花钱买工具→工具帮你做更多事→你更忙→你觉得你需要更高效。这是一个subscription trap。<span class="fb-wrap" data-jid="joke-76"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我跟AI的关系就像信用卡：它让你觉得你能力变大了，但账单每个月都在涨。<span class="fb-wrap" data-jid="joke-77"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>以前摸鱼的借口是"这个我不会"。现在AI都会了，你没有借口了。AI不是工具，AI是摸鱼终结者。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-78"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>我学AI是为了work-life balance。结果balance没有，work多了一倍。AI改变了我的生活——从一份工作变成了两份。<span class="fb-wrap" data-jid="joke-79"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>效率悖论：越高效→做更多事→更忙→需要更高效的工具→花更多钱。这个循环的终点是：你破产了，但To-Do List清空了。<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-80"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -624,26 +657,26 @@ a.ref-card:hover::after { opacity: 1; }
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <a href="https://www.youtube.com/watch?v=RBxhqBRpXa8" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">John Oliver</div><div class="joke">Last Week Tonight深度扒TSA——95%的威胁检测失败率，"这不是安检，这是一个suggestion"。</div></a>
-        <a href="https://youtu.be/2ZUt4p1TXHU?t=70" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">经典机场安检段子——保安翻你的包像在找什么，其实他只是在找水瓶。"The most dangerous liquid."</div></a>
-        <a href="https://www.youtube.com/watch?v=8tJBboJmroY" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Dave Chappelle</div><div class="joke">Dave Chappelle Show经典片段——Gary Coleman当保安，一个身高不够的人假装有权威，security theater的完美比喻。</div></a>
-        <a href="https://www.youtube.com/shorts/fati8rzW1s4" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">Seinfeld剧集片段——机场安检搞过头，Jerry只想赶个飞机，结果被全套"安全检查"羞辱。</div></a>
-        <a href="https://www.youtube.com/watch?v=8P1NkmHVVrQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">Seinfeld谈机场和飞机——安检流程的荒诞感，脱鞋、倒水、举手投降，"我们是乘客还是嫌疑犯？"</div></a>
+        <a href="https://www.youtube.com/watch?v=RBxhqBRpXa8" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">John Oliver</div><div class="joke">Last Week Tonight深度扒TSA——95%的威胁检测失败率，"这不是安检，这是一个suggestion"。</div><span class="fb-wrap" data-jid="ref-41" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://youtu.be/2ZUt4p1TXHU?t=70" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">经典机场安检段子——保安翻你的包像在找什么，其实他只是在找水瓶。"The most dangerous liquid."</div><span class="fb-wrap" data-jid="ref-42" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=8tJBboJmroY" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Dave Chappelle</div><div class="joke">Dave Chappelle Show经典片段——Gary Coleman当保安，一个身高不够的人假装有权威，security theater的完美比喻。</div><span class="fb-wrap" data-jid="ref-43" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/shorts/fati8rzW1s4" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">Seinfeld剧集片段——机场安检搞过头，Jerry只想赶个飞机，结果被全套"安全检查"羞辱。</div><span class="fb-wrap" data-jid="ref-44" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=8P1NkmHVVrQ" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">Seinfeld谈机场和飞机——安检流程的荒诞感，脱鞋、倒水、举手投降，"我们是乘客还是嫌疑犯？"</div><span class="fb-wrap" data-jid="ref-45" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
       </div>
     </div>
     <div class="oneliners">
       <h4>🎤 原创段子 · Original One-liners</h4>
       <ul class="liner-list">
-        <li>地铁安检保安就像爸爸——表现得很努力，但你知道他啥也没检查出来过。<span class="tag tag-hot">🔥</span></li>
-        <li>每次过地铁安检，保安看我的包就像我看英文论文——扫一眼，点点头，"嗯，过吧"。</li>
-        <li>地铁安检是中国最成功的行为艺术。每天几百万人参与，没有人知道在安检什么，但所有人都配合演出。<span class="tag tag-meta">META</span></li>
-        <li>地铁安检机能检测出什么？答案是：你的水瓶。你的水瓶是最大的安全威胁。恭喜你，你的农夫山泉已经被国家安全部门审核了。<span class="tag tag-hot">🔥</span></li>
-        <li>保安让我"把包放上去"，我放了。屏幕上花花绿绿的图。他看了0.3秒。这不是安检，这是给我的包拍了张X光艺术照。</li>
-        <li>TSA的成功率是5%，中国地铁安检的成功率不知道。但我知道它100%成功地让我上班迟到了。<span class="tag tag-hot">🔥</span></li>
-        <li>地铁安检保安和我爸有什么区别？保安假装在工作，我爸假装在加班。都是performance art。<span class="tag tag-callback">CALLBACK</span></li>
-        <li>如果地铁安检保安能检测出炸弹，他们应该也能检测出我包里上周忘扔的午餐。但他们两个都没检测出来。</li>
-        <li>上海地铁安检：你可以带一把伞进去，但你的矿泉水要被开盖检查。因为液体更危险。这就是为什么没有人用水枪打仗——哦等等。<span class="tag tag-dark">DARK</span></li>
-        <li>地铁安检是唯一一个所有人都知道没用，但所有人都假装它有用的系统。另一个是：年度绩效考核。<span class="tag tag-hot">🔥</span></li>
+        <li>地铁安检保安就像爸爸——表现得很努力，但你知道他啥也没检查出来过。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-81"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>每次过地铁安检，保安看我的包就像我看英文论文——扫一眼，点点头，"嗯，过吧"。<span class="fb-wrap" data-jid="joke-82"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>地铁安检是中国最成功的行为艺术。每天几百万人参与，没有人知道在安检什么，但所有人都配合演出。<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-83"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>地铁安检机能检测出什么？答案是：你的水瓶。你的水瓶是最大的安全威胁。恭喜你，你的农夫山泉已经被国家安全部门审核了。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-84"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>保安让我"把包放上去"，我放了。屏幕上花花绿绿的图。他看了0.3秒。这不是安检，这是给我的包拍了张X光艺术照。<span class="fb-wrap" data-jid="joke-85"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>TSA的成功率是5%，中国地铁安检的成功率不知道。但我知道它100%成功地让我上班迟到了。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-86"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>地铁安检保安和我爸有什么区别？保安假装在工作，我爸假装在加班。都是performance art。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-87"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>如果地铁安检保安能检测出炸弹，他们应该也能检测出我包里上周忘扔的午餐。但他们两个都没检测出来。<span class="fb-wrap" data-jid="joke-88"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>上海地铁安检：你可以带一把伞进去，但你的矿泉水要被开盖检查。因为液体更危险。这就是为什么没有人用水枪打仗——哦等等。<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-89"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>地铁安检是唯一一个所有人都知道没用，但所有人都假装它有用的系统。另一个是：年度绩效考核。<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-90"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
       </ul>
     </div>
   </div>
@@ -656,6 +689,81 @@ a.ref-card:hover::after { opacity: 1; }
   <p style="margin-top:0.5rem"><a href="index.html">← Back to Main Lab</a></p>
   <p style="margin-top:1rem; font-size:0.65rem; color:#555">Generated by Bob 🤖 · 9 insights · 90 one-liners · 45 references</p>
 </footer>
+
+
+<div class="fb-bar" id="fbBar">
+  <span>已标记 <span class="count" id="fbCount">0</span> 条反馈</span>
+  <button onclick="exportFeedback()">📋 复制反馈 JSON</button>
+</div>
+
+<script>
+const FB_KEY = 'comedy-feedback-2026-03-15';
+
+function loadFeedback() {
+  try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; }
+}
+
+function saveFeedback(data) {
+  localStorage.setItem(FB_KEY, JSON.stringify(data));
+  updateBar(data);
+}
+
+function updateBar(data) {
+  const count = Object.keys(data).length;
+  document.getElementById('fbCount').textContent = count;
+  document.getElementById('fbBar').classList.toggle('visible', count > 0);
+}
+
+function vote(btn) {
+  const wrap = btn.closest('.fb-wrap');
+  const jid = wrap.dataset.jid;
+  const voteType = btn.dataset.vote;
+  const data = loadFeedback();
+  
+  // Get the joke text
+  const parent = wrap.closest('li') || wrap.closest('.ref-card') || wrap.closest('a');
+  let text = '';
+  if (parent) {
+    text = parent.textContent.replace(/👍|👎/g, '').trim().substring(0, 120);
+  }
+  
+  // Toggle: if already voted same way, remove
+  const siblings = wrap.querySelectorAll('.fb-btn');
+  if (data[jid] && data[jid].vote === voteType) {
+    delete data[jid];
+    siblings.forEach(s => s.classList.remove('active-up', 'active-down'));
+  } else {
+    data[jid] = { vote: voteType, text: text, time: Date.now() };
+    siblings.forEach(s => s.classList.remove('active-up', 'active-down'));
+    btn.classList.add(voteType === 'up' ? 'active-up' : 'active-down');
+  }
+  
+  saveFeedback(data);
+}
+
+function exportFeedback() {
+  const data = loadFeedback();
+  const text = JSON.stringify(data, null, 2);
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.fb-bar button');
+    btn.textContent = '✅ 已复制!';
+    setTimeout(() => btn.textContent = '📋 复制反馈 JSON', 2000);
+  });
+}
+
+// Restore state on load
+document.addEventListener('DOMContentLoaded', () => {
+  const data = loadFeedback();
+  updateBar(data);
+  Object.entries(data).forEach(([jid, info]) => {
+    const wrap = document.querySelector(`.fb-wrap[data-jid="${jid}"]`);
+    if (wrap) {
+      const btn = wrap.querySelector(`[data-vote="${info.vote}"]`);
+      if (btn) btn.classList.add(info.vote === 'up' ? 'active-up' : 'active-down');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
