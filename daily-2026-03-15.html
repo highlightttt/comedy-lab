@@ -276,6 +276,11 @@ body {
   .insight-num { font-size: 2.5rem; }
   .ref-grid { grid-template-columns: 1fr; }
 }
+
+a.ref-card { transition: border-color 0.3s, transform 0.2s; display: block; }
+a.ref-card:hover { border-color: var(--gold) !important; transform: translateY(-2px); }
+a.ref-card::after { content: '🔗 Watch →'; display: block; margin-top: 8px; font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.2s; }
+a.ref-card:hover::after { opacity: 1; }
 </style>
 </head>
 <body>
@@ -323,11 +328,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">John Mulaney</div><div class="joke">"In terms of, like, instant messaging, remember when your phone could only do calls? You had freedom. Now your boss can text you at 11 PM and you have to pretend you didn't see it."</div></div>
-        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Slack changed work forever. Before Slack, you could ignore emails. Now your boss can see you're online. There's a green dot of oppression."</div></div>
-        <div class="ref-card"><div class="comedian">Gary Gulman</div><div class="joke">"They said email would save us time. Now I spend 3 hours a day on email. That's not saving time, that's a second job."</div></div>
-        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Wifi on planes?! That was our last sanctuary! 5 hours of nobody being able to reach me. Now my boss emails me at 30,000 feet."</div></div>
-        <div class="ref-card"><div class="comedian">Sebastian Maniscalco</div><div class="joke">"My father used to leave work at 5 and that was it. Now I leave work at 5 and work follows me home, to dinner, to the bathroom."</div></div>
+        <a href="https://www.youtube.com/results?search_query=John+Mulaney+standup+In+terms+instant" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">John Mulaney</div><div class="joke">"In terms of, like, instant messaging, remember when your phone could only do calls? You had freedom. Now your boss can text you at 11 PM and you have to pretend you didn't see it."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Hasan+Minhaj+standup+Slack+changed+work+Before" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">"Slack changed work forever. Before Slack, you could ignore emails. Now your boss can see you're online. There's a green dot of oppression."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Gary+Gulman+standup+They+said+email+would+save" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Gary Gulman</div><div class="joke">"They said email would save us time. Now I spend 3 hours a day on email. That's not saving time, that's a second job."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Ronny+Chieng+standup+Wifi+on+That+was" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">"Wifi on planes?! That was our last sanctuary! 5 hours of nobody being able to reach me. Now my boss emails me at 30,000 feet."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Sebastian+Maniscalco+standup+My+father+used+to+leave" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Sebastian Maniscalco</div><div class="joke">"My father used to leave work at 5 and that was it. Now I leave work at 5 and work follows me home, to dinner, to the bathroom."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -360,11 +365,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Ali Wong</div><div class="joke">"In Chinese culture, we have so many food metaphors for sex. 'Eating tofu' means groping someone. Tofu! The least sexy food!"</div></div>
-        <div class="ref-card"><div class="comedian">Jimmy O. Yang</div><div class="joke">"Chinese has so many accidental innuendos. My grandma says things at dinner that would get you banned on Tinder."</div></div>
-        <div class="ref-card"><div class="comedian">Russell Peters</div><div class="joke">"Every language has dirty meanings hiding in plain sight. In Hindi, we have words that sound completely fine... until you translate them to English."</div></div>
-        <div class="ref-card"><div class="comedian">Trevor Noah</div><div class="joke">"Zulu proverbs sound like ancient wisdom... until you realize half of them are about body parts."</div></div>
-        <div class="ref-card"><div class="comedian">Eddie Izzard</div><div class="joke">"Shakespeare wrote the filthiest jokes in English history but we study them in school because they're 400 years old. Time is the best censor."</div></div>
+        <a href="https://www.youtube.com/results?search_query=Ali+Wong+standup+In+Chinese+we+have" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">"In Chinese culture, we have so many food metaphors for sex. 'Eating tofu' means groping someone. Tofu! The least sexy food!"</div></a>
+        <a href="https://www.youtube.com/results?search_query=Jimmy+O.+Yang+standup+Chinese+has+so+many+accidental" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jimmy O. Yang</div><div class="joke">"Chinese has so many accidental innuendos. My grandma says things at dinner that would get you banned on Tinder."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Russell+Peters+standup+Every+language+has+dirty+meanings" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Russell Peters</div><div class="joke">"Every language has dirty meanings hiding in plain sight. In Hindi, we have words that sound completely fine... until you translate them to English."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Trevor+Noah+standup+Zulu+proverbs+sound+like+ancient" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">"Zulu proverbs sound like ancient wisdom... until you realize half of them are about body parts."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Eddie+Izzard+standup+Shakespeare+wrote+the+filthiest+jokes" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Eddie Izzard</div><div class="joke">"Shakespeare wrote the filthiest jokes in English history but we study them in school because they're 400 years old. Time is the best censor."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -397,11 +402,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Siri has an Australian accent option. Why would I want my phone to sound like it doesn't care about my problems?"</div></div>
-        <div class="ref-card"><div class="comedian">Kumail Nanjiani</div><div class="joke">"My GPS sounds more patient than my wife. It recalculates without sighing."</div></div>
-        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Google sounds like that one friend who always has to correct you. 'Did you mean...' Yes, Google, I know what I meant."</div></div>
-        <div class="ref-card"><div class="comedian">Trevor Noah</div><div class="joke">"If Siri was African, she'd give you directions like 'Turn left at the big tree... no, the other big tree.'"</div></div>
-        <div class="ref-card"><div class="comedian">Vir Das</div><div class="joke">"Indian customer service: 15 minutes of 'I understand your concern' before doing absolutely nothing. Very empathetic, zero results."</div></div>
+        <a href="https://www.youtube.com/results?search_query=Ronny+Chieng+standup+Siri+has+an+Australian+accent" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">"Siri has an Australian accent option. Why would I want my phone to sound like it doesn't care about my problems?"</div></a>
+        <a href="https://www.youtube.com/results?search_query=Kumail+Nanjiani+standup+My+GPS+sounds+more+patient" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Kumail Nanjiani</div><div class="joke">"My GPS sounds more patient than my wife. It recalculates without sighing."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Hasan+Minhaj+standup+Google+sounds+like+that+one" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">"Google sounds like that one friend who always has to correct you. 'Did you mean...' Yes, Google, I know what I meant."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Trevor+Noah+standup+If+Siri+was" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Trevor Noah</div><div class="joke">"If Siri was African, she'd give you directions like 'Turn left at the big tree... no, the other big tree.'"</div></a>
+        <a href="https://www.youtube.com/results?search_query=Vir+Das+standup+Indian+customer+15+minutes" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Vir Das</div><div class="joke">"Indian customer service: 15 minutes of 'I understand your concern' before doing absolutely nothing. Very empathetic, zero results."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -434,11 +439,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Jerry Seinfeld</div><div class="joke">"Everyone's a vice president now. When I was a kid, vice president meant you were one heartbeat away from being president. Now it means you're in charge of the printer."</div></div>
-        <div class="ref-card"><div class="comedian">John Oliver</div><div class="joke">"Banks have so many vice presidents, it's like they're printing titles the same way they print money — with no regard for inflation."</div></div>
-        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"In tech, everyone's a 'lead' or a 'principal.' You're a principal engineer who reports to another principal? That's just two principals with no school."</div></div>
-        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Goldman Sachs has 12,000 vice presidents. That's not a bank, that's a LinkedIn convention."</div></div>
-        <div class="ref-card"><div class="comedian">Chris Rock</div><div class="joke">"Everybody wants a title. 'I'm the regional director of...' You work at Best Buy! You direct people to the TV section!"</div></div>
+        <a href="https://www.youtube.com/results?search_query=Jerry+Seinfeld+standup+a+vice+president" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">"Everyone's a vice president now. When I was a kid, vice president meant you were one heartbeat away from being president. Now it means you're in charge of the printer."</div></a>
+        <a href="https://www.youtube.com/results?search_query=John+Oliver+standup+Banks+have+so+many+vice" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">John Oliver</div><div class="joke">"Banks have so many vice presidents, it's like they're printing titles the same way they print money — with no regard for inflation."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Ronny+Chieng+standup+In+a" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">"In tech, everyone's a 'lead' or a 'principal.' You're a principal engineer who reports to another principal? That's just two principals with no school."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Hasan+Minhaj+standup+Goldman+Sachs+has+vice" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">"Goldman Sachs has 12,000 vice presidents. That's not a bank, that's a LinkedIn convention."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Chris+Rock+standup+Everybody+wants+a" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chris Rock</div><div class="joke">"Everybody wants a title. 'I'm the regional director of...' You work at Best Buy! You direct people to the TV section!"</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -471,11 +476,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"The best Chinese food in America is in the suburbs where all the Chinese engineers live. Not Chinatown — Cupertino."</div></div>
-        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Silicon Valley is just India and China having a cook-off while white people watch and eat açaí bowls."</div></div>
-        <div class="ref-card"><div class="comedian">Kumail Nanjiani</div><div class="joke">"In Silicon Valley, the diversity in food is incredible. The diversity in people? Also two countries."</div></div>
-        <div class="ref-card"><div class="comedian">Jimmy O. Yang</div><div class="joke">"I went to a 'local restaurant' in the Bay Area. It was Sichuan hot pot. I'm like, local to WHERE?"</div></div>
-        <div class="ref-card"><div class="comedian">Ali Wong</div><div class="joke">"San Francisco's food scene: if you can't find pho within a 2-block radius, you're in the wrong neighborhood. Or the financial district."</div></div>
+        <a href="https://www.youtube.com/results?search_query=Ronny+Chieng+standup+The+best+Chinese+food+in" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">"The best Chinese food in America is in the suburbs where all the Chinese engineers live. Not Chinatown — Cupertino."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Hasan+Minhaj+standup+Silicon+Valley+is+just+India" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">"Silicon Valley is just India and China having a cook-off while white people watch and eat açaí bowls."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Kumail+Nanjiani+standup+In+Silicon+the+diversity" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Kumail Nanjiani</div><div class="joke">"In Silicon Valley, the diversity in food is incredible. The diversity in people? Also two countries."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Jimmy+O.+Yang+standup+I+went+to+a" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jimmy O. Yang</div><div class="joke">"I went to a 'local restaurant' in the Bay Area. It was Sichuan hot pot. I'm like, local to WHERE?"</div></a>
+        <a href="https://www.youtube.com/results?search_query=Ali+Wong+standup+San+food+if" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">"San Francisco's food scene: if you can't find pho within a 2-block radius, you're in the wrong neighborhood. Or the financial district."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -508,11 +513,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Programmers look so intense at work. All those screens. Then you walk closer and they're on Reddit."</div></div>
-        <div class="ref-card"><div class="comedian">Simon Amstell</div><div class="joke">"DJs just press play and wave their hands. Software engineers do the same thing but with more screens and less dancing."</div></div>
-        <div class="ref-card"><div class="comedian">Demetri Martin</div><div class="joke">"The more monitors someone has, the less work they're actually doing. It's inverse. One monitor: working. Four monitors: day-trading and losing money."</div></div>
-        <div class="ref-card"><div class="comedian">Bo Burnham</div><div class="joke">"Content creation looks like art from the outside. From the inside, it's just a guy staring at a screen having a panic attack."</div></div>
-        <div class="ref-card"><div class="comedian">Nate Bargatze</div><div class="joke">"My kid saw me working on two screens and said 'Dad, you look like a hacker.' I was on Amazon and Gmail."</div></div>
+        <a href="https://www.youtube.com/results?search_query=Ronny+Chieng+standup+Programmers+look+so+intense+at" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">"Programmers look so intense at work. All those screens. Then you walk closer and they're on Reddit."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Simon+Amstell+standup+DJs+just+press+play+and" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Simon Amstell</div><div class="joke">"DJs just press play and wave their hands. Software engineers do the same thing but with more screens and less dancing."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Demetri+Martin+standup+The+more+monitors+someone" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Demetri Martin</div><div class="joke">"The more monitors someone has, the less work they're actually doing. It's inverse. One monitor: working. Four monitors: day-trading and losing money."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Bo+Burnham+standup+Content+creation+looks+like+art" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">"Content creation looks like art from the outside. From the inside, it's just a guy staring at a screen having a panic attack."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Nate+Bargatze+standup+My+kid+saw+me+working" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Nate Bargatze</div><div class="joke">"My kid saw me working on two screens and said 'Dad, you look like a hacker.' I was on Amazon and Gmail."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -545,11 +550,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Chris Rock</div><div class="joke">"When you meet somebody new, you're not meeting them. You're meeting their representative."</div></div>
-        <div class="ref-card"><div class="comedian">Ali Wong</div><div class="joke">"Dating in your 30s is like job hunting. You have experience, but everyone wants someone younger and cheaper."</div></div>
-        <div class="ref-card"><div class="comedian">Aziz Ansari</div><div class="joke">"First dates are basically interviews where both people are lying about their qualifications."</div></div>
-        <div class="ref-card"><div class="comedian">Taylor Tomlinson</div><div class="joke">"Every guy has a 'crazy ex' story. Bro, YOU are the common denominator in all your relationships."</div></div>
-        <div class="ref-card"><div class="comedian">Iliza Shlesinger</div><div class="joke">"Women ask 'What happened with your last relationship?' like they're conducting a background check. Because they are."</div></div>
+        <a href="https://www.youtube.com/results?search_query=Chris+Rock+standup+When+you+meet+somebody" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Chris Rock</div><div class="joke">"When you meet somebody new, you're not meeting them. You're meeting their representative."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Ali+Wong+standup+Dating+in+your+30s+is" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ali Wong</div><div class="joke">"Dating in your 30s is like job hunting. You have experience, but everyone wants someone younger and cheaper."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Aziz+Ansari+standup+First+dates+are+basically+interviews" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Aziz Ansari</div><div class="joke">"First dates are basically interviews where both people are lying about their qualifications."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Taylor+Tomlinson+standup+Every+guy+has+a" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Taylor Tomlinson</div><div class="joke">"Every guy has a 'crazy ex' story. Bro, YOU are the common denominator in all your relationships."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Iliza+Shlesinger+standup+Women+ask+happened+with" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Iliza Shlesinger</div><div class="joke">"Women ask 'What happened with your last relationship?' like they're conducting a background check. Because they are."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -582,11 +587,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">Gary Gulman</div><div class="joke">"Email was supposed to save time. I now spend half my day on email. Show me the time savings."</div></div>
-        <div class="ref-card"><div class="comedian">John Mulaney</div><div class="joke">"I have 5 productivity apps on my phone. I spend more time organizing my productivity system than actually being productive."</div></div>
-        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Every productivity tool promises to give you your time back. Where? Where is my time? I want it back!"</div></div>
-        <div class="ref-card"><div class="comedian">Nate Bargatze</div><div class="joke">"My wife bought a robot vacuum. Now instead of vacuuming, I spend 30 minutes a day fixing the robot vacuum."</div></div>
-        <div class="ref-card"><div class="comedian">Bo Burnham</div><div class="joke">"The internet was supposed to connect us and free us. Now we're more connected and less free than ever."</div></div>
+        <a href="https://www.youtube.com/results?search_query=Gary+Gulman+standup+Email+was+supposed+to+save" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Gary Gulman</div><div class="joke">"Email was supposed to save time. I now spend half my day on email. Show me the time savings."</div></a>
+        <a href="https://www.youtube.com/results?search_query=John+Mulaney+standup+I+have+5+productivity+apps" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">John Mulaney</div><div class="joke">"I have 5 productivity apps on my phone. I spend more time organizing my productivity system than actually being productive."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Hasan+Minhaj+standup+Every+productivity+tool+promises+to" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Hasan Minhaj</div><div class="joke">"Every productivity tool promises to give you your time back. Where? Where is my time? I want it back!"</div></a>
+        <a href="https://www.youtube.com/results?search_query=Nate+Bargatze+standup+My+wife+bought+a+robot" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Nate Bargatze</div><div class="joke">"My wife bought a robot vacuum. Now instead of vacuuming, I spend 30 minutes a day fixing the robot vacuum."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Bo+Burnham+standup+The+internet+was+supposed+to" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Bo Burnham</div><div class="joke">"The internet was supposed to connect us and free us. Now we're more connected and less free than ever."</div></a>
       </div>
     </div>
     <div class="oneliners">
@@ -619,11 +624,11 @@ body {
     <div class="refs">
       <h4>📚 参考段子 · Reference Bits</h4>
       <div class="ref-grid">
-        <div class="ref-card"><div class="comedian">John Oliver</div><div class="joke">"TSA has a 95% failure rate at detecting threats. 95%! That's not security, that's a suggestion."</div></div>
-        <div class="ref-card"><div class="comedian">Jerry Seinfeld</div><div class="joke">"The security guy at the airport looks in your bag like he knows what he's looking for. He doesn't. He's looking for water bottles. The most dangerous liquid."</div></div>
-        <div class="ref-card"><div class="comedian">Russell Peters</div><div class="joke">"Indian security guards at malls — they tap you with a metal detector like they're blessing you. 'Go in peace, my son.'"</div></div>
-        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Security theater is the best kind of theater because the actors don't know they're performing."</div></div>
-        <div class="ref-card"><div class="comedian">Dave Chappelle</div><div class="joke">"You ever see the mall cop on the Segway? That's not security. That's a guy on a toy pretending he has authority."</div></div>
+        <a href="https://www.youtube.com/results?search_query=John+Oliver+standup+TSA+has+a+failure" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">John Oliver</div><div class="joke">"TSA has a 95% failure rate at detecting threats. 95%! That's not security, that's a suggestion."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Jerry+Seinfeld+standup+The+security+guy+at+the" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Jerry Seinfeld</div><div class="joke">"The security guy at the airport looks in your bag like he knows what he's looking for. He doesn't. He's looking for water bottles. The most dangerous liquid."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Russell+Peters+standup+Indian+security+guards+at+malls" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Russell Peters</div><div class="joke">"Indian security guards at malls — they tap you with a metal detector like they're blessing you. 'Go in peace, my son.'"</div></a>
+        <a href="https://www.youtube.com/results?search_query=Ronny+Chieng+standup+Security+theater+is+the+best" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Ronny Chieng</div><div class="joke">"Security theater is the best kind of theater because the actors don't know they're performing."</div></a>
+        <a href="https://www.youtube.com/results?search_query=Dave+Chappelle+standup+You+ever+see+the+mall" target="_blank" class="ref-card" style="text-decoration:none;color:inherit;"><div class="comedian">Dave Chappelle</div><div class="joke">"You ever see the mall cop on the Segway? That's not security. That's a guy on a toy pretending he has authority."</div></a>
       </div>
     </div>
     <div class="oneliners">
