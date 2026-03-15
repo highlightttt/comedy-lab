@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-15</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #050505;
+  --surface: #0e0e0e;
+  --surface-2: #181818;
+  --border: #1e1e1e;
+  --text: #eaeaea;
+  --text-muted: #777;
+  --red: #ff3b30;
+  --orange: #ff6b35;
+  --gold: #ffd60a;
+  --green: #30d158;
+  --blue: #0a84ff;
+  --purple: #bf5af2;
+  --pink: #ff375f;
+  --cyan: #64d2ff;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 30% 40%, rgba(255,59,48,0.08), transparent),
+    radial-gradient(ellipse 500px 500px at 70% 60%, rgba(10,132,255,0.06), transparent);
+  animation: drift 12s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(2deg); }
+}
+.hero .date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  backdrop-filter: blur(10px);
+  background: rgba(14,14,14,0.6);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.hero .date-badge .live { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 .accent { background: linear-gradient(135deg, var(--red), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
+.hero .stats-row {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  z-index: 1;
+  position: relative;
+}
+.hero .stat { text-align: center; }
+.hero .stat-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* Nav */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5,5,5,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+}
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  padding: 0.9rem 1.1rem;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.nav a:hover { color: var(--text); border-bottom-color: var(--red); }
+
+/* Insight blocks */
+.insights { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.insight {
+  margin-bottom: 6rem;
+  scroll-margin-top: 70px;
+}
+.insight-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+.insight-num {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.c1 { background: linear-gradient(135deg, var(--red), var(--orange)); }
+.c2 { background: linear-gradient(135deg, var(--blue), var(--purple)); }
+.c3 { background: linear-gradient(135deg, var(--green), var(--cyan)); }
+.c4 { background: linear-gradient(135deg, var(--gold), var(--orange)); }
+.c5 { background: linear-gradient(135deg, var(--pink), var(--purple)); }
+.c6 { background: linear-gradient(135deg, var(--cyan), var(--blue)); }
+.c7 { background: linear-gradient(135deg, var(--orange), var(--gold)); }
+.c8 { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.c9 { background: linear-gradient(135deg, var(--green), var(--gold)); }
+.insight-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; }
+.insight-premise {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border);
+}
+.insight-raw {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  position: relative;
+}
+.insight-raw::before {
+  content: 'JESSE原话';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 12px;
+  background: var(--surface-2);
+  border-bottom-left-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+/* References */
+.refs { margin-bottom: 2rem; }
+.refs h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.8rem; }
+.ref-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.82rem;
+  transition: border-color 0.2s;
+}
+.ref-card:hover { border-color: #333; }
+.ref-card .comedian { color: var(--gold); font-weight: 500; font-size: 0.72rem; margin-bottom: 0.3rem; }
+.ref-card .joke { color: var(--text-muted); line-height: 1.5; }
+
+/* One-liners */
+.oneliners h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.liner-list { list-style: none; }
+.liner-list li {
+  padding: 0.8rem 1rem;
+  border-left: 2px solid var(--border);
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+  border-radius: 0 8px 8px 0;
+}
+.liner-list li:hover {
+  border-left-color: var(--red);
+  background: var(--surface);
+}
+.liner-list li .tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.tag-hot { background: rgba(255,59,48,0.15); color: var(--red); }
+.tag-meta { background: rgba(10,132,255,0.15); color: var(--blue); }
+.tag-dark { background: rgba(191,90,242,0.15); color: var(--purple); }
+.tag-callback { background: rgba(255,214,10,0.15); color: var(--gold); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+.footer a { color: var(--red); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .hero .stats-row { gap: 1.5rem; }
+  .hero .stat-num { font-size: 1.8rem; }
+  .insight-num { font-size: 2.5rem; }
+  .ref-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="date-badge"><span class="live"></span> 2026年3月15日 · 周日</div>
+  <h1>Comedy <span class="accent">Daily</span></h1>
+  <p class="subtitle">9个新洞察 · 90+原创段子 · Jesse的单口日报</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">New Insights</div></div>
+    <div class="stat"><div class="stat-num">90+</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">45</div><div class="stat-label">References</div></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#i1">01 上班路上也在上班</a>
+    <a href="#i2">02 古代谚语=Dirty Talk</a>
+    <a href="#i3">03 AI=各国同事</a>
+    <a href="#i4">04 职级贬值</a>
+    <a href="#i5">05 Redmond本地美食</a>
+    <a href="#i6">06 Vibe Coding架子鼓</a>
+    <a href="#i7">07 女朋友是HR</a>
+    <a href="#i8">08 AI订阅越多越忙</a>
+    <a href="#i9">09 地铁安检=Fake Job</a>
+  </div>
+</nav>
+
+<!-- INSIGHTS -->
+<div class="insights">
+
+  <!-- INSIGHT 1 -->
+  <div class="insight" id="i1">
+    <div class="insight-head">
+      <div class="insight-num c1">01</div>
+      <div>
+        <div class="insight-title">上班路上也在上班</div>
+        <div class="insight-premise">前提：科技工具让"通勤时间"变成了"额外工时"，效率工具的讽刺在于它们消灭了最后的自由时间。</div>
+      </div>
+    </div>
+    <div class="insight-raw">多亏了open claw，现在我上班的路上，也能上班了</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">John Mulaney</div><div class="joke">"In terms of, like, instant messaging, remember when your phone could only do calls? You had freedom. Now your boss can text you at 11 PM and you have to pretend you didn't see it."</div></div>
+        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Slack changed work forever. Before Slack, you could ignore emails. Now your boss can see you're online. There's a green dot of oppression."</div></div>
+        <div class="ref-card"><div class="comedian">Gary Gulman</div><div class="joke">"They said email would save us time. Now I spend 3 hours a day on email. That's not saving time, that's a second job."</div></div>
+        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Wifi on planes?! That was our last sanctuary! 5 hours of nobody being able to reach me. Now my boss emails me at 30,000 feet."</div></div>
+        <div class="ref-card"><div class="comedian">Sebastian Maniscalco</div><div class="joke">"My father used to leave work at 5 and that was it. Now I leave work at 5 and work follows me home, to dinner, to the bathroom."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>多亏了AI，我通勤时间从"我的时间"变成了"带薪加班"。唯一的区别是——没有带薪。<span class="tag tag-hot">🔥</span></li>
+        <li>以前地铁上刷抖音，现在地铁上review代码。我升级了吗？不，我只是找到了一种更焦虑的方式坐地铁。</li>
+        <li>Thanks to OpenClaw, I can now work on the subway. Great, another place where I'm underpaid and underground.<span class="tag tag-hot">🔥</span></li>
+        <li>以前通勤是从家到公司，现在通勤是从一个工位到另一个移动工位。地铁座位就是我的standing desk——因为没座。</li>
+        <li>我老板说"你通勤一小时，真浪费时间"。我说别担心，我在地铁上已经干了两小时的活了。</li>
+        <li>科技的进步就是：50年前人类登月了，现在我可以在马桶上开会了。<span class="tag tag-meta">META</span></li>
+        <li>以前迟到的借口是"堵车"。现在你堵车也能work from car，所以迟到的借口变成了"网络不好"。</li>
+        <li>效率工具的终极目标：让你连做梦都觉得自己在摸鱼。</li>
+        <li>我在地铁上coding，旁边大爷看了一眼说"年轻人真努力"。大爷，这不是努力，这是996的DLC。<span class="tag tag-hot">🔥</span></li>
+        <li>以前work-life balance是回家不想工作。现在是在任何地方都能工作，所以在任何地方都不想工作。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 2 -->
+  <div class="insight" id="i2">
+    <div class="insight-head">
+      <div class="insight-num c2">02</div>
+      <div>
+        <div class="insight-title">古代谚语 = Dirty Talk</div>
+        <div class="insight-premise">前提：中文古代谚语如果逐字翻译或放到现代语境里，全是车。语言的"正经"只是时代滤镜。</div>
+      </div>
+    </div>
+    <div class="insight-raw">感觉很多古代的谚语说dirty talk就会显得很正常。比如中文里形容一个人力气大，会说吃奶的劲，suck your tits</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Ali Wong</div><div class="joke">"In Chinese culture, we have so many food metaphors for sex. 'Eating tofu' means groping someone. Tofu! The least sexy food!"</div></div>
+        <div class="ref-card"><div class="comedian">Jimmy O. Yang</div><div class="joke">"Chinese has so many accidental innuendos. My grandma says things at dinner that would get you banned on Tinder."</div></div>
+        <div class="ref-card"><div class="comedian">Russell Peters</div><div class="joke">"Every language has dirty meanings hiding in plain sight. In Hindi, we have words that sound completely fine... until you translate them to English."</div></div>
+        <div class="ref-card"><div class="comedian">Trevor Noah</div><div class="joke">"Zulu proverbs sound like ancient wisdom... until you realize half of them are about body parts."</div></div>
+        <div class="ref-card"><div class="comedian">Eddie Izzard</div><div class="joke">"Shakespeare wrote the filthiest jokes in English history but we study them in school because they're 400 years old. Time is the best censor."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>中文里"使出吃奶的劲"形容努力。翻译成英文就是"suck tits with all your might"。这不是谚语，这是OnlyFans的slogan。<span class="tag tag-hot">🔥</span></li>
+        <li>"床头打架床尾和"——这是形容夫妻感情好的。你说这是成语我信，你说这是小黄书的章节标题我也信。</li>
+        <li>古人说"食色性也"。你看，老祖宗早就把吃饭和sex放一起了。所以中国人约会吃火锅，是文化传承。<span class="tag tag-meta">META</span></li>
+        <li>"如鱼得水"——a fish getting wet。你们确定这是在说刘备和诸葛亮？</li>
+        <li>"欲擒故纵"——playing hard to get。孙子兵法，也是Tinder兵法。<span class="tag tag-hot">🔥</span></li>
+        <li>Chinese dirty talk is easy. Just read ancient poetry out loud. "春宵一刻值千金"——one moment of spring night is worth a thousand gold。这是苏轼说的。苏轼，北宋的Cardi B。</li>
+        <li>"鹤立鸡群"——a crane standing among chickens。我不翻译了，你们自己想。<span class="tag tag-dark">DARK</span></li>
+        <li>"打铁趁热"——strike it while it's hot。听起来像锻炼身体的建议，也像bedroom advice。</li>
+        <li>所以其实古人不是正经，古人只是在用谚语flirt。他们没有Tinder，但他们有《诗经》。《诗经》就是3000年前的dating app。<span class="tag tag-hot">🔥</span></li>
+        <li>"不入虎穴，焉得虎子"——if you don't enter the tiger's cave, you won't get the tiger cub。这要是纹在身上，西方人觉得是motivational quote，中国人觉得你很虎。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 3 -->
+  <div class="insight" id="i3">
+    <div class="insight-head">
+      <div class="insight-num c3">03</div>
+      <div>
+        <div class="insight-title">AI = 不同国家的同事</div>
+        <div class="insight-premise">前提：每个AI模型的说话风格像不同国家的同事。ChatGPT啰嗦像印度同事，Gemini随意像美国同事，Copilot含蓄像中国同事。</div>
+      </div>
+    </div>
+    <div class="insight-raw">ChatGPT sounds like my Indian colleagues. Gemini sounds like American colleagues. Copilot sounds like Chinese colleagues.</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Siri has an Australian accent option. Why would I want my phone to sound like it doesn't care about my problems?"</div></div>
+        <div class="ref-card"><div class="comedian">Kumail Nanjiani</div><div class="joke">"My GPS sounds more patient than my wife. It recalculates without sighing."</div></div>
+        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Google sounds like that one friend who always has to correct you. 'Did you mean...' Yes, Google, I know what I meant."</div></div>
+        <div class="ref-card"><div class="comedian">Trevor Noah</div><div class="joke">"If Siri was African, she'd give you directions like 'Turn left at the big tree... no, the other big tree.'"</div></div>
+        <div class="ref-card"><div class="comedian">Vir Das</div><div class="joke">"Indian customer service: 15 minutes of 'I understand your concern' before doing absolutely nothing. Very empathetic, zero results."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>ChatGPT回答问题像我的印度同事——先说"Great question"，然后用2000字告诉你他理解了你的问题，但没有回答。<span class="tag tag-hot">🔥</span></li>
+        <li>Gemini像美国同事：很casual，很confident，经常是错的。但错得很有魅力。<span class="tag tag-hot">🔥</span></li>
+        <li>Copilot像中国同事：你问他意见，他说"都行"。你让他选，他说"你定吧"。代码写完了，他说"仅供参考"。</li>
+        <li>ChatGPT: "I'd be happy to help!" 印度同事: "Sure, let me look into it!" 六个月后你还在等。</li>
+        <li>Claude像法国同事——非常有思想，非常有原则，但是经常拒绝工作。"I don't feel comfortable doing that." Brother, it's a spreadsheet.<span class="tag tag-hot">🔥</span></li>
+        <li>If there was a German AI, it would just say "No." Very efficient. Very accurate. Zero warmth.</li>
+        <li>我问Copilot一个问题，它给了三个答案让我自己选。这不是AI，这是中国式领导——永远不做最终决定。<span class="tag tag-meta">META</span></li>
+        <li>ChatGPT的"Let me think step by step"就像印度同事开会——你知道他会说30分钟，但你不知道他什么时候会说到重点。</li>
+        <li>Gemini有时候会自信地给你一个完全错误的答案。这就是美国同事的核心能力：wrong but confident。<span class="tag tag-callback">CALLBACK</span></li>
+        <li>等日本公司出AI，回答问题之前先鞠三个躬，然后道歉说"抱歉让您久等了"，然后告诉你服务器维护中。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 4 -->
+  <div class="insight" id="i4">
+    <div class="insight-head">
+      <div class="insight-num c4">04</div>
+      <div>
+        <div class="insight-title">职级贬值</div>
+        <div class="insight-premise">前提：公司职级通胀严重，"President"在美国只有一个，在微软有200多个。Title越来越不值钱。</div>
+      </div>
+    </div>
+    <div class="insight-raw">职级贬值了，美国只有1个president，微软有200多个</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Jerry Seinfeld</div><div class="joke">"Everyone's a vice president now. When I was a kid, vice president meant you were one heartbeat away from being president. Now it means you're in charge of the printer."</div></div>
+        <div class="ref-card"><div class="comedian">John Oliver</div><div class="joke">"Banks have so many vice presidents, it's like they're printing titles the same way they print money — with no regard for inflation."</div></div>
+        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"In tech, everyone's a 'lead' or a 'principal.' You're a principal engineer who reports to another principal? That's just two principals with no school."</div></div>
+        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Goldman Sachs has 12,000 vice presidents. That's not a bank, that's a LinkedIn convention."</div></div>
+        <div class="ref-card"><div class="comedian">Chris Rock</div><div class="joke">"Everybody wants a title. 'I'm the regional director of...' You work at Best Buy! You direct people to the TV section!"</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>美国只有1个President，微软有200多个。所以在微软当President，比在美国当President容易。竞争少，不用选举，也不用发推特。<span class="tag tag-hot">🔥</span></li>
+        <li>公司职级贬值比人民币还快。Senior一年贬值30%。你2020年的Staff Engineer，到2026年约等于一个实习生。</li>
+        <li>LinkedIn上人人都是VP。如果VP有通货膨胀率，Fed应该加息了。<span class="tag tag-meta">META</span></li>
+        <li>我妈问我在微软什么职位。我说SDE2。她说"听起来像一个导弹型号"。我说"差不多，都是被发射出去就不管了"。</li>
+        <li>以前"经理"是管人的。现在"经理"是一个manage自己的人。一个人的团队，叫individual contributor。听起来很独立，其实就是没人愿意跟你一组。<span class="tag tag-hot">🔥</span></li>
+        <li>微软的职级：SDE → SDE2 → Senior → Principal → Partner → VP → President。你以为是升职？不，这是打怪升级。通关大概需要40年和3次mid-life crisis。</li>
+        <li>"Head of"是最虚的title。Head of Innovation——创新了什么？Head of Strategy——策略是什么？Head of Nothing——这才诚实。</li>
+        <li>我的名片上写着"Software Engineer II"。我妈以为II是罗马数字，觉得我是第二代传人。妈，这是说我还在第二关。<span class="tag tag-callback">CALLBACK</span></li>
+        <li>有的公司给你title不给你钱。恭喜你升职了！Senior了！薪水呢？"Senior的薪水"。所以是原来的薪水加个形容词？</li>
+        <li>在中国互联网公司，P7听起来像特工代号。"我是P7。" "你是MI6的？" "不，我是阿里巴巴的。比MI6还卷。"<span class="tag tag-hot">🔥</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 5 -->
+  <div class="insight" id="i5">
+    <div class="insight-head">
+      <div class="insight-num c5">05</div>
+      <div>
+        <div class="insight-title">Redmond的"本地美食"</div>
+        <div class="insight-premise">前提：Redmond的"本地美食"就是中餐和印度菜，因为居民基本都是中国人和印度人。科技城市的人口结构决定了它的味道。</div>
+      </div>
+    </div>
+    <div class="insight-raw">Redmond local food is Chinese and Indian food</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"The best Chinese food in America is in the suburbs where all the Chinese engineers live. Not Chinatown — Cupertino."</div></div>
+        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Silicon Valley is just India and China having a cook-off while white people watch and eat açaí bowls."</div></div>
+        <div class="ref-card"><div class="comedian">Kumail Nanjiani</div><div class="joke">"In Silicon Valley, the diversity in food is incredible. The diversity in people? Also two countries."</div></div>
+        <div class="ref-card"><div class="comedian">Jimmy O. Yang</div><div class="joke">"I went to a 'local restaurant' in the Bay Area. It was Sichuan hot pot. I'm like, local to WHERE?"</div></div>
+        <div class="ref-card"><div class="comedian">Ali Wong</div><div class="joke">"San Francisco's food scene: if you can't find pho within a 2-block radius, you're in the wrong neighborhood. Or the financial district."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>有人问我Redmond有什么local food。我说Chinese and Indian。他说"那不是local food"。我说"那你看看local people"。<span class="tag tag-hot">🔥</span></li>
+        <li>Redmond的food court：兰州拉面，南印度dosa，四川火锅，biryani。唯一的美国食物是Subway。因为没人去吃。</li>
+        <li>Redmond的Yelp排行榜top 10：7家中餐，2家印度菜，1家pho。American food排第11——是Costco food court。<span class="tag tag-meta">META</span></li>
+        <li>你想知道一个科技公司在哪个城市开了office？看看哪里突然多了10家奶茶店。</li>
+        <li>Redmond唯一的cultural clash不是种族歧视，是午餐时间微波炉里的咖喱味vs花椒味。这是真正的东西方冲突。<span class="tag tag-callback">CALLBACK</span></li>
+        <li>Microsoft把总部放在Redmond，Redmond就变成了一个大食堂。菜单取决于这个季度H1B批了多少。</li>
+        <li>我跟我美国朋友说来Redmond旅游吧，可以体验authentic亚洲美食。他说"我以为要去亚洲才能体验"。我说"Redmond就是亚洲，只不过有Costco"。<span class="tag tag-hot">🔥</span></li>
+        <li>Redmond的白人居民现在吃辣比我还能吃。这就是proximity effect——你住在四川人旁边久了，舌头也会入乡随俗。</li>
+        <li>想体验authentic American food？别去Redmond。去Applebee's。那里的食物很美国——份量大，味道可选，全是微波炉加热的。</li>
+        <li>Redmond farmers market卖的都是bok choy和bitter melon。白人farmer看了看说"I don't know what these are but they sell great"。<span class="tag tag-dark">DARK</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 6 -->
+  <div class="insight" id="i6">
+    <div class="insight-head">
+      <div class="insight-num c6">06</div>
+      <div>
+        <div class="insight-title">Vibe Coding像打架子鼓</div>
+        <div class="insight-premise">前提：多屏幕vibe coding的体感像乐手——左敲一下右敲一下，看起来很酷，其实在等AI生成代码。程序员的表演艺术。</div>
+      </div>
+    </div>
+    <div class="insight-raw">我vibe coding的时候，面前2个电脑，3个显示器，左敲一下，右敲一下。我好像一个乐手，在打架子鼓</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Programmers look so intense at work. All those screens. Then you walk closer and they're on Reddit."</div></div>
+        <div class="ref-card"><div class="comedian">Simon Amstell</div><div class="joke">"DJs just press play and wave their hands. Software engineers do the same thing but with more screens and less dancing."</div></div>
+        <div class="ref-card"><div class="comedian">Demetri Martin</div><div class="joke">"The more monitors someone has, the less work they're actually doing. It's inverse. One monitor: working. Four monitors: day-trading and losing money."</div></div>
+        <div class="ref-card"><div class="comedian">Bo Burnham</div><div class="joke">"Content creation looks like art from the outside. From the inside, it's just a guy staring at a screen having a panic attack."</div></div>
+        <div class="ref-card"><div class="comedian">Nate Bargatze</div><div class="joke">"My kid saw me working on two screens and said 'Dad, you look like a hacker.' I was on Amazon and Gmail."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>我vibe coding的时候面前5个屏幕，左敲右敲，像在打架子鼓。区别是架子鼓手至少知道自己在弹什么。<span class="tag tag-hot">🔥</span></li>
+        <li>Vibe coding就是让AI写代码，你负责表演。你不是程序员，你是程序员的经纪人。</li>
+        <li>我在咖啡厅vibe coding，旁边的人看我5个屏幕，问"你是做什么的？"我说"我是个指挥家"。我指挥AI干活。<span class="tag tag-meta">META</span></li>
+        <li>Vibe coding = 90% tab切换 + 10% 按回车。这不是编程，这是高级版的"同意用户协议"。<span class="tag tag-hot">🔥</span></li>
+        <li>以前coding是写代码。现在vibe coding是写prompt，然后假装看懂了AI生成的代码。"嗯，looks good to me." 我都不知道它干了什么。</li>
+        <li>架子鼓手至少要练习。Vibe coder不用——你只需要一个好的AI模型和一个自信的表情。</li>
+        <li>我老婆看我vibe coding说"你好忙啊"。我说"是啊"。其实我在等3个AI同时给我写3个不同的错误答案。</li>
+        <li>DJ打碟，观众嗨。我vibe coding，只有GitHub Copilot在鼓掌——"Suggestion accepted!" <span class="tag tag-callback">CALLBACK</span></li>
+        <li>多屏幕vibe coding的真相：左边屏幕ChatGPT，右边屏幕Cursor，中间屏幕——Stack Overflow。有些传统不能丢。</li>
+        <li>如果vibe coding算一种乐器，那我是全世界最好的vibe coder。因为这个乐器不需要任何技术，只需要很多显示器。<span class="tag tag-hot">🔥</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 7 -->
+  <div class="insight" id="i7">
+    <div class="insight-head">
+      <div class="insight-num c7">07</div>
+      <div>
+        <div class="insight-title">女朋友是HR</div>
+        <div class="insight-premise">前提：新恋爱里女生像HR面试官，男生像求职者。"为什么和前任分手？"就是behavioral interview。</div>
+      </div>
+    </div>
+    <div class="insight-raw">Girls are good HR in every new relationship, and guys are candidates. The first question you should prepare for is: why did you break up with your ex? And you have to be specific...</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Chris Rock</div><div class="joke">"When you meet somebody new, you're not meeting them. You're meeting their representative."</div></div>
+        <div class="ref-card"><div class="comedian">Ali Wong</div><div class="joke">"Dating in your 30s is like job hunting. You have experience, but everyone wants someone younger and cheaper."</div></div>
+        <div class="ref-card"><div class="comedian">Aziz Ansari</div><div class="joke">"First dates are basically interviews where both people are lying about their qualifications."</div></div>
+        <div class="ref-card"><div class="comedian">Taylor Tomlinson</div><div class="joke">"Every guy has a 'crazy ex' story. Bro, YOU are the common denominator in all your relationships."</div></div>
+        <div class="ref-card"><div class="comedian">Iliza Shlesinger</div><div class="joke">"Women ask 'What happened with your last relationship?' like they're conducting a background check. Because they are."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>谈恋爱就是面试。女朋友是HR，你是candidate。"为什么和前任分手？"这是behavioral question。请用STAR方法回答。<span class="tag tag-hot">🔥</span></li>
+        <li>约会就像面试：你要穿得体面，准备好答案，全程保持微笑。唯一区别是面试失败了你不用删对方微信。</li>
+        <li>"你几段恋爱经历？"这不是在问感情史，这是在看你的resume有几段work experience。太少说明没人要你，太多说明你不稳定。<span class="tag tag-hot">🔥</span></li>
+        <li>"你对未来有什么规划？"——这问题约会和面试一模一样。正确答案也一样："I'm flexible and open to growth."</li>
+        <li>和前任分手的原因，就是面试里的"你上份工作为什么离职"。你不能说真话。"因为她crazy。" "Sir, we don't speak negatively about previous employers here."<span class="tag tag-hot">🔥</span></li>
+        <li>恋爱的试用期是三个月。三个月后HR会review你的performance。KPI包括：记住纪念日、回消息速度、以及朋友圈点赞频率。</li>
+        <li>男生的dating profile就是resume。身高是学历，收入是工作经验，照片是professional headshot。你P图就是简历造假。<span class="tag tag-meta">META</span></li>
+        <li>"你的优点和缺点是什么？"——约会经典问题。正确答案："我的缺点是太爱你了。" 这个回答在面试里会被淘汰，在约会里是满分。</li>
+        <li>分手就是被裁员。"It's not you, it's the company restructuring." 你信吗？<span class="tag tag-dark">DARK</span></li>
+        <li>有的男生同时约几个女生，叫"海投"。有的女生同时见几个男生，叫"多轮面试"。说法不同，本质一样：都在找最优解。<span class="tag tag-hot">🔥</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 8 -->
+  <div class="insight" id="i8">
+    <div class="insight-head">
+      <div class="insight-num c8">08</div>
+      <div>
+        <div class="insight-title">AI订阅越多越忙</div>
+        <div class="insight-premise">前提：花越多钱订阅AI工具，结果越忙。效率工具的悖论：它们不是帮你省时间，是帮你发现更多能做的事。</div>
+      </div>
+    </div>
+    <div class="insight-raw">我现在每个月给ai充值可不少，ChatGPT，cursor，vscode。但结果是我越来越忙了，我学的ai越多，我越忙</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">Gary Gulman</div><div class="joke">"Email was supposed to save time. I now spend half my day on email. Show me the time savings."</div></div>
+        <div class="ref-card"><div class="comedian">John Mulaney</div><div class="joke">"I have 5 productivity apps on my phone. I spend more time organizing my productivity system than actually being productive."</div></div>
+        <div class="ref-card"><div class="comedian">Hasan Minhaj</div><div class="joke">"Every productivity tool promises to give you your time back. Where? Where is my time? I want it back!"</div></div>
+        <div class="ref-card"><div class="comedian">Nate Bargatze</div><div class="joke">"My wife bought a robot vacuum. Now instead of vacuuming, I spend 30 minutes a day fixing the robot vacuum."</div></div>
+        <div class="ref-card"><div class="comedian">Bo Burnham</div><div class="joke">"The internet was supposed to connect us and free us. Now we're more connected and less free than ever."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>我每个月AI订阅：ChatGPT $20，Cursor $20，Claude $20。我花了$60让自己更忙了。这不是订阅，这是给自己买了三个虚拟老板。<span class="tag tag-hot">🔥</span></li>
+        <li>AI帮我提高效率的方式是：让我发现原来还有这么多事情可以做。以前不会的事情不用做，现在AI会了，你也得会了。</li>
+        <li>洗碗机让你不用洗碗，但你得洗洗碗机。AI让你不用写代码，但你得学怎么跟AI说话。时间守恒定律。<span class="tag tag-meta">META</span></li>
+        <li>以前不会PS，设计需求可以推掉。现在有了Midjourney，老板说"不是有AI吗？"——AI给我创造了新的工作。</li>
+        <li>我订阅的AI比我的朋友还多。而且AI比我的朋友还可靠——至少它们每个月准时找我要钱。<span class="tag tag-hot">🔥</span></li>
+        <li>效率工具的商业模式：让你觉得你需要更高效→你花钱买工具→工具帮你做更多事→你更忙→你觉得你需要更高效。这是一个subscription trap。</li>
+        <li>我跟AI的关系就像信用卡：它让你觉得你能力变大了，但账单每个月都在涨。</li>
+        <li>以前摸鱼的借口是"这个我不会"。现在AI都会了，你没有借口了。AI不是工具，AI是摸鱼终结者。<span class="tag tag-hot">🔥</span></li>
+        <li>我学AI是为了work-life balance。结果balance没有，work多了一倍。AI改变了我的生活——从一份工作变成了两份。</li>
+        <li>效率悖论：越高效→做更多事→更忙→需要更高效的工具→花更多钱。这个循环的终点是：你破产了，但To-Do List清空了。<span class="tag tag-dark">DARK</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 9 -->
+  <div class="insight" id="i9">
+    <div class="insight-head">
+      <div class="insight-num c9">09</div>
+      <div>
+        <div class="insight-title">地铁安检 = Fake Job</div>
+        <div class="insight-premise">前提：地铁安检保安像假装在工作的爸爸——看起来很认真，其实是安全剧场。表演感十足的fake job。</div>
+      </div>
+    </div>
+    <div class="insight-raw">地铁安检保安就像爸爸一样，表现得很努力，但是个fake job</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <div class="ref-card"><div class="comedian">John Oliver</div><div class="joke">"TSA has a 95% failure rate at detecting threats. 95%! That's not security, that's a suggestion."</div></div>
+        <div class="ref-card"><div class="comedian">Jerry Seinfeld</div><div class="joke">"The security guy at the airport looks in your bag like he knows what he's looking for. He doesn't. He's looking for water bottles. The most dangerous liquid."</div></div>
+        <div class="ref-card"><div class="comedian">Russell Peters</div><div class="joke">"Indian security guards at malls — they tap you with a metal detector like they're blessing you. 'Go in peace, my son.'"</div></div>
+        <div class="ref-card"><div class="comedian">Ronny Chieng</div><div class="joke">"Security theater is the best kind of theater because the actors don't know they're performing."</div></div>
+        <div class="ref-card"><div class="comedian">Dave Chappelle</div><div class="joke">"You ever see the mall cop on the Segway? That's not security. That's a guy on a toy pretending he has authority."</div></div>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>地铁安检保安就像爸爸——表现得很努力，但你知道他啥也没检查出来过。<span class="tag tag-hot">🔥</span></li>
+        <li>每次过地铁安检，保安看我的包就像我看英文论文——扫一眼，点点头，"嗯，过吧"。</li>
+        <li>地铁安检是中国最成功的行为艺术。每天几百万人参与，没有人知道在安检什么，但所有人都配合演出。<span class="tag tag-meta">META</span></li>
+        <li>地铁安检机能检测出什么？答案是：你的水瓶。你的水瓶是最大的安全威胁。恭喜你，你的农夫山泉已经被国家安全部门审核了。<span class="tag tag-hot">🔥</span></li>
+        <li>保安让我"把包放上去"，我放了。屏幕上花花绿绿的图。他看了0.3秒。这不是安检，这是给我的包拍了张X光艺术照。</li>
+        <li>TSA的成功率是5%，中国地铁安检的成功率不知道。但我知道它100%成功地让我上班迟到了。<span class="tag tag-hot">🔥</span></li>
+        <li>地铁安检保安和我爸有什么区别？保安假装在工作，我爸假装在加班。都是performance art。<span class="tag tag-callback">CALLBACK</span></li>
+        <li>如果地铁安检保安能检测出炸弹，他们应该也能检测出我包里上周忘扔的午餐。但他们两个都没检测出来。</li>
+        <li>上海地铁安检：你可以带一把伞进去，但你的矿泉水要被开盖检查。因为液体更危险。这就是为什么没有人用水枪打仗——哦等等。<span class="tag tag-dark">DARK</span></li>
+        <li>地铁安检是唯一一个所有人都知道没用，但所有人都假装它有用的系统。另一个是：年度绩效考核。<span class="tag tag-hot">🔥</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>🎤 Jesse's Comedy Lab · Daily Report · 2026-03-15</p>
+  <p style="margin-top:0.5rem"><a href="index.html">← Back to Main Lab</a></p>
+  <p style="margin-top:1rem; font-size:0.65rem; color:#555">Generated by Bob 🤖 · 9 insights · 90 one-liners · 45 references</p>
+</footer>
+
+</body>
+</html>
