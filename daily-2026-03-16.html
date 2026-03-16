@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-16 · 段子加练</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #050505;
+  --surface: #0e0e0e;
+  --surface-2: #181818;
+  --border: #1e1e1e;
+  --text: #eaeaea;
+  --text-muted: #777;
+  --red: #ff3b30;
+  --orange: #ff6b35;
+  --gold: #ffd60a;
+  --green: #30d158;
+  --blue: #0a84ff;
+  --purple: #bf5af2;
+  --pink: #ff375f;
+  --cyan: #64d2ff;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 400px at 30% 40%, rgba(255,107,53,0.08), transparent),
+    radial-gradient(ellipse 500px 500px at 70% 60%, rgba(191,90,242,0.06), transparent);
+  animation: drift 12s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(2deg); }
+}
+.hero .date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  backdrop-filter: blur(10px);
+  background: rgba(14,14,14,0.6);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.hero .date-badge .live { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 .accent { background: linear-gradient(135deg, var(--orange), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  z-index: 1;
+  position: relative;
+}
+.hero .stats-row {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  z-index: 1;
+  position: relative;
+}
+.hero .stat { text-align: center; }
+.hero .stat-num {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--orange), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5,5,5,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  min-width: max-content;
+}
+.nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  padding: 0.9rem 1.1rem;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.nav a:hover { color: var(--text); border-bottom-color: var(--orange); }
+.insights { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.insight {
+  margin-bottom: 6rem;
+  scroll-margin-top: 70px;
+}
+.insight-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+.insight-num {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.c1 { background: linear-gradient(135deg, var(--red), var(--orange)); }
+.c2 { background: linear-gradient(135deg, var(--blue), var(--purple)); }
+.c3 { background: linear-gradient(135deg, var(--green), var(--cyan)); }
+.insight-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; }
+.insight-premise {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border);
+}
+.insight-raw {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  position: relative;
+}
+.insight-raw::before {
+  content: '段子加练 · EXTRA REPS';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 12px;
+  background: var(--surface-2);
+  border-bottom-left-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+}
+.refs { margin-bottom: 2rem; }
+.refs h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.8rem; }
+.ref-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.82rem;
+  transition: border-color 0.2s;
+  position: relative;
+}
+.ref-card:hover { border-color: #333; }
+.ref-card .comedian { color: var(--gold); font-weight: 500; font-size: 0.72rem; margin-bottom: 0.3rem; }
+.ref-card .joke { color: var(--text-muted); line-height: 1.5; }
+a.ref-card { transition: border-color 0.3s, transform 0.2s; display: block; text-decoration: none; color: inherit; }
+a.ref-card:hover { border-color: var(--gold) !important; transform: translateY(-2px); }
+a.ref-card::after { content: '🔗 Watch →'; display: block; margin-top: 8px; font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.2s; }
+a.ref-card:hover::after { opacity: 1; }
+.oneliners h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+.liner-list { list-style: none; }
+.liner-list li {
+  padding: 0.8rem 1rem;
+  border-left: 2px solid var(--border);
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+  border-radius: 0 8px 8px 0;
+}
+.liner-list li:hover {
+  border-left-color: var(--orange);
+  background: var(--surface);
+}
+.liner-list li .tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.tag-hot { background: rgba(255,59,48,0.15); color: var(--red); }
+.tag-meta { background: rgba(10,132,255,0.15); color: var(--blue); }
+.tag-dark { background: rgba(191,90,242,0.15); color: var(--purple); }
+.tag-callback { background: rgba(255,214,10,0.15); color: var(--gold); }
+.footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+.footer a { color: var(--orange); text-decoration: none; }
+@media (max-width: 640px) {
+  .hero .stats-row { gap: 1.5rem; }
+  .hero .stat-num { font-size: 1.8rem; }
+  .insight-num { font-size: 2.5rem; }
+  .ref-grid { grid-template-columns: 1fr; }
+}
+/* Feedback buttons */
+.fb-wrap { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
+.fb-btn {
+  background: none; border: 1px solid transparent; border-radius: 6px;
+  cursor: pointer; font-size: 0.85rem; padding: 2px 6px;
+  opacity: 0; transition: all 0.2s; line-height: 1;
+}
+.fb-wrap:hover .fb-btn { opacity: 0.5; }
+.fb-btn:hover { opacity: 0.8 !important; border-color: #333; }
+li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0.5; }
+.fb-btn.active-up { opacity: 1 !important; background: rgba(48,209,88,0.15); border-color: var(--green); }
+.fb-btn.active-down { opacity: 1 !important; background: rgba(255,59,48,0.15); border-color: var(--red); }
+.ref-card .fb-wrap { position: absolute; bottom: 8px; right: 8px; }
+.fb-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(14,14,14,0.95); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border); padding: 10px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.8rem; color: var(--text-muted);
+  transform: translateY(100%); transition: transform 0.3s;
+}
+.fb-bar.visible { transform: translateY(0); }
+.fb-bar .count { color: var(--green); font-weight: 600; }
+.fb-bar button {
+  background: var(--green); color: #000; border: none; border-radius: 8px;
+  padding: 8px 20px; font-weight: 600; font-size: 0.8rem; cursor: pointer;
+  font-family: inherit;
+}
+.fb-bar button:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="date-badge"><div class="live"></div> 2026.03.16 · Monday</div>
+  <h1>段子<span class="accent">加练</span></h1>
+  <p class="subtitle">Extra Reps · 没有新素材？那就把旧段子练到骨子里。</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Insights</div></div>
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label">New One-liners</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">References</div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#i1">01 · 地铁安检 Fake Job</a>
+    <a href="#i2">02 · AI订阅越多越忙</a>
+    <a href="#i3">03 · 微波炉文化战争</a>
+  </div>
+</nav>
+
+<!-- INSIGHTS -->
+<div class="insights">
+
+  <!-- INSIGHT 1 -->
+  <div class="insight" id="i1">
+    <div class="insight-head">
+      <div class="insight-num c1">01</div>
+      <div>
+        <div class="insight-title">地铁安检 = Fake Job</div>
+        <div class="insight-premise">前提：地铁安检是世界上最成功的行为艺术——几百万人每天参与演出，没有人知道在检查什么，但所有人都配合。</div>
+      </div>
+    </div>
+    <div class="insight-raw">上次Jesse反馈最多的洞察之一。"检测不出炸弹也检测不出午餐"的荒诞对比结构是Jesse最喜欢的类型。今天继续深挖。</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.youtube.com/watch?v=Q8TWVXBxuDE" target="_blank" class="ref-card"><div class="comedian">Raj Sharma</div><div class="joke">Airport security专场——安检员翻包的样子像在帮你整理行李，"Sir, you need to fold this better."</div><span class="fb-wrap" data-jid="ref-1" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=9ftC3Bcl8ZU" target="_blank" class="ref-card"><div class="comedian">Seth Meyers</div><div class="joke">Late Night吐槽TSA安检测试失败率95%——"They failed 95% of tests. The only thing with a worse pass rate is my New Year's resolutions."</div><span class="fb-wrap" data-jid="ref-2" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=RBxhqBRpXa8" target="_blank" class="ref-card"><div class="comedian">John Oliver</div><div class="joke">Last Week Tonight深扒TSA——花了上百亿，实际效果约等于零。"It's not security, it's security theater."</div><span class="fb-wrap" data-jid="ref-3" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.instagram.com/p/DUgKJ1JCNta/" target="_blank" class="ref-card"><div class="comedian">@comedy (IG)</div><div class="joke">"Got all these apps designed to save you time but in my experience, they actually waste time. I call them saps."</div><span class="fb-wrap" data-jid="ref-4" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>Subway security in China has an X-ray machine that can see through your bag but not through the bullshit. I put my bag in, he looked at the screen for 0.2 seconds. That's not a security check — that's a speed run.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The TSA failed 95% of their tests. Chinese subway security hasn't been tested. That's not a failure — that's a strategy. Can't fail if you never check.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I went through subway security with a water bottle. The guard said, "Take a sip." I took a sip. He waved me through. That's not a security protocol — that's a hydration reminder.<span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The subway X-ray machine shows a perfect image of everything in my bag. The guard can see my keys, my wallet, my lunch. He can't see a weapon because I don't have one. Nobody does. That's why it's a fake job — the only threat is my expired yogurt.<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Security guards at Chinese subway stations have the same energy as substitute teachers. Everyone knows they have no real power, but we still play along out of politeness.<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I walk through subway security every day. The guard and I have a routine. I put my bag on the belt. He pretends to look. I pretend to wait. We're not strangers — we're scene partners.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>If subway security actually worked, my bag would be flagged every Monday. Not for weapons — for the smell. There's a lunch container in there from last Wednesday that even I'm afraid to open.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>China has the most advanced high-speed rail in the world. Also the most advanced security theater. We can go 350km/h but we still need someone to watch you drink your water bottle. Technology is selective.<span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My favorite part of subway security is the wand guy. He waves a metal detector over you like a priest blessing a sinner. You haven't been searched — you've been baptized.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The subway security line is the most democratic place in China. Rich, poor, old, young — everyone is equally inconvenienced by something that does equally nothing.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 2 -->
+  <div class="insight" id="i2">
+    <div class="insight-head">
+      <div class="insight-num c2">02</div>
+      <div>
+        <div class="insight-title">AI订阅越多越忙</div>
+        <div class="insight-premise">前提：效率工具的终极悖论——你花钱买时间，结果时间没多，账单多了。AI让你做更多事，但"更多事"不等于"更好的生活"。</div>
+      </div>
+    </div>
+    <div class="insight-raw">Jesse上次点赞了"AI比朋友可靠——至少它们每个月准时找我要钱"。这个"AI=要钱的朋友"框架值得深挖。</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.instagram.com/reel/DUgKJ1JCNta/" target="_blank" class="ref-card"><div class="comedian">Stand-up clip (IG)</div><div class="joke">"Got all these apps designed to save you time but in my experience, they actually waste time. I call them saps."</div><span class="fb-wrap" data-jid="ref-5" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.tiktok.com/@kevinbridgescomedian/video/7523222680007413014" target="_blank" class="ref-card"><div class="comedian">Kevin Bridges</div><div class="joke">Kevin Bridges吐槽科技问题——WiFi和Apple设备让生活更方便了吗？"First world problems are still problems."</div><span class="fb-wrap" data-jid="ref-6" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.instagram.com/reel/DU8ng0UkTW0/" target="_blank" class="ref-card"><div class="comedian">Josh Johnson</div><div class="joke">Josh Johnson聊手机成瘾——我们最爱的设备让我们什么都做不了。"Your phone is a productivity tool that destroys productivity."</div><span class="fb-wrap" data-jid="ref-7" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.facebook.com/zoltancomedy/posts/citizen-app-has-gone-too-farcitizenapp-standupcomedy-relatable-zoltan/1205789670911887/" target="_blank" class="ref-card"><div class="comedian">Zoltan</div><div class="joke">吐槽Citizen App——"这个app的功能是让你实时焦虑。"订阅了焦虑的push notification。</div><span class="fb-wrap" data-jid="ref-8" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>I pay $20/month for ChatGPT, $10 for Copilot, $13 for Claude. I have more AI subscriptions than human relationships. And the AIs are more reliable — they never cancel plans, they just cancel features.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>AI promised to save me 3 hours a day. Now I spend those 3 hours trying different AI tools to save even more time. I'm not more productive — I'm just more subscribed.<span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My AI subscriptions cost more than my gym membership. Same result though — I pay every month and barely use either. But at least the AI doesn't judge me for skipping leg day.<span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Every AI app says "we'll change your life." My life has changed. I used to be broke and unproductive. Now I'm broke, unproductive, AND subscribed to 7 apps that remind me about it.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I asked ChatGPT how to save money. It said "cancel unnecessary subscriptions." Bro, YOU are the unnecessary subscription.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My boss asked why I'm more efficient now. I said AI. He said "great, here's more work." AI didn't save me time — it raised my boss's expectations. I'm running faster on the same treadmill, but now the treadmill costs $43 a month.<span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I have ChatGPT for writing, Midjourney for images, Copilot for code, and Notion AI for notes. I am outsourcing my entire brain one subscription at a time. When they all go down, I'll just sit there — a man with no skills and no wifi.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The AI efficiency loop: Step 1, buy AI tool. Step 2, AI does your work faster. Step 3, your company gives you more work. Step 4, you need a better AI tool. Step 5, see Step 1. Congratulations, you just subscribed to capitalism with extra steps.<span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My grandpa retired at 55 with one skill: fixing pipes. I'm 28 with 12 AI tools and I still can't leave work before 7. Technology is supposed to free us. Instead it just made the cage nicer.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I set up an AI to auto-reply to emails, another AI to summarize Slack, and a third AI to schedule my meetings. Now I have 3 AIs doing my job and I still have a meeting about my productivity. I'm managing a team of robots and nobody gave me a raise.<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 3 -->
+  <div class="insight" id="i3">
+    <div class="insight-head">
+      <div class="insight-num c3">03</div>
+      <div>
+        <div class="insight-title">微波炉 = 文化身份证</div>
+        <div class="insight-premise">前提：You can tell who works where by what the microwave smells like. 办公室微波炉不是加热工具，是文化领地标记。</div>
+      </div>
+    </div>
+    <div class="insight-raw">昨天Jesse要求深挖的核心前提，已确认原创性。今天从新角度继续扩展——聚焦"味道作为身份暴露"。</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.youtube.com/watch?v=TQ1WUl_8hL4" target="_blank" class="ref-card"><div class="comedian">Trevor Noah</div><div class="joke">Son of Patricia (2018) — "You can hate immigrants all you want, but you don't get to eat their food. No immigrants, no spice. No tacos."</div><span class="fb-wrap" data-jid="ref-9" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=AhWdknIbBmI" target="_blank" class="ref-card"><div class="comedian">Comedian Gets His Big (Lunch) Break</div><div class="joke">关于办公室午餐文化的完整standup set——break room就是社会的缩影。</div><span class="fb-wrap" data-jid="ref-10" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/shorts/xRlgwgflm5U" target="_blank" class="ref-card"><div class="comedian">Saul Trujillo</div><div class="joke">"What is white people food?" — 对白人午餐无味文化的精准吐槽。</div><span class="fb-wrap" data-jid="ref-11" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=JhPDYl-SAxY" target="_blank" class="ref-card"><div class="comedian">K-von</div><div class="joke">"Every culture has a funny backpack" — 文化差异体现在你带的东西里，包括你的午餐。</div><span class="fb-wrap" data-jid="ref-12" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>At Microsoft Redmond, the microwave tells a story. 12:00 — curry. 12:10 — Mapo tofu. 12:20 — kimchi. 12:30 — a white guy reheats yesterday's pizza and the microwave finally gets to rest.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>You don't need a diversity report. Just check the microwave at noon. If it smells like five countries, you work in tech. If it smells like nothing, you work at a law firm.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My American coworker microwaved a plain chicken breast. No sauce, no spice. The microwave was confused. It's never had to heat something with this little personality before.<span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I heated up my Chinese food and a white colleague said, "Wow, that smells strong." Strong? Bro, your sandwich has no smell. You're eating in stealth mode. That's not lunch — that's witness protection.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The company spent $2M on a "cultural inclusion initiative." They could've just looked at the microwave. It's already the most multicultural thing in the building. It's seen more diversity than HR ever will.<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>An Indian colleague told me they feel judged when they microwave curry at work. I said, "I feel judged when I DON'T microwave something at work. My white colleague eats cold salad at his desk like a hostage."<span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Office microwave etiquette: If you microwave fish, you're brave. If you microwave curry, you're inconsiderate. If you microwave a plain bagel, nobody cares. Being culturally invisible is its own privilege.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I microwaved my leftovers and my American colleague said, "What IS that?" It's called flavor. It's free. You should try it sometime. I'll even let you borrow my soy sauce.<span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>At my office, the microwave has PTSD. It's been through Chinese New Year leftovers, Diwali sweets, Korean army stew, and Thanksgiving turkey. If that microwave could talk, it would need a therapist. But also a Yelp account.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Corporate America talks about diversity. The microwave lives it. Every day. No training required. No HR seminar. Just curry, chili oil, and kimchi — doing more for inclusion than a $50K consultant ever could.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>🎤 Jesse's Comedy Lab · 段子加练 · 2026-03-16</p>
+  <p style="margin-top:0.5rem"><a href="daily-2026-03-15.html">← 昨日日报</a> · <a href="index.html">Main Lab</a></p>
+  <p style="margin-top:1rem; font-size:0.65rem; color:#555">Generated by Bob 🤖 · 3 insights · 30 one-liners · 12 references</p>
+</footer>
+
+<div class="fb-bar" id="fbBar">
+  <span>已标记 <span class="count" id="fbCount">0</span> 条反馈</span>
+  <button onclick="exportFeedback()">📋 复制反馈 JSON</button>
+</div>
+
+<script>
+const FB_KEY = 'comedy-feedback-2026-03-16';
+
+function loadFeedback() {
+  try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; }
+}
+
+function saveFeedback(data) {
+  localStorage.setItem(FB_KEY, JSON.stringify(data));
+  updateBar(data);
+  syncToServer(data);
+}
+
+function syncToServer(data) {
+  const page = 'daily-2026-03-16';
+  fetch('http://127.0.0.1:8765', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ page: page, votes: data })
+  }).catch(() => {});
+}
+
+function updateBar(data) {
+  const count = Object.keys(data).length;
+  document.getElementById('fbCount').textContent = count;
+  document.getElementById('fbBar').classList.toggle('visible', count > 0);
+}
+
+function vote(btn) {
+  const wrap = btn.closest('.fb-wrap');
+  const jid = wrap.dataset.jid;
+  const voteType = btn.dataset.vote;
+  const data = loadFeedback();
+  const parent = wrap.closest('li') || wrap.closest('.ref-card') || wrap.closest('a');
+  let text = '';
+  if (parent) {
+    text = parent.textContent.replace(/👍|👎/g, '').trim().substring(0, 120);
+  }
+  const siblings = wrap.querySelectorAll('.fb-btn');
+  if (data[jid] && data[jid].vote === voteType) {
+    delete data[jid];
+    siblings.forEach(s => s.classList.remove('active-up', 'active-down'));
+  } else {
+    data[jid] = { vote: voteType, text: text, time: Date.now() };
+    siblings.forEach(s => s.classList.remove('active-up', 'active-down'));
+    btn.classList.add(voteType === 'up' ? 'active-up' : 'active-down');
+  }
+  saveFeedback(data);
+}
+
+function exportFeedback() {
+  const data = loadFeedback();
+  const text = JSON.stringify(data, null, 2);
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.fb-bar button');
+    btn.textContent = '✅ 已复制!';
+    setTimeout(() => btn.textContent = '📋 复制反馈 JSON', 2000);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const data = loadFeedback();
+  updateBar(data);
+  Object.entries(data).forEach(([jid, info]) => {
+    const wrap = document.querySelector(`.fb-wrap[data-jid="${jid}"]`);
+    if (wrap) {
+      const btn = wrap.querySelector(`[data-vote="${info.vote}"]`);
+      if (btn) btn.classList.add(info.vote === 'up' ? 'active-up' : 'active-down');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
