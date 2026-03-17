@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-17 · 段子加练</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #050505; --surface: #0e0e0e; --surface-2: #181818; --border: #1e1e1e;
+  --text: #eaeaea; --text-muted: #777;
+  --red: #ff3b30; --orange: #ff6b35; --gold: #ffd60a; --green: #30d158;
+  --blue: #0a84ff; --purple: #bf5af2; --pink: #ff375f; --cyan: #64d2ff;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 40%, rgba(191,90,242,0.08), transparent), radial-gradient(ellipse 500px 500px at 70% 60%, rgba(255,59,48,0.06), transparent); animation: drift 12s ease-in-out infinite alternate; }
+@keyframes drift { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.05) rotate(2deg); } }
+.hero .date-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.8rem; color: var(--text-muted); backdrop-filter: blur(10px); background: rgba(14,14,14,0.6); margin-bottom: 2rem; position: relative; z-index: 1; }
+.hero .date-badge .live { width: 6px; height: 6px; background: var(--purple); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+.hero h1 { font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; position: relative; z-index: 1; }
+.hero h1 .accent { background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle { font-size: clamp(0.95rem, 2vw, 1.2rem); color: var(--text-muted); margin-top: 1.5rem; z-index: 1; position: relative; }
+.hero .stats-row { display: flex; gap: 3rem; margin-top: 3rem; z-index: 1; position: relative; }
+.hero .stat { text-align: center; }
+.hero .stat-num { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(5,5,5,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 2rem; overflow-x: auto; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; min-width: max-content; }
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; padding: 0.9rem 1.1rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.nav a:hover { color: var(--text); border-bottom-color: var(--purple); }
+.insights { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.insight { margin-bottom: 6rem; scroll-margin-top: 70px; }
+.insight-head { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; margin-bottom: 2rem; }
+.insight-num { font-size: 3.5rem; font-weight: 700; line-height: 1; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.c1 { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.c2 { background: linear-gradient(135deg, var(--gold), var(--orange)); }
+.c3 { background: linear-gradient(135deg, var(--cyan), var(--blue)); }
+.insight-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; }
+.insight-premise { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem; padding-left: 0.5rem; border-left: 2px solid var(--border); }
+.insight-raw { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 2rem; position: relative; }
+.insight-raw::before { content: '段子加练 · EXTRA REPS'; position: absolute; top: 0; right: 0; padding: 4px 12px; background: var(--surface-2); border-bottom-left-radius: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--purple); }
+.refs { margin-bottom: 2rem; }
+.refs h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.8rem; }
+.ref-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.82rem; transition: border-color 0.2s; position: relative; }
+.ref-card:hover { border-color: #333; }
+.ref-card .comedian { color: var(--gold); font-weight: 500; font-size: 0.72rem; margin-bottom: 0.3rem; }
+.ref-card .joke { color: var(--text-muted); line-height: 1.5; }
+a.ref-card { transition: border-color 0.3s, transform 0.2s; display: block; text-decoration: none; color: inherit; }
+a.ref-card:hover { border-color: var(--gold) !important; transform: translateY(-2px); }
+a.ref-card::after { content: '🔗 Watch →'; display: block; margin-top: 8px; font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.2s; }
+a.ref-card:hover::after { opacity: 1; }
+.oneliners h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--purple); margin-bottom: 1rem; }
+.liner-list { list-style: none; }
+.liner-list li { padding: 0.8rem 1rem; border-left: 2px solid var(--border); margin-bottom: 0.5rem; font-size: 0.88rem; color: var(--text); transition: border-color 0.2s, background 0.2s; border-radius: 0 8px 8px 0; }
+.liner-list li:hover { border-left-color: var(--purple); background: var(--surface); }
+.tag { display: inline-block; font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-weight: 500; vertical-align: middle; }
+.tag-hot { background: rgba(255,59,48,0.15); color: var(--red); }
+.tag-meta { background: rgba(10,132,255,0.15); color: var(--blue); }
+.tag-dark { background: rgba(191,90,242,0.15); color: var(--purple); }
+.tag-callback { background: rgba(255,214,10,0.15); color: var(--gold); }
+.footer { text-align: center; padding: 4rem 2rem; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+.footer a { color: var(--purple); text-decoration: none; }
+@media (max-width: 640px) { .hero .stats-row { gap: 1.5rem; } .hero .stat-num { font-size: 1.8rem; } .insight-num { font-size: 2.5rem; } .ref-grid { grid-template-columns: 1fr; } }
+.fb-wrap { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
+.fb-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 0.85rem; padding: 2px 6px; opacity: 0; transition: all 0.2s; line-height: 1; }
+.fb-wrap:hover .fb-btn { opacity: 0.5; }
+.fb-btn:hover { opacity: 0.8 !important; border-color: #333; }
+li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0.5; }
+.fb-btn.active-up { opacity: 1 !important; background: rgba(48,209,88,0.15); border-color: var(--green); }
+.fb-btn.active-down { opacity: 1 !important; background: rgba(255,59,48,0.15); border-color: var(--red); }
+.ref-card .fb-wrap { position: absolute; bottom: 8px; right: 8px; }
+.fb-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: rgba(14,14,14,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); transform: translateY(100%); transition: transform 0.3s; }
+.fb-bar.visible { transform: translateY(0); }
+.fb-bar .count { color: var(--green); font-weight: 600; }
+.fb-bar button { background: var(--green); color: #000; border: none; border-radius: 8px; padding: 8px 20px; font-weight: 600; font-size: 0.8rem; cursor: pointer; font-family: inherit; }
+.fb-bar button:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><div class="live"></div> 2026.03.17 · Tuesday</div>
+  <h1>段子<span class="accent">加练</span></h1>
+  <p class="subtitle">Extra Reps Day 2 · 换三个洞察继续练。短、准、狠。</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Insights</div></div>
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">References</div></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#i1">01 · 女朋友是HR</a>
+    <a href="#i2">02 · 职级贬值</a>
+    <a href="#i3">03 · AI像各国同事</a>
+  </div>
+</nav>
+
+<div class="insights">
+
+  <!-- INSIGHT 1 -->
+  <div class="insight" id="i1">
+    <div class="insight-head">
+      <div class="insight-num c1">01</div>
+      <div>
+        <div class="insight-title">女朋友是HR</div>
+        <div class="insight-premise">约会就是behavioral interview。每个问题背后都有评分标准，你只是不知道。</div>
+      </div>
+    </div>
+    <div class="insight-raw">恋爱的面试感：从初次约会到转正，完整的HR流程。</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.youtube.com/shorts/sLm-hRbGjXU" target="_blank" class="ref-card"><div class="comedian">Sezar Alkassab</div><div class="joke">"Dating is like a job interview" — 约会和面试的荒诞平行。</div><span class="fb-wrap" data-jid="ref-1" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=rNyQNg7AjxQ" target="_blank" class="ref-card"><div class="comedian">Daniel Audritt</div><div class="joke">Comedy sketch: If Dating Was Like A Job Interview — 把约会场景1:1替换成面试。</div><span class="fb-wrap" data-jid="ref-2" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/shorts/5Q3hGrohvT4" target="_blank" class="ref-card"><div class="comedian">Comedy Skit</div><div class="joke">"This was supposed to be a date — but the questions started sounding like HR." 当约会变成transactional。</div><span class="fb-wrap" data-jid="ref-3" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=nHLouk7P9M0" target="_blank" class="ref-card"><div class="comedian">Nash Park & Alex Forman</div><div class="joke">He asked her out during a job interview — 真实crowd work片段，面试变约会。</div><span class="fb-wrap" data-jid="ref-4" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>Dating is a job interview where both people lie on their resume.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend asks "where do you see us in 5 years?" That's not a question — that's a PIP meeting.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>First date is a phone screen. Second date is onsite. Third date is the offer letter. Marriage is signing a non-compete.<span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My ex gave me a 2-week notice before breaking up. Very professional. Left a Glassdoor review too.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>She said "we need to talk." That's HR scheduling a 1-on-1 with no agenda. You already know it's bad.<span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Breakups are just layoffs with feelings. "It's not you, it's restructuring."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Meeting the parents is the final round interview. Except the hiring manager already decided — you're just there for show.<span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend tracks my location, monitors my messages, and reviews my spending. She's not controlling — she's HR with admin access.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Anniversary is your annual performance review. Bring flowers or get a PIP.<span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I got ghosted after 3 dates. No rejection email, no feedback, nothing. At least HR sends an automated "we've decided to go with another candidate."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 2 -->
+  <div class="insight" id="i2">
+    <div class="insight-head">
+      <div class="insight-num c2">02</div>
+      <div>
+        <div class="insight-title">职级贬值</div>
+        <div class="insight-premise">美国只有1个President。微软有200多个。职级通胀比货币通胀还严重。</div>
+      </div>
+    </div>
+    <div class="insight-raw">科技公司的title inflation：每个人都是VP/Director/President，但没人能做决定。</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.tiktok.com/@maxfulhamcomedy/video/7311458415988034848" target="_blank" class="ref-card"><div class="comedian">Max Fulham</div><div class="joke">吐槽金融业的超长job title——"What do you do?" "I'm a Senior Vice President of Strategic Innovation." "So… sales?"</div><span class="fb-wrap" data-jid="ref-5" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.tiktok.com/@alvinkuai/video/7520468780422679821" target="_blank" class="ref-card"><div class="comedian">Alvin Kuai</div><div class="joke">Corporate life的真相——开不完的会，做不完的deck，升不完的级，但也没人知道谁负责什么。</div><span class="fb-wrap" data-jid="ref-6" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.instagram.com/reel/DV4ON_REc-z/" target="_blank" class="ref-card"><div class="comedian">Stand-up (IG)</div><div class="joke">"I used to work a corporate job" — 对corporate bullshit的深度吐槽。</div><span class="fb-wrap" data-jid="ref-7" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.reddit.com/r/salesforce/comments/1k3de08/someday_we_will_be_like_this_folks_someday/" target="_blank" class="ref-card"><div class="comedian">Reddit/Salesforce</div><div class="joke">"A vice president is essentially a mid-level manager" — title inflation的真相吐槽。</div><span class="fb-wrap" data-jid="ref-8" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>America has 1 President. Microsoft has 200. And neither can get anything done.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My title is Senior Software Engineer II. The "Senior" means I've been here long enough to know the code is bad but not long enough to leave.<span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>At Microsoft, getting promoted doesn't mean more power. It means a longer email signature.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Corporate titles are like fast food sizes. What used to be "Large" is now "Medium." What used to be "Manager" is now "Individual Contributor."<span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I met a VP at a party. I was impressed. Then he said he works at a bank. At banks, VP means you've been there 3 years and they ran out of raises.<span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Title inflation is why LinkedIn is fiction. "Head of Innovation" = one guy with a whiteboard. "Director of Strategy" = makes PowerPoints. "Chief Evangelist" = unemployed with confidence.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My company gave everyone a title bump instead of a raise. Now I'm a Principal Engineer. I still can't afford rent, but my business card looks amazing.<span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>In tech, "Staff Engineer" sounds important until you realize there are 400 of them. It's the participation trophy of job titles.<span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The US military has 4-star generals. Tech has 67-level engineers. Same energy, fewer push-ups.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My mom tells relatives I'm a "Director" at Microsoft. I don't correct her. She doesn't need to know that 10,000 other people also have that title.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 3 -->
+  <div class="insight" id="i3">
+    <div class="insight-head">
+      <div class="insight-num c3">03</div>
+      <div>
+        <div class="insight-title">AI = 各国同事</div>
+        <div class="insight-premise">每个AI都有国籍。ChatGPT是印度同事——什么都答应，给你一堆你没要求的东西。Gemini是美国同事——自信但经常出错。</div>
+      </div>
+    </div>
+    <div class="insight-raw">AI拟人化+文化刻板印象的碰撞。微软的多元文化办公室给了Jesse第一手素材。</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.youtube.com/watch?v=M3VRy2IJ7Zc" target="_blank" class="ref-card"><div class="comedian">Trevor Noah</div><div class="joke">Trevor Noah vs Siri — Siri听不懂他的南非口音，AI的"种族歧视"时刻。</div><span class="fb-wrap" data-jid="ref-9" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=rO-89oBeBbQ" target="_blank" class="ref-card"><div class="comedian">Stand-up Special</div><div class="joke">用Siri、Alexa、Cortana和Google Home做整场standup——每个AI的人格差异。</div><span class="fb-wrap" data-jid="ref-10" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=s8gmeIne3m0" target="_blank" class="ref-card"><div class="comedian">Alonzo Bodden</div><div class="joke">Siri vs Alexa对比——两个AI的性格差异就像两个不同性格的人。</div><span class="fb-wrap" data-jid="ref-11" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.tiktok.com/@shelbyhyoung/video/7449571030089092394" target="_blank" class="ref-card"><div class="comedian">Shelby Young</div><div class="joke">用英国口音跟Siri和Alexa对话——AI对口音的识别差异。</div><span class="fb-wrap" data-jid="ref-12" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>ChatGPT is my Indian colleague. Ask one question, get a 5-page answer with examples you didn't need.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Gemini is my American colleague. Very confident. Often wrong. Never apologizes first.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Claude is my Japanese colleague. Polite, thorough, and will say "I'm not sure" instead of guessing. Also stays late.<span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Copilot is my Chinese colleague. Knows everything about the codebase, works 24/7, never complains. Might be replaced next quarter.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Siri is the intern. Been here 10 years, still can't do the basics.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I asked ChatGPT a yes-or-no question. It gave me 4 paragraphs. Classic Indian colleague energy: "Let me give you the context first."<span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Gemini hallucinated a fake source with full confidence. That's not a bug — that's American optimism.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>If AIs had a standup meeting, ChatGPT would talk for 20 minutes. Gemini would interrupt. Claude would take notes. Siri would freeze.<span class="tag tag-meta">META</span><span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I use 4 different AIs. That's not productivity — that's a multicultural team with no manager.<span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Alexa is German. Does exactly what you ask, nothing more. No small talk. No feelings. Just results.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>🎤 Jesse's Comedy Lab · 段子加练 Day 2 · 2026-03-17</p>
+  <p style="margin-top:0.5rem"><a href="daily-2026-03-16.html">← 昨日</a> · <a href="daily-2026-03-15.html">首期</a> · <a href="index.html">Main Lab</a></p>
+  <p style="margin-top:1rem; font-size:0.65rem; color:#555">Generated by Bob 🤖 · 3 insights · 30 one-liners · 12 references</p>
+</footer>
+
+<div class="fb-bar" id="fbBar">
+  <span>已标记 <span class="count" id="fbCount">0</span> 条反馈</span>
+  <button onclick="exportFeedback()">📋 复制反馈 JSON</button>
+</div>
+
+<script>
+const FB_KEY = 'comedy-feedback-2026-03-17';
+function loadFeedback() { try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; } }
+function saveFeedback(data) { localStorage.setItem(FB_KEY, JSON.stringify(data)); updateBar(data); syncToServer(data); }
+function syncToServer(data) { fetch('http://127.0.0.1:8765', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: 'daily-2026-03-17', votes: data }) }).catch(() => {}); }
+function updateBar(data) { const c = Object.keys(data).length; document.getElementById('fbCount').textContent = c; document.getElementById('fbBar').classList.toggle('visible', c > 0); }
+function vote(btn) { const w = btn.closest('.fb-wrap'), jid = w.dataset.jid, v = btn.dataset.vote, data = loadFeedback(); const p = w.closest('li') || w.closest('.ref-card') || w.closest('a'); let t = ''; if (p) t = p.textContent.replace(/👍|👎/g, '').trim().substring(0, 120); const s = w.querySelectorAll('.fb-btn'); if (data[jid] && data[jid].vote === v) { delete data[jid]; s.forEach(x => x.classList.remove('active-up', 'active-down')); } else { data[jid] = { vote: v, text: t, time: Date.now() }; s.forEach(x => x.classList.remove('active-up', 'active-down')); btn.classList.add(v === 'up' ? 'active-up' : 'active-down'); } saveFeedback(data); }
+function exportFeedback() { navigator.clipboard.writeText(JSON.stringify(loadFeedback(), null, 2)).then(() => { const b = document.querySelector('.fb-bar button'); b.textContent = '✅ 已复制!'; setTimeout(() => b.textContent = '📋 复制反馈 JSON', 2000); }); }
+document.addEventListener('DOMContentLoaded', () => { const data = loadFeedback(); updateBar(data); Object.entries(data).forEach(([jid, info]) => { const w = document.querySelector(`.fb-wrap[data-jid="${jid}"]`); if (w) { const b = w.querySelector(`[data-vote="${info.vote}"]`); if (b) b.classList.add(info.vote === 'up' ? 'active-up' : 'active-down'); } }); });
+</script>
+
+</body>
+</html>
