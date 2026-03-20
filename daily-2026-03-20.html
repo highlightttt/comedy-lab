@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-20</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #050505; --surface: #0e0e0e; --surface-2: #181818; --border: #1e1e1e; --text: #eaeaea; --text-muted: #777; --red: #ff3b30; --orange: #ff6b35; --gold: #ffd60a; --green: #30d158; --blue: #0a84ff; --purple: #bf5af2; --pink: #ff375f; --cyan: #64d2ff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 40%, rgba(48,209,88,0.08), transparent), radial-gradient(ellipse 500px 500px at 70% 60%, rgba(255,214,10,0.06), transparent); animation: drift 12s ease-in-out infinite alternate; }
+@keyframes drift { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.05) rotate(2deg); } }
+.hero .date-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.8rem; color: var(--text-muted); backdrop-filter: blur(10px); background: rgba(14,14,14,0.6); margin-bottom: 2rem; position: relative; z-index: 1; }
+.hero .date-badge .live { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+.hero h1 { font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; position: relative; z-index: 1; }
+.hero h1 .accent { background: linear-gradient(135deg, var(--green), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle { font-size: clamp(0.95rem, 2vw, 1.2rem); color: var(--text-muted); margin-top: 1.5rem; z-index: 1; position: relative; }
+.hero .stats-row { display: flex; gap: 3rem; margin-top: 3rem; z-index: 1; position: relative; }
+.hero .stat { text-align: center; }
+.hero .stat-num { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--green), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(5,5,5,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 2rem; overflow-x: auto; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; min-width: max-content; }
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; padding: 0.9rem 1.1rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.nav a:hover { color: var(--text); border-bottom-color: var(--green); }
+.insights { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.insight { margin-bottom: 6rem; scroll-margin-top: 70px; }
+.insight-head { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; margin-bottom: 2rem; }
+.insight-num { font-size: 3.5rem; font-weight: 700; line-height: 1; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.c1 { background: linear-gradient(135deg, var(--red), var(--orange)); }
+.c2 { background: linear-gradient(135deg, var(--green), var(--cyan)); }
+.c3 { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.c4 { background: linear-gradient(135deg, var(--gold), var(--orange)); }
+.c5 { background: linear-gradient(135deg, var(--blue), var(--purple)); }
+.insight-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; }
+.insight-premise { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem; padding-left: 0.5rem; border-left: 2px solid var(--border); }
+.insight-raw { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 2rem; position: relative; }
+.insight-raw::before { content: 'JESSE原话'; position: absolute; top: 0; right: 0; padding: 4px 12px; background: var(--surface-2); border-bottom-left-radius: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem; letter-spacing: 0.12em; color: var(--text-muted); }
+.refs { margin-bottom: 2rem; }
+.refs h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.8rem; }
+.ref-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.82rem; position: relative; }
+.ref-card:hover { border-color: #333; }
+.ref-card .comedian { color: var(--gold); font-weight: 500; font-size: 0.72rem; margin-bottom: 0.3rem; }
+.ref-card .joke { color: var(--text-muted); line-height: 1.5; }
+a.ref-card { transition: border-color 0.3s, transform 0.2s; display: block; text-decoration: none; color: inherit; }
+a.ref-card:hover { border-color: var(--gold) !important; transform: translateY(-2px); }
+a.ref-card::after { content: '🔗 Watch →'; display: block; margin-top: 8px; font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.2s; }
+a.ref-card:hover::after { opacity: 1; }
+.oneliners h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green); margin-bottom: 1rem; }
+.liner-list { list-style: none; }
+.liner-list li { padding: 0.8rem 1rem; border-left: 2px solid var(--border); margin-bottom: 0.5rem; font-size: 0.88rem; color: var(--text); transition: border-color 0.2s, background 0.2s; border-radius: 0 8px 8px 0; }
+.liner-list li:hover { border-left-color: var(--green); background: var(--surface); }
+.tag { display: inline-block; font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-weight: 500; vertical-align: middle; }
+.tag-hot { background: rgba(255,59,48,0.15); color: var(--red); }
+.tag-meta { background: rgba(10,132,255,0.15); color: var(--blue); }
+.tag-dark { background: rgba(191,90,242,0.15); color: var(--purple); }
+.tag-callback { background: rgba(255,214,10,0.15); color: var(--gold); }
+.tag-jesse { background: rgba(48,209,88,0.15); color: var(--green); }
+.footer { text-align: center; padding: 4rem 2rem; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+.footer a { color: var(--green); text-decoration: none; }
+@media (max-width: 640px) { .hero .stats-row { gap: 1.5rem; } .hero .stat-num { font-size: 1.8rem; } .insight-num { font-size: 2.5rem; } .ref-grid { grid-template-columns: 1fr; } }
+.fb-wrap { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
+.fb-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 0.85rem; padding: 2px 6px; opacity: 0; transition: all 0.2s; line-height: 1; }
+.fb-wrap:hover .fb-btn { opacity: 0.5; }
+.fb-btn:hover { opacity: 0.8 !important; border-color: #333; }
+li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0.5; }
+.fb-btn.active-up { opacity: 1 !important; background: rgba(48,209,88,0.15); border-color: var(--green); }
+.fb-btn.active-down { opacity: 1 !important; background: rgba(255,59,48,0.15); border-color: var(--red); }
+.ref-card .fb-wrap { position: absolute; bottom: 8px; right: 8px; }
+.fb-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: rgba(14,14,14,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); transform: translateY(100%); transition: transform 0.3s; }
+.fb-bar.visible { transform: translateY(0); }
+.fb-bar .count { color: var(--green); font-weight: 600; }
+.fb-bar button { background: var(--green); color: #000; border: none; border-radius: 8px; padding: 8px 20px; font-weight: 600; font-size: 0.8rem; cursor: pointer; font-family: inherit; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><div class="live"></div> 2026.03.20 · Friday</div>
+  <h1><span class="accent">新素材</span>日报</h1>
+  <p class="subtitle">Jesse的5条新one-liner · 打磨 + 变体 + 参考</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">New Premises</div></div>
+    <div class="stat"><div class="stat-num">50</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label">References</div></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#i1">01 · 厕所等里面</a>
+    <a href="#i2">02 · 香蕉不用洗</a>
+    <a href="#i3">03 · 苦瓜=人生</a>
+    <a href="#i4">04 · 前女友太Hot</a>
+    <a href="#i5">05 · 地铁安检</a>
+  </div>
+</nav>
+
+<div class="insights">
+
+  <!-- INSIGHT 1 -->
+  <div class="insight" id="i1">
+    <div class="insight-head">
+      <div class="insight-num c1">01</div>
+      <div>
+        <div class="insight-title">厕所 · Wait Inside</div>
+        <div class="insight-premise">Misdirection: "inside"的歧义——inside the store vs inside the bathroom。画面感制造笑点。</div>
+      </div>
+    </div>
+    <div class="insight-raw">When we shopping, I don't like waiting outside when my girlfriend toilet. So I wait inside.</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.tiktok.com/@kvoncomedy/video/7173682700698570026" target="_blank" class="ref-card"><div class="comedian">K-von</div><div class="joke">Men vs Women shopping — 男人在商场等女人的痛苦是universal comedy。</div><span class="fb-wrap" data-jid="ref-1" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.tiktok.com/@chrisdelia/video/7522787625216888077" target="_blank" class="ref-card"><div class="comedian">Chris D'Elia</div><div class="joke">"We should've timed her" — crowd work吐槽女朋友在厕所花的时间。</div><span class="fb-wrap" data-jid="ref-2" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.tiktok.com/@comediabigmouth/video/7591465485473025302" target="_blank" class="ref-card"><div class="comedian">Stand-up clip</div><div class="joke">等女朋友的各种comedy scenarios — 男人在商场的无聊是喜剧金矿。</div><span class="fb-wrap" data-jid="ref-3" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>When my girlfriend goes to the bathroom at the mall, I hate waiting outside. So I wait inside.<span class="tag tag-jesse">JESSE原版</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend takes 20 minutes in the bathroom. I got tired of standing outside like a security guard. So now I go in. She locks the door now.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I don't understand the "husband chair" outside fitting rooms. I'm not a dog. You can't just park me somewhere and say "stay."<span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Waiting for your girlfriend outside the bathroom is the adult version of waiting outside the principal's office. You didn't do anything wrong, but you feel guilty.<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend said "I'll be quick." That was 2018.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I waited outside the bathroom so long, people thought I was the janitor. Someone asked me for more toilet paper. I gave it to them. It wasn't even my job.<span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>She said "hold my purse." Now I'm standing outside the women's bathroom holding a pink bag. I look like I'm transitioning — into a coat rack.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The longest relationship I've ever had is with the bench outside Zara.<span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I wait outside fitting rooms so often that the staff started offering me water. I'm not a customer — I'm furniture.<span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend asked why I followed her into the bathroom. I said "you follow me into every argument, so we're even."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 2 -->
+  <div class="insight" id="i2">
+    <div class="insight-head">
+      <div class="insight-num c2">02</div>
+      <div>
+        <div class="insight-title">香蕉 · No Washing Required</div>
+        <div class="insight-premise">懒人逻辑：不想洗水果→选一个不用洗的水果。逻辑正确但荒谬。</div>
+      </div>
+    </div>
+    <div class="insight-raw">I don't like wash fruits before and after eat them, that's why my favorite fruit is banana.</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.tiktok.com/@thehalohalofamily/video/7123691138933853482" target="_blank" class="ref-card"><div class="comedian">Halo Halo Family</div><div class="joke">Lazy teen的独特洗碗方式——懒人总能找到创造性的解决方案。</div><span class="fb-wrap" data-jid="ref-4" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>I hate washing fruit. That's why my favorite fruit is banana. God already wrapped it for me.<span class="tag tag-jesse">JESSE原版</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Banana is nature's to-go meal. Built-in wrapper, no seeds, no knife needed. It's the only fruit designed by someone who actually eats fruit.<span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I pick all my food based on laziness. Banana over apple. Microwave over oven. Delivery over cooking. My diet is just a series of shortcuts.<span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>People say "wash your fruit." I say "pick better fruit." You don't wash a banana. You don't wash an orange. Lazy isn't a problem — it's a filter.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My mom said "always wash fruit before eating." So I stopped eating fruit. Problem solved.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Grapes are a scam. 50 tiny fruits and you have to wash every single one. That's not a snack — that's a chore.<span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I eat bananas because they come in their own packaging. If apples came pre-peeled, I'd eat those too. I'm not lazy — I'm efficient.<span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend buys strawberries. You have to wash them, cut the tops off, and eat them within 2 days or they rot. That's not food — that's a commitment.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I rank fruit by effort. S-tier: banana. A-tier: orange. F-tier: pomegranate. If eating a fruit requires YouTube instructions, it's not food — it's a project.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Coconut is the most aggressive fruit. You need a hammer to eat it. That's not a fruit — that's a threat.<span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 3 -->
+  <div class="insight" id="i3">
+    <div class="insight-head">
+      <div class="insight-num c3">03</div>
+      <div>
+        <div class="insight-title">苦瓜 = My Life</div>
+        <div class="insight-premise">Wordplay: water+melon = juicy, bitter+melon = my life。瓜类命名暴露人生哲学。</div>
+      </div>
+    </div>
+    <div class="insight-raw">Watermelon sounds very juicy, bittermelon sounds my life.</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.instagram.com/reel/CuTMImUMknb/" target="_blank" class="ref-card"><div class="comedian">Tim To</div><div class="joke">苦瓜是毁掉晚饭的元凶——ABC/CBC的童年阴影。</div><span class="fb-wrap" data-jid="ref-5" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.instagram.com/reel/DVMZEmykvej/" target="_blank" class="ref-card"><div class="comedian">Ed Tong</div><div class="joke">"More bitter melon hate" — 亚裔comedian的苦瓜怨念系列。</div><span class="fb-wrap" data-jid="ref-6" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=7xijZLppZJE" target="_blank" class="ref-card"><div class="comedian">Johnny Tiger</div><div class="joke">"Chinese people will eat anything and everything" — 苦瓜是中国食物冒险精神的缩影。</div><span class="fb-wrap" data-jid="ref-7" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>Watermelon sounds juicy. Bittermelon sounds like my life.<span class="tag tag-jesse">JESSE原版</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Watermelon: sweet, refreshing, everyone's favorite. Bittermelon: nobody asked for it, hard to swallow, but somehow good for you. That's not a vegetable — that's adulthood.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My mom made me eat bittermelon as a kid. She said "it builds character." She was right. Now I'm bitter AND full of character.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>If melons are named by vibes: watermelon is your 20s. Bittermelon is your 30s. Honeydew is retirement — sweet, but nobody's excited about it.<span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Bittermelon is the only food that's honest about itself. It's called BITTER melon. It doesn't pretend. Unlike my ex, who was called "sweet" but was 100% bittermelon.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Chinese parents: "Eat the bittermelon." "Why?" "Because life is bitter. Get used to it." That's not parenting — that's a TED Talk with vegetables.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I brought bittermelon to a potluck. Nobody touched it. It sat there alone. Even at a party, bittermelon gets rejected. Relatable.<span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Every Asian kid has a bittermelon origin story. Mine is: I cried at the dinner table. My dad said "stop crying, it's just food." It wasn't just food. It was betrayal.<span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>You know what's worse than bittermelon? Bittermelon soup. They took something terrible and added water. That's not cooking — that's diluting sadness.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Wintermelon, watermelon, bittermelon — Chinese has a melon for every emotion. We don't need therapy. We have melons.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 4 -->
+  <div class="insight" id="i4">
+    <div class="insight-head">
+      <div class="insight-num c4">04</div>
+      <div>
+        <div class="insight-title">前女友太Hot</div>
+        <div class="insight-premise">双重反转：以为"hot"是在夸前女友→以为现女友吃醋→结果她们要前女友电话。Misdirection x2。</div>
+      </div>
+    </div>
+    <div class="insight-raw">Every girl I date always ask me the reason why I broke up with my ex. Cuz she was really hot (they all want her number).</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.youtube.com/watch?v=WlB08Nwjl2k" target="_blank" class="ref-card"><div class="comedian">Iliza Shlesinger</div><div class="joke">Planned Breakup — 分手是一门艺术，女生总是提前准备好了退路。</div><span class="fb-wrap" data-jid="ref-8" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/shorts/sLm-hRbGjXU" target="_blank" class="ref-card"><div class="comedian">Sezar Alkassab</div><div class="joke">Dating和面试的平行——前任就是你的前公司，新女友会问你为什么离职。</div><span class="fb-wrap" data-jid="ref-9" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.instagram.com/reel/DS5WkRllRyG/" target="_blank" class="ref-card"><div class="comedian">Stand-up clip</div><div class="joke">"Just broke up with my girlfriend" — 分手后的stand-up是最真实的therapy。</div><span class="fb-wrap" data-jid="ref-10" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>Every girl I date asks why I broke up with my ex. I say "she was really hot." They go quiet. Then they ask for her number.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-31"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I told my girlfriend my ex was a 10. She said "then why'd you leave?" I said "she left me." Now we're both sad.<span class="fb-wrap" data-jid="joke-32"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>"Why did you break up?" is the "why did you leave your last job?" of dating. Same lie. Different interviewer.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-33"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My ex was so attractive, my current girlfriend follows her on Instagram. Not to spy — to study.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-34"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I showed my friend a photo of my ex. He said "why did YOU break up with HER?" The emphasis on "you" hurt more than the breakup.<span class="fb-wrap" data-jid="joke-35"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My ex is so hot, she's the reason I have trust issues. Not because she cheated — because I peaked.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-36"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Dating after a hot ex is like driving a Honda after a Ferrari. The Honda is reliable. Gets you there. But you remember the Ferrari. Every. Single. Day.<span class="fb-wrap" data-jid="joke-37"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My girlfriend found a photo of my ex and said "she's pretty." That's girlfriend for "explain yourself immediately."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-38"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The correct answer to "was your ex pretty?" is silence. Any word you say will be used against you in an argument 6 months from now.<span class="fb-wrap" data-jid="joke-39"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I dated a girl who was way out of my league. We broke up. Now every girl I date asks "how did YOU get HER?" I'm starting to think I'm the bittermelon of boyfriends.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-40"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT 5 -->
+  <div class="insight" id="i5">
+    <div class="insight-head">
+      <div class="insight-num c5">05</div>
+      <div>
+        <div class="insight-title">地铁 = Daily Security Check</div>
+        <div class="insight-premise">Reframe: 地铁安检不是麻烦，是免费的每日安全体检。VIP待遇。</div>
+      </div>
+    </div>
+    <div class="insight-raw">Subway is my favorite transportation, cuz I want to check my security on daily basis.</div>
+    <div class="refs">
+      <h4>📚 参考段子 · Reference Bits</h4>
+      <div class="ref-grid">
+        <a href="https://www.instagram.com/reel/DOJJV59jh2f/" target="_blank" class="ref-card"><div class="comedian">TSA Agent Comic</div><div class="joke">一个TSA员工在地铁上做stand-up——"Calculators are banned, they're capable of math destruction."</div><span class="fb-wrap" data-jid="ref-11" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.tiktok.com/@marcusjmonroe/video/7545988535233367327" target="_blank" class="ref-card"><div class="comedian">Marcus Monroe</div><div class="joke">TSA agent在地铁上做standup——安检工作的荒诞日常。</div><span class="fb-wrap" data-jid="ref-12" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+        <a href="https://www.youtube.com/watch?v=Q8TWVXBxuDE" target="_blank" class="ref-card"><div class="comedian">Raj Sharma</div><div class="joke">Airport security专场——安检的荒诞和每天被检查的无奈。</div><span class="fb-wrap" data-jid="ref-13" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+      </div>
+    </div>
+    <div class="oneliners">
+      <h4>🎤 原创段子 · Original One-liners</h4>
+      <ul class="liner-list">
+        <li>Subway is my favorite transportation. Free daily security check. I feel like a VIP. A Very Inspected Person.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-41"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I take the subway twice a day. That's 2 security checks. 730 a year. I'm the most vetted person in China and I still can't get a raise.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-42"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The subway guard knows my bag better than my doctor knows my body. He X-rays me every morning. No copay.<span class="fb-wrap" data-jid="joke-43"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Americans pay $500 for a full-body scan. I get one for free every morning. China's healthcare is in the subway.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-44"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I went through security so many times, the machine recognized my lunch before I did. It flagged my expired sandwich. Even the X-ray has standards.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-45"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>The subway security guard waved me through today without checking. I felt offended. Am I not suspicious enough? Do I look that boring?<span class="fb-wrap" data-jid="joke-46"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>I go through subway security more often than I go to the gym. At this point, the X-ray machine is my primary care provider.<span class="fb-wrap" data-jid="joke-47"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>My bag has been X-rayed more times than a broken arm. If my bag gets cancer, at least we'll catch it early.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-48"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Celebrities have bodyguards. I have subway security. Same energy. Less salary.<span class="fb-wrap" data-jid="joke-49"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+        <li>Subway security is my daily affirmation. Every morning, someone checks if I'm dangerous. I'm not. But it's nice to be considered.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-50"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>🎤 Jesse's Comedy Lab · Daily Report · 2026-03-20</p>
+  <p style="margin-top:0.5rem"><a href="daily-2026-03-17.html">← 上期</a> · <a href="daily-2026-03-15.html">首期</a> · <a href="index.html">Main Lab</a></p>
+  <p style="margin-top:1rem; font-size:0.65rem; color:#555">Generated by Bob 🤖 · 5 insights from Jesse's new material · 50 one-liners · 15 references</p>
+</footer>
+
+<div class="fb-bar" id="fbBar">
+  <span>已标记 <span class="count" id="fbCount">0</span> 条反馈</span>
+  <button onclick="exportFeedback()">📋 复制反馈 JSON</button>
+</div>
+
+<script>
+const FB_KEY = 'comedy-feedback-2026-03-20';
+function loadFeedback() { try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; } }
+function saveFeedback(data) { localStorage.setItem(FB_KEY, JSON.stringify(data)); updateBar(data); syncToServer(data); }
+function syncToServer(data) { fetch('http://127.0.0.1:8765', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: 'daily-2026-03-20', votes: data }) }).catch(() => {}); }
+function updateBar(data) { const c = Object.keys(data).length; document.getElementById('fbCount').textContent = c; document.getElementById('fbBar').classList.toggle('visible', c > 0); }
+function vote(btn) { const w = btn.closest('.fb-wrap'), jid = w.dataset.jid, v = btn.dataset.vote, data = loadFeedback(); const p = w.closest('li') || w.closest('.ref-card') || w.closest('a'); let t = ''; if (p) t = p.textContent.replace(/👍|👎/g, '').trim().substring(0, 120); const s = w.querySelectorAll('.fb-btn'); if (data[jid] && data[jid].vote === v) { delete data[jid]; s.forEach(x => x.classList.remove('active-up', 'active-down')); } else { data[jid] = { vote: v, text: t, time: Date.now() }; s.forEach(x => x.classList.remove('active-up', 'active-down')); btn.classList.add(v === 'up' ? 'active-up' : 'active-down'); } saveFeedback(data); }
+function exportFeedback() { navigator.clipboard.writeText(JSON.stringify(loadFeedback(), null, 2)).then(() => { const b = document.querySelector('.fb-bar button'); b.textContent = '✅ 已复制!'; setTimeout(() => b.textContent = '📋 复制反馈 JSON', 2000); }); }
+document.addEventListener('DOMContentLoaded', () => { const data = loadFeedback(); updateBar(data); Object.entries(data).forEach(([jid, info]) => { const w = document.querySelector(`.fb-wrap[data-jid="${jid}"]`); if (w) { const b = w.querySelector(`[data-vote="${info.vote}"]`); if (b) b.classList.add(info.vote === 'up' ? 'active-up' : 'active-down'); } }); });
+</script>
+
+</body>
+</html>
