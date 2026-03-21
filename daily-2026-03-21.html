@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-21</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --bg: #050505; --surface: #0e0e0e; --surface-2: #181818; --border: #1e1e1e; --text: #eaeaea; --text-muted: #777; --red: #ff3b30; --orange: #ff6b35; --gold: #ffd60a; --green: #30d158; --blue: #0a84ff; --purple: #bf5af2; --pink: #ff375f; --cyan: #64d2ff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 40%, rgba(191,90,242,0.08), transparent), radial-gradient(ellipse 500px 500px at 70% 60%, rgba(255,59,48,0.06), transparent); animation: drift 12s ease-in-out infinite alternate; }
+@keyframes drift { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.05) rotate(2deg); } }
+.hero .date-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid var(--border); border-radius: 100px; font-size: 0.8rem; color: var(--text-muted); backdrop-filter: blur(10px); background: rgba(14,14,14,0.6); margin-bottom: 2rem; position: relative; z-index: 1; }
+.hero .date-badge .live { width: 6px; height: 6px; background: var(--purple); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+.hero h1 { font-size: clamp(2.5rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; position: relative; z-index: 1; }
+.hero h1 .accent { background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .subtitle { font-size: clamp(0.95rem, 2vw, 1.2rem); color: var(--text-muted); margin-top: 1.5rem; z-index: 1; position: relative; }
+.hero .stats-row { display: flex; gap: 3rem; margin-top: 3rem; z-index: 1; position: relative; }
+.hero .stat { text-align: center; }
+.hero .stat-num { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--purple), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.nav { position: sticky; top: 0; z-index: 100; background: rgba(5,5,5,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 2rem; overflow-x: auto; }
+.nav::-webkit-scrollbar { display: none; }
+.nav-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 0; min-width: max-content; }
+.nav a { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; padding: 0.9rem 1.1rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.nav a:hover { color: var(--text); border-bottom-color: var(--purple); }
+.insights { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.insight { margin-bottom: 6rem; scroll-margin-top: 70px; }
+.insight-head { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start; margin-bottom: 2rem; }
+.insight-num { font-size: 3.5rem; font-weight: 700; line-height: 1; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.c1 { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.c2 { background: linear-gradient(135deg, var(--gold), var(--orange)); }
+.c3 { background: linear-gradient(135deg, var(--green), var(--cyan)); }
+.insight-title { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 600; letter-spacing: -0.02em; }
+.insight-premise { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem; padding-left: 0.5rem; border-left: 2px solid var(--border); }
+.refs { margin-bottom: 2rem; }
+.refs h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 1rem; }
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.8rem; }
+.ref-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; font-size: 0.82rem; position: relative; }
+.ref-card:hover { border-color: #333; }
+.ref-card .comedian { color: var(--gold); font-weight: 500; font-size: 0.72rem; margin-bottom: 0.3rem; }
+.ref-card .joke { color: var(--text-muted); line-height: 1.5; }
+a.ref-card { transition: border-color 0.3s, transform 0.2s; display: block; text-decoration: none; color: inherit; }
+a.ref-card:hover { border-color: var(--gold) !important; transform: translateY(-2px); }
+a.ref-card::after { content: '🔗 Watch →'; display: block; margin-top: 8px; font-size: 0.7rem; color: var(--blue); opacity: 0; transition: opacity 0.2s; }
+a.ref-card:hover::after { opacity: 1; }
+.oneliners h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--green); margin-bottom: 1rem; }
+.liner-list { list-style: none; }
+.liner-list li { padding: 0.8rem 1rem; border-left: 2px solid var(--border); margin-bottom: 0.5rem; font-size: 0.88rem; color: var(--text); transition: border-color 0.2s, background 0.2s; border-radius: 0 8px 8px 0; }
+.liner-list li:hover { border-left-color: var(--green); background: var(--surface); }
+.tag { display: inline-block; font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; margin-left: 8px; font-weight: 500; vertical-align: middle; }
+.tag-hot { background: rgba(255,59,48,0.15); color: var(--red); }
+.tag-meta { background: rgba(10,132,255,0.15); color: var(--blue); }
+.tag-dark { background: rgba(191,90,242,0.15); color: var(--purple); }
+.tag-callback { background: rgba(255,214,10,0.15); color: var(--gold); }
+.tag-absurd { background: rgba(100,210,255,0.15); color: var(--cyan); }
+.footer { text-align: center; padding: 4rem 2rem; color: var(--text-muted); font-size: 0.75rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+.footer a { color: var(--purple); text-decoration: none; }
+@media (max-width: 640px) { .hero .stats-row { gap: 1.5rem; } .hero .stat-num { font-size: 1.8rem; } .insight-num { font-size: 2.5rem; } .ref-grid { grid-template-columns: 1fr; } }
+.fb-wrap { display: inline-flex; gap: 4px; margin-left: 8px; vertical-align: middle; }
+.fb-btn { background: none; border: 1px solid transparent; border-radius: 6px; cursor: pointer; font-size: 0.85rem; padding: 2px 6px; opacity: 0; transition: all 0.2s; line-height: 1; }
+.fb-wrap:hover .fb-btn { opacity: 0.5; }
+.fb-btn:hover { opacity: 0.8 !important; border-color: #333; }
+li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0.5; }
+.fb-btn.active-up { opacity: 1 !important; background: rgba(48,209,88,0.15); border-color: var(--green); }
+.fb-btn.active-down { opacity: 1 !important; background: rgba(255,59,48,0.15); border-color: var(--red); }
+.ref-card .fb-wrap { position: absolute; bottom: 8px; right: 8px; }
+.fb-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background: rgba(14,14,14,0.95); backdrop-filter: blur(12px); border-top: 1px solid var(--border); padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); transform: translateY(100%); transition: transform 0.3s; }
+.fb-bar.visible { transform: translateY(0); }
+.fb-bar .count { color: var(--purple); font-weight: 600; }
+.fb-bar button { background: var(--purple); color: #000; border: none; border-radius: 8px; padding: 8px 20px; font-weight: 600; font-size: 0.8rem; cursor: pointer; font-family: inherit; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><div class="live"></div> 2026.03.21 · Saturday · 段子加练</div>
+  <h1><span class="accent">段子加练</span>日报</h1>
+  <p class="subtitle">没有新素材？没关系，老题目继续写到爆</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Revisited Premises</div></div>
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label">New One-liners</div></div>
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label">References</div></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#i1">01 · Vibe Coding像打架子鼓</a>
+    <a href="#i2">02 · 古代谚语 = Dirty Talk</a>
+    <a href="#i3">03 · 苦瓜 = 人生</a>
+  </div>
+</nav>
+
+<section class="insights">
+
+<!-- ===== INSIGHT 1: Vibe Coding ===== -->
+<div class="insight" id="i1">
+  <div class="insight-head">
+    <div class="insight-num c1">01</div>
+    <div>
+      <div class="insight-title">Vibe Coding像打架子鼓</div>
+      <div class="insight-premise">前提：Vibe coding就是让AI写代码你负责氛围——本质上你是乐队里那个不会乐器但负责打节拍的人</div>
+    </div>
+  </div>
+
+  <div class="refs">
+    <h4>📚 参考段子 · Real References</h4>
+    <div class="ref-grid">
+      <a class="ref-card" href="https://www.youtube.com/shorts/LYHru16rBuA" target="_blank">
+        <div class="comedian">YouTube Shorts · @emergentlabs</div>
+        <div class="joke">Vibe Coders are the next wave of programmers. 他们不写代码，他们写氛围。</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r1-1" data-v="up">👍</button><button class="fb-btn" data-id="r1-1" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.instagram.com/reel/DWEZw0sEfp9/" target="_blank">
+        <div class="comedian">Instagram · Parody Reel</div>
+        <div class="joke">"If vibe coding was a real person" — 全程就是一个人对着屏幕说"sick dude"然后什么都没写</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r1-2" data-v="up">👍</button><button class="fb-btn" data-id="r1-2" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.facebook.com/PrgrmmrHmr/videos/1629950084566058/" target="_blank">
+        <div class="comedian">ProgrammerHumor · Facebook</div>
+        <div class="joke">Vibe coding但AI一直说"You are absolutely right" —— 终于有人无条件认同我了，虽然是AI</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r1-3" data-v="up">👍</button><button class="fb-btn" data-id="r1-3" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.reddit.com/r/ProgrammerHumor/comments/1jcjrzf/vibecoding/" target="_blank">
+        <div class="comedian">r/ProgrammerHumor · Reddit</div>
+        <div class="joke">Vincent: "你说的vibe code是什么意思？" Jules: "就是Karpathy那条推文说的。" Vincent: "你打算vibe code多久？"</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r1-4" data-v="up">👍</button><button class="fb-btn" data-id="r1-4" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.facebook.com/groups/2616981278627207/posts/4401807910144526/" target="_blank">
+        <div class="comedian">Facebook · Dev Community</div>
+        <div class="joke">"It worked five minutes ago, I swear." ——Vibe coder在凌晨2点的经典台词</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r1-5" data-v="up">👍</button><button class="fb-btn" data-id="r1-5" data-v="down">👎</button></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="oneliners">
+    <h4>✍️ 原创 One-liners</h4>
+    <ul class="liner-list">
+      <li>Vibe coding就是打架子鼓——你负责节奏，AI负责旋律，观众负责发现这首歌根本不对。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-1" data-v="up">👍</button><button class="fb-btn" data-id="o1-1" data-v="down">👎</button></span></li>
+      <li>我现在写代码的方式，跟我妈用导航一样——全程跟着走，到了以后完全不知道怎么回去。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-2" data-v="up">👍</button><button class="fb-btn" data-id="o1-2" data-v="down">👎</button></span></li>
+      <li>Vibe coding最大的技能是什么？不是写代码，是在AI生成的时候装作自己在思考。<span class="tag tag-meta">META</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-3" data-v="up">👍</button><button class="fb-btn" data-id="o1-3" data-v="down">👎</button></span></li>
+      <li>以前程序员的核心能力是debug，现在是——跟AI描述bug的时候不要把自己也绕进去。<span class="fb-wrap"><button class="fb-btn" data-id="o1-4" data-v="up">👍</button><button class="fb-btn" data-id="o1-4" data-v="down">👎</button></span></li>
+      <li>Vibe coding就是——你不会游泳，但你特别擅长在泳池边喊"加油"。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-5" data-v="up">👍</button><button class="fb-btn" data-id="o1-5" data-v="down">👎</button></span></li>
+      <li>我跟AI说"帮我写个简单的网页"，它给我写了2000行。我说"简化一下"，它给我写了3000行。这就是vibe coding——你的氛围是减法，AI的氛围是乘法。<span class="fb-wrap"><button class="fb-btn" data-id="o1-6" data-v="up">👍</button><button class="fb-btn" data-id="o1-6" data-v="down">👎</button></span></li>
+      <li>Vibe coder的简历怎么写？"精通与AI沟通"——这不就是大家对产品经理的刻板印象吗？<span class="tag tag-meta">META</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-7" data-v="up">👍</button><button class="fb-btn" data-id="o1-7" data-v="down">👎</button></span></li>
+      <li>以前面试问"你用什么语言？" 现在应该问"你用什么语气？"——vibe coding，语气就是语言。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-8" data-v="up">👍</button><button class="fb-btn" data-id="o1-8" data-v="down">👎</button></span></li>
+      <li>Vibe coding像极了KTV里那个不会唱歌的人——全程负责打拍子、举话筒、喊"再来一首"。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-9" data-v="up">👍</button><button class="fb-btn" data-id="o1-9" data-v="down">👎</button></span></li>
+      <li>我Vibe coding做了一个APP，上线第一天就崩了。我看了一下代码——一行都看不懂。这种感觉就像你开着一辆自己组装的车，但你其实是看着AI组装的。<span class="tag tag-dark">DARK</span><span class="fb-wrap"><button class="fb-btn" data-id="o1-10" data-v="up">👍</button><button class="fb-btn" data-id="o1-10" data-v="down">👎</button></span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== INSIGHT 2: 古代谚语 = Dirty Talk ===== -->
+<div class="insight" id="i2">
+  <div class="insight-head">
+    <div class="insight-num c2">02</div>
+    <div>
+      <div class="insight-title">古代谚语 = Dirty Talk</div>
+      <div class="insight-premise">前提：古人说的很多话放到现在听，都像是某种情趣暗号——含蓄到极致就是另一种露骨</div>
+    </div>
+  </div>
+
+  <div class="refs">
+    <h4>📚 参考段子 · Real References</h4>
+    <div class="ref-grid">
+      <a class="ref-card" href="https://www.tumblr.com/chenghoong/141474502045/" target="_blank">
+        <div class="comedian">Tumblr · @chenghoong</div>
+        <div class="joke">汉语谐音艺术：从"莲子"到"怜子"，从"柳"到"留"——古人的含蓄是一门需要解密的色情文学</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r2-1" data-v="up">👍</button><button class="fb-btn" data-id="r2-1" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://chinasage.info/proverbs/proverbs.htm" target="_blank">
+        <div class="comedian">China Sage · Proverbs Collection</div>
+        <div class="joke">中国成语百科：每一条看似正经的成语背后，都藏着一个可以歪解的段子</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r2-2" data-v="up">👍</button><button class="fb-btn" data-id="r2-2" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://m.fx361.com/news/2017/0910/8453012.html" target="_blank">
+        <div class="comedian">参考网 · 谐音文化论文</div>
+        <div class="joke">学术论文认证：中国人用枣和栗子暗示"早立子"，婚礼上的每一样东西都是生殖暗号</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r2-3" data-v="up">👍</button><button class="fb-btn" data-id="r2-3" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="http://sin-idioms.blogspot.com" target="_blank">
+        <div class="comedian">Chinese Idioms Blog</div>
+        <div class="joke">中国成语：字面意思和实际意思完全不一样——跟你男/女朋友说"没事"是一个道理</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r2-4" data-v="up">👍</button><button class="fb-btn" data-id="r2-4" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.chinasage.info/proverbs/proverbs.htm" target="_blank">
+        <div class="comedian">China Sage · Historical Proverbs</div>
+        <div class="joke">"既生瑜何生亮"——听着像情圣在吃醋，实际上是三国时期的职场内卷</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r2-5" data-v="up">👍</button><button class="fb-btn" data-id="r2-5" data-v="down">👎</button></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="oneliners">
+    <h4>✍️ 原创 One-liners</h4>
+    <ul class="liner-list">
+      <li>"床前明月光"——这就是最早的booty call开场白。你看，人家连床都提了。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-1" data-v="up">👍</button><button class="fb-btn" data-id="o2-1" data-v="down">👎</button></span></li>
+      <li>"春宵一刻值千金"——古代的按分钟收费。<span class="tag tag-dark">DARK</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-2" data-v="up">👍</button><button class="fb-btn" data-id="o2-2" data-v="down">👎</button></span></li>
+      <li>古人谈恋爱说"窈窕淑女，君子好逑"——翻译成现代中文就是"她好看，我想追"。五千年文明，就为了让"我想追"听起来体面一点。<span class="fb-wrap"><button class="fb-btn" data-id="o2-3" data-v="up">👍</button><button class="fb-btn" data-id="o2-3" data-v="down">👎</button></span></li>
+      <li>"金风玉露一相逢，便胜却人间无数"——这不就是"我们只见了一次面但我觉得特别来电"吗？古人的一夜情都写得这么文艺。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-4" data-v="up">👍</button><button class="fb-btn" data-id="o2-4" data-v="down">👎</button></span></li>
+      <li>中国婚礼放枣、花生、桂圆、栗子——谐音"早生贵子"。你看，催生这件事，从你结婚那天就已经物理部署了。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-5" data-v="up">👍</button><button class="fb-btn" data-id="o2-5" data-v="down">👎</button></span></li>
+      <li>"乘月采芙蓉，夜夜得莲子"——"莲"是"怜"，"子"是"你"。古人写的是采莲，读的人脸红。这就是古代版Airdrop。<span class="tag tag-meta">META</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-6" data-v="up">👍</button><button class="fb-btn" data-id="o2-6" data-v="down">👎</button></span></li>
+      <li>"愿得一人心，白首不相离"——听着很浪漫对吧？但你仔细想想，这就是古代的婚前协议。<span class="fb-wrap"><button class="fb-btn" data-id="o2-7" data-v="up">👍</button><button class="fb-btn" data-id="o2-7" data-v="down">👎</button></span></li>
+      <li>古人送柳枝表示"留"——现在你在机场送人一根树枝，安检会把你拦下来。<span class="tag tag-absurd">ABSURD</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-8" data-v="up">👍</button><button class="fb-btn" data-id="o2-8" data-v="down">👎</button></span></li>
+      <li>"食色性也"——孟子两千年前就说了：吃饭和那个事儿是一样重要的。这是中国最早的"民以食为天，以色为地"。<span class="fb-wrap"><button class="fb-btn" data-id="o2-9" data-v="up">👍</button><button class="fb-btn" data-id="o2-9" data-v="down">👎</button></span></li>
+      <li>古代诗人写情诗用"鸳鸯戏水"——你品品，"戏水"是什么水？这是PG-13的古文。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o2-10" data-v="up">👍</button><button class="fb-btn" data-id="o2-10" data-v="down">👎</button></span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== INSIGHT 3: 苦瓜 = 人生 ===== -->
+<div class="insight" id="i3">
+  <div class="insight-head">
+    <div class="insight-num c3">03</div>
+    <div>
+      <div class="insight-title">苦瓜 = 人生</div>
+      <div class="insight-premise">前提：苦瓜也叫"半生瓜"——前半生觉得苦，后半生经历够了，苦瓜的苦已经不算什么了</div>
+    </div>
+  </div>
+
+  <div class="refs">
+    <h4>📚 参考段子 · Real References</h4>
+    <div class="ref-grid">
+      <a class="ref-card" href="https://www.youtube.com/watch?v=1z_OR0km8Jk" target="_blank">
+        <div class="comedian">YouTube · 纽约路人第一次吃苦瓜</div>
+        <div class="joke">苦瓜也叫半生瓜——前半生没吃过苦，觉得苦瓜苦；后半生经历多了，苦瓜的苦已经不算什么</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r3-1" data-v="up">👍</button><button class="fb-btn" data-id="r3-1" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.instagram.com/reel/CuTMImUMknb/" target="_blank">
+        <div class="comedian">Instagram · Cantonese Comedy</div>
+        <div class="joke">苦瓜 fu gwaa, bitter melon——广东人连苦都要用最温柔的方式表达：凉瓜</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r3-2" data-v="up">👍</button><button class="fb-btn" data-id="r3-2" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://www.tumblr.com/chenghoong/141474502045/" target="_blank">
+        <div class="comedian">谐音文化 · 谚语双关</div>
+        <div class="joke">"吃得苦中苦，方为人上人"——古人对吃苦瓜的人的最高评价</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r3-3" data-v="up">👍</button><button class="fb-btn" data-id="r3-3" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://chinasage.info/proverbs/proverbs.htm" target="_blank">
+        <div class="comedian">China Sage · 苦尽甘来</div>
+        <div class="joke">苦尽甘来——直译：苦瓜吃完了，该吃西瓜了</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r3-4" data-v="up">👍</button><button class="fb-btn" data-id="r3-4" data-v="down">👎</button></span>
+      </a>
+      <a class="ref-card" href="https://m.fx361.com/news/2017/0910/8453012.html" target="_blank">
+        <div class="comedian">参考网 · 文化隐喻</div>
+        <div class="joke">中国文化里万物皆可隐喻——苦瓜不是蔬菜，是人生教科书</div>
+        <span class="fb-wrap"><button class="fb-btn" data-id="r3-5" data-v="up">👍</button><button class="fb-btn" data-id="r3-5" data-v="down">👎</button></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="oneliners">
+    <h4>✍️ 原创 One-liners</h4>
+    <ul class="liner-list">
+      <li>苦瓜叫"半生瓜"，意思是你吃了半辈子的苦，才能接受这个味道。所以小孩不爱吃苦瓜不是挑食——是他们的人生阅历不够。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-1" data-v="up">👍</button><button class="fb-btn" data-id="o3-1" data-v="down">👎</button></span></li>
+      <li>我小时候问我妈为什么要吃苦瓜，她说"吃苦是福"。长大以后我发现——吃苦确实是福，因为996比苦瓜苦多了。<span class="tag tag-dark">DARK</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-2" data-v="up">👍</button><button class="fb-btn" data-id="o3-2" data-v="down">👎</button></span></li>
+      <li>苦瓜是唯一一种——你必须先受过社会的毒打，才能欣赏的蔬菜。<span class="fb-wrap"><button class="fb-btn" data-id="o3-3" data-v="up">👍</button><button class="fb-btn" data-id="o3-3" data-v="down">👎</button></span></li>
+      <li>广东人管苦瓜叫"凉瓜"——连蔬菜都要改名才能面对现实。这就是广东人的生活哲学：不是不苦，是换个说法就不苦了。<span class="tag tag-meta">META</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-4" data-v="up">👍</button><button class="fb-btn" data-id="o3-4" data-v="down">👎</button></span></li>
+      <li>你知道苦瓜最神奇的地方是什么吗？它跟什么一起炒，什么都不苦——只有它自己苦。这不就是职场里那个默默扛活的人吗。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-5" data-v="up">👍</button><button class="fb-btn" data-id="o3-5" data-v="down">👎</button></span></li>
+      <li>苦瓜炒蛋——苦瓜把所有的苦留给自己，蛋完全不苦。这就是中国式父母。<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-6" data-v="up">👍</button><button class="fb-btn" data-id="o3-6" data-v="down">👎</button></span></li>
+      <li>我有个判断一个人成熟度的方法——请他吃苦瓜。如果他说好吃，说明他被社会打磨得差不多了。<span class="fb-wrap"><button class="fb-btn" data-id="o3-7" data-v="up">👍</button><button class="fb-btn" data-id="o3-7" data-v="down">👎</button></span></li>
+      <li>"吃得苦中苦，方为人上人"——所以苦瓜是成功人士的入门食材？难怪老板们都爱点清炒苦瓜。<span class="tag tag-absurd">ABSURD</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-8" data-v="up">👍</button><button class="fb-btn" data-id="o3-8" data-v="down">👎</button></span></li>
+      <li>苦瓜的英文叫bitter melon——bitter是苦，melon是瓜。中文里"苦瓜脸"形容不开心。所以苦瓜在全世界都是负面情绪代言人，它比我还惨。<span class="fb-wrap"><button class="fb-btn" data-id="o3-9" data-v="up">👍</button><button class="fb-btn" data-id="o3-9" data-v="down">👎</button></span></li>
+      <li>人生就像苦瓜——你可以拒绝吃，但你妈不让。<span class="tag tag-hot">🔥 HOT</span><span class="fb-wrap"><button class="fb-btn" data-id="o3-10" data-v="up">👍</button><button class="fb-btn" data-id="o3-10" data-v="down">👎</button></span></li>
+    </ul>
+  </div>
+</div>
+
+</section>
+
+<footer class="footer">
+  <p>🎤 Comedy Daily · 段子加练 #3 · 2026-03-21</p>
+  <p style="margin-top:0.5rem"><a href="daily-2026-03-20.html">← 上期日报</a> · <a href="index.html">全部日报</a></p>
+</footer>
+
+<div class="fb-bar" id="fbBar">
+  <span>反馈：👍 <span class="count" id="upCount">0</span> · 👎 <span class="count" id="downCount">0</span></span>
+  <button onclick="copyFeedback()">📋 复制反馈JSON</button>
+</div>
+
+<script>
+const STORAGE_KEY = 'comedy-fb-2026-03-21';
+let fb = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+function render() {
+  let ups = 0, downs = 0;
+  document.querySelectorAll('.fb-btn').forEach(btn => {
+    const id = btn.dataset.id, v = btn.dataset.v;
+    btn.classList.remove('active-up', 'active-down');
+    if (fb[id] === 'up' && v === 'up') { btn.classList.add('active-up'); }
+    if (fb[id] === 'down' && v === 'down') { btn.classList.add('active-down'); }
+  });
+  Object.values(fb).forEach(v => { if(v==='up') ups++; if(v==='down') downs++; });
+  document.getElementById('upCount').textContent = ups;
+  document.getElementById('downCount').textContent = downs;
+  document.getElementById('fbBar').classList.toggle('visible', ups + downs > 0);
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.classList.contains('fb-btn')) return;
+  e.preventDefault(); e.stopPropagation();
+  const id = e.target.dataset.id, v = e.target.dataset.v;
+  fb[id] = fb[id] === v ? undefined : v;
+  if (fb[id] === undefined) delete fb[id];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(fb));
+  render();
+});
+
+function copyFeedback() {
+  const data = { date: '2026-03-21', feedback: fb, timestamp: new Date().toISOString() };
+  navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(() => {
+    const btn = document.querySelector('.fb-bar button');
+    btn.textContent = '✅ 已复制！';
+    setTimeout(() => btn.textContent = '📋 复制反馈JSON', 1500);
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
