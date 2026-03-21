@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-21 · 新素材特刊</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(255,107,53,0.08),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,214,10,0.06),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--orange)}
+.insights{max-width:1100px;margin:0 auto;padding:2rem}
+.insight{margin-bottom:6rem;scroll-margin-top:70px}
+.insight-head{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;margin-bottom:2rem}
+.insight-num{font-size:3.5rem;font-weight:700;line-height:1;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.c1{background:linear-gradient(135deg,var(--red),var(--orange))}
+.c2{background:linear-gradient(135deg,var(--gold),var(--orange))}
+.c3{background:linear-gradient(135deg,var(--green),var(--cyan))}
+.c4{background:linear-gradient(135deg,var(--purple),var(--pink))}
+.c5{background:linear-gradient(135deg,var(--blue),var(--purple))}
+.c6{background:linear-gradient(135deg,var(--cyan),var(--green))}
+.c7{background:linear-gradient(135deg,var(--pink),var(--red))}
+.insight-title{font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:600;letter-spacing:-0.02em}
+.insight-premise{color:var(--text-muted);font-size:0.9rem;margin-top:0.4rem;padding-left:0.5rem;border-left:2px solid var(--border)}
+.insight-raw{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-muted);margin-bottom:2rem;position:relative}
+.insight-raw::before{content:'JESSE原话';position:absolute;top:0;right:0;padding:4px 12px;background:var(--surface-2);border-bottom-left-radius:10px;font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;color:var(--orange)}
+.refs{margin-bottom:2rem}
+.refs h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:1rem}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.8rem}
+.ref-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.2rem;font-size:0.82rem;position:relative}
+a.ref-card{transition:border-color 0.3s,transform 0.2s;display:block;text-decoration:none;color:inherit}
+a.ref-card:hover{border-color:var(--gold)!important;transform:translateY(-2px)}
+a.ref-card::after{content:'🔗 Watch →';display:block;margin-top:8px;font-size:0.7rem;color:var(--blue);opacity:0;transition:opacity 0.2s}
+a.ref-card:hover::after{opacity:1}
+.ref-card .comedian{color:var(--gold);font-weight:500;font-size:0.72rem;margin-bottom:0.3rem}
+.ref-card .joke{color:var(--text-muted);line-height:1.5}
+.oneliners h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--orange);margin-bottom:1rem}
+.liner-list{list-style:none}
+.liner-list li{padding:0.8rem 1rem;border-left:2px solid var(--border);margin-bottom:0.5rem;font-size:0.88rem;color:var(--text);transition:border-color 0.2s,background 0.2s;border-radius:0 8px 8px 0}
+.liner-list li:hover{border-left-color:var(--orange);background:var(--surface)}
+.tag{display:inline-block;font-size:0.6rem;padding:2px 8px;border-radius:4px;margin-left:8px;font-weight:500;vertical-align:middle}
+.tag-hot{background:rgba(255,59,48,0.15);color:var(--red)}
+.tag-dark{background:rgba(191,90,242,0.15);color:var(--purple)}
+.tag-callback{background:rgba(255,214,10,0.15);color:var(--gold)}
+.tag-jesse{background:rgba(48,209,88,0.15);color:var(--green)}
+.tag-set{background:rgba(10,132,255,0.15);color:var(--blue)}
+.footer{text-align:center;padding:4rem 2rem;color:var(--text-muted);font-size:0.75rem;border-top:1px solid var(--border);margin-top:4rem}
+.footer a{color:var(--orange);text-decoration:none}
+@media(max-width:640px){.hero .stats-row{gap:1.5rem}.hero .stat-num{font-size:1.8rem}.insight-num{font-size:2.5rem}.ref-grid{grid-template-columns:1fr}}
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn,a.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:var(--green)}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:var(--red)}
+.ref-card .fb-wrap{position:absolute;bottom:8px;right:8px}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:var(--text-muted);transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:var(--green);font-weight:600}
+.fb-bar button{background:var(--orange);color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><div class="live"></div> 2026.03.21 · Saturday · Evening Edition</div>
+  <h1>新素材<span class="accent">特刊</span></h1>
+  <p class="subtitle">Jesse昨晚爆发式输出 · 7个全新洞察 · Office Kitchen Mini-Set</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">New Insights</div></div>
+    <div class="stat"><div class="stat-num">70</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">18</div><div class="stat-label">References</div></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#i1">01 · AI是老板</a>
+    <a href="#i2">02 · 微波炉考古</a>
+    <a href="#i3">03 · 冰箱生化武器</a>
+    <a href="#i4">04 · 沙拉三件套</a>
+    <a href="#i5">05 · 安检+午餐</a>
+    <a href="#i6">06 · WFH中美差</a>
+    <a href="#i7">07 · 数字游民</a>
+  </div>
+</nav>
+
+<div class="insights">
+
+<!-- INSIGHT 1 -->
+<div class="insight" id="i1">
+<div class="insight-head"><div class="insight-num c1">01</div><div><div class="insight-title">AI变成了所有人的老板</div><div class="insight-premise">"我刚问了AI"已经取代了"我老板说的"。AI从工具变成了权威+免责声明。</div></div></div>
+<div class="insight-raw">AI好像变成了我们所有人的老板，我们的口头禅就是：我刚刚问了AI；我刚刚和AI碰了一下；AI帮我写了一段…好像有一点权威，又好像是一个免责声明。</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.facebook.com/gianmarcosoresi/posts/people-love-ai-but-at-what-cost-podcastclips-funny-standup-comedy-comedians-ai/1495458092579810/" target="_blank" class="ref-card"><div class="comedian">Gianmarco Soresi</div><div class="joke">"People love AI but at what cost?" — AI崇拜的代价。</div><span class="fb-wrap" data-jid="ref-1" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.facebook.com/groups/1404116417142065/posts/1565980847622287/" target="_blank" class="ref-card"><div class="comedian">John Mulaney</div><div class="joke">在AI大会上做反AI standup——全场科技人被自己的工具嘲讽。</div><span class="fb-wrap" data-jid="ref-2" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>"I asked AI" is the new "my manager said so." Same authority. Zero accountability.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>We used to blame our boss for bad decisions. Now we blame AI. At least AI doesn't schedule a follow-up meeting about it.<span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>"AI told me to" is the adult version of "my mom said so." Nobody questions it. Nobody checks. Everybody obeys.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My coworker starts every sentence with "so I asked ChatGPT." Bro, you used to start with "I think." What happened to your brain?<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>"I ran it by AI" sounds professional. "I Googled it" sounds lazy. Same thing. Different branding.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>AI went from a tool to a coworker to a manager in 2 years. At this rate, it'll be CEO by Thursday and I'll report to a chatbot with a corner office.<span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>People say "AI suggested it" like that absolves responsibility. No. You chose to listen to a machine that once told me 2+2=5 with full confidence.<span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>"I checked with AI" is the new disclaimer. It's not advice — it's plausible deniability with a subscription fee.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>We gave AI no title, no salary, no stock options, and somehow it's running the show. That's the most efficient promotion in corporate history.<span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>I don't trust my own opinion anymore. I trust ChatGPT's opinion of my opinion. I've outsourced my self-esteem.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+<!-- INSIGHT 2 -->
+<div class="insight" id="i2">
+<div class="insight-head"><div class="insight-num c2">02</div><div><div class="insight-title">微波炉味道考古学</div><div class="insight-premise">办公室微波炉不加热食物——它给食物加调料。上一个人的咖喱，上上个人的鱼。</div></div></div>
+<div class="insight-raw">The office microwave has magic, it has layers of flavor history. It was pork when I put it in but it becomes well-smoked bacon when it comes out.</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.tiktok.com/@ivanwdecker/video/7223327158943485227" target="_blank" class="ref-card"><div class="comedian">Ivan Decker</div><div class="joke">Microwaves Unplugged — 微波炉的荒诞日常。</div><span class="fb-wrap" data-jid="ref-3" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.facebook.com/comedycentraluk/videos/fish-in-the-microwave-should-be-illegal-the-office/1216681382081588/" target="_blank" class="ref-card"><div class="comedian">The Office UK</div><div class="joke">"Fish in the microwave should be illegal" — 办公室微波炉犯罪现场。</div><span class="fb-wrap" data-jid="ref-4" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.youtube.com/watch?v=kIBj3LtRcFY" target="_blank" class="ref-card"><div class="comedian">The Office (US)</div><div class="joke">"Microwaving Fish For Lunch" — 全办公室遭殃的经典桥段。</div><span class="fb-wrap" data-jid="ref-5" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>I put in pork. It came out as smoked bacon. The office microwave doesn't heat food — it seasons it. With memories.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Our office microwave has layers of flavor like geological strata. Last week's curry. Tuesday's fish. Someone's regret from 2019.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The office microwave is a time machine. You put in rice, you get out a history of everything anyone has ever eaten in this building.<span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Microwaving fish at work is a war crime. It's not in the Geneva Convention, but it should be. Article 47: No seafood above 30 seconds.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Someone microwaved popcorn and burned it. The smell lasted 3 days. That's not cooking — that's chemical warfare with extra butter.<span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The office microwave is the only appliance with a body count. It's killed more lunches than deadlines.<span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>I opened the microwave and smelled Indian, Mexican, and Italian all at once. That's not an appliance — that's a food court with PTSD.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The microwave at work has seen more diversity than our hiring committee.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>If you want to know who works in your office, don't check the org chart. Check the microwave. Tuesday: curry. Wednesday: kimchi. Thursday: fish. Friday: everyone eats out because the microwave smells like a crime scene.<span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Our microwave has a sign that says "please clean after use." Nobody does. It's the most ignored sentence in the English language, right after "terms and conditions."<span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+<!-- INSIGHT 3 -->
+<div class="insight" id="i3">
+<div class="insight-head"><div class="insight-num c3">03</div><div><div class="insight-title">冰箱 · Office生化武器</div><div class="insight-premise">微波炉只是配角。冰箱才是真正的boss。里面的东西已经进化出了生态系统。</div></div></div>
+<div class="insight-raw">Microwave is not the most horrible thing in the office, the refrigerator is the worst, it's a bioweapon.</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.youtube.com/watch?v=kIBj3LtRcFY" target="_blank" class="ref-card"><div class="comedian">The Office</div><div class="joke">办公室厨房的各种犯罪——微波炉和冰箱是office comedy的经典战场。</div><span class="fb-wrap" data-jid="ref-6" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>The office microwave is bad. The office fridge is worse. It's not an appliance — it's a bioweapon.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>I opened the office fridge and something moved. I don't know if it was food or a new colleague. I closed it. We made eye contact.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>There's a container in our fridge that's been there since Q2. It's not food anymore. It's a tenant. It has rights.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The CDC should inspect office fridges. Ours has 3 biomes, 2 undiscovered species, and someone's lunch from the Obama administration.<span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Office fridge rule: if it's been there for 2 weeks, it belongs to the fridge now. It's assimilated. It's part of the ecosystem.<span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>I labeled my lunch "Jesse" and someone still took it. I put a second label: "contains shrimp." Nobody touched it for 3 weeks. Allergies are the best lock.<span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Opening the office fridge requires the same courage as opening your ex's Instagram. You know it's going to hurt, but you do it anyway.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The office fridge has a smell that transcends culture. It doesn't matter where you're from — everyone's afraid of the back shelf.<span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Our office did a fridge clean-out. They found containers from 3 employees who no longer work here. The food outlasted the people.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The office fridge is the only place where something can be simultaneously frozen and expired. Schrödinger's leftovers.<span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+<!-- INSIGHT 4 -->
+<div class="insight" id="i4">
+<div class="insight-head"><div class="insight-num c4">04</div><div><div class="insight-title">美国沙拉三件套</div><div class="insight-premise">美国同事每天吃沙拉。食材：胡萝卜、洋葱、和悲伤。三个让人哭的东西。</div></div></div>
+<div class="insight-raw">My American colleagues have salad everyday, I saw the ingredients, there are carrot, onion, and sadness, ingredients make people cry.</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.youtube.com/shorts/YzU_RaKocFk" target="_blank" class="ref-card"><div class="comedian">Demetri Martin</div><div class="joke">"Eating a salad is hard work" — 沙拉的荒诞仪式感。</div><span class="fb-wrap" data-jid="ref-7" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.tiktok.com/@netflixisajoke/video/7402812784276245790" target="_blank" class="ref-card"><div class="comedian">Netflix Stand-up</div><div class="joke">吐槽吃沙拉的挣扎——装健康的痛苦表演。</div><span class="fb-wrap" data-jid="ref-8" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.tiktok.com/@franciscellis/video/7595622518946303245" target="_blank" class="ref-card"><div class="comedian">Francis Ellis</div><div class="joke">Office lunch困境——在同事面前假装享受沙拉。</div><span class="fb-wrap" data-jid="ref-9" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>My American colleagues eat salad every day. Carrots, onion, and sadness. Three ingredients that make you cry.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-31"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Americans call it a "working lunch." It's a salad at your desk. That's not lunch — that's punishing yourself for existing.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-32"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My colleague eats the same kale salad every day and calls it "self-care." In China, self-care is hot pot. We care about ourselves MORE.<span class="tag tag-set">MINI-SET</span><span class="fb-wrap" data-jid="joke-33"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Eating salad at work is performance art. Nobody enjoys it. You're just performing health in front of witnesses.<span class="fb-wrap" data-jid="joke-34"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>American lunch: salad with dressing on the side. Chinese lunch: 3 dishes, rice, soup, and judgment from your mom about portion size. We're not the same.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-35"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>I watched my colleague chew a piece of raw kale for 45 seconds. That's not eating — that's a hostage negotiation between her jaw and the leaf.<span class="fb-wrap" data-jid="joke-36"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The saddest sound in any office: a fork scraping the bottom of a plastic salad container. That's the sound of dreams dying.<span class="tag tag-dark">DARK</span><span class="fb-wrap" data-jid="joke-37"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Salad is the food you eat when you've given up on joy but not on living.<span class="fb-wrap" data-jid="joke-38"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>In China we say "have you eaten?" as a greeting. In America the answer is always "just a salad." That's a cry for help, not a meal.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-39"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Americans add chicken to salad and call it a "protein bowl." We add lettuce to chicken and call it dinner. Same ingredients, different priorities.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-40"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+<!-- INSIGHT 5 -->
+<div class="insight" id="i5">
+<div class="insight-head"><div class="insight-num c5">05</div><div><div class="insight-title">安检 vs 过期午餐</div><div class="insight-premise">地铁安检能查炸弹查不出过期三明治。两个都没查出来的话，哪个更可怕？</div></div></div>
+<div class="insight-raw">如果地铁安检保安能检测出炸弹，他们应该也能检测出我包里上周忘扔的午餐。但他们两个都没检测出来。</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.instagram.com/reel/DOJJV59jh2f/" target="_blank" class="ref-card"><div class="comedian">TSA Agent Comic</div><div class="joke">"Calculators are banned — they're capable of math destruction." TSA员工在地铁上做standup。</div><span class="fb-wrap" data-jid="ref-10" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.youtube.com/watch?v=Q8TWVXBxuDE" target="_blank" class="ref-card"><div class="comedian">Raj Sharma</div><div class="joke">Airport Security专场——安检的荒诞与每天被检查的无奈。</div><span class="fb-wrap" data-jid="ref-11" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>If subway security can detect a bomb, they should detect the lunch I forgot in my bag last week. They found neither. I'm not sure which is scarier.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-41"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My bag went through the X-ray and the guard didn't flinch. Sir, there's a sandwich from last Tuesday in there. That's a hazmat situation. REACT.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-42"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The security guard scanned my bag and said "have a nice day." Bro, there is a biological weapon in my backpack. It used to be tuna.<span class="fb-wrap" data-jid="joke-43"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Subway security catches knives, lighters, water bottles. But a week-old egg sandwich? Goes right through. That's not security — that's selective blindness.<span class="fb-wrap" data-jid="joke-44"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>I've been carrying the same forgotten lunch for 5 days through security. At this point, my sandwich has more subway miles than I do.<span class="fb-wrap" data-jid="joke-45"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My expired lunch passed through security twice a day for a week. 10 checks. Zero flags. That sandwich has better clearance than me.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-46"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The X-ray machine can see through my bag but can't see that I'm suffering. Same as HR.<span class="tag tag-callback">CALLBACK</span><span class="fb-wrap" data-jid="joke-47"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>If my forgotten lunch goes through one more security scan, it qualifies for a subway pass. Frequent flyer miles for expired food.<span class="fb-wrap" data-jid="joke-48"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Security can detect metal, liquid, batteries. But shame? Nope. I walked in with last week's lunch, yesterday's coffee, and zero self-respect. All clear.<span class="fb-wrap" data-jid="joke-49"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My old lunch is so rotten it should set off the chemical detector. The fact that it doesn't means either my lunch is fine or the machine is broken. Both are terrifying.<span class="fb-wrap" data-jid="joke-50"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+<!-- INSIGHT 6 -->
+<div class="insight" id="i6">
+<div class="insight-head"><div class="insight-num c6">06</div><div><div class="insight-title">WFH中美差异</div><div class="insight-premise">美国人WFH = 没穿裤子的周末。中国人WFH = 24小时待命的加班。Same words, different tragedy.</div></div></div>
+<div class="insight-raw">Work from home对美国人来说就像周末。中国人会在周末work from home。</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.instagram.com/reel/C2xGmAErR4N/" target="_blank" class="ref-card"><div class="comedian">呼兰 (Hu Lan)</div><div class="joke">中美工作文化差异——在美国工作和在中国工作的巨大反差。</div><span class="fb-wrap" data-jid="ref-12" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.tiktok.com/@christurnerraps/video/7568176634625264926" target="_blank" class="ref-card"><div class="comedian">Chris Turner</div><div class="joke">America vs China standup — 文化对比的喜剧化处理。</div><span class="fb-wrap" data-jid="ref-13" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.youtube.com/watch?v=36v9GSOFMFc" target="_blank" class="ref-card"><div class="comedian">Joe Wong</div><div class="joke">"Building a wall didn't work for China" — 华裔comedian的中美对比经典。</div><span class="fb-wrap" data-jid="ref-14" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>For Americans, Work From Home means no pants. For Chinese, Work From Home means no off switch.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-51"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Americans work from home on Fridays. Chinese work from home on weekends. Same words, different tragedy.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-52"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>WFH for Americans: Netflix on the second monitor. WFH for Chinese: WeChat on every monitor. At 11 PM.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-53"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My American colleague said "I'm taking a mental health day." My Chinese colleague said "what's that?" That's the difference.<span class="fb-wrap" data-jid="joke-54"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>In America, WFH means working in pajamas. In China, WFH means sleeping in work clothes. Both are horizontal — only one is relaxing.<span class="fb-wrap" data-jid="joke-55"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Americans log off at 5. Chinese log off when the boss logs off. The boss never logs off. It's a Mexican standoff with read receipts.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-56"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>American WFH outfit: sweatpants. Chinese WFH outfit: the same clothes you slept in, because you never stopped working.<span class="fb-wrap" data-jid="joke-57"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My American manager said "disconnect this weekend." My Chinese manager said "reconnect the VPN." Same email, different energy.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-58"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>"Work-life balance" is an American concept. In China we just say "work." The "life" part is implied — barely.<span class="fb-wrap" data-jid="joke-59"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Americans have "Casual Friday." Chinese have "Slightly Less Intense Saturday."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-60"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+<!-- INSIGHT 7 -->
+<div class="insight" id="i7">
+<div class="insight-head"><div class="insight-num c7">07</div><div><div class="insight-title">Homeless = 数字游民</div><div class="insight-premise">Homeless做IT其实一直存在。只是rebrand了：没地址+有WiFi = Digital Nomad。</div></div></div>
+<div class="insight-raw">据我所知homeless可以做IT，但是改名了，现在叫数字游民。</div>
+<div class="refs"><h4>📚 参考段子</h4><div class="ref-grid">
+<a href="https://www.tiktok.com/@deninipaninii/video/7582516817713728798" target="_blank" class="ref-card"><div class="comedian">TikTok Creator</div><div class="joke">"Basically I'm homeless 😂" — 数字游民的自嘲，住Bali月入$15k但technically无家可归。</div><span class="fb-wrap" data-jid="ref-15" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+<a href="https://www.youtube.com/watch?v=R_YAoCFDZzE" target="_blank" class="ref-card"><div class="comedian">Fedor Ikelaar</div><div class="joke">荷兰数字游民comedian——从加德满都到世界各地做standup的流浪喜剧人生。</div><span class="fb-wrap" data-jid="ref-16" onclick="event.preventDefault();event.stopPropagation();"><button class="fb-btn" data-vote="up" onclick="event.preventDefault();event.stopPropagation();vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="event.preventDefault();event.stopPropagation();vote(this)">👎</button></span></a>
+</div></div>
+<div class="oneliners"><h4>🎤 原创段子</h4><ul class="liner-list">
+<li>Homeless people have been doing remote work for years. They just rebranded it. Now it's called "digital nomad."<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-61"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>A homeless guy with a laptop is a digital nomad. A digital nomad without a laptop is just homeless. The only difference is WiFi and a LinkedIn profile.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-62"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Digital nomad checklist: no fixed address ✅ works from random locations ✅ all belongings in a bag ✅ That's also the homeless checklist. The only upgrade is a MacBook.<span class="fb-wrap" data-jid="joke-63"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>"Where do you live?" "Everywhere." Cool, so… nowhere. Got it.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-64"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>A digital nomad is just a gentrified hobo. Same lifestyle, better hashtags.<span class="fb-wrap" data-jid="joke-65"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>My friend quit his job to be a digital nomad. He works from Bali, pays $200/month rent, and posts sunset photos. His mom calls it "unemployment with good lighting."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-66"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>In the 90s: "He lives in a van." Sad. In 2026: "He lives in a van." Aspirational. We didn't fix homelessness — we rebranded it.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-67"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>The difference between homeless and digital nomad: one uses Starbucks WiFi because they have to, and the other because it's "aesthetic."<span class="fb-wrap" data-jid="joke-68"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>Homeless: sleeps in different places every night. Digital nomad: also sleeps in different places every night. But one posts about it on Instagram.<span class="fb-wrap" data-jid="joke-69"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+<li>If you're homeless with a laptop, you're a digital nomad. If you're a digital nomad without a charger, you're just homeless again. The line is one dead battery.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-70"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+</ul></div>
+</div>
+
+</div>
+
+<footer class="footer">
+  <p>🎤 Jesse's Comedy Lab · 新素材特刊 · 2026-03-21</p>
+  <p style="margin-top:0.5rem"><a href="daily-2026-03-20.html">← 上期</a> · <a href="daily-2026-03-15.html">首期</a> · <a href="index.html">Main Lab</a></p>
+  <p style="margin-top:1rem;font-size:0.65rem;color:#555">Generated by Bob 🤖 · 7 insights · 70 one-liners · 18 references · Jesse's 03-20 evening material</p>
+</footer>
+
+<div class="fb-bar" id="fbBar"><span>已标记 <span class="count" id="fbCount">0</span> 条反馈</span><button onclick="exportFeedback()">📋 复制反馈 JSON</button></div>
+
+<script>
+const FB_KEY='comedy-feedback-2026-03-21b';
+function loadFeedback(){try{return JSON.parse(localStorage.getItem(FB_KEY))||{}}catch(e){return{}}}
+function saveFeedback(d){localStorage.setItem(FB_KEY,JSON.stringify(d));updateBar(d);syncToServer(d)}
+function syncToServer(d){fetch('http://127.0.0.1:8765',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:'daily-2026-03-21b',votes:d})}).catch(()=>{})}
+function updateBar(d){const c=Object.keys(d).length;document.getElementById('fbCount').textContent=c;document.getElementById('fbBar').classList.toggle('visible',c>0)}
+function vote(btn){const w=btn.closest('.fb-wrap'),jid=w.dataset.jid,v=btn.dataset.vote,d=loadFeedback();const p=w.closest('li')||w.closest('.ref-card')||w.closest('a');let t='';if(p)t=p.textContent.replace(/👍|👎/g,'').trim().substring(0,120);const s=w.querySelectorAll('.fb-btn');if(d[jid]&&d[jid].vote===v){delete d[jid];s.forEach(x=>x.classList.remove('active-up','active-down'))}else{d[jid]={vote:v,text:t,time:Date.now()};s.forEach(x=>x.classList.remove('active-up','active-down'));btn.classList.add(v==='up'?'active-up':'active-down')}saveFeedback(d)}
+function exportFeedback(){navigator.clipboard.writeText(JSON.stringify(loadFeedback(),null,2)).then(()=>{const b=document.querySelector('.fb-bar button');b.textContent='✅ 已复制!';setTimeout(()=>b.textContent='📋 复制反馈 JSON',2000)})}
+document.addEventListener('DOMContentLoaded',()=>{const d=loadFeedback();updateBar(d);Object.entries(d).forEach(([jid,info])=>{const w=document.querySelector(`.fb-wrap[data-jid="${jid}"]`);if(w){const b=w.querySelector(`[data-vote="${info.vote}"]`);if(b)b.classList.add(info.vote==='up'?'active-up':'active-down')}})})
+</script>
+
+</body>
+</html>
