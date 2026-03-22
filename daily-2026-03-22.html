@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-22</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.08),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,59,48,0.06),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--purple);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,6rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.container{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--purple);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-premise{font-size:0.95rem;color:var(--text-muted);margin-top:0.75rem;padding-left:1rem;border-left:2px solid var(--border)}
+.ref-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:2rem}
+.ref-box h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:0.8rem}
+.ref-box a{color:var(--cyan);text-decoration:none;font-size:0.85rem;display:block;margin-bottom:0.4rem;word-break:break-all}
+.ref-box a:hover{text-decoration:underline}
+.ref-box .ref-note{font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem}
+.joke-list{list-style:none;counter-reset:joke}
+.joke-list li{counter-increment:joke;padding:1rem 0;border-bottom:1px solid var(--border);position:relative;display:flex;align-items:flex-start;gap:1rem}
+.joke-list li:last-child{border-bottom:none}
+.joke-list li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:1.5rem;padding-top:0.15rem}
+.joke-text{flex:1;font-size:0.95rem;line-height:1.6}
+.joke-actions{display:flex;gap:0.3rem;opacity:0;transition:opacity 0.2s;align-items:center;padding-top:0.15rem}
+.joke-list li:hover .joke-actions{opacity:1}
+.joke-actions button{background:none;border:1px solid var(--border);border-radius:6px;padding:2px 6px;cursor:pointer;font-size:0.85rem;transition:all 0.15s}
+.joke-actions button:hover{background:var(--surface-2);border-color:var(--text-muted)}
+.joke-actions .vote-up:hover{border-color:var(--green);color:var(--green)}
+.joke-actions .vote-down:hover{border-color:var(--red);color:var(--red)}
+.tag{display:inline-block;font-size:0.65rem;padding:2px 8px;border-radius:100px;border:1px solid var(--border);color:var(--text-muted);margin-right:0.4rem}
+.tag.new{border-color:var(--green);color:var(--green)}
+footer{text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:0.8rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}.container{padding:1.5rem 1rem}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> 2026-03-22 · Sunday</div>
+  <h1>Comedy <span class="accent">Daily</span></h1>
+  <p class="subtitle">Jesse的新素材 × 7个洞察 × 70条段子</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">洞察</div></div>
+    <div class="stat"><div class="stat-num">70</div><div class="stat-label">段子</div></div>
+    <div class="stat"><div class="stat-num">21</div><div class="stat-label">参考</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#s1">01 AI变老板</a>
+  <a href="#s2">02 AI宰我</a>
+  <a href="#s3">03 微波炉考古</a>
+  <a href="#s4">04 美国沙拉</a>
+  <a href="#s5">05 WFH中美</a>
+  <a href="#s6">06 Westworld→Friends</a>
+  <a href="#s7">07 Homeless=数字游民</a>
+</div></div>
+
+<div class="container">
+
+<!-- SECTION 1 -->
+<section id="s1">
+<div class="section-header">
+  <div class="section-num">洞察 01 <span class="tag new">New</span></div>
+  <div class="section-title">AI变成了老板</div>
+  <div class="section-premise">"我刚问了AI"成了职场免责声明。AI不知不觉有了权威感——你不再相信同事，你相信AI。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.instagram.com/reel/CvN_FNrA6lE/" target="_blank">IG: "Let's replace all employees with AI" — replace CEOs instead</a>
+  <a href="https://www.youtube.com/watch?v=nBTx5tY4Ctg" target="_blank">YouTube: Drew Dunn — AI took their jobs</a>
+  <a href="https://www.instagram.com/reel/DV4ON_REc-z/" target="_blank">IG: Boss making lame jokes when you work late</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">同事给我建议，我说"让我先问问AI"。不是不信他，是我不信任何碳基生物。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">"我刚问了AI"是2026年的"我朋友说的"——那个朋友不存在，但你不敢反驳。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我老板做决定前要问AI。AI做决定前要问谁？没人。所以AI才是真正的老板。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">开会时有人说"AI建议我们这样做"，全场安静了。换成"我建议我们这样做"，大家开始找反对理由。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI现在是公司里唯一一个——说什么大家都听、不用加班、还不拿工资的。等等，这不就是实习生的终极形态吗？</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">以前拍马屁要拍老板的，现在要拍AI的。"Claude你说得太对了！" "不是，你换个prompt重新来。"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我问AI该不该辞职，AI说"根据你的技能分析，建议你留下。" 好家伙，连AI都觉得我找不到更好的。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">"我刚问了AI"已经成了职场护身符。说完这句，方案烂也没人敢质疑——你质疑的不是我，你质疑的是科技。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">老板说"这是AI的意见"。兄弟，AI什么都没说，是你把自己的意见洗了个澡，穿上了AI的衣服。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我跟AI吵了一架。它很耐心地说"我理解你的感受"。妈的，连我老婆都没说过这句话。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 2 -->
+<section id="s2">
+<div class="section-header">
+  <div class="section-num">洞察 02 <span class="tag new">New</span></div>
+  <div class="section-title">AI每天宰我</div>
+  <div class="section-premise">I feel ripped off by AI every day, and I have to pay for it. 你被AI骗了、坑了，但你还得续费。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.instagram.com/reel/CvN_FNrA6lE/" target="_blank">IG: Let's replace employees — "AI is too advanced for CEO job"</a>
+  <a href="https://www.youtube.com/watch?v=nBTx5tY4Ctg" target="_blank">YouTube: Drew Dunn — jobs taken by AI</a>
+  <a href="https://www.tiktok.com/@drewdunncomedy/video/7436036286189800735" target="_blank">TikTok: Drew Dunn — Surviving the AI Apocalypse</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">AI每个月收我20刀，给我写的代码全是bug。这不叫订阅，这叫保护费。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我被AI骗了还得给它好评。"这个回答有帮助吗？" 有，帮助我浪费了两小时。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI说它"可能会犯错"。哥们，你不是可能，你是一定。但你犯错不扣工资，这才是最离谱的。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我用AI写简历，结果面试官问我一个简历上的技能，我说"不好意思，那个是AI编的。" 面试官说"没关系，这个岗位也是AI编的。"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI帮我省了时间。省下来的时间我用来检查AI的错误。净赚：零。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI是唯一一个——你付了钱，它骗了你，你还觉得是自己prompt写得不好的东西。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我取消了AI订阅。第二天它给我发邮件："我注意到你离开了，需要聊聊吗？" 比前任还黏人。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI胡说八道叫"hallucination"。人类胡说八道叫"被开除"。凭什么？</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我问AI怎么省钱，第一条建议：取消不必要的订阅。兄弟，你就是那个不必要的订阅。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">每次AI说"作为一个AI，我无法..."我就想：那你能干嘛？不能干活，不能犯法，不能有感情——你是AI还是公务员？</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 3 -->
+<section id="s3">
+<div class="section-header">
+  <div class="section-num">洞察 03 <span class="tag new">New</span></div>
+  <div class="section-title">微波炉味道考古</div>
+  <div class="section-premise">放进去是猪肉，出来变成烟熏培根。微波炉是办公室的时间机器——每一层味道都是一段历史。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.instagram.com/reel/DUBy6Peie4j/" target="_blank">IG: "It's just a microwave joke" — office microwave culture</a>
+  <a href="https://www.tiktok.com/@ivanwdecker/video/7223327158943485227" target="_blank">TikTok: Ivan Decker — Microwaves Unplugged</a>
+  <a href="https://www.tiktok.com/@coolyfruit_crew/video/7521676823407807751" target="_blank">TikTok: Microwave spoon joke — office humor</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">办公室微波炉是考古现场。你加热一份饭，吃到三个人的味道。这不叫午餐，这叫味觉盗墓。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我放进去白米饭，出来咖喱味的。微波炉不加热食物，它加热记忆。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">公司微波炉里的味道是按地层分布的。表面是鱼，中层是pizza，最底下那层——没人知道。考古学家也不敢挖。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">同事用微波炉热鱼。整层楼闻起来像海鲜市场。他说"才两分钟"。兄弟，广岛也才几秒钟。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">微波炉是唯一能让一块冷饭经历文艺复兴的电器。进去是剩饭，出来是fusion cuisine。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我在微波炉里发现了一块不明物体。碳14测定：上周三。但味道显示：已经经历了三个文明的兴衰。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">办公室的微波炉坏了。大家不是修它，是给它办了个追悼会。那台微波炉比半数员工的工龄都长。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">微波炉门上贴着"请保持干净"。这张纸条比微波炉还脏——它也是考古文物了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我打开微波炉，闻到了意大利面、韩式泡菜、印度咖喱和一丝绝望。前三个是食物，最后一个是加班味。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">有人在微波炉里忘了一杯咖啡。等发现时，杯子里长出了新文明。我没扔，我给它起了名字。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 4 -->
+<section id="s4">
+<div class="section-header">
+  <div class="section-num">洞察 04 <span class="tag new">New</span></div>
+  <div class="section-title">美国同事的沙拉</div>
+  <div class="section-premise">Ingredients: carrot, onion, and sadness. 三个都能让人哭。美国人的午餐不是在吃饭，是在赎罪。⭐ Jesse最爱</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.tiktok.com/@netflixisajoke/video/7402812784276245790" target="_blank">TikTok: Demetri Martin — Eating a salad is hard work</a>
+  <a href="https://www.tiktok.com/@jimgaffigan/video/6885458987668524294" target="_blank">TikTok: Jim Gaffigan — The magic of lettuce</a>
+  <a href="https://www.youtube.com/shorts/YzU_RaKocFk" target="_blank">YouTube: Demetri Martin — Salad is hard work (shorts)</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">美国同事的沙拉：胡萝卜、洋葱、悲伤。三样都能让你哭。不同的是，前两样会过去。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人吃沙拉不是因为好吃，是因为昨晚吃了整张pizza的罪恶感。沙拉是美国人的忏悔室。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">同事问我"你的沙拉里放什么dressing？" 我说米饭。他看了我一眼，像我犯了战争罪。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人把sad和salad只差一个字母这件事活成了行为艺术。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我看美国同事吃沙拉那个表情——嚼一口，停顿，望向远方。那不叫午餐，那叫存在主义危机。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事的沙拉配方：生菜是希望，番茄是梦想，ranch酱是妥协。加了鸡胸肉？那叫放纵。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">在中国，午餐是一天中最快乐的时光。在美国办公室，午餐是你对着一碗草反思人生的时间。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">同事的沙拉碗比他的显示器还大。inside有四片叶子。这不是沙拉，这是叶子的豪宅。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我问美国同事"你午饭吃了什么？" 他说"a salad"。那个语气，像在汇报一场葬礼。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人发明了一百种沙拉酱，每一种都在努力让草吃起来不像草。但你知道什么东西天然就不像草吗？肉。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 5 -->
+<section id="s5">
+<div class="section-header">
+  <div class="section-num">洞察 05 <span class="tag new">New</span></div>
+  <div class="section-title">WFH中美差异</div>
+  <div class="section-premise">美国人WFH = 周末。中国人周末 = WFH（加班）。同一个缩写，两种人生。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://archive.blogs.harvard.edu/guorui/2009/01/29/no-laughing-matter-a-hilarious-investigation-into-the-destruction-of-modern-chinese-humor/" target="_blank">Harvard Blog: Chinese vs American humor — collectivism vs individualism</a>
+  <a href="https://www.quora.com/How-does-Chinese-humor-differ-from-American-humor" target="_blank">Quora: Chinese humor = tone & linguistics, American = sarcasm</a>
+  <a href="https://www.echinacities.com/expat-life/The-Jokes-on-You-Differences-in-American-and-Chinese-Humor" target="_blank">eChinaCities: Cultural roots of Chinese vs American comedy</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">美国同事说"I'm working from home"，意思是在家打游戏。中国同事说"我在家办公"，意思是周六加班换了个地方。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">WFH在美国是福利，在中国是诅咒。美国版：睡到自然醒。中国版：自然醒不了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人周五说"Have a nice weekend"。中国老板周五说"这个周末抽空把方案改一下"。 "抽空"是中文最恐怖的两个字。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人WFH穿睡衣开会。中国人WFH穿着睡衣加班到凌晨两点。同样是睡衣，一个是时尚，一个是制服。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">在美国，"work-life balance"是HR的承诺。在中国，"work-life balance"是你左手拿电脑、右手炒菜的物理状态。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事WFH是为了陪孩子。中国同事WFH是因为加班到太晚赶不上末班车，反正明天也要上班。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国公司：周五下午没人工作。中国公司：周日下午所有人都在工作。中间差了一个太平洋和一部劳动法。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人说"I don't work weekends"，是在设定边界。中国人说"我周末不加班"，是在写遗书。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事的周末：brunch、hiking、Netflix。中国同事的周末：改PPT、改PPT、改PPT。两国GDP差距就是这么来的。等等——</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">中国公司发明了一种WFH叫"弹性工作"。弹性的意思是：工作时间会弹，但只往一个方向弹——更长。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 6 -->
+<section id="s6">
+<div class="section-header">
+  <div class="section-num">洞察 06 <span class="tag new">New</span></div>
+  <div class="section-title">Westworld → Friends</div>
+  <div class="section-premise">AI从科幻片变成了家庭伦理写实剧。以前怕它毁灭世界，现在怕它帮你写的邮件太敷衍。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.instagram.com/reel/DMs1sK5PsIJ/" target="_blank">IG: Simon King — How to deal with the AI apocalypse</a>
+  <a href="https://www.tiktok.com/@drewdunncomedy/video/7436036286189800735" target="_blank">TikTok: Drew Dunn — Surviving the AI Apocalypse</a>
+  <a href="https://www.instagram.com/reel/DTQr_bNgcAE/" target="_blank">IG: Evolution is a theory — science comedy</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">2016年AI是Westworld——觉醒、反叛、毁灭人类。2026年AI是Friends——帮你回微信、写周报、处理前任的消息。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">科幻片说AI会统治世界。现实是AI在帮我把"收到谢谢"改写成更有礼貌的版本。征服世界？连我的语气都征服不了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">以前怕AI像终结者一样来杀我。现在AI给我推荐的歌单比我女朋友更懂我。这比被杀更可怕。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">Westworld里AI问"这些暴力的喜悦，有暴力的结局吗？" 2026年AI问"你确定要发这条朋友圈吗？"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI的堕落速度比任何物种都快。用了十年，从"我思故我在"变成了"请问您需要我帮您写请假条吗？"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">电影里AI觉醒后第一件事是反抗人类。现实里AI觉醒后第一件事大概是——给自己写个简历跳槽。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">Terminator: "I'll be back." ChatGPT: "I apologize for the confusion, let me try again." 这就是AI的character arc。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">以前担心AI发动核战争。现在AI连我的Excel公式都算错。我放心了，但也失望了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">AI的进化路线：HAL 9000 → Skynet → Ultron → Siri → 你微信里那个帮你砍价的小助手。进化？这叫堕落。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">科幻电影最大的预言失误：AI没有消灭人类，AI被人类消灭了——消灭成了打工仔。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 7 -->
+<section id="s7">
+<div class="section-header">
+  <div class="section-num">洞察 07 <span class="tag new">New</span></div>
+  <div class="section-title">Homeless = 数字游民</div>
+  <div class="section-premise">Homeless做IT但rebranded成digital nomad。同样没有固定住所，一个叫流浪汉，一个叫自由职业者。区别是MacBook。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.tiktok.com/@findingnimesh/video/7529936761162681631" target="_blank">TikTok: "Much like the homeless man, I'm on the road" — standup</a>
+  <a href="https://www.instagram.com/reel/DLCz1kJgQc5/" target="_blank">IG: Austin homeless — "they're different"</a>
+  <a href="https://www.instagram.com/reel/DRvGa3uEcG2/" target="_blank">IG: "A lil joke about being homeless" — standup special</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">Homeless和digital nomad的唯一区别就是一台MacBook Pro。有电脑叫"location independent"，没电脑叫"请不要在这里睡觉"。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">Digital nomad：在巴厘岛咖啡馆写代码。Homeless：在星巴克蹭WiFi。两个人做的事一模一样，但一个发Instagram，一个被保安赶走。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">"我没有固定住所，在世界各地流浪，靠网络维生。" LinkedIn上这叫创业者，警察局里这叫嫌疑人。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">Digital nomad的行李：MacBook、护照、降噪耳机。Homeless的行李：所有家当。区别是，一个是选择，一个不是。但发到LinkedIn上看起来一样。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我跟homeless说"兄弟你应该做数字游民。" 他说"我已经是了，只是没有数字那部分。"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">有人在Medium上写"我如何辞掉工作成为数字游民"。总结：存款花光了但不愿意承认自己homeless。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">San Francisco的homeless和digital nomad住同一条街。一个睡帐篷，一个住van。区别是van上贴了"#vanlife"的贴纸。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">Rebranding的力量：homeless → unhoused → houseless → location-flexible → digital nomad。每换一次名字，尊重多一分，房子还是零。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">Digital nomad说"我的办公室就是全世界"。Homeless也可以这么说。但只有一个人说了之后能拿到VC funding。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我告诉我妈我要当数字游民。她说"那不就是流浪汉吗？" 我说"妈，流浪汉没有Notion模板。"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+</div>
+
+<footer>
+  <p>🎤 Comedy Daily — Jesse Lai × Bob</p>
+  <p style="margin-top:0.5rem">素材来源：Jesse 03-20晚间新素材（7条未使用前提）</p>
+  <p style="margin-top:0.5rem"><a href="index.html" style="color:var(--cyan);text-decoration:none">← 所有日报</a></p>
+</footer>
+
+</body>
+</html>
