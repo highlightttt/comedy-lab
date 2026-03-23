@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-23</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(255,107,53,0.1),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(48,209,88,0.07),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,6rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--orange),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--orange)}
+.container{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--orange);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-premise{font-size:0.95rem;color:var(--text-muted);margin-top:0.75rem;padding-left:1rem;border-left:2px solid var(--border)}
+.ref-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:2rem}
+.ref-box h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:0.8rem}
+.ref-box a{color:var(--cyan);text-decoration:none;font-size:0.85rem;display:block;margin-bottom:0.4rem;word-break:break-all}
+.ref-box a:hover{text-decoration:underline}
+.joke-list{list-style:none;counter-reset:joke}
+.joke-list li{counter-increment:joke;padding:1rem 0;border-bottom:1px solid var(--border);position:relative;display:flex;align-items:flex-start;gap:1rem}
+.joke-list li:last-child{border-bottom:none}
+.joke-list li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:1.5rem;padding-top:0.15rem}
+.joke-text{flex:1;font-size:0.95rem;line-height:1.6}
+.joke-actions{display:flex;gap:0.3rem;opacity:0;transition:opacity 0.2s;align-items:center;padding-top:0.15rem}
+.joke-list li:hover .joke-actions{opacity:1}
+.joke-actions button{background:none;border:1px solid var(--border);border-radius:6px;padding:2px 6px;cursor:pointer;font-size:0.85rem;transition:all 0.15s}
+.joke-actions button:hover{background:var(--surface-2);border-color:var(--text-muted)}
+.tag{display:inline-block;font-size:0.65rem;padding:2px 8px;border-radius:100px;border:1px solid var(--border);color:var(--text-muted);margin-right:0.4rem}
+.tag.new{border-color:var(--green);color:var(--green)}
+.tag.fire{border-color:var(--orange);color:var(--orange)}
+footer{text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:0.8rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}.container{padding:1.5rem 1rem}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> 2026-03-23 · Monday</div>
+  <h1>Comedy <span class="accent">Daily</span></h1>
+  <p class="subtitle">Office Kitchen Wars 🍛🥪🐟 — Jesse的多元文化办公室厨房mini-set深挖</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">洞察</div></div>
+    <div class="stat"><div class="stat-num">70</div><div class="stat-label">段子</div></div>
+    <div class="stat"><div class="stat-num">21</div><div class="stat-label">参考</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#s1">01 🔥殖民体验</a>
+  <a href="#s2">02 中国同事加料</a>
+  <a href="#s3">03 微波炉侧写</a>
+  <a href="#s4">04 Bread Holding Bread</a>
+  <a href="#s5">05 SAD in Salad</a>
+  <a href="#s6">06 Fish核弹</a>
+  <a href="#s7">07 冰箱生化武器</a>
+</div></div>
+
+<div class="container">
+
+<!-- SECTION 1: 殖民体验 -->
+<section id="s1">
+<div class="section-header">
+  <div class="section-num">洞察 01 <span class="tag fire">🔥 Jesse最强punchline</span></div>
+  <div class="section-title">印度同事的办公室 = 殖民体验</div>
+  <div class="section-premise">Everything tastes a little Indian. "I understand colonization more." 你以为殖民是教科书上的概念，直到你在印度同事旁边吃了三个月的饭。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.instagram.com/reel/DPJi6RIADRa/" target="_blank">IG: Seetha — "I dated a British girl, she colonized me" — 殖民=搬进你家让你付钱</a>
+  <a href="https://www.instagram.com/reel/DTN-Mt1D5Oh/" target="_blank">IG: Francis — British人吃印度菜"I prefer sandwiches" — 文化碰撞</a>
+  <a href="https://www.instagram.com/reel/DNs7DGlWG0s/" target="_blank">IG: 英国殖民 × 印度食物 — guns vs spices debate</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">在印度同事旁边坐了半年，我的白米饭自带咖喱味。不是他加的，是空气加的。这就是文化渗透。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">以前我不理解什么叫殖民。后来印度同事坐我旁边，我的午饭每天都有一点点masala味。现在我理解了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">英国人花了200年殖民印度。我印度同事花了两周就殖民了整个楼层——靠的不是枪炮，是microwave。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">印度同事的午餐有一种超能力：它不需要你打开盖子，味道就已经在你嘴里了。这不是食物，这是WiFi。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我跟印度同事说"你的咖喱闻起来很香"。他说"那是昨天的。" 所以这个味道是可以留遗产的？</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">殖民主义的本质是什么？是让你不知不觉接受一种文化。我同事的biryani就做到了——我现在吃白饭觉得缺了什么。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">印度菜的味道就像房间里的大象——everybody knows it's there，但没人敢说。说了你就是racist，不说你就得吃。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我的便当盒现在永久带有turmeric的颜色。我没吃过turmeric。但我坐过印度同事旁边。这就是二手咖喱。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">英国殖民印度带走了钻石和香料。印度同事殖民办公室带来了钻石和香料——还是免费的。谁才是赢家？</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">印度同事辞职那天，整个楼层的空气突然变淡了。我们不是失去了一个同事，我们失去了一个生态系统。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 2: 中国同事加料 -->
+<section id="s2">
+<div class="section-header">
+  <div class="section-num">洞察 02 <span class="tag new">New</span></div>
+  <div class="section-title">中国同事的办公室 = 免费加料</div>
+  <div class="section-premise">Don't need to add spice anymore. 中国同事不需要调味料，因为办公室空气本身就是调料。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.youtube.com/watch?v=fpx1WzBwCPc" target="_blank">YouTube: "Chinese Food Stinks" — The Office Life skit</a>
+  <a href="https://www.tiktok.com/@conorsadce/video/7419217561750916384" target="_blank">TikTok: Co-Worker with Unpleasant Lunch Smell</a>
+  <a href="https://www.tiktok.com/@wearejoketv/video/7353219319993486624" target="_blank">TikTok: Stinky foods in an office</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">中国同事热午饭的时候，整个楼层都不需要去中餐馆了。这不是午餐，这是沉浸式体验。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">坐中国同事旁边最大的好处：你的沙拉自动升级成fusion cuisine。你什么都没做，但你吃出了蒜香。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">中国同事带了红烧肉，我带了三明治。十分钟后我的三明治变成了红烧三明治。谢谢，我不需要这个upgrade。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事说"can you not bring such strong food?" 中国同事说"这是清淡的。" 兄弟，你的清淡把火警都trigger了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">中国人的"清淡"和美国人的"清淡"不一样。中国人的清淡是只放了三种调料。美国人的清淡是连盐都不放。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我妈让我带便当上班。我说不用，我坐中国同事旁边，空气就是自助餐。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">中国同事的微波炉时间是整层楼的用餐铃声。不需要闹钟，闻到花椒味就知道——12点了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">办公室装了空气净化器。中国同事一热饭，净化器直接投降了——显示"air quality: 川菜"。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">中国同事热了一个什么东西，美国同事问"what IS that?" 他说"just rice." 兄弟，rice不会让整栋楼闻起来像火锅店。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我现在能用鼻子分辨中国同事今天带的是川菜还是粤菜。我不想有这个技能，但它自己长出来了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 3: 微波炉侧写 -->
+<section id="s3">
+<div class="section-header">
+  <div class="section-num">洞察 03 <span class="tag new">New</span></div>
+  <div class="section-title">微波炉味道侧写术</div>
+  <div class="section-premise">You can tell who works here by what the microwave smells like. 微波炉是办公室的人口普查——不用看工牌，闻味道就够了。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.youtube.com/shorts/iGxryAG9GTQ" target="_blank">YouTube: Cliff Cash — "Better food solves racism" — 食物=文化交流</a>
+  <a href="https://www.tiktok.com/@thealisiddiq/video/7326981658828082475" target="_blank">TikTok: Ali Siddiq — Multicultural brochure vs reality</a>
+  <a href="https://www.tiktok.com/@andrewoporto/video/7208210720100584710" target="_blank">TikTok: Andrew Oporto — Office diversity meeting comedy</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">我们公司不需要diversity report，闻一下微波炉就知道了。"嗯，花椒、咖喱、还有一丝冷三明治的绝望。"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">HR说我们公司很diverse。不用说，我进茶水间用鼻子就做完了人口普查。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">微波炉是办公室的黑匣子——打开门的一瞬间，你能读出这个公司的移民史。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">FBI做侧写要分析犯罪现场。我做同事侧写只需要闻微波炉。"11:45，花椒味，四川人，工号可能是7开头。"</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">新来的同事问"公司文化怎么样？" 我说你去闻微波炉。他回来说"Chinese, Indian, 还有一个吃冷pizza的。" 对，那个是CTO。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">公司搬新办公室，微波炉是全新的。一个月后它闻起来像联合国食堂。这不是电器老化，这是文化积淀。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我能根据微波炉的味道判断时间。蒜香=11:30中国同事第一波；masala=12:00印度队；没味道=12:30美国人在吃冷沙拉。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">公司买了两台微波炉。一台写着"for reheating"，另一台写着"for strong-smelling food"。第二台旁边排队的全是我们。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">微波炉上贴着"please clean after use"。兄弟，那个味道不是清洁问题，那是考古问题。你需要的不是纸巾，是碳14测年法。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">同事辞职了，但他的味道还在微波炉里。三个月后新人问"谁的咖喱？" 哥们，那个人已经在另一个城市了。那是遗产。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 4: Bread Holding Bread -->
+<section id="s4">
+<div class="section-header">
+  <div class="section-num">洞察 04 <span class="tag new">New</span></div>
+  <div class="section-title">美国同事：Bread Holding Bread</div>
+  <div class="section-premise">Cold sandwich, no seasoning, no sauce, no joy. 美国同事看着中国人和印度人的午餐，拿着三明治问"Chinese or Indian today?" — 自嘲中的自救。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.instagram.com/reel/DVgb2pvACu9/" target="_blank">IG: Mark Forward — "Sandwiches upon sandwiches" — 三明治人生</a>
+  <a href="https://www.tiktok.com/@mitchhedbergawakening/video/7168314816354848046" target="_blank">TikTok: Mitch Hedberg — Club Sandwich Society</a>
+  <a href="https://www.facebook.com/TheMichaelMcIntyre/videos/worst-sandwich-ive-ever-had-michaelmcintyre-comedy-standupcomedy/1613965663142539/" target="_blank">FB: Michael McIntyre — Worst sandwich ever</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">美国同事的午餐是bread holding bread。中间那片火腿只是为了让两片面包不孤单。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事每天中午打开一个纸袋，掏出一个sad sandwich，看看中国同事的红烧肉，再看看自己的，轻轻说了一句"fuck"。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事的三明治没有调料、没有酱、没有热量。这不是午餐，这是投降。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事唯一的lunch excitement是"今天turkey还是ham？" 兄弟，这不是选择，这是换了颜色的同一种悲伤。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事拿着三明治走到我旁边："Chinese or Indian today?" 不是在选餐厅，是在闻我的午饭决定蹭哪个。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">公司来了个新的墨西哥同事，美国同事最开心。终于，三明治有taco味了。这是他近三年吃到的最接近调味料的东西。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国人发明了冷三明治。你知道为什么是冷的吗？因为如果加热，它就什么味道都没有了——至少冷的时候还有一点面包味。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事把三明治装在Ziploc袋里。哥们，你的午餐连自己的容器都不配拥有。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">I asked my American coworker why his sandwich has no sauce. He said, "I like to taste the bread." Sir, there is nothing else TO taste.</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">美国同事吃完三明治要15秒。中国同事吃完便当要30分钟。这不是午餐速度的差异，这是文明程度的差异。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 5: SAD in Salad -->
+<section id="s5">
+<div class="section-header">
+  <div class="section-num">洞察 05 <span class="tag new">New</span></div>
+  <div class="section-title">I Don't Eat Salad, There's S-A-D in It</div>
+  <div class="section-premise">沙拉的食材全是催泪弹：洋葱、大蒜、红辣椒、sadness、disappointment。全都让人流泪。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.tiktok.com/@netflixisajoke/video/7402812784276245790" target="_blank">TikTok: Demetri Martin — Struggles of eating a salad (Netflix)</a>
+  <a href="https://www.youtube.com/shorts/YzU_RaKocFk" target="_blank">YouTube: Demetri Martin — "Eating a salad is hard work"</a>
+  <a href="https://www.tiktok.com/@derrick_yells/video/7489452642775665951" target="_blank">TikTok: Derrick Stroup — "Enough with the healthy food!"</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">I don't eat salad. There's S-A-D in it. Coincidence? No. That's a warning label.</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">沙拉的食材：洋葱——让你哭；大蒜——让别人哭；红辣椒——让你妈喊你哭。全是催泪弹。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">吃沙拉的人说"I feel so good about myself." 骗谁呢？你脸上的表情明明写着"I miss carbs."</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">沙拉是唯一一种——吃完不开心，不吃也不开心的食物。你被困在了健康和快乐之间，两边都够不着。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">同事说她的沙拉有protein有fiber有vitamins。我说我的红烧肉也有——还有joy，你的没有。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">沙拉的味道取决于dressing。所以本质上你吃的不是沙拉，你吃的是dressing——蔬菜只是载体，像筷子一样。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">有人说"salad can be exciting!" 然后给我看了一个加了培根碎、芝士、炸鸡和ranch的"沙拉"。兄弟，你做了一盘炸鸡饭，只是碗是透明的。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">S-A-L-A-D。Sadness And Loneliness And Disappointment。这不是我说的，这是字母表说的。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">每次吃沙拉，我咬一口生菜就想：有一头牛在某个地方吃着同样的东西，它比我开心多了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">沙拉最大的骗局：你以为你在吃健康食品，其实你在付15块钱吃草——还不如去公园，免费的。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 6: Fish核弹 -->
+<section id="s6">
+<div class="section-header">
+  <div class="section-num">洞察 06 <span class="tag new">New</span></div>
+  <div class="section-title">微波炉热鱼 = 脱鞋</div>
+  <div class="section-premise">Reheating fish at work is like taking off your shoes — the whole floor knows immediately. 这是office kitchen的核选项。</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.facebook.com/TrevorWallaceComedy/videos/when-someone-microwaves-fish-at-work/539579881609701/" target="_blank">FB: Trevor Wallace — "When someone microwaves fish at work"</a>
+  <a href="https://www.tiktok.com/@trevorwallace/video/7207617128042597675" target="_blank">TikTok: Trevor Wallace — "Fish in the office?? WHO HURT YOU"</a>
+  <a href="https://www.tiktok.com/@newgenagency_/video/7491677385646017814" target="_blank">TikTok: The Seafood Hat of Shame — office fish prank</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">在办公室微波炉热鱼就像在地铁里脱鞋——你有权利这么做，但整个车厢都在重新评估你这个人。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">热鱼的人按下微波炉的那一刻，就向整个楼层宣战了。这不是午餐，这是恐怖袭击。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">微波炉热鱼是office kitchen的核选项。你按下了按钮，就没有回头路了。而且fallout会持续到下午三点。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">公司有两种人：热过鱼的，和恨热鱼的人的。没有中间地带。这是办公室唯一的zero-sum game。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">crowd work问观众："有人在办公室热过鱼吗？" 如果有人举手，全场都可以对他开喷，不需要段子了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">你可以在办公室犯很多错——迟到、忘交报告、cc错了人。但热鱼？热鱼是写进你permanent record的。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">热鱼之后三分钟内，你会收到至少五条Slack消息，全是"who"和一个鱼的emoji。这是现代版的witch hunt。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">微波炉热鱼 vs 脱鞋。区别：脱鞋你可以穿回去，热鱼——那个味道会在微波炉里住三天。它签了租约。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">如果你想在公司搞匿名，热一条鱼。五分钟内全公司都在讨论你，但没人知道你是谁。这就是完美犯罪。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我同事热了鱼然后回工位，假装不是他。哥们，你桌上有一盘鱼，你嘴在动，而且整层楼都闻到了。你不是嫌疑人，你是现行犯。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+<!-- SECTION 7: 冰箱生化武器 -->
+<section id="s7">
+<div class="section-header">
+  <div class="section-num">洞察 07 <span class="tag new">New</span></div>
+  <div class="section-title">办公室冰箱 = 生化武器库</div>
+  <div class="section-premise">打开办公室冰箱需要勇气。里面有上个月的酸奶、去年的午餐盒、和一种已经进化出意识的绿色物体。(来自03-20遗留素材)</div>
+</div>
+<div class="ref-box">
+  <h4>📎 参考段子</h4>
+  <a href="https://www.youtube.com/watch?v=F2_MifsP1gk" target="_blank">YouTube: "Guys Smell Expired Foods From the Office Fridge" — 闻过期食物挑战</a>
+  <a href="https://www.instagram.com/reel/DJE2EKMpKrU/" target="_blank">IG: "Old people's fridges — nothing but expired condiments"</a>
+  <a href="https://www.youtube.com/shorts/JPbWkYpamWo" target="_blank">YouTube: Matt Rife — Garage Fridge comedy</a>
+</div>
+<ol class="joke-list">
+  <li><div class="joke-text">打开办公室冰箱需要的勇气比打开年终考核邮件还大。至少考核不会有味道。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">办公室冰箱里有个容器，已经没人记得是谁的了。它在那里的时间比大部分员工的工龄都长。它有资格拿期权。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">冰箱里有个东西从绿色变成了黑色。这不是食物，这是evolution in real time。达尔文看了都要做笔记。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">HR每季度发"请清理冰箱"的邮件。没人动。这不是冰箱，这是crime scene——谁碰了就成了嫌疑人。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">有人在冰箱里放了酸奶，标签写的日期是2024年。兄弟，那个酸奶已经不是酸奶了，那是cottage cheese的cottage cheese。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">办公室冰箱清理日，我们扔了14个容器。只有三个人认领。剩下11个是orphan food——被抛弃了，但活得很好。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">冰箱最里面那层已经形成了自己的生态系统。有菌群，有层次，有颜色渐变——比我的PPT好看多了。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">我的午饭放进去是正常的，拿出来上面多了一个指纹和少了一口。这不是冰箱，这是犯罪现场。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">办公室冰箱的冷冻层有个东西，已经变成了化石。如果地球再来一次冰河时期，考古学家会从我们冰箱里挖出人类文明的证据。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+  <li><div class="joke-text">新来的实习生打开冰箱说"something smells weird." 我说那不是weird，那是legacy code——你动不了，也删不掉，但它一直在run。</div><div class="joke-actions"><button class="vote-up">👍</button><button class="vote-down">👎</button></div></li>
+</ol>
+</section>
+
+</div>
+
+<footer>
+  <p>🎤 Comedy Daily — Bob × Jesse · 2026-03-23</p>
+  <p style="margin-top:0.5rem">Office Kitchen Wars: 殖民体验 · 免费加料 · 微波炉侧写 · Bread Holding Bread · SAD in Salad · Fish核弹 · 冰箱生化武器</p>
+  <p style="margin-top:0.5rem"><a href="index.html" style="color:var(--cyan);text-decoration:none">← 回到目录</a></p>
+</footer>
+
+</body>
+</html>
