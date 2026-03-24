@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-24</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.1),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,59,48,0.07),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--purple);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,6rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.container{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--purple);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-premise{font-size:0.95rem;color:var(--text-muted);margin-top:0.75rem;padding-left:1rem;border-left:2px solid var(--border)}
+.ref-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:2rem}
+.ref-box h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:0.8rem}
+.ref-box a{color:var(--cyan);text-decoration:none;font-size:0.85rem;display:block;margin-bottom:0.4rem;word-break:break-all}
+.ref-box a:hover{text-decoration:underline}
+.joke-list{list-style:none;counter-reset:joke}
+.joke-list li{counter-increment:joke;padding:1rem 0;border-bottom:1px solid var(--border);position:relative;display:flex;align-items:flex-start;gap:1rem}
+.joke-list li:last-child{border-bottom:none}
+.joke-list li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:1.5rem;padding-top:0.15rem}
+.joke-text{flex:1;font-size:0.95rem;line-height:1.6}
+.joke-actions{display:flex;gap:0.3rem;opacity:0;transition:opacity 0.2s;align-items:center;padding-top:0.15rem}
+.joke-list li:hover .joke-actions{opacity:1}
+.joke-actions button{background:none;border:1px solid var(--border);border-radius:6px;padding:2px 6px;cursor:pointer;font-size:0.85rem;transition:all 0.15s}
+.joke-actions button:hover{background:var(--surface-2);border-color:var(--text-muted)}
+.tag{display:inline-block;font-size:0.65rem;padding:2px 8px;border-radius:100px;border:1px solid var(--border);color:var(--text-muted);margin-right:0.4rem}
+.tag.drill{border-color:var(--purple);color:var(--purple)}
+.tag.new-angle{border-color:var(--pink);color:var(--pink)}
+footer{text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:0.8rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}.container{padding:1.5rem 1rem}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> 2026-03-24 · Tuesday</div>
+  <h1>Comedy <span class="accent">Daily</span></h1>
+  <p class="subtitle">🏋️ 段子加练 — 地铁安检 × Indian邻居 × 学单口的苦</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">洞察</div></div>
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label">段子</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">参考</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#s1">01 🚇地铁安检×午餐</a>
+  <a href="#s2">02 🇮🇳Indian邻居</a>
+  <a href="#s3">03 📝学单口的苦</a>
+</div></div>
+
+<div class="container">
+
+<!-- ==================== 洞察 1 ==================== -->
+<section id="s1">
+<div class="section-header">
+  <div class="section-num">洞察 01 <span class="tag drill">加练</span></div>
+  <div class="section-title">🚇 地铁安检 × 过期午餐 Callback</div>
+  <p class="section-premise">Jesse原始前提：安检能检测炸弹但检测不出上周的午餐。两个都没检出来。<br>新角度：安检的荒诞感 × 上海地铁日常 × 食物=违禁品</p>
+</div>
+
+<div class="ref-box">
+  <h4>📚 参考段子 & 灵感</h4>
+  <a href="https://www.instagram.com/reel/DU9MwnkAdPR/" target="_blank">🎤 Subway smell standup — "Usually you get on and you're like oh there's been a murder"</a>
+  <a href="https://www.reddit.com/r/StandUpComedy/comments/1csstt0/subway_smell_vs_uber_smell/" target="_blank">🎤 Reddit: Subway Smell vs Uber Smell — "Can your olfactory stay woke?"</a>
+  <a href="https://www.instagram.com/reel/DVrLL_AD0Xw/" target="_blank">🎤 Subway restaurant smell — "That's not real bread"</a>
+</div>
+
+<ul class="joke-list">
+<li><div class="joke-text">上海地铁安检能检测炸弹，但检测不出我包里上周四的午餐。公平地说，两个都没检出来。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">安检员看X光片看到我包里有个不明物体。我说别担心，那是我的三明治。他说"先生，那已经不是三明治了。"</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">安检的时候我包过了机器，屏幕上显示的颜色比我做的PPT还丰富。安检员问这是什么，我说是咖喱饭——三天前的。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我觉得上海地铁安检就是个心理安慰。机器能检测金属和液体，但对过期酸奶完全免疫。炸弹没找到，生化武器天天放行。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">有一次安检员让我打开包。我打开了，他闻了一下就让我过了。我觉得他不是安检，他是在做嗅觉测试。我的午餐帮他通过了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">如果恐怖分子真的聪明，他们会把炸弹藏在外卖袋里。安检员绝对不会打开——他们怕的不是炸弹，是螺蛳粉。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">地铁安检X光能看穿我的包，但看不穿我同事午餐盒里那层已经进化出意识的霉菌。那个霉菌可能比我更有资格坐一等座。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我每天过安检的时候都觉得很安全。直到我意识到坐我旁边的人包里可能有上周五的海鲜饭。这不是安全隐患，这是公共卫生事件。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">安检员：先生，请把水拿出来喝一口。我喝了。他又说：那个饭盒也打开。我打开了。整节车厢清场了。比炸弹有效多了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">上海地铁安检的本质是：你排了五分钟队，把包放进去，机器嗡了一声，然后一个比你还困的人瞟了一眼屏幕说"走吧"。整个过程唯一被检测到的是我的耐心——已经过期了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+</ul>
+</section>
+
+<!-- ==================== 洞察 2 ==================== -->
+<section id="s2">
+<div class="section-header">
+  <div class="section-num">洞察 02 <span class="tag drill">加练</span> <span class="tag new-angle">新角度</span></div>
+  <div class="section-title">🇮🇳 Indian邻居 — 味觉殖民2.0</div>
+  <p class="section-premise">Jesse原始前提：Indian neighbour（待展开）。结合之前"殖民体验"的办公室素材，拓展到居住场景。<br>新角度：从办公室延伸到公寓——你以为下班就能逃？回家还是印度味。</p>
+</div>
+
+<div class="ref-box">
+  <h4>📚 参考段子 & 灵感</h4>
+  <a href="https://www.instagram.com/reel/DV19cPokksZ/" target="_blank">🎤 vpalcomedy: "White friend tries Indian spices" — 外国人试印度辣</a>
+  <a href="https://www.tiktok.com/@ashwynsingh/video/7096981797531077894" target="_blank">🎤 Ashwyn Singh: "You ever go to an Indian restaurant with a white person?"</a>
+  <a href="https://www.facebook.com/vpalcomedy/videos/1899994127307845/" target="_blank">🎤 vpalcomedy on FB: White friend tries Indian spices</a>
+</div>
+
+<ul class="joke-list">
+<li><div class="joke-text">我的印度邻居做饭的时候，整栋楼都知道。不是因为声音，是因为我的衣服闻起来像tikka masala。我没吃，但我的衣柜吃了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">办公室有印度同事，回家有印度邻居。我觉得我不是被殖民了，我是被包围了。这不是文化交流，这是味觉入侵。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我的印度邻居每天晚上七点准时做饭。我的烟雾报警器以为那是信号，也准时响。我们现在有固定节目了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我跟印度邻居住了三个月，我的辣椒耐受度从"微辣"升级到"变态辣"。我没主动训练，是被动吸入的。二手辣。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我印度邻居搬走的那天，我打开窗户，空气闻起来特别奇怪。我花了十分钟才意识到那个味道叫"没有味道"。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我妈来我家做客，说"你做饭了？闻起来好香！"我说妈，那是隔壁的。我已经三天没开火了，但我的公寓依然满分好评。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">有一次快递员在我门口说"好香啊，你做什么菜？"我说不知道，但我可以去隔壁问问菜单。我家是餐厅的散座区。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我的印度邻居请我吃他做的咖喱。我吃了一口，我的味蕾递交了辞职信。然后他说"这是mild的"。我觉得mild在印度是另一个意思。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我现在点外卖从来不点印度菜——不是因为不好吃，是因为免费的够了。我住在印度菜的5G覆盖区，信号满格，无法退订。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我觉得印度邻居是上帝派来教我什么叫"文化自信"的。你见过有人炒菜能让整栋楼改信仰的吗？我现在看到turmeric会条件反射流泪，但不是因为辣，是因为感动。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+</ul>
+</section>
+
+<!-- ==================== 洞察 3 ==================== -->
+<section id="s3">
+<div class="section-header">
+  <div class="section-num">洞察 03 <span class="tag drill">加练</span> <span class="tag new-angle">新角度</span></div>
+  <div class="section-title">📝 学单口的苦 — 一个中国人的喜剧自虐之路</div>
+  <p class="section-premise">Jesse正在学单口喜剧的创作方法论（attitude→opposite→irony）。<br>新角度：把"学单口"本身当素材——用写段子的pain来写段子。Meta喜剧。</p>
+</div>
+
+<div class="ref-box">
+  <h4>📚 参考段子 & 灵感</h4>
+  <a href="https://www.tiktok.com/@desbishop5/video/7460515864677256480" target="_blank">🎤 Des Bishop: 外国人学中文做单口喜剧 — 语言障碍本身就是笑点</a>
+  <a href="https://www.tiktok.com/@desbishop5/video/7361120517438344481" target="_blank">🎤 Des Bishop: Learning Mandarin standup — "Breaking China"系列</a>
+  <a href="https://www.tiktok.com/@comedy_castle_/video/7216570675660606747" target="_blank">🎤 Americans learning Chinese — 文化碰撞喜剧</a>
+</div>
+
+<ul class="joke-list">
+<li><div class="joke-text">我在学写单口喜剧段子。方法论是：找态度，翻转，找荒谬。听起来很简单，就像"减肥就是少吃多动"一样简单。道理我都懂，但我的段子还是胖的。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">写段子最痛苦的是你觉得超好笑的那个，别人看了脸上的表情像在读用户协议。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">老师说段子要"短"。我写了一个段子，三百字，我觉得已经很短了。他说这不是段子，这是散文。我说那我把句号删了呢？他说那就是诗了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我让AI帮我写段子。AI写了十个，每一个都在技术上是对的，但听起来像HR在年会上讲笑话。准确、安全、零笑点。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">学单口的第一课：每天记录生活中好笑的事。我记了一周，回头看，全是抱怨。原来单口喜剧就是把抱怨说得好听一点然后收门票。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我跟朋友说我在学单口。他说"你平时就挺好笑的啊。"我说谢谢。然后我把练习的段子念给他听，他说"哦，这种好笑啊……"表情变了。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">写段子有个技巧叫"rule of three"——前两个正常，第三个反转。比如：我喜欢旅行、美食、和在凌晨三点删掉自己写的所有段子。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">中国人学单口喜剧最大的障碍不是语言，是从小被教育"不要出风头"。你让我站台上讲笑话？我连课堂上举手都要做三分钟心理建设。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">我现在随时随地都在想段子。吃饭想，走路想，上厕所也想。我女朋友问我在想什么，我说在想你——的哪个缺点可以写成段子。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+<li><div class="joke-text">学单口最讽刺的是：我花了一个月研究什么叫"好笑"，现在我连别人的笑话都笑不出来了。我会分析结构、找callback、评估节奏——然后说"嗯，技术上不错。"我成了笑话的HR。</div><div class="joke-actions"><button title="好笑">👍</button><button title="不好笑">👎</button></div></li>
+</ul>
+</section>
+
+</div>
+
+<footer>
+  <p>🏋️ 段子加练日 — 无新素材，从已有洞察深挖新角度</p>
+  <p style="margin-top:0.5rem">Bob × Jesse · Comedy Lab · 2026-03-24</p>
+</footer>
+
+</body>
+</html>
