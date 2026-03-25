@@ -441,78 +441,7 @@ li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0
   <button onclick="exportFeedback()">📋 复制反馈 JSON</button>
 </div>
 
-<script>
-const FB_KEY = 'comedy-feedback-2026-03-16';
-
-function loadFeedback() {
-  try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; }
-}
-
-function saveFeedback(data) {
-  localStorage.setItem(FB_KEY, JSON.stringify(data));
-  updateBar(data);
-  syncToServer(data);
-}
-
-function syncToServer(data) {
-  const page = 'daily-2026-03-16';
-  fetch('http://127.0.0.1:8765', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ page: page, votes: data })
-  }).catch(() => {});
-}
-
-function updateBar(data) {
-  const count = Object.keys(data).length;
-  document.getElementById('fbCount').textContent = count;
-  document.getElementById('fbBar').classList.toggle('visible', count > 0);
-}
-
-function vote(btn) {
-  const wrap = btn.closest('.fb-wrap');
-  const jid = wrap.dataset.jid;
-  const voteType = btn.dataset.vote;
-  const data = loadFeedback();
-  const parent = wrap.closest('li') || wrap.closest('.ref-card') || wrap.closest('a');
-  let text = '';
-  if (parent) {
-    text = parent.textContent.replace(/👍|👎/g, '').trim().substring(0, 120);
-  }
-  const siblings = wrap.querySelectorAll('.fb-btn');
-  if (data[jid] && data[jid].vote === voteType) {
-    delete data[jid];
-    siblings.forEach(s => s.classList.remove('active-up', 'active-down'));
-  } else {
-    data[jid] = { vote: voteType, text: text, time: Date.now() };
-    siblings.forEach(s => s.classList.remove('active-up', 'active-down'));
-    btn.classList.add(voteType === 'up' ? 'active-up' : 'active-down');
-  }
-  saveFeedback(data);
-}
-
-function exportFeedback() {
-  const data = loadFeedback();
-  const text = JSON.stringify(data, null, 2);
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.fb-bar button');
-    btn.textContent = '✅ 已复制!';
-    setTimeout(() => btn.textContent = '📋 复制反馈 JSON', 2000);
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const data = loadFeedback();
-  updateBar(data);
-  Object.entries(data).forEach(([jid, info]) => {
-    const wrap = document.querySelector(`.fb-wrap[data-jid="${jid}"]`);
-    if (wrap) {
-      const btn = wrap.querySelector(`[data-vote="${info.vote}"]`);
-      if (btn) btn.classList.add(info.vote === 'up' ? 'active-up' : 'active-down');
-    }
-  });
-});
-</script>
+<script src="feedback.js"></script>
 
 </body>
 </html>

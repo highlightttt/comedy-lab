@@ -290,16 +290,7 @@ li:hover .fb-btn, .ref-card:hover .fb-btn, a.ref-card:hover .fb-btn { opacity: 0
   <button onclick="exportFeedback()">📋 复制反馈 JSON</button>
 </div>
 
-<script>
-const FB_KEY = 'comedy-feedback-2026-03-20';
-function loadFeedback() { try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; } }
-function saveFeedback(data) { localStorage.setItem(FB_KEY, JSON.stringify(data)); updateBar(data); syncToServer(data); }
-function syncToServer(data) { fetch('http://127.0.0.1:8765', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ page: 'daily-2026-03-20', votes: data }) }).catch(() => {}); }
-function updateBar(data) { const c = Object.keys(data).length; document.getElementById('fbCount').textContent = c; document.getElementById('fbBar').classList.toggle('visible', c > 0); }
-function vote(btn) { const w = btn.closest('.fb-wrap'), jid = w.dataset.jid, v = btn.dataset.vote, data = loadFeedback(); const p = w.closest('li') || w.closest('.ref-card') || w.closest('a'); let t = ''; if (p) t = p.textContent.replace(/👍|👎/g, '').trim().substring(0, 120); const s = w.querySelectorAll('.fb-btn'); if (data[jid] && data[jid].vote === v) { delete data[jid]; s.forEach(x => x.classList.remove('active-up', 'active-down')); } else { data[jid] = { vote: v, text: t, time: Date.now() }; s.forEach(x => x.classList.remove('active-up', 'active-down')); btn.classList.add(v === 'up' ? 'active-up' : 'active-down'); } saveFeedback(data); }
-function exportFeedback() { navigator.clipboard.writeText(JSON.stringify(loadFeedback(), null, 2)).then(() => { const b = document.querySelector('.fb-bar button'); b.textContent = '✅ 已复制!'; setTimeout(() => b.textContent = '📋 复制反馈 JSON', 2000); }); }
-document.addEventListener('DOMContentLoaded', () => { const data = loadFeedback(); updateBar(data); Object.entries(data).forEach(([jid, info]) => { const w = document.querySelector(`.fb-wrap[data-jid="${jid}"]`); if (w) { const b = w.querySelector(`[data-vote="${info.vote}"]`); if (b) b.classList.add(info.vote === 'up' ? 'active-up' : 'active-down'); } }); });
-</script>
+<script src="feedback.js"></script>
 
 </body>
 </html>
