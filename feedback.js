@@ -1,22 +1,12 @@
-// Comedy Lab Feedback System v4
-// Saves to localStorage + syncs to GitHub repo file via commit API
-// Falls back to local-only if GitHub unavailable
+// Comedy Lab Feedback System v6
+// Uses GitHub Issues as backend - works everywhere, no local server needed
 (function() {
-  const PAGE = document.title || location.pathname;
+  const PAGE = document.title || location.pathname.split('/').pop().replace('.html','');
   const FB_KEY = 'comedy-fb-' + PAGE.replace(/[^a-z0-9]/gi, '-');
-  const PENDING_KEY = 'comedy-fb-pending';
-  
+  const REPO = 'highlightttt/comedy-lab';
+
   function loadFB() { try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; } }
   function saveFB(d) { localStorage.setItem(FB_KEY, JSON.stringify(d)); updateBar(d); }
-  
-  function loadPending() { try { return JSON.parse(localStorage.getItem(PENDING_KEY)) || []; } catch(e) { return []; } }
-  function savePending(arr) { localStorage.setItem(PENDING_KEY, JSON.stringify(arr)); }
-  
-  function addPending(entry) {
-    const arr = loadPending();
-    arr.push(entry);
-    savePending(arr);
-  }
 
   function updateBar(d) {
     const bar = document.getElementById('fbBar');
@@ -40,7 +30,7 @@
           <button class="fb-modal-close" onclick="window._fbCloseModal()">✕</button>
         </div>
         <div class="fb-modal-joke"></div>
-        <textarea class="fb-modal-input" placeholder="What made this funny / not funny? What inspired you? (optional)" rows="3"></textarea>
+        <textarea class="fb-modal-input" placeholder="What made this click / not click? (optional)" rows="3"></textarea>
         <div class="fb-modal-actions">
           <button class="fb-modal-skip" onclick="window._fbSubmitModal('')">Skip</button>
           <button class="fb-modal-submit" onclick="window._fbSubmitModal(document.querySelector('.fb-modal-input').value)">Save</button>
@@ -84,47 +74,57 @@
 
   window._fbSubmitModal = function(comment) {
     if (!pendingVote) return;
-    const entry = {
-      vote: pendingVote.vote,
-      text: pendingVote.text,
-      comment: comment.trim(),
-      page: PAGE,
-      jid: pendingVote.jid,
-      time: new Date().toISOString()
-    };
+    const { jid, vote, text } = pendingVote;
+    const cmt = comment.trim();
 
     // Save locally
     const data = loadFB();
-    data[pendingVote.jid] = entry;
+    data[jid] = { vote, text, comment: cmt, time: new Date().toISOString() };
     saveFB(data);
 
-    // Queue for server sync
-    addPending(entry);
-
-    // Try local server
-    fetch('/vote', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(entry)
-    }).catch(() => {});
-
     // Update button visual
-    const wrap = document.querySelector(`.fb-wrap[data-jid="${pendingVote.jid}"]`);
+    const wrap = document.querySelector(`.fb-wrap[data-jid="${jid}"]`);
     if (wrap) {
       wrap.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active-up', 'active-down'));
-      const activeBtn = wrap.querySelector(`[data-vote="${pendingVote.vote}"]`);
-      if (activeBtn) activeBtn.classList.add(pendingVote.vote === 'up' ? 'active-up' : 'active-down');
+      const activeBtn = wrap.querySelector(`[data-vote="${vote}"]`);
+      if (activeBtn) activeBtn.classList.add(vote === 'up' ? 'active-up' : 'active-down');
     }
 
-    // Show confirmation
+    // Create GitHub Issue as feedback record
+    const emoji = vote === 'up' ? '👍' : '👎';
+    const title = `${emoji} ${jid} | ${PAGE}`;
+    let body = `**Joke:** ${text}\n\n**Vote:** ${emoji}\n**Page:** ${PAGE}\n**ID:** ${jid}`;
+    if (cmt) body += `\n\n**Comment:** ${cmt}`;
+    
+    const issueUrl = `https://github.com/${REPO}/issues/new?` + new URLSearchParams({
+      title: title,
+      body: body,
+      labels: 'feedback'
+    }).toString();
+
+    // Show confirmation with link
     const box = document.querySelector('.fb-modal-box');
-    box.innerHTML = `<div class="fb-modal-saved ok">✅ Saved!</div>`;
-    setTimeout(() => window._fbCloseModal(), 800);
+    box.innerHTML = `
+      <div style="text-align:center;padding:1.5rem">
+        <div style="font-size:2rem;margin-bottom:0.8rem">✅</div>
+        <div style="color:#eaeaea;font-size:0.95rem;margin-bottom:1rem">Saved locally!</div>
+        <a href="${issueUrl}" target="_blank" 
+           style="display:inline-block;background:#ff6b35;color:#000;text-decoration:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:0.85rem">
+          📤 Sync to Bob
+        </a>
+        <div style="color:#555;font-size:0.72rem;margin-top:0.8rem">Opens GitHub → Submit issue → Bob reads it</div>
+      </div>
+    `;
+    setTimeout(() => {
+      if (document.getElementById('fb-modal')?.classList.contains('open')) {
+        window._fbCloseModal();
+      }
+    }, 8000);
     pendingVote = null;
   };
 
   window.vote = function(btn) {
-    if (btn.closest('a.ref-card')) { event.preventDefault(); event.stopPropagation(); }
+    if (btn.closest('a.ref-card')) { event?.preventDefault(); event?.stopPropagation(); }
     createModal();
     const wrap = btn.closest('.fb-wrap');
     const jid = wrap.dataset.jid;
@@ -140,7 +140,7 @@
 
     const parent = wrap.closest('li') || wrap.closest('.ref-card') || wrap.closest('a') || wrap.closest('.joke');
     let text = '';
-    if (parent) text = parent.textContent.replace(/👍|👎|Skip|Save|Why\?/g, '').trim().substring(0, 200);
+    if (parent) text = parent.textContent.replace(/👍|👎|Skip|Save|Why\?|Sync to Bob/g, '').trim().substring(0, 200);
 
     pendingVote = { jid, vote: v, text };
     const modal = document.getElementById('fb-modal');
@@ -152,7 +152,7 @@
         <button class="fb-modal-close" onclick="window._fbCloseModal()">✕</button>
       </div>
       <div class="fb-modal-joke">${text.replace(/</g,'&lt;')}</div>
-      <textarea class="fb-modal-input" placeholder="What made this funny / not funny? What inspired you? (optional)" rows="3"></textarea>
+      <textarea class="fb-modal-input" placeholder="What made this click / not click? (optional)" rows="3"></textarea>
       <div class="fb-modal-actions">
         <button class="fb-modal-skip" onclick="window._fbSubmitModal('')">Skip</button>
         <button class="fb-modal-submit" onclick="window._fbSubmitModal(document.querySelector('.fb-modal-input').value)">Save</button>
@@ -162,23 +162,27 @@
     setTimeout(() => modal.querySelector('.fb-modal-input')?.focus(), 100);
   };
 
-  // Sync pending feedback to server when page loads (catches mobile feedback next time on desktop)  
-  window._syncPending = function() {
-    const pending = loadPending();
-    if (!pending.length) return;
-    fetch('/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({page: PAGE, feedback: Object.fromEntries(pending.map(p => [p.jid, p]))})
-    }).then(r => { if (r.ok) savePending([]); }).catch(() => {});
-  };
-
   window.exportFeedback = function() {
     const data = loadFB();
-    navigator.clipboard.writeText(JSON.stringify({page: PAGE, feedback: data}, null, 2)).then(() => {
-      const btn = document.querySelector('.fb-bar button');
-      if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => btn.textContent = '📋 Copy Feedback', 2000); }
+    // Build all feedback into one issue
+    const entries = Object.entries(data);
+    if (!entries.length) return;
+    
+    let body = `# Batch Feedback: ${PAGE}\n\n`;
+    entries.forEach(([jid, info]) => {
+      const emoji = info.vote === 'up' ? '👍' : '👎';
+      body += `## ${emoji} ${jid}\n${info.text}\n`;
+      if (info.comment) body += `> ${info.comment}\n`;
+      body += '\n';
     });
+
+    const issueUrl = `https://github.com/${REPO}/issues/new?` + new URLSearchParams({
+      title: `📋 Batch feedback: ${PAGE} (${entries.length} votes)`,
+      body: body,
+      labels: 'feedback'
+    }).toString();
+
+    window.open(issueUrl, '_blank');
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -191,6 +195,5 @@
         if (btn) btn.classList.add(info.vote === 'up' ? 'active-up' : 'active-down');
       }
     });
-    window._syncPending();
   });
 })();
