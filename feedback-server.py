@@ -145,7 +145,7 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__ == '__main__':
     socketserver.TCPServer.allow_reuse_address = True
-    server = HTTPServer(('127.0.0.1', 8765), Handler)
+    server = HTTPServer(('0.0.0.0', 8765), Handler)
     server.allow_reuse_address = True
     print('Comedy Lab server v5 on http://127.0.0.1:8765')
     server.serve_forever()
