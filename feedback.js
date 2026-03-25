@@ -124,7 +124,7 @@
   };
 
   window.vote = function(btn) {
-    if (btn.closest('a.ref-card')) { event?.preventDefault(); event?.stopPropagation(); }
+    
     createModal();
     const wrap = btn.closest('.fb-wrap');
     const jid = wrap.dataset.jid;

@@ -70,7 +70,7 @@ section{margin-bottom:5rem}
 @media(max-width:600px){.hero .stats-row{gap:1.5rem}main{padding:1.5rem 1rem 4rem}.premise-card{padding:1.5rem}.joke-actions{opacity:1}}
 
 .fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
-.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:1rem;padding:4px 10px;opacity:0.4;transition:all 0.2s;line-height:1}
 .joke:hover .fb-btn{opacity:0.5}
 .fb-btn:hover{opacity:0.8!important;border-color:#333}
 .fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
@@ -356,7 +356,7 @@ section{margin-bottom:5rem}
   };
 
   window.vote = function(btn) {
-    if (btn.closest('a.ref-card')) { event?.preventDefault(); event?.stopPropagation(); }
+    // ref-card guard removed
     createModal();
     const wrap = btn.closest('.fb-wrap');
     const jid = wrap.dataset.jid;
