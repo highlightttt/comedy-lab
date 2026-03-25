@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
-"""Comedy Lab Feedback Server v3 - saves votes + comments, readable by Bob"""
-import json, os, time, socketserver
+"""Comedy Lab Server v5 - serves pages + collects feedback + updates taste profile"""
+import json, os, time, socketserver, mimetypes
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datetime import datetime
+from pathlib import Path
 
-DIR = os.path.dirname(os.path.abspath(__file__))
-FEEDBACK_FILE = os.path.join(DIR, 'feedback.json')
-FEEDBACK_LOG = os.path.join(DIR, 'feedback-log.md')  # Human/AI readable log
+DIR = Path(__file__).parent.resolve()
+FEEDBACK_FILE = DIR / 'feedback.json'
+FEEDBACK_LOG = DIR / 'feedback-log.md'
+TASTE_PROFILE = DIR / 'taste-profile.md'
 
 def load_feedback():
-    if os.path.exists(FEEDBACK_FILE):
-        with open(FEEDBACK_FILE) as f:
-            return json.load(f)
+    if FEEDBACK_FILE.exists():
+        return json.loads(FEEDBACK_FILE.read_text())
     return {}
 
 def save_feedback(data):
-    with open(FEEDBACK_FILE, 'w') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    FEEDBACK_FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False))
 
 def append_log(entry):
-    """Append a vote to the markdown log that Bob reads"""
     ts = datetime.now().strftime('%Y-%m-%d %H:%M')
     vote_emoji = '👍' if entry.get('vote') == 'up' else '👎'
     page = entry.get('page', '?')
@@ -32,9 +31,38 @@ def append_log(entry):
         line += f"\n  - 💬 Jesse: {comment}"
     
     with open(FEEDBACK_LOG, 'a') as f:
-        if os.path.getsize(FEEDBACK_LOG) == 0 if os.path.exists(FEEDBACK_LOG) else True:
-            f.write("# Comedy Lab Feedback Log\n\nJesse's votes and comments on jokes. Bob reads this to improve.\n\n")
+        if not FEEDBACK_LOG.exists() or FEEDBACK_LOG.stat().st_size == 0:
+            f.write("# Comedy Lab Feedback Log\n\nJesse's votes and comments on jokes. Bob reads this to improve.\n")
         f.write(line + "\n")
+
+def update_taste_profile(entry):
+    """Append vote to taste profile immediately"""
+    vote_emoji = '👍' if entry.get('vote') == 'up' else '👎'
+    text = entry.get('text', '')[:150]
+    comment = entry.get('comment', '')
+    section = "What Works" if entry.get('vote') == 'up' else "What Doesn't Work"
+    
+    if not TASTE_PROFILE.exists():
+        TASTE_PROFILE.write_text("# Jesse's Comedy Taste Profile\n\n## What Works (from 👍 votes)\n\n## What Doesn't Work (from 👎 votes)\n\n## Emerging Patterns\n\n## Creative Rules\n")
+    
+    content = TASTE_PROFILE.read_text()
+    ts = datetime.now().strftime('%m/%d')
+    new_entry = f"- [{ts}] {vote_emoji} {text}"
+    if comment:
+        new_entry += f" — *\"{comment}\"*"
+    new_entry += "\n"
+    
+    # Insert after the right section header
+    marker = f"## {section}"
+    if marker in content:
+        parts = content.split(marker, 1)
+        # Find the next ## or end
+        rest = parts[1]
+        # Insert right after the header line
+        newline_pos = rest.index('\n') + 1
+        rest = rest[:newline_pos] + new_entry + rest[newline_pos:]
+        content = parts[0] + marker + rest
+        TASTE_PROFILE.write_text(content)
 
 class Handler(BaseHTTPRequestHandler):
     def _cors(self):
@@ -48,31 +76,40 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        if self.path == '/feedback-log':
-            # Return the markdown log
-            log = ''
-            if os.path.exists(FEEDBACK_LOG):
-                with open(FEEDBACK_LOG) as f:
-                    log = f.read()
+        # Serve static files from comedy directory
+        path = self.path.split('?')[0].lstrip('/')
+        if not path:
+            path = 'index.html'
+        
+        filepath = DIR / path
+        
+        # Security: no directory traversal
+        try:
+            filepath.resolve().relative_to(DIR)
+        except ValueError:
+            self.send_response(403)
+            self.end_headers()
+            return
+        
+        if filepath.is_file():
+            mime, _ = mimetypes.guess_type(str(filepath))
+            if not mime:
+                mime = 'application/octet-stream'
             self.send_response(200)
-            self.send_header('Content-Type', 'text/plain; charset=utf-8')
+            self.send_header('Content-Type', mime)
             self._cors()
             self.end_headers()
-            self.wfile.write(log.encode())
+            self.wfile.write(filepath.read_bytes())
         else:
-            data = load_feedback()
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self._cors()
+            self.send_response(404)
             self.end_headers()
-            self.wfile.write(json.dumps(data, indent=2, ensure_ascii=False).encode())
+            self.wfile.write(b'Not found')
 
     def do_POST(self):
         length = int(self.headers.get('Content-Length', 0))
         body = json.loads(self.rfile.read(length))
         
         if self.path == '/vote':
-            # Single vote with comment
             page = body.get('page', 'unknown')
             jid = body.get('jid', 'unknown')
             
@@ -87,8 +124,8 @@ class Handler(BaseHTTPRequestHandler):
             }
             save_feedback(all_data)
             append_log(body)
+            update_taste_profile(body)
         else:
-            # Bulk sync
             page = body.get('page', 'unknown')
             feedback = body.get('feedback', body.get('votes', {}))
             all_data = load_feedback()
@@ -110,5 +147,5 @@ if __name__ == '__main__':
     socketserver.TCPServer.allow_reuse_address = True
     server = HTTPServer(('127.0.0.1', 8765), Handler)
     server.allow_reuse_address = True
-    print('Feedback server v3 on http://127.0.0.1:8765')
+    print('Comedy Lab server v5 on http://127.0.0.1:8765')
     server.serve_forever()

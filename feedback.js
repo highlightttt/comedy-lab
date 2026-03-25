@@ -102,7 +102,7 @@
     addPending(entry);
 
     // Try local server
-    fetch('http://127.0.0.1:8765/vote', {
+    fetch('/vote', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(entry)
@@ -166,7 +166,7 @@
   window._syncPending = function() {
     const pending = loadPending();
     if (!pending.length) return;
-    fetch('http://127.0.0.1:8765', {
+    fetch('/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({page: PAGE, feedback: Object.fromEntries(pending.map(p => [p.jid, p]))})
