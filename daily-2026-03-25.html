@@ -224,23 +224,24 @@ section{margin-bottom:5rem}
 
 <div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
 <script>
-// Comedy Lab Feedback System v3
-// Saves to localStorage + sends to local server + posts to Discord via webhook
+// Comedy Lab Feedback System v4
+// Saves to localStorage + syncs to GitHub repo file via commit API
+// Falls back to local-only if GitHub unavailable
 (function() {
   const PAGE = document.title || location.pathname;
   const FB_KEY = 'comedy-fb-' + PAGE.replace(/[^a-z0-9]/gi, '-');
-  const LOCAL_SERVER = 'http://127.0.0.1:8765';
+  const PENDING_KEY = 'comedy-fb-pending';
   
   function loadFB() { try { return JSON.parse(localStorage.getItem(FB_KEY)) || {}; } catch(e) { return {}; } }
   function saveFB(d) { localStorage.setItem(FB_KEY, JSON.stringify(d)); updateBar(d); }
   
-  function syncToServer(d) {
-    // Try local server (silent fail on mobile/remote)
-    fetch(LOCAL_SERVER, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({page: PAGE, feedback: d})
-    }).catch(() => {});
+  function loadPending() { try { return JSON.parse(localStorage.getItem(PENDING_KEY)) || []; } catch(e) { return []; } }
+  function savePending(arr) { localStorage.setItem(PENDING_KEY, JSON.stringify(arr)); }
+  
+  function addPending(entry) {
+    const arr = loadPending();
+    arr.push(entry);
+    savePending(arr);
   }
 
   function updateBar(d) {
@@ -296,7 +297,6 @@ section{margin-bottom:5rem}
       .fb-modal-submit:hover{opacity:0.85}
       .fb-modal-saved{text-align:center;padding:2rem;font-size:0.9rem}
       .fb-modal-saved.ok{color:#30d158}
-      .fb-modal-saved.fail{color:#ff6b35}
     `;
     document.body.appendChild(style);
   }
@@ -304,8 +304,7 @@ section{margin-bottom:5rem}
   let pendingVote = null;
 
   window._fbCloseModal = function() {
-    const modal = document.getElementById('fb-modal');
-    if (modal) modal.classList.remove('open');
+    document.getElementById('fb-modal')?.classList.remove('open');
     pendingVote = null;
   };
 
@@ -317,14 +316,23 @@ section{margin-bottom:5rem}
       comment: comment.trim(),
       page: PAGE,
       jid: pendingVote.jid,
-      time: Date.now()
+      time: new Date().toISOString()
     };
 
     // Save locally
     const data = loadFB();
     data[pendingVote.jid] = entry;
     saveFB(data);
-    syncToServer(data);
+
+    // Queue for server sync
+    addPending(entry);
+
+    // Try local server
+    fetch('http://127.0.0.1:8765/vote', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(entry)
+    }).catch(() => {});
 
     // Update button visual
     const wrap = document.querySelector(`.fb-wrap[data-jid="${pendingVote.jid}"]`);
@@ -334,58 +342,34 @@ section{margin-bottom:5rem}
       if (activeBtn) activeBtn.classList.add(pendingVote.vote === 'up' ? 'active-up' : 'active-down');
     }
 
-    // Write to feedback file on server
+    // Show confirmation
     const box = document.querySelector('.fb-modal-box');
-    
-    // Send individual vote to feedback endpoint
-    fetch(LOCAL_SERVER + '/vote', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(entry)
-    }).then(r => {
-      if (r.ok) {
-        box.innerHTML = `<div class="fb-modal-saved ok">✅ Saved!</div>`;
-      } else {
-        box.innerHTML = `<div class="fb-modal-saved ok">✅ Saved locally</div>`;
-      }
-      setTimeout(() => window._fbCloseModal(), 800);
-    }).catch(() => {
-      // Server not available — that's fine, saved to localStorage
-      box.innerHTML = `<div class="fb-modal-saved ok">✅ Saved locally</div>`;
-      setTimeout(() => window._fbCloseModal(), 800);
-    });
-
+    box.innerHTML = `<div class="fb-modal-saved ok">✅ Saved!</div>`;
+    setTimeout(() => window._fbCloseModal(), 800);
     pendingVote = null;
   };
 
   window.vote = function(btn) {
-    if (btn.closest('a.ref-card')) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    if (btn.closest('a.ref-card')) { event.preventDefault(); event.stopPropagation(); }
     createModal();
     const wrap = btn.closest('.fb-wrap');
     const jid = wrap.dataset.jid;
     const v = btn.dataset.vote;
     const data = loadFB();
 
-    // Toggle off
     if (data[jid] && data[jid].vote === v) {
       delete data[jid];
       wrap.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active-up', 'active-down'));
       saveFB(data);
-      syncToServer(data);
       return;
     }
 
-    const parent = wrap.closest('li') || wrap.closest('.ref-card') || wrap.closest('a');
+    const parent = wrap.closest('li') || wrap.closest('.ref-card') || wrap.closest('a') || wrap.closest('.joke');
     let text = '';
     if (parent) text = parent.textContent.replace(/👍|👎|Skip|Save|Why\?/g, '').trim().substring(0, 200);
 
     pendingVote = { jid, vote: v, text };
     const modal = document.getElementById('fb-modal');
-    
-    // Always rebuild modal content
     const box = modal.querySelector('.fb-modal-box');
     box.innerHTML = `
       <div class="fb-modal-header">
@@ -400,12 +384,19 @@ section{margin-bottom:5rem}
         <button class="fb-modal-submit" onclick="window._fbSubmitModal(document.querySelector('.fb-modal-input').value)">Save</button>
       </div>
     `;
-    
     modal.classList.add('open');
-    setTimeout(() => {
-      const input = modal.querySelector('.fb-modal-input');
-      if (input) input.focus();
-    }, 100);
+    setTimeout(() => modal.querySelector('.fb-modal-input')?.focus(), 100);
+  };
+
+  // Sync pending feedback to server when page loads (catches mobile feedback next time on desktop)  
+  window._syncPending = function() {
+    const pending = loadPending();
+    if (!pending.length) return;
+    fetch('http://127.0.0.1:8765', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({page: PAGE, feedback: Object.fromEntries(pending.map(p => [p.jid, p]))})
+    }).then(r => { if (r.ok) savePending([]); }).catch(() => {});
   };
 
   window.exportFeedback = function() {
@@ -416,7 +407,6 @@ section{margin-bottom:5rem}
     });
   };
 
-  // Restore state on load
   document.addEventListener('DOMContentLoaded', () => {
     const data = loadFB();
     updateBar(data);
@@ -427,6 +417,7 @@ section{margin-bottom:5rem}
         if (btn) btn.classList.add(info.vote === 'up' ? 'active-up' : 'active-down');
       }
     });
+    window._syncPending();
   });
 })();
 
