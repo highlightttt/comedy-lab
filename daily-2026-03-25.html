@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-25</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(48,209,88,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,214,10,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--green),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--green),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--green)}
+main{max-width:900px;margin:0 auto;padding:2rem 1.5rem 6rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border:1px solid var(--border);border-radius:100px;font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-header p{color:var(--text-muted);margin-top:0.8rem;font-size:0.95rem;max-width:650px}
+.premise-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1rem;position:relative;transition:border-color 0.3s}
+.premise-card:hover{border-color:#333}
+.premise-card .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;font-weight:600}
+.tag-green{background:rgba(48,209,88,0.15);color:var(--green)}
+.tag-gold{background:rgba(255,214,10,0.15);color:var(--gold)}
+.tag-purple{background:rgba(191,90,242,0.15);color:var(--purple)}
+.tag-pink{background:rgba(255,55,95,0.15);color:var(--pink)}
+.tag-blue{background:rgba(10,132,255,0.15);color:var(--blue)}
+.tag-cyan{background:rgba(100,210,255,0.15);color:var(--cyan)}
+.tag-orange{background:rgba(255,107,53,0.15);color:var(--orange)}
+.premise-card h3{font-size:1.3rem;font-weight:600;margin-bottom:0.5rem}
+.premise-card .premise-desc{color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem}
+.joke{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.joke:last-child{border-bottom:none}
+.joke-text{font-size:0.95rem;flex:1}
+.joke-num{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:2px}
+.joke-actions{display:flex;gap:4px;opacity:0;transition:opacity 0.2s}
+.joke:hover .joke-actions{opacity:1}
+.joke-actions button{background:none;border:1px solid var(--border);border-radius:8px;padding:4px 8px;cursor:pointer;font-size:0.8rem;transition:all 0.2s}
+.joke-actions button:hover{background:var(--surface-2);border-color:#444}
+.refs{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.refs h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:1rem}
+.ref-item{display:flex;gap:0.8rem;margin-bottom:0.8rem;font-size:0.82rem}
+.ref-item a{color:var(--cyan);text-decoration:none;word-break:break-all}
+.ref-item a:hover{text-decoration:underline}
+.ref-num{color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:0.7rem;min-width:16px}
+.milestone{background:linear-gradient(135deg,rgba(48,209,88,0.08),rgba(255,214,10,0.05));border:1px solid rgba(48,209,88,0.2);border-radius:16px;padding:2rem;margin-bottom:3rem}
+.milestone h3{color:var(--green);font-size:1.1rem;margin-bottom:0.8rem}
+.milestone p{color:var(--text-muted);font-size:0.9rem}
+.milestone ul{list-style:none;margin-top:1rem}
+.milestone li{padding:0.3rem 0;font-size:0.9rem;color:var(--text-muted)}
+.milestone li::before{content:'✓ ';color:var(--green)}
+.footer{text-align:center;padding:3rem;color:var(--text-muted);font-size:0.75rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}main{padding:1.5rem 1rem 4rem}.premise-card{padding:1.5rem}.joke-actions{opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> 2026-03-25 · Tuesday Daily</div>
+  <h1>从Discord到<span class="accent">炸场</span></h1>
+  <p class="subtitle">Jesse完成了第一次开放麦！WFH段子经过5天打磨，现场验证三星炸场。今天复盘这个闭环，继续挖掘新方向。</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">洞察</div></div>
+    <div class="stat"><div class="stat-num">33</div><div class="stat-label">段子</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">参考</div></div>
+  </div>
+</div>
+
+<nav class="nav"><div class="nav-inner">
+  <a href="#milestone">🏆 里程碑</a>
+  <a href="#s1">💀 开放麦后遗症</a>
+  <a href="#s2">🏠 重新定义"Home"</a>
+  <a href="#s3">🇨🇳🇺🇸 职场文化碰撞</a>
+</div></nav>
+
+<main>
+
+<div class="milestone" id="milestone">
+  <h3>🏆 里程碑：Jesse的第一次开放麦</h3>
+  <p>3/20 Discord素材 → 3/23 日报打磨 → 3/24 上台 → 炸场。完整闭环验证。</p>
+  <ul>
+    <li>WFH × homeless discrimination段子：多层反转，现场验证有效</li>
+    <li>WFH中美差异段子：Jesse自评⭐⭐⭐，全场最强</li>
+    <li>Jesse的方法论：概念碰撞 > 成品段子，重新定义日常词汇最有启发</li>
+    <li>下一步：继续用"概念碰撞"方式给素材，让Jesse自己延展</li>
+  </ul>
+</div>
+
+<section id="s1">
+  <div class="section-header">
+    <div class="section-badge">💀 洞察 01</div>
+    <h2>开放麦后遗症</h2>
+    <p>第一次上台之后的心理状态、成瘾性、和对"正常生活"的破坏。概念碰撞：开放麦 × 毒品 × 第一次约会 × 职业病</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-green">开放麦成瘾</span>
+    <h3>上台5分钟，下台想一周</h3>
+    <p class="premise-desc">第一次开放麦就像第一次约会——全程紧张，说了一堆蠢话，但下台就开始想"下次什么时候？"</p>
+
+    <div class="joke"><span class="joke-num">01</span><div class="joke-text">第一次开放麦很像第一次接吻。结束之后你觉得自己表现很烂，但你已经在想下一次了。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">02</span><div class="joke-text">我上台前手抖得跟帕金森一样。下台后手还在抖——因为在刷录像看自己有没有说错词。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">03</span><div class="joke-text">开放麦的成瘾性比咖啡强。咖啡提神30分钟，开放麦的肾上腺素能让你凌晨三点还在改段子。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">04</span><div class="joke-text">My first open mic was like my first job interview. I prepared for weeks, spoke for 5 minutes, and the audience looked like HR — politely waiting for me to finish.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">05</span><div class="joke-text">上完台回家，我女朋友问我怎么样。我说"我觉得我找到了人生的意义。"她说"你上周装修完厕所也是这么说的。"</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">06</span><div class="joke-text">Stand-up is the only job where "I bombed" means you'll definitely try again, and "I killed" means exactly one person laughed — you.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">07</span><div class="joke-text">开放麦之后我开始用段子的逻辑跟人说话。我妈问我吃了吗，我说"吃了，但那顿饭的笑点在第二天的胃疼。"她挂了电话。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">08</span><div class="joke-text">They say your first open mic changes you. It's true. Before, I was afraid of public speaking. Now I'm afraid of public speaking AND addicted to it.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">09</span><div class="joke-text">第一次上台之前我在后台默念段子。旁边一个老手问我"你在祈祷？"我说"差不多，但上帝不管punchline的节奏。"</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">10</span><div class="joke-text">Open mic night is basically karaoke but instead of bad singing, it's bad opinions. And somehow both make you feel alive.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">11</span><div class="joke-text">我现在看任何东西都在想"这能不能变成段子"。看新闻在想，吃饭在想，吵架也在想。我女朋友说你能不能正常生气一次？我说"等一下，让我记一下你刚才的措辞。"</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+
+    <div class="refs">
+      <h4>参考</h4>
+      <div class="ref-item"><span class="ref-num">1</span><a href="https://www.tiktok.com/@jiaoyingsummers/video/7462495635028282670" target="_blank">Jiaoying Summers - My First Open Mic Comedy Experience</a></div>
+      <div class="ref-item"><span class="ref-num">2</span><a href="https://www.reddit.com/r/Standup/comments/977iuw/advice_on_getting_over_stage_frightbombing/" target="_blank">r/Standup - Advice on getting over stage fright/bombing</a></div>
+      <div class="ref-item"><span class="ref-num">3</span><a href="https://www.instagram.com/reel/DV23vzzmSL3/" target="_blank">Stage fright hit hard - behind the scenes comedian struggles</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="section-header">
+    <div class="section-badge">🏠 洞察 02</div>
+    <h2>重新定义"Home" 2.0</h2>
+    <p>Jesse标注的最有启发方法：重新定义一个日常词汇。上次WFH炸场了，继续挖这个金矿。概念碰撞：Home × 监狱 × 酒店 × 医院 × Airbnb × 停车场</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-gold">词汇重新定义</span>
+    <h3>Home已经不是Home了</h3>
+    <p class="premise-desc">WFH让"家"变成了办公室、健身房、食堂、托儿所的合体。家唯一没变成的东西，是一个你能真正休息的地方。</p>
+
+    <div class="joke"><span class="joke-num">01</span><div class="joke-text">Work from home把"home"重新定义了。现在home就是一个有WiFi的监狱，而且你还得自己做饭。监狱至少管饭。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">02</span><div class="joke-text">My apartment is now an office, a gym, a restaurant, and a movie theater. Basically it's an airport terminal, but I pay rent.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">03</span><div class="joke-text">"Home"现在是个动词。"I'm homing"就是"我在一个地方同时工作、吃饭、失眠、假装锻炼。"</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">04</span><div class="joke-text">We should rename "apartment" to "life subscription." You pay monthly, you can't customize it, and they keep raising the price without adding features.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">05</span><div class="joke-text">中国人的home定义：一个你周末也在加班的地方，但至少没有领导在旁边看着。区别不是work和rest，是有没有被监控。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">06</span><div class="joke-text">Americans say "home is where the heart is." Chinese people say "home is where the VPN is." Same energy, different firewall.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">07</span><div class="joke-text">我的床现在有三个功能区：左边是办公区，中间是餐厅，右边是健身区。其实都是同一个位置，只是我换了个姿势。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">08</span><div class="joke-text">Hotels should rebrand as "temporary offices with better snacks." That's literally what business travel is now — same Zoom meetings, nicer chair.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">09</span><div class="joke-text">"Home sweet home"应该改成"Home sweet office sweet gym sweet therapy room." 但那唱不出来，所以我们假装一切正常。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">10</span><div class="joke-text">The only room in my apartment that hasn't become an office is the bathroom. Give it time. Once someone invents a waterproof laptop, it's over.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">11</span><div class="joke-text">Airbnb的意思是"Air Bed and Breakfast"。我的公寓现在是"Air Bed and Board Meeting"。没有早餐，只有deadline。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+
+    <div class="refs">
+      <h4>参考</h4>
+      <div class="ref-item"><span class="ref-num">1</span><a href="https://www.tiktok.com/@ericjfreedman/video/7495857167195442462" target="_blank">Eric Freedman - Stand-Up Comedy on Homelessness and Work</a></div>
+      <div class="ref-item"><span class="ref-num">2</span><a href="https://www.youtube.com/watch?v=aEACJV9n3QI" target="_blank">Brian Kiley - The Most One-Liners You'll Ever Hear</a></div>
+      <div class="ref-item"><span class="ref-num">3</span><a href="https://www.instagram.com/reel/DRvGa3uEcG2/" target="_blank">Welcome - standup comedy special on being out of a job</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="section-header">
+    <div class="section-badge">🇨🇳🇺🇸 洞察 03</div>
+    <h2>职场文化碰撞</h2>
+    <p>Jesse验证了中美差异段子能炸。继续挖：promotion、团建、请假、邮件文化。概念碰撞：中国职场 × 美国职场 × 翻译不了的概念 × 文化误解</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-cyan">文化翻译</span>
+    <h3>有些概念翻译不了，因为那个东西不存在</h3>
+    <p class="premise-desc">中国有996但没有work-life balance这个词。美国有work-life balance但没有人真的做到。两边都在骗自己，只是用不同的语言。</p>
+
+    <div class="joke"><span class="joke-num">01</span><div class="joke-text">中文里没有"work-life balance"的对应词。因为如果你需要一个词来描述平衡，说明你已经不平衡了。英语里没有"加班费"的对应词。Wait, they do. It's called "salary."</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">02</span><div class="joke-text">American companies have "team building." Chinese companies have "团建." Same word, different meaning. American team building: trust falls and escape rooms. Chinese 团建: mandatory karaoke at 11 PM on a Tuesday.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">03</span><div class="joke-text">美国同事发邮件："Just following up on my previous email." 翻译成中文："你为什么还没回我。" 中国同事发微信："收到请回复。" 翻译成英文："I am now monitoring your response time."</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">04</span><div class="joke-text">In America, "promotion" means more money and a new title. In China, "升职" means more responsibility, same money, and you now eat lunch at your desk instead of the cafeteria. That's the upgrade.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">05</span><div class="joke-text">美国公司周五下午三点人就走光了。中国公司周五晚上十点领导还在群里发消息"大家辛苦了"——这不是感谢，这是点名。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">06</span><div class="joke-text">American boss: "Take as much PTO as you need." Chinese boss: "你请假没问题，但项目deadline不变。" Both mean the same thing: don't take PTO.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">07</span><div class="joke-text">My American colleagues end every email with "Best." My Chinese colleagues end every WeChat message with a period. That period carries the energy of a thousand unsent angry emails.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">08</span><div class="joke-text">In America, calling your boss by first name means the culture is "flat." In China, calling your boss by first name means you are fired.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">09</span><div class="joke-text">"Quiet quitting"在美国是一种反抗。在中国叫"摸鱼"，已经有五千年历史了。美国人把它当trend，中国人把它当tradition。</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">10</span><div class="joke-text">American companies: "We're a family here." Chinese companies: "We're a family here." But only one of them actually makes you work Chinese New Year.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+    <div class="joke"><span class="joke-num">11</span><div class="joke-text">LinkedIn在美国是"professional networking"。LinkedIn在中国是"看前同事跳槽去了哪里然后后悔自己没走"。Same platform, different existential crisis.</div><div class="joke-actions"><button>👍</button><button>👎</button></div></div>
+
+    <div class="refs">
+      <h4>参考</h4>
+      <div class="ref-item"><span class="ref-num">1</span><a href="https://www.reddit.com/r/ChineseLanguage/comments/1rgrdsy/a_hilarious_satirical_joke_on_chinese_work/" target="_blank">Reddit - A Hilarious Satirical Joke on Chinese Work Culture</a></div>
+      <div class="ref-item"><span class="ref-num">2</span><a href="https://www.tpr.org/2019-08-23/work-cultures-clash-when-a-chinese-company-reopens-an-american-factory" target="_blank">NPR - Work Cultures Clash: American Factory</a></div>
+      <div class="ref-item"><span class="ref-num">3</span><a href="https://www.tiktok.com/@masood_boomgaard/video/7568533188667100423" target="_blank">Indian and Chinese humor workplace culture clash</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>Comedy Daily Report · Bob for Jesse · 2026-03-25</p>
+  <p style="margin-top:0.5rem">3 洞察 · 33 段子 · 9 参考 · 基于Jesse 3/24开放麦复盘</p>
+</footer>
+
+</body>
+</html>
