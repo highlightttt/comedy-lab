@@ -90,36 +90,11 @@
       if (activeBtn) activeBtn.classList.add(vote === 'up' ? 'active-up' : 'active-down');
     }
 
-    // Create GitHub Issue as feedback record
-    const emoji = vote === 'up' ? '👍' : '👎';
-    const title = `${emoji} ${jid} | ${PAGE}`;
-    let body = `**Joke:** ${text}\n\n**Vote:** ${emoji}\n**Page:** ${PAGE}\n**ID:** ${jid}`;
-    if (cmt) body += `\n\n**Comment:** ${cmt}`;
-    
-    const issueUrl = `https://github.com/${REPO}/issues/new?` + new URLSearchParams({
-      title: title,
-      body: body,
-      labels: 'feedback'
-    }).toString();
-
-    // Show confirmation with link
+    // Show quick confirmation and close
     const box = document.querySelector('.fb-modal-box');
-    box.innerHTML = `
-      <div style="text-align:center;padding:1.5rem">
-        <div style="font-size:2rem;margin-bottom:0.8rem">✅</div>
-        <div style="color:#eaeaea;font-size:0.95rem;margin-bottom:1rem">Saved locally!</div>
-        <a href="${issueUrl}" target="_blank" 
-           style="display:inline-block;background:#ff6b35;color:#000;text-decoration:none;padding:10px 24px;border-radius:8px;font-weight:600;font-size:0.85rem">
-          📤 Sync to Bob
-        </a>
-        <div style="color:#555;font-size:0.72rem;margin-top:0.8rem">Opens GitHub → Submit issue → Bob reads it</div>
-      </div>
-    `;
-    setTimeout(() => {
-      if (document.getElementById('fb-modal')?.classList.contains('open')) {
-        window._fbCloseModal();
-      }
-    }, 8000);
+    const emoji = vote === 'up' ? '👍' : '👎';
+    box.innerHTML = `<div style="text-align:center;padding:1.5rem"><div style="font-size:2rem">${emoji}</div><div style="color:#30d158;font-size:0.9rem;margin-top:0.5rem">Saved!</div></div>`;
+    setTimeout(() => window._fbCloseModal(), 600);
     pendingVote = null;
   };
 
