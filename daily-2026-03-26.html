@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-26</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+main{max-width:900px;margin:0 auto;padding:2rem 1.5rem 6rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border:1px solid var(--border);border-radius:100px;font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-header p{color:var(--text-muted);margin-top:0.8rem;font-size:0.95rem;max-width:650px}
+.premise-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1rem;position:relative;transition:border-color 0.3s}
+.premise-card:hover{border-color:#333}
+.premise-card .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;font-weight:600}
+.tag-green{background:rgba(48,209,88,0.15);color:var(--green)}
+.tag-gold{background:rgba(255,214,10,0.15);color:var(--gold)}
+.tag-purple{background:rgba(191,90,242,0.15);color:var(--purple)}
+.tag-pink{background:rgba(255,55,95,0.15);color:var(--pink)}
+.tag-blue{background:rgba(10,132,255,0.15);color:var(--blue)}
+.tag-cyan{background:rgba(100,210,255,0.15);color:var(--cyan)}
+.tag-orange{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-hot{background:rgba(255,59,48,0.15);color:var(--red)}
+.premise-card h3{font-size:1.3rem;font-weight:600;margin-bottom:0.5rem}
+.premise-card .premise-desc{color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+ol li:last-child{border-bottom:none}
+.refs{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.refs h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:1rem}
+.ref-card{display:block;padding:0.8rem;border-radius:8px;margin-bottom:0.5rem;font-size:0.82rem;color:var(--cyan);text-decoration:none;transition:background 0.2s}
+.ref-card:hover{background:var(--surface-2)}
+.milestone{background:linear-gradient(135deg,rgba(191,90,242,0.08),rgba(255,107,53,0.05));border:1px solid rgba(191,90,242,0.2);border-radius:16px;padding:2rem;margin-bottom:3rem}
+.milestone h3{color:var(--purple);font-size:1.1rem;margin-bottom:0.8rem}
+.milestone p{color:var(--text-muted);font-size:0.9rem}
+.milestone ul{list-style:none;margin-top:1rem}
+.milestone li{padding:0.3rem 0;font-size:0.9rem;color:var(--text-muted)}
+.milestone li::before{content:'💡 ';color:var(--gold)}
+.footer{text-align:center;padding:3rem;color:var(--text-muted);font-size:0.75rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}main{padding:1.5rem 1rem 4rem}.premise-card{padding:1.5rem}}
+
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> March 26, 2026 — Thursday</div>
+  <h1>New <span class="accent">Territory</span></h1>
+  <p class="subtitle">Drill day. Three fresh angles Jesse hasn't touched: Dating Apps × Immigration, AI Anxiety × Immigrant Hustle, Language as Identity Crisis. All concept-collision seeds.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">New Premises</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">References</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#dating">Dating × Immigration</a>
+  <a href="#ai">AI × Immigrant Hustle</a>
+  <a href="#language">Language Identity Crisis</a>
+  <a href="#seeds">Bonus Seeds</a>
+</div></div>
+
+<main>
+
+<div class="milestone">
+  <h3>🏋️ Drill Day — No New Jesse Input</h3>
+  <p>Couldn't access #comedy channel (session visibility). No new素材 in memory for 3 days. Going deep on untouched territory.</p>
+  <ul>
+    <li>Dating apps as an immigrant — the profile is the immigration interview</li>
+    <li>AI replacing jobs — immigrants already did that, we have experience</li>
+    <li>Speaking two languages = being two different people</li>
+  </ul>
+</div>
+
+<!-- SECTION 1: Dating × Immigration -->
+<section id="dating">
+<div class="section-header">
+  <div class="section-badge">💡 Concept Collision</div>
+  <h2>Dating Apps = Second Immigration Interview</h2>
+  <p>The thesis: filling out a dating profile as an immigrant is just another visa application. You're selling yourself to a country that already let you in but hasn't fully accepted you. Swipe right = approved. Swipe left = denied without explanation — just like the embassy.</p>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-purple">🎯 PUNCH / 💡 THESIS</span>
+  <h3>Redefining "Match"</h3>
+  <p class="premise-desc">Match = someone who tolerates your origin story. Unmatch = deportation from someone's love life.</p>
+  <ol>
+    <li>Dating apps are just immigration interviews with better lighting. "Where are you from?" "What do you do?" "How long are you planning to stay?"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My dating profile is basically my visa application with a selfie. Same energy. "I promise I will contribute to this relationship and not overstay."<span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Getting unmatched is just emotional deportation. No explanation. No appeal process. One day you're in, next day — gone.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Americans put "I love to travel" on their profile. Immigrants put "I already traveled. I'm here. That was the hard part."<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"What are you looking for?" Long-term. I'm always looking for long-term. My visa, my lease, my relationship — I need stability in at least one of them.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-pink">🧱 BUILD</span>
+  <h3>The Bio Problem</h3>
+  <p class="premise-desc">Writing a bio in your second language = being charming with a handicap.</p>
+  <ol>
+    <li>Writing a witty bio in your second language is like boxing with one hand. You know the joke. You just can't land it.<span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>In Chinese I'm funny. In English I'm "interesting." That's the word people use when they can't figure out if you're smart or just confusing.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My friend said "just be yourself on the app." Bro, which self? The Chinese self who's polite and reserved, or the American self who pretends to like hiking?<span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Every American dating profile: "I love adventures." My biggest adventure was getting through customs. You want adventure? Try explaining your job title in broken English to a TSA agent.<span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Dating app said "add your height." I'm 5'8". In China that's above average. In America that's a swipe left. Immigration shrunk me two inches.<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+
+  <div class="refs">
+    <h4>📚 References</h4>
+    <a class="ref-card" href="https://www.instagram.com/reel/DUjCzuejKlD/" target="_blank">🎤 @ryocomedy — Asian dating app experience at Pure Chaos Comedy<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.instagram.com/reel/DU1TZgrEgUA/" target="_blank">🎤 Comic on "yellow fever" dating dynamics — audience engagement angle<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://iibayarea.org/comedynight2026/" target="_blank">📅 10th Annual Comedy Night for Immigrant Rights — April 30, SF (Joel Kim Booster headlining)<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 2: AI × Immigrant Hustle -->
+<section id="ai">
+<div class="section-header">
+  <div class="section-badge">💡 Concept Collision</div>
+  <h2>AI Is Taking Your Job? Immigrants Already Did That.</h2>
+  <p>The thesis: Americans are scared of AI the way they used to be scared of immigrants. "They're taking our jobs" — we've heard this before. Immigrants are the original AI: cheap, efficient, doesn't complain, works 24/7.</p>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-orange">🎯 PUNCH / 💡 THESIS</span>
+  <h3>Immigrant = Original AI</h3>
+  <p class="premise-desc">We were the automation before automation existed. AI just does what immigrants did but without the accent.</p>
+  <ol>
+    <li>Everyone's worried AI will take their jobs. Immigrants are like — "First time?"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"AI works faster, cheaper, never complains." That's literally my dad's resume. He's been AI since 1998.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The difference between AI and immigrants: AI hallucinates. Immigrants just exaggerate on their resume. Same thing, one gets funded.<span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>AI doesn't need a visa. AI doesn't need healthcare. AI doesn't send money home. Honestly? America finally found the perfect immigrant.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>They trained AI on the entire internet and it still can't do what my mom does — guilt-trip you into eating more in three languages.<span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-gold">🧱 BUILD / 🔄 CALLBACK</span>
+  <h3>AI Anxiety × Immigrant Experience</h3>
+  <p class="premise-desc">The real collision: Americans now feel what immigrants always felt — replaceable, disposable, competing against something that works harder for less.</p>
+  <ol>
+    <li>"AI will make us all unemployed." Welcome to the immigrant experience. We've been feeling replaceable since day one. At least you get a severance package.<span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My company replaced the intern with ChatGPT. The intern was me five years ago. I've been replaced by my replacement's replacement.<span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>AI can write code, write essays, write emails. But it still can't write a WeChat message to your Chinese boss that's exactly the right amount of respectful without being too respectful. That's a skill.<span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>If AI takes all the tech jobs, immigrants will just pivot. We've been pivoting since we got here. First restaurant, then nail salon, then tech, now what — AI repair?<span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>AI is basically an immigrant who made it. Came from nothing, learned everything online, now does your job better. But nobody's asking AI "where are you REALLY from?"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+
+  <div class="refs">
+    <h4>📚 References</h4>
+    <a class="ref-card" href="https://www.instagram.com/reel/DWFJtOaiMNn/" target="_blank">🎤 Comic on AI threatening livelihoods — relatable absurdity angle<span class="fb-wrap" data-jid="ref-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.instagram.com/reel/DVL4iHpgWYr/" target="_blank">🎤 "Hands up if you're worried AI is coming for your job" — crowd work opener<span class="fb-wrap" data-jid="ref-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.instagram.com/reel/DWHZnSBgBXC/" target="_blank">🎤 AI + job memes — "realism and absurdity" mix<span class="fb-wrap" data-jid="ref-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 3: Language Identity Crisis -->
+<section id="language">
+<div class="section-header">
+  <div class="section-badge">💡 Word Redefinition</div>
+  <h2>Bilingual = Two Different People Sharing One Body</h2>
+  <p>The thesis: speaking two languages isn't a skill — it's a personality disorder. Chinese-you and English-you are different people. They have different opinions, different humor, different confidence levels. Immigration didn't move you to a new country. It split you into two people.</p>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-cyan">🎯 PUNCH / 💡 THESIS</span>
+  <h3>The Two Yous</h3>
+  <p class="premise-desc">Chinese me is assertive, quick, funny. English me is "sorry, can you repeat that?" They're not the same person.</p>
+  <ol>
+    <li>Being bilingual isn't a skill, it's a personality disorder. Chinese me is confident and decisive. English me says "sorry" before every sentence.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>In Chinese I argue with my mom for 45 minutes. In English I can't even argue with a barista about my wrong order. "Actually this is fine."<span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My IQ drops 30 points when I switch to English. I'm a philosopher in Chinese and a caveman in English. "Me want... the thing... for the food... you know?"<span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>I dream in Chinese but have nightmares in English. Specifically, the nightmare where someone asks "can you say something in Chinese?" at a party.<span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>English me is polite. Chinese me is honest. They've never met. If they did, English me would apologize and Chinese me would say "why are you apologizing?"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-green">🧱 BUILD / 🎤 CROWDWORK</span>
+  <h3>Lost in Translation (Literally)</h3>
+  <p class="premise-desc">Some concepts don't survive the border crossing. "Add oil" is encouragement in Chinese and a car maintenance tip in English.</p>
+  <ol>
+    <li>Some Chinese concepts just don't translate. "加油" means "you can do it!" Literally it means "add oil." I tried saying "add oil!" to my American coworker during a deadline. He thought I was having a stroke.<span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Americans say "it is what it is." Chinese people say "没办法" — literally "there's no method." Same resignation, but the Chinese version sounds like you actually tried to find a solution first.<span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The hardest English word for Chinese people isn't "rural" or "squirrel." It's "no." We physically cannot say no. We say "maybe next time" which means no. "I'll think about it" which means no. "Sounds interesting" which means absolutely not.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>In English, "How are you?" means nothing. In Chinese, if someone asks how you are, they actually want to know. And then give you advice. And then tell your parents.<span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>🎤 Crowd work seed: "Anyone here bilingual? What's a word in your language that just CANNOT be translated? ... See, every immigrant has one. That untranslatable word is basically your cultural identity compressed into a sound."<span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+
+  <div class="refs">
+    <h4>📚 References</h4>
+    <a class="ref-card" href="https://www.instagram.com/reel/DVhKxYCjT1-/" target="_blank">🎤 Ruslan Bely — IMMIGRACIAS tour, multicultural crowd work<span class="fb-wrap" data-jid="ref-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.facebook.com/oralelb5/posts/1393411322827508/" target="_blank">🎤 Stand Up for Immigrant Justice 2026 — headliner announcement<span class="fb-wrap" data-jid="ref-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.tiktok.com/@corporate.bro/video/7393041366449753375" target="_blank">🎤 Corporate Bro — "when remote workers return" (RTO callback potential)<span class="fb-wrap" data-jid="ref-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  </div>
+</div>
+</section>
+
+<!-- BONUS SEEDS -->
+<section id="seeds">
+<div class="section-header">
+  <div class="section-badge">🌱 Seeds</div>
+  <h2>Concept Collisions for Jesse to Grow</h2>
+  <p>Raw seeds. Not jokes yet — just two things that shouldn't be next to each other but are.</p>
+</div>
+
+<div class="premise-card">
+  <span class="tag tag-gold">🌱 SEEDS</span>
+  <h3>Unfinished Collisions</h3>
+  <ol>
+    <li>💡 <strong>Green card × loyalty program:</strong> Immigration is just a country's loyalty program. "Congratulations, after 10 years of spending, you've earned permanent status."<span class="fb-wrap" data-jid="seed-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>💡 <strong>Accent × software update:</strong> Your accent is just your mouth running an older version of the language. Americans got the latest patch. You're still on English 1.0 — it works, but the UI is different.<span class="fb-wrap" data-jid="seed-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>💡 <strong>Homesick × jet lag:</strong> Homesickness is just permanent jet lag. Your body's here but your soul is still on Beijing time.<span class="fb-wrap" data-jid="seed-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>💡 <strong>Passport × Yelp review:</strong> A passport is just a Yelp review of you by your own country. "⭐⭐⭐⭐⭐ — Approved for travel. Probably coming back."<span class="fb-wrap" data-jid="seed-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>💡 <strong>Culture shock × software migration:</strong> Moving countries is like migrating to a new OS. All your shortcuts are wrong, the file system makes no sense, and ctrl+Z doesn't undo anything.<span class="fb-wrap" data-jid="seed-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</div>
+</section>
+
+</main>
+
+<div class="footer">
+  Comedy Lab Daily — Bob for Jesse — 2026-03-26<br>
+  Drill Day • 30 lines • 3 new premises • 9 references
+</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
