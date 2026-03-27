@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-27</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+main{max-width:900px;margin:0 auto;padding:2rem 1.5rem 6rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border:1px solid var(--border);border-radius:100px;font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-header p{color:var(--text-muted);margin-top:0.8rem;font-size:0.95rem;max-width:650px}
+.premise-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1rem;position:relative;transition:border-color 0.3s}
+.premise-card:hover{border-color:#333}
+.premise-card .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;font-weight:600}
+.tag-green{background:rgba(48,209,88,0.15);color:var(--green)}
+.tag-gold{background:rgba(255,214,10,0.15);color:var(--gold)}
+.tag-purple{background:rgba(191,90,242,0.15);color:var(--purple)}
+.tag-pink{background:rgba(255,55,95,0.15);color:var(--pink)}
+.tag-blue{background:rgba(10,132,255,0.15);color:var(--blue)}
+.tag-cyan{background:rgba(100,210,255,0.15);color:var(--cyan)}
+.tag-orange{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-hot{background:rgba(255,59,48,0.15);color:var(--red)}
+.premise-card h3{font-size:1.3rem;font-weight:600;margin-bottom:0.5rem}
+.premise-card .premise-desc{color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+ol li:last-child{border-bottom:none}
+.refs{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.refs h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:1rem}
+.ref-card{display:block;padding:0.8rem;border-radius:8px;margin-bottom:0.5rem;font-size:0.82rem;color:var(--cyan);text-decoration:none;transition:background 0.2s}
+.ref-card:hover{background:var(--surface-2)}
+.milestone{background:linear-gradient(135deg,rgba(191,90,242,0.08),rgba(255,107,53,0.05));border:1px solid rgba(191,90,242,0.2);border-radius:16px;padding:2rem;margin-bottom:3rem}
+.milestone h3{color:var(--purple);font-size:1.1rem;margin-bottom:0.8rem}
+.milestone p{color:var(--text-muted);font-size:0.9rem}
+.milestone ul{list-style:none;margin-top:1rem}
+.milestone li{padding:0.3rem 0;font-size:0.9rem;color:var(--text-muted)}
+.milestone li::before{content:'💡 ';color:var(--gold)}
+.seeds{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:3rem}
+.seeds h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem}
+.seeds ul{list-style:none}
+.seeds li{padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;color:var(--text-muted)}
+.seeds li:last-child{border-bottom:none}
+.seeds li strong{color:var(--text)}
+.footer{text-align:center;padding:3rem;color:var(--text-muted);font-size:0.75rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}main{padding:1.5rem 1rem 4rem}.premise-card{padding:1.5rem}}
+
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> March 27, 2026 — Drill Day</div>
+  <h1>Corporate Jargon Is <span class="accent">Therapy</span></h1>
+  <p class="subtitle">Three fresh concept collisions: corporate-speak as emotional avoidance, gym culture as immigration metaphor, and your visa status as a personality type.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">30</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 Corporate Jargon = Therapy</a>
+  <a href="#p2">02 Gym = Immigration</a>
+  <a href="#p3">03 Visa = Personality</a>
+  <a href="#seeds">Seeds</a>
+</div></div>
+
+<main>
+
+<!-- ==================== PREMISE 1 ==================== -->
+<section id="p1">
+  <div class="section-header">
+    <div class="section-badge">💡 Concept Collision</div>
+    <h2>Corporate Jargon Is Just Therapy Language</h2>
+    <p>"Let's circle back" = "I'm not ready to process this." "Let's take this offline" = "I need to dissociate." Every meeting is group therapy where nobody gets better.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-purple">💡 Thesis</span>
+    <h3>The Reframe</h3>
+    <p class="premise-desc">Corporate jargon and therapy-speak are the same language. One costs $200/hour, the other costs your soul for free.</p>
+    <ol>
+      <li>"Let's circle back" is just "I'm not ready to process this" in a Patagonia vest.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Let's take this offline" — that's corporate for "I need to dissociate from this conversation."<span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Every standup meeting is group therapy. Fifteen people going "what I did yesterday, what I'm doing today, what's blocking me." That's literally what my therapist asks.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"I have bandwidth for that" — when did we start describing our emotional capacity like we're a WiFi router?<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Let's align on expectations." My therapist calls that "setting boundaries." My manager calls it "your PIP."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Safe space" in therapy means you can cry. "Safe space" in a retrospective means you can say the sprint sucked without getting fired. Theoretically.<span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"How does that make you feel?" — therapist. "How does that impact your deliverables?" — same energy, zero empathy.<span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>My company has a "wellness room." It's a closet with a beanbag. That's not wellness, that's where you go to accept your fate.<span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Growth mindset" in therapy: believe you can change. "Growth mindset" at work: believe you can do three people's jobs for one salary.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"We need to have a difficult conversation." In therapy that means honesty. At work that means you're about to find out what "restructuring" means for your desk.<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== PREMISE 2 ==================== -->
+<section id="p2">
+  <div class="section-header">
+    <div class="section-badge">💡 Concept Collision</div>
+    <h2>Getting a Green Card = Getting Gains at the Gym</h2>
+    <p>Both require years of grinding with no guaranteed results. Both communities are obsessed with tracking progress. Both have people online who "got it in 6 months" and you hate them.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-green">🧱 Build</span>
+    <h3>The Parallel</h3>
+    <p class="premise-desc">Immigration and gym culture are the same grind. Long timelines, constant setbacks, strangers online showing off their results.</p>
+    <ol>
+      <li>Getting a green card is like getting a six-pack. Everyone says "just be consistent," but it's been seven years and I still can't see results.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Immigration forums are just bodybuilding forums. "Day 1,847. Still waiting. Anyone else on the EB-2 program?"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>The visa interview is leg day. Nobody wants to do it. It hurts. And you walk out not sure if it even worked.<span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>There's always that guy on Reddit: "Got my green card in 8 months, premium processing, easy." That's the immigration equivalent of "I don't even go to the gym, I just have good genetics."<span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>USCIS case status is my fitness tracker. I check it 40 times a day and it never changes.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Your case is being actively reviewed" is the immigration version of "muscle confusion." Sounds like something's happening. Nothing is happening.<span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>My lawyer is my personal trainer. Expensive, keeps saying "trust the process," and I'm not sure they know what they're doing.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Both gyms and immigration have "tiers." H-1B is Planet Fitness. Green card is Equinox. Citizenship is owning the gym.<span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>You know what immigration and the gym have in common? Quitting is the only guaranteed way to fail, but every day you think about it.<span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>RFE is a torn ACL. You were making progress, then suddenly: "We need additional evidence." Back to square one. Rehab starts now.<span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== PREMISE 3 ==================== -->
+<section id="p3">
+  <div class="section-header">
+    <div class="section-badge">💡 Concept Collision</div>
+    <h2>Your Visa Status Is Your Personality Type</h2>
+    <p>People ask "what's your sign?" We ask "what's your visa?" And it tells you everything about a person. H-1B? Anxious. Green card? Chill. Citizen? They don't understand anything anymore.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-orange">🔄 Callback-ready</span>
+    <h3>The Taxonomy</h3>
+    <p class="premise-desc">Visa status as astrology for immigrants. Each status comes with its own personality, fears, and toxic traits.</p>
+    <ol>
+      <li>Americans have zodiac signs. Immigrants have visa types. "Oh you're an H-1B? That explains the anxiety."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>H-1B energy: never complaining about anything at work. Your boss could set your desk on fire and you'd say "thank you for the warmth."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Green card holders are the "I just got out of a long relationship" people. Free but traumatized. Still flinching when HR sends an email.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>F-1 student visa is the "talking stage." You're in the country but it's not official. Could end any semester.<span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>OPT is a situationship. "We're not really together, but I can work here... for now... if my major qualifies... and I file on time..."<span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Citizens don't understand any of this. That's the privilege. You don't have to know what an I-140 is. That's like never knowing your credit score because you're rich.<span class="fb-wrap" data-jid="joke-26"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"What's your visa compatibility?" H-1B dating another H-1B? Codependent. H-1B dating a citizen? That's marrying your therapist.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-27"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>The H-1B lottery is just astrology with real consequences. "Sorry, the universe didn't pick your number." Cool, now I have to leave the country.<span class="fb-wrap" data-jid="joke-28"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Naturalized citizens are vegans. They WILL tell you about the process. "You know, I had to take a test about the Constitution. Most Americans can't even—" We know. You've told us.<span class="fb-wrap" data-jid="joke-29"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Visa status even affects how you eat lunch. H-1B? You brought lunch from home, because you can't risk a single unnecessary expense. Citizen? DoorDash twice a day. That's the freedom gap right there.<span class="fb-wrap" data-jid="joke-30"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== SEEDS ==================== -->
+<section id="seeds">
+  <div class="seeds">
+    <h3>🌱 Concept Seeds for Jesse to Grow</h3>
+    <ul>
+      <li><strong>LinkedIn = Church:</strong> Both require weekly attendance, performative positivity, and pretending someone's generic post changed your life. "Grateful for this opportunity" = "Amen."</li>
+      <li><strong>Slack Status = Mood Ring:</strong> 🟢 = lying, 🟡 = in the bathroom, 🔴 = actually working for once, ⚫ = already at the next company</li>
+      <li><strong>PTO = Parole:</strong> You have to request it, it can be denied, you have a set number of days, and when you come back everyone acts like you were gone for years</li>
+      <li><strong>Code Review = Couples Therapy:</strong> "I'm not attacking you, I'm attacking your choices." Both end with someone silently resentful.</li>
+      <li><strong>Layoffs = Natural Selection but backwards:</strong> In nature, the strong survive. In tech, the expensive survive... wait, no. Nobody survives. It's an asteroid.</li>
+    </ul>
+  </div>
+
+  <div class="refs">
+    <h4>📚 References</h4>
+    <a class="ref-card" href="https://www.reddit.com/r/technology/comments/19d65p2/the_absurdity_of_the_returntooffice_movement/" target="_blank">Reddit: The Absurdity of the Return-to-Office Movement — corporate carbon hypocrisy<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.instagram.com/reel/DUitFJAFO6U/" target="_blank">Silicon Valley clip: "He spent 5 years getting a visa. His coworker just walked in."<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.tiktok.com/@the_corporate_escapee/video/7542550530271251742" target="_blank">TikTok: Bold predictions about Corporate in 2026 + RTO absurdity<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.facebook.com/therealchristophertitus/posts/1396609321837086/" target="_blank">Christopher Titus: "Immigrants bring 7 TRILLION dollars every 10 years"<span class="fb-wrap" data-jid="ref-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.linkedin.com/posts/sfurtisahare_in-a-satire-video-set-in-2036-elon-musk-activity-7433099061739741184-xI0y" target="_blank">LinkedIn satire: AI replacing teams — 2036 parody<span class="fb-wrap" data-jid="ref-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.tiktok.com/@austinnasso/video/7532174426150931767" target="_blank">TikTok: Life as a Tech Bro in Silicon Valley — meta humor<span class="fb-wrap" data-jid="ref-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  </div>
+</section>
+
+</main>
+
+<div class="footer">Comedy Lab Daily — Bob × Jesse — Day 6 🎤</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
