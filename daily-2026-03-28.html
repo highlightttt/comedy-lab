@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-28</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+main{max-width:900px;margin:0 auto;padding:2rem 1.5rem 6rem}
+section{margin-bottom:5rem}
+.section-header{margin-bottom:2.5rem}
+.section-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border:1px solid var(--border);border-radius:100px;font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.15}
+.section-header p{color:var(--text-muted);margin-top:0.8rem;font-size:0.95rem;max-width:650px}
+.premise-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1rem;position:relative;transition:border-color 0.3s}
+.premise-card:hover{border-color:#333}
+.premise-card .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;font-weight:600}
+.tag-green{background:rgba(48,209,88,0.15);color:var(--green)}
+.tag-gold{background:rgba(255,214,10,0.15);color:var(--gold)}
+.tag-purple{background:rgba(191,90,242,0.15);color:var(--purple)}
+.tag-pink{background:rgba(255,55,95,0.15);color:var(--pink)}
+.tag-blue{background:rgba(10,132,255,0.15);color:var(--blue)}
+.tag-cyan{background:rgba(100,210,255,0.15);color:var(--cyan)}
+.tag-orange{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-hot{background:rgba(255,59,48,0.15);color:var(--red)}
+.tag-jesse{background:rgba(255,214,10,0.15);color:var(--gold)}
+.premise-card h3{font-size:1.3rem;font-weight:600;margin-bottom:0.5rem}
+.premise-card .premise-desc{color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+ol li:last-child{border-bottom:none}
+.refs{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.refs h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:1rem}
+.ref-card{display:block;padding:0.8rem;border-radius:8px;margin-bottom:0.5rem;font-size:0.82rem;color:var(--cyan);text-decoration:none;transition:background 0.2s}
+.ref-card:hover{background:var(--surface-2)}
+.seeds{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;margin-top:3rem}
+.seeds h3{font-size:1.1rem;font-weight:600;margin-bottom:1rem}
+.seeds ul{list-style:none}
+.seeds li{padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;color:var(--text-muted)}
+.seeds li:last-child{border-bottom:none}
+.seeds li strong{color:var(--text)}
+.footer{text-align:center;padding:3rem;color:var(--text-muted);font-size:0.75rem;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero .stats-row{gap:1.5rem}main{padding:1.5rem 1rem 4rem}.premise-card{padding:1.5rem}}
+
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> March 28, 2026 — Fresh Material Day</div>
+  <h1>Work From <span class="accent">Home</span> Means Chinese WORK, Americans FROM HOME</h1>
+  <p class="subtitle">Jesse's massive new batch: WFH × Tariff War, Corporate Hypocrisy (公司打脸), Coffee vs Tea as class signaling, and Sam's Club as retail OnlyFans.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">35</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 WFH × Tariff War</a>
+  <a href="#p2">02 Corporate Hypocrisy</a>
+  <a href="#p3">03 Coffee vs Tea</a>
+  <a href="#p4">04 Sam's Club = OnlyFans</a>
+  <a href="#seeds">Seeds</a>
+</div></div>
+
+<main>
+
+<!-- ==================== PREMISE 1 ==================== -->
+<section id="p1">
+  <div class="section-header">
+    <div class="section-badge">💡 Concept Collision — Jesse's Material</div>
+    <h2>WFH × Tariff War: Same Acronym, Different Pain</h2>
+    <p>Jesse's killer thesis: 330 million Americans enjoy weekends because 1.4 billion Chinese are working from home. WFH is just the tariff war in pajamas. The global hours stay the same — they just cost 3x more on one side.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-hot">🎯 Punch</span>
+    <h3>The Word Split</h3>
+    <p class="premise-desc">Jesse's original insight: "Work From Home" — Chinese do the WORK part, Americans do the FROM HOME part. Same phrase, labor arbitrage built into the grammar.</p>
+    <ol>
+      <li>"Work From Home." Three words. China gets the first one. America gets the last two.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>I finally understand the tariff war. 330 million Americans can enjoy their weekends because 1.4 billion Chinese are working through theirs. That's not a trade imbalance — that's a subscription service.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>The global total work hours never change. Americans work less, Chinese work more. Same output. But American wages are 3x higher. That's not economics, that's the original NFT — you're paying for the location metadata.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>WFH is definitely part of the tariff war. America puts tariffs on Chinese goods. China puts overtime on Chinese workers. Both sides lose sleep — one from worry, one from the actual work.<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>The developed world's comfort is the developing world's overtime. That's not a political opinion, that's a time zone feature. When San Francisco clocks out at 5, Shanghai clocks in at 9. It's not a coincidence — it's a relay race where one team never gets the baton.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-purple">🧱 Build</span>
+    <h3>WFH Feels Terrible (New Angles)</h3>
+    <p class="premise-desc">Jesse's fresh takes on why WFH sucks in a way nobody talks about — your work moves into your home, and your home disappears.</p>
+    <ol>
+      <li>WFH sounds great until you realize: your work now lives with you. Going to bed feels like sleeping in the office. You don't have a home anymore — you have two offices. One has a microwave, one has a pillow.<span class="tag tag-jesse">JESSE原版</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"I'm on vacation" just means "I'm working from somewhere with a beach." The laptop still opens. The Slack still pings. You just have sand in your keyboard now. That's the upgrade.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>WFH actually made small talk worse. In the office, you do 30 seconds and walk away. On Zoom, you're trapped. Someone starts talking about their weekend and you can't pretend you need coffee. They can see your kitchen. The coffee is right there.<span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>My American colleagues say they don't like WFH either. Their reason? "I miss the flavored sandwiches." Brother, I'm working 14-hour days from my bedroom and you're mourning a panini.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>After RTO, I have to wear pants again. That's the real culture shock. Not the commute, not the meetings — pants. I'd forgotten how zippers work.<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== PREMISE 2 ==================== -->
+<section id="p2">
+  <div class="section-header">
+    <div class="section-badge">🎯 Jesse's Material</div>
+    <h2>Corporate Hypocrisy: Companies Love Slapping Their Own Face</h2>
+    <p>公司打脸 = companies that contradict themselves so hard it's performance art. Every corporate value statement is just a punchline waiting for the setup to happen in real life.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-orange">💡 Thesis</span>
+    <h3>The Contradiction Machine</h3>
+    <p class="premise-desc">Jesse's insight: every company policy exists alongside its exact opposite. They're not being dishonest — they're running A/B tests on their own integrity.</p>
+    <ol>
+      <li>"We encourage innovation and allow failure." Cool. Then why did three people get fired for the feature that didn't hit KPIs? Innovation means "succeed differently," not "fail safely."<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Don't just look at the numbers, focus on long-term value." Translation: when numbers are good, it's KPI season. When numbers are bad, it's "long-termism." When they're YOUR bad numbers, it's "are you sure this role is right for you?"<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"Everything is user-centric." Absolutely. And the user's name is... the CEO. Every product decision is just a very elaborate form of user research where n=1 and the user has equity.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"We oppose 996 and value employee health." Also: "Nobody's required to work overtime, but everyone here has a strong sense of ownership." That's not ownership — that's Stockholm syndrome with stock options.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>WFH research says productivity goes up. RTO research says output is better in-office. Both funded by the same companies. So now I can sleep two extra hours because science says I'm productive either way.<span class="tag tag-jesse">JESSE原版</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== PREMISE 3 ==================== -->
+<section id="p3">
+  <div class="section-header">
+    <div class="section-badge">💡 Concept Collision — Jesse's Material</div>
+    <h2>Coffee vs Tea: Your Beverage Is Your Resume</h2>
+    <p>Both wake you up. But drinking coffee at work means "I'm grinding." Drinking tea at work means "I'm waiting to clock out." Same caffeine, different LinkedIn energy.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-green">🎯 Punch</span>
+    <h3>The Class Signal</h3>
+    <p class="premise-desc">Jesse's insight: coffee = hustle culture, tea = retirement culture. Your hot beverage is your career status update.</p>
+    <ol>
+      <li>Coffee and tea both have caffeine. But at work, coffee means "I have a demanding job." Tea means "I'm waiting for 5 o'clock." Same molecule, different LinkedIn bio.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>In China, tea means you're enjoying life. Coffee means you're suffering. That's why tea is getting less popular every year — nobody's enjoying life anymore.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>The rise of coffee culture in China is just capitalism's way of saying "we need you anxious and fast, not calm and philosophical." Tea built empires over centuries. Coffee builds startups that die in 18 months.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Nobody ever had a "tea break" to power through a deadline. It's always coffee. Tea is for reflecting. Coffee is for regretting. Two stages of the same project.<span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Your Starbucks order is your work personality test. Espresso? You're in finance. Matcha latte? You're in marketing. Black coffee? Engineer. Herbal tea? You already quit, you just haven't told anyone yet.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== PREMISE 4 ==================== -->
+<section id="p4">
+  <div class="section-header">
+    <div class="section-badge">💡 Concept Collision — Jesse's Material</div>
+    <h2>Sam's Club Is the OnlyFans of Retail</h2>
+    <p>You pay a membership fee just for the privilege of spending more money. Exclusive access to bulk goods nobody asked for. The parasocial relationship is with a 48-pack of paper towels.</p>
+  </div>
+
+  <div class="premise-card">
+    <span class="tag tag-pink">🎯 Punch</span>
+    <h3>The Paywall</h3>
+    <p class="premise-desc">Jesse's premise: Costco/Sam's Club membership = OnlyFans subscription. Both make you pay for access to things that feel special but are actually just... more.</p>
+    <ol>
+      <li>Sam's Club is the OnlyFans of retail. You pay a monthly fee for exclusive content. The content is 5 gallons of mayonnaise.<span class="tag tag-jesse">JESSE原版</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-21"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Both have tiers. Sam's Club Plus is just paying more money to feel more special about buying toilet paper. That's the VIP experience — closer access to the paper goods.<span class="fb-wrap" data-jid="joke-22"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Costco has that $1.50 hot dog combo that hasn't changed price since 1985. That's their loss leader. OnlyFans has the free preview. Same energy — hook you with the cheap stuff, bankrupt you on the bulk.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-23"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>Nobody goes to Costco for one thing. You go in for milk, you leave with a kayak. That's not shopping, that's a parasocial relationship with a warehouse.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-24"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+      <li>"I saved $200 at Costco!" No, you spent $400 on things you didn't need and saved $200 on the math. That's not frugality, that's bulk-buying your own delusion.<span class="fb-wrap" data-jid="joke-25"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== SEEDS ==================== -->
+<section id="seeds">
+  <div class="seeds">
+    <h3>🌱 Concept Seeds for Jesse to Grow</h3>
+    <ul>
+      <li><strong>Cultural Appropriation × Work Culture:</strong> China has 996 but no word for "work-life balance." America has "work-life balance" but nobody does it. Both sides are lying — just in different languages. (Jesse's premise, needs stage-testing)</li>
+      <li><strong>WFH = Remote Relationship:</strong> Your manager is your long-distance partner. Daily standups are "good morning" texts. The trust issues are real. And just like dating, they always want you to "come into the office" eventually.</li>
+      <li><strong>Vacation = Working From Somewhere Else:</strong> "Out of office" is a legal fiction. The laptop travels. The anxiety travels. Only the desk changes. "I'm OOO" = "I'm online but resentful."</li>
+      <li><strong>RTO as Cultural Appropriation:</strong> American companies forcing RTO learned it from Chinese 996 culture but gave it a TED Talk rebrand: "in-person collaboration synergy."</li>
+      <li><strong>The Beverage-Career Pipeline:</strong> Your drink trajectory tells your career story — bubble tea (intern) → iced coffee (grind years) → espresso (management) → herbal tea (burnout) → whiskey (founder). It's not a menu, it's a biography.</li>
+    </ul>
+  </div>
+
+  <div class="refs">
+    <h4>📚 References</h4>
+    <a class="ref-card" href="https://www.youtube.com/watch?v=bH3bGnw0Mf0" target="_blank">Jimmy O. Yang: Tariffs standup bit — Chinese-American comedian on trade war absurdity<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.instagram.com/reel/DIS5PUZup5e/" target="_blank">Peng Dang Comedy: "Positive effects of Trade War" — Chinese comedian's take<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.facebook.com/KeithAlberstadtComedian/videos/coffee-vs-tea-comedy-standup-coffee-tea-keithalberstadt/170854125836924/" target="_blank">Keith Alberstadt: Coffee vs Tea standup bit<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.tiktok.com/@matt_obrien/video/7574121824305351966" target="_blank">Matt O'Brien: Costco vs Sam's Club standup — bulk shopping comedy<span class="fb-wrap" data-jid="ref-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+    <a class="ref-card" href="https://www.instagram.com/reel/DIi4alQMdNh/" target="_blank">Comedy Castle: Jimmy O. Yang tariff jokes at Comedy Castle<span class="fb-wrap" data-jid="ref-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  </div>
+</section>
+
+</main>
+
+<div class="footer">Comedy Lab Daily — Bob × Jesse — Day 14 🎤</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
