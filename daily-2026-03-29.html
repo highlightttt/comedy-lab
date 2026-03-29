@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-29</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;padding-bottom:60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:4rem}
+section h2{font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.02em}
+section .premise-desc{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;font-style:italic}
+.tag{font-size:0.65rem;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;font-weight:500}
+.tag-hot{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-punch{background:rgba(255,59,48,0.12);color:var(--red)}
+.tag-build{background:rgba(10,132,255,0.12);color:var(--blue)}
+.tag-callback{background:rgba(191,90,242,0.12);color:var(--purple)}
+.tag-thesis{background:rgba(255,214,10,0.12);color:var(--gold)}
+.tag-new{background:rgba(48,209,88,0.15);color:var(--green)}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+.seeds{margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.seeds h3{font-size:1rem;margin-bottom:1rem;color:var(--gold)}
+.seeds ul{list-style:disc;padding-left:1.2rem}
+.seeds li{padding:0.4rem 0;font-size:0.9rem;color:var(--text-muted)}
+.ref-section{margin-top:3rem}
+.ref-section h3{font-size:1rem;margin-bottom:1rem;color:var(--text-muted)}
+.ref-card{display:block;padding:0.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;color:var(--cyan);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s}
+.ref-card:hover{border-color:var(--cyan)}
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> Sunday, March 29, 2026</div>
+  <h1>The <span class="accent">Respectability</span> Trap</h1>
+  <p class="subtitle">New premise: "respectable person doing disreputable thing" as universal comedy structure. Plus fresh deep-dives on WFH and beverage culture from new angles.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">20</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Concept Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 Respectability × Hypocrisy</a>
+  <a href="#p2">02 WFH: The Commute Angle</a>
+  <a href="#p3">03 Beverages × Life Stage</a>
+  <a href="#seeds">Seeds</a>
+  <a href="#refs">References</a>
+</div></div>
+
+<div class="content">
+
+<section id="p1">
+  <h2>Respectability × Hypocrisy: The Minivan Theory</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-hot">🎯 Punch</span>
+  <p class="premise-desc">Comedy gold lives where respectable meets disreputable. The funnier the person's day job, the funnier the secret. Concept collision: "the more respectable the exterior, the wilder the interior" — applies to politicians, suburbs, corporate values, countries.</p>
+  <ol>
+    <li>The number one customer for street prostitutes in America? Suburban dads in minivans. The vehicle designed for family safety is the official car of infidelity. Volvo should use that in an ad.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Every American scandal follows the same formula: the louder someone preaches family values, the weirder their browser history. Morality is just a spoiler alert for the eventual news article.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>In China, the most corrupt officials always have the most calligraphy on their walls. "Integrity." "Serve the People." Bro, your wall has more values than you do.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Respectability is just a costume with a receipt. The suit doesn't make you honest — it just makes your crimes tax-deductible.<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The most dangerous sentence in any language: "He seemed like such a nice guy." That's not a compliment. That's foreshadowing.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Companies are the same. "We value transparency." Translation: we have a 47-page NDA. Transparency is a corporate value the way "fun" is a job requirement — it means the opposite.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>LinkedIn is the minivan of social media. Looks professional. Full of people pretending they love Mondays. The content is family-friendly but the DMs are... networking.<span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p2">
+  <h2>WFH Deep-Dive: The Commute Was Therapy</h2>
+  <span class="tag tag-callback">🔄 Callback</span>
+  <span class="tag tag-thesis">💡 New Angle</span>
+  <p class="premise-desc">Fresh cut on WFH — redefine "commute" not as wasted time, but as the only boundary between your two selves. Concept collision: commute = decompression chamber between work-you and home-you. Without it, you're always both.</p>
+  <ol>
+    <li>The commute wasn't wasted time. It was a decompression chamber. You walk out of the office as Corporate You, and by the time you get home you're Human Again. Without it, you're both at once. You're answering Slack in your underwear — that's not a person, that's a glitch.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>WFH killed the commute, and now there's no transition. I used to have 40 minutes to stop being angry at my boss. Now I go from a meeting straight to dinner. My wife gets the energy that was meant for traffic.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The commute was the only time nobody owned you. Your boss didn't have you. Your family didn't have you. Just you, in a metal box, free. WFH didn't give us freedom — it took away the only freedom we had.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My "commute" now is walking from my bed to my desk. Three steps. That's not a commute, that's a loading screen.<span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>In China, my commute was 90 minutes. I thought that was hell. Now I'd pay for it. Ninety minutes of nobody asking me anything? That's a spa day.<span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>WFH means your home has a performance review now. Before, home was unconditional love. Now your living room has KPIs.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p3">
+  <h2>Beverages × Life Stage: Your Cup Is Your Biography</h2>
+  <span class="tag tag-callback">🔄 Deep-Dive</span>
+  <span class="tag tag-build">🧱 Build</span>
+  <p class="premise-desc">Extending the coffee/tea premise into a full life-stage map. Concept collision: beverage choice = involuntary autobiography. Each drink upgrade is actually a life downgrade.</p>
+  <ol>
+    <li>Your drink order is an involuntary autobiography. Bubble tea: "I still have hope." Iced coffee: "I have a startup." Espresso: "I have a meeting in 5 minutes." Hot water: "I have given up."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Every coffee upgrade is a life downgrade. Frappuccino → latte → americano → black coffee → just hot water. By the time you drink it pure, you've lost everything sweet in your life.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>In China, the older the boss, the bigger the tea thermos. Entry-level: Starbucks cup. Director: ceramic mug. VP: a thermos that could survive a car crash. CEO: a teapot older than the company.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-16"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Americans respect coffee addicts. "Oh, don't talk to me before my coffee!" — and everyone laughs. Replace coffee with any other drug and that sentence gets you fired.<span class="fb-wrap" data-jid="joke-17"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"I switched to decaf" is the beverage equivalent of "we should see other people." You're still going through the motions but the feeling is gone.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-18"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The Chinese thermos is the real status symbol. Forget watches, forget cars. Show me your thermos and I'll tell you your salary. If it has goji berries floating in it, you're either a billionaire or a grandma. Same energy.<span class="fb-wrap" data-jid="joke-19"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Tea ceremony is just coffee snobbery with better marketing. One's called "culture." The other's called "annoying." Same guy, different continent.<span class="fb-wrap" data-jid="joke-20"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="seeds" class="seeds">
+  <h3>💡 Concept Seeds (for Jesse to grow)</h3>
+  <ul>
+    <li><strong>Respectability × Immigration:</strong> Immigrants are the most "respectable" people in public because one wrong move = deportation. We're basically method-acting as model citizens. Green card holders are the best actors who never get cast.</li>
+    <li><strong>Commute × Culture:</strong> Chinese commute = sardine can subway, American commute = solo car podcast therapy. Both are miserable but one builds community (trauma bonding) and the other builds true crime addiction.</li>
+    <li><strong>Beverage × Visa Status:</strong> H-1B = double espresso (running on anxiety). Green card = regular coffee (functional but not relaxed). Citizen = decaf (finally safe enough to not care). Undocumented = Red Bull (always alert).</li>
+    <li><strong>Home × Performance Review:</strong> WFH turned your apartment into an employee. Your couch has a utilization rate. Your fridge has an SLA. Your bed's uptime is being monitored.</li>
+    <li><strong>"Nice Guy" × Countries:</strong> America is the "nice guy" of countries. "We value democracy!" Same energy as "He seemed like such a nice guy." China at least never pretended — that's not better, but it's more honest branding.</li>
+  </ul>
+</section>
+
+<section id="refs" class="ref-section">
+  <h3>🔗 References</h3>
+  <a class="ref-card" href="https://www.reddit.com/r/videos/comments/1ev6p7z/norm_macdonald_expands_on_bill_cosby/" target="_blank">Norm Macdonald on Bill Cosby — master class in "respectable × disreputable" comedy structure<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.instagram.com/reel/DTLn5tWktDU/" target="_blank">Rishi: "2025 was the year I got citizenship" — immigrant comedy angle<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.tiktok.com/@tylermccancecomedy/video/7533081399952297230" target="_blank">Tyler McCance: Dating in 2025 — culture clash comedy structure<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+</section>
+
+</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
