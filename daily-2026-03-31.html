@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-03-31</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;padding-bottom:60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:4rem}
+section h2{font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.02em}
+section .premise-desc{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;font-style:italic}
+.tag{font-size:0.65rem;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;font-weight:500}
+.tag-hot{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-punch{background:rgba(255,59,48,0.12);color:var(--red)}
+.tag-build{background:rgba(10,132,255,0.12);color:var(--blue)}
+.tag-callback{background:rgba(191,90,242,0.12);color:var(--purple)}
+.tag-thesis{background:rgba(255,214,10,0.12);color:var(--gold)}
+.tag-new{background:rgba(48,209,88,0.15);color:var(--green)}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+.seeds{margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.seeds h3{font-size:1rem;margin-bottom:1rem;color:var(--gold)}
+.seeds ul{list-style:disc;padding-left:1.2rem}
+.seeds li{padding:0.4rem 0;font-size:0.9rem;color:var(--text-muted)}
+.ref-section{margin-top:3rem}
+.ref-section h3{font-size:1rem;margin-bottom:1rem;color:var(--text-muted)}
+.ref-card{display:block;padding:0.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;color:var(--cyan);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s}
+.ref-card:hover{border-color:var(--cyan)}
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> Tuesday, March 31, 2026</div>
+  <h1>Say the <span class="accent">Opposite</span></h1>
+  <p class="subtitle">Three unused Jesse seeds finally developed: Costco as OnlyFans, corporate language as inverse truth, and "vacation" as a word that lost its meaning.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Concept Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 Costco = OnlyFans</a>
+  <a href="#p2">02 Corporate Inverse Dictionary</a>
+  <a href="#p3">03 Vacation Lost Its Meaning</a>
+  <a href="#seeds">Seeds</a>
+  <a href="#refs">References</a>
+</div></div>
+
+<div class="content">
+
+<section id="p1">
+  <h2>Sam's Club / Costco = OnlyFans of Retail</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-punch">🎯 Punch</span>
+  <p class="premise-desc">Jesse's original seed: "Sam's Club / Costco is the OnlyFans of retail." Concept collision: subscription model + exclusivity + the illusion that paying for access makes the experience special. You pay a membership fee to buy things. That's just shopping with a cover charge.</p>
+  <ol>
+    <li>Costco is the OnlyFans of retail. You pay a membership just to see what's inside. And once you're in, you spend way more than you planned.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Costco checks your card at the door like a bouncer. "You on the list?" Bro, I'm buying toilet paper, not entering a nightclub.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The Costco membership card is the only ID where the photo looks worse than your driver's license. And you show it more often.<span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Costco sells everything in bulk because they know you came for one thing and you're leaving with a kayak. The membership fee isn't for access — it's a deposit on your self-control.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"I saved $200 at Costco!" No you didn't. You spent $400 to save $200. That's not saving. That's math with extra steps.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p2">
+  <h2>The Corporate Inverse Dictionary</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-thesis">💡 Thesis</span>
+  <p class="premise-desc">Jesse's seed from 3/28: 公司总喜欢打自己的脸. Concept collision: every corporate value statement means its exact opposite. Redefine corporate vocabulary as an inverse dictionary — every word means what it doesn't say.</p>
+  <ol>
+    <li>"We encourage innovation and accept failure." Translation: "Why wasn't this caught before launch?"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"We're customer-centric." The customer they're centered on is called The Boss.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"Don't just look at the numbers — think long-term." That's what they say when the numbers are bad. When the numbers are good: "Look at the numbers!"<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"We don't do overtime. But everyone here has ownership mentality." Ownership mentality means you work like you own the company but get paid like you don't.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"Flat hierarchy" means your CEO sits in the open office. Not because he believes in equality — because he wants to watch you.<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p3">
+  <h2>Vacation = Working From Somewhere Else</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-build">🧱 Build</span>
+  <p class="premise-desc">Jesse's seed from 3/28: "I'm on my vacation" means "I'm working from somewhere else." Concept collision: vacation is a word that died — it now means "same laptop, different WiFi password." Plus the Chinese angle: 7 days off, 2 weekends payback.</p>
+  <ol>
+    <li>"I'm on vacation" now means "I'm working from a beach." Vacation didn't change location — work did. Vacation is just WFH with a view.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Chinese New Year: 7 days off, then you work the next 2 weekends to "pay it back." That's not a holiday. That's a loan with interest.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Americans have unlimited PTO and take 5 days a year. Chinese have 5 days of annual leave and take all 5 plus argue for a 6th. The scarcity model works better than the abundance model. Capitalism figured this out with everything except vacation.<span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Out-of-office reply is the corporate version of "read receipts off." Everyone knows you saw the email. The auto-reply just gives you legal deniability.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The only real vacation is when your WiFi doesn't work. No signal = actual freedom. That's why camping exists — it's not about nature, it's about escaping Slack.<span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="seeds" class="seeds">
+  <h3>💡 Concept Seeds (for Jesse to grow)</h3>
+  <ul>
+    <li><strong>Membership × Immigration:</strong> Green card is the Costco membership of countries. You pay, you wait, you get checked at the door, and once inside you still spend more than you expected.</li>
+    <li><strong>Corporate Dictionary × Bilingual:</strong> Learning corporate English is harder than learning actual English. At least regular English means what it says. "Let's table this" — in English it means stop, in French it means start. Corporate language is its own country.</li>
+    <li><strong>Vacation Payback × Student Loans:</strong> Chinese holiday payback weekends = vacation student loans. You borrow rest now, pay it back with interest later. Americans do the same thing — they just call it "catching up on emails."</li>
+    <li><strong>Bulk Buying × Immigrant Family:</strong> Costco was designed for immigrant families. Buy 48 rolls of toilet paper? My mom already did that before Costco existed. She called it "the suitcase from China."</li>
+    <li><strong>Out-of-Office × Ghosting:</strong> Setting an out-of-office is professional ghosting. "I'm currently unavailable" = "I saw your message and chose peace." The only difference is the return date.</li>
+  </ul>
+</section>
+
+<section id="refs" class="ref-section">
+  <h3>🔗 References</h3>
+  <a class="ref-card" href="https://www.tiktok.com/discover/guy-at-costco-with-sams-membership-comedy" target="_blank">TikTok: Guy at Costco with Sam's membership — retail comedy format<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.vulture.com/article/bill-burr-hypocrisy-jokes-stand-up-comedy.html" target="_blank">Vulture: The Hypocrisy-Joke Trap — Bill Burr's approach to corporate/societal hypocrisy<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.youtube.com/watch?v=jFRAhBcxKoQ" target="_blank">YouTube: Vacation Wars — China vs. the U.S. holiday culture clash<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+</section>
+
+</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
