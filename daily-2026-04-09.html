@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-04-09</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;padding-bottom:60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:4rem}
+section h2{font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.02em}
+section .premise-desc{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;font-style:italic}
+.tag{font-size:0.65rem;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;font-weight:500}
+.tag-hot{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-punch{background:rgba(255,59,48,0.12);color:var(--red)}
+.tag-build{background:rgba(10,132,255,0.12);color:var(--blue)}
+.tag-callback{background:rgba(191,90,242,0.12);color:var(--purple)}
+.tag-thesis{background:rgba(255,214,10,0.12);color:var(--gold)}
+.tag-new{background:rgba(48,209,88,0.15);color:var(--green)}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+.seeds{margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.seeds h3{font-size:1rem;margin-bottom:1rem;color:var(--gold)}
+.seeds ul{list-style:disc;padding-left:1.2rem}
+.seeds li{padding:0.4rem 0;font-size:0.9rem;color:var(--text-muted)}
+.ref-section{margin-top:3rem}
+.ref-section h3{font-size:1rem;margin-bottom:1rem;color:var(--text-muted)}
+.ref-card{display:block;padding:0.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;color:var(--cyan);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s}
+.ref-card:hover{border-color:var(--cyan)}
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> Thursday, April 9, 2026</div>
+  <h1>Smart <span class="accent">Dumb</span></h1>
+  <p class="subtitle">"Smart" in smartphone describes the user requirement, not the phone. ADHD people are apex predators trapped in Excel. And corporate jargon is the new family defense mechanism.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Concept Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 "Smart" = You Better Be</a>
+  <a href="#p2">02 ADHD Prehistoric Hunter</a>
+  <a href="#p3">03 Corporate Speak at Home</a>
+  <a href="#seeds">Seeds</a>
+  <a href="#refs">References</a>
+</div></div>
+
+<div class="content">
+
+<section id="p1">
+  <h2>"Smart" Doesn't Describe the Device — It Describes the Entry Requirement</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-thesis">💡 Thesis</span>
+  <p class="premise-desc">From #comedy 4/8: "Smart" in smart phone means YOU have to be smart enough to use it. Dad got a smart TV and stopped watching — 3 remotes. Smart rice cooker you have to talk to — introvert nightmare. The smarter your house gets, the dumber you feel. Concept collision: "smart home" = your house judging you.</p>
+  <ol>
+    <li>"Smart" in smartphone doesn't describe the phone. It describes the minimum IQ required to operate it.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My dad got a smart TV. He hasn't watched television since. Three remotes. He went from 200 channels to zero.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Now there's a smart rice cooker you have to talk to. I'm an introvert — I didn't sign up for roommates I have to speak to. I was enjoying my alone time. Now my kitchen has social expectations.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>A smart home is just a house that's smarter than you. You're the dumbest thing in your own apartment and you paid for the upgrade.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Every "smart" product is a literacy test disguised as a purchase. The fridge has Wi-Fi. I don't know why. But if I can't connect it, I'm the idiot.<span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p2">
+  <h2>ADHD People Are Apex Predators Stuck in Spreadsheets</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-punch">🎯 Punch</span>
+  <p class="premise-desc">From #comedy 4/7: ChatGPT says ADHD people are "gifted" — good at high-stimulation tasks with instant feedback and danger. Translation: hunting, killing, and scrolling your phone before sleep. Concept collision: ADHD = a prehistoric operating system running on modern hardware.</p>
+  <ol>
+    <li>ChatGPT told me ADHD people are gifted. We excel at tasks with high stimulation, instant feedback, and danger. So: hunting, killing, and scrolling TikTok at 2 AM.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>ADHD is a prehistoric operating system running on a modern laptop. Great at dodging tigers. Terrible at quarterly reports.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>I'm ADHD, raised by parents who work in school. Hardworking but useless — like a hamster wheel connected to nothing.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>We're gifted. Just not at anything that pays.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>ADHD people would've been the village hero 10,000 years ago. Now we're the guy who opened 47 browser tabs and forgot why.<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p3">
+  <h2>When You Answer Your Dad Like a Zoom Call</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-build">🧱 Build</span>
+  <p class="premise-desc">From #comedy 4/8: Dad asks "why are you using so much toilet paper?" Response: "Dad, that's a great question. Thanks for raising it." Corporate meeting language as a defense mechanism at home. Concept collision: the corporate accent is the new fight-or-flight.</p>
+  <ol>
+    <li>My dad asked why I use so much toilet paper. I said, "Dad, that's a great question. Thanks for raising it." He looked at me like I was possessed.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Corporate speak is the new fight-or-flight. Someone yells at you, your brain doesn't panic — it generates a follow-up email.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"Let's circle back on this" is the adult version of "I don't know, ask your mother."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>You know you've worked too long at a corporation when your mom calls and you say "let me put some time on your calendar."<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"Per my last text, Mom, I already told you I ate." That's not a son. That's a Slack notification with legs.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="seeds" class="seeds">
+  <h3>💡 Concept Seeds (for Jesse to grow)</h3>
+  <ul>
+    <li><strong>Smart Device × Age Gap:</strong> Every smart product creates a generation filter. Smart TV killed dad's TV habit. Smart lock means grandma can't visit unannounced anymore. Technology isn't advancing — it's gatekeeping. "You must be this tech-literate to enter your own home."</li>
+    <li><strong>ADHD × Modern Jobs:</strong> Every job description is the opposite of ADHD strengths. "Detail-oriented, self-motivated, good at sitting still for 8 hours." That's not a job — that's a punishment. We built a civilization optimized for the neurotype that would've died first in the wild.</li>
+    <li><strong>Corporate × Dating:</strong> Dating apps are just corporate culture for romance. "Let's schedule a sync" = first date. "We should align on expectations" = the talk. "I'm pursuing other opportunities" = breakup. Ghosting is just "position has been filled internally."</li>
+    <li><strong>Smart Home × Introvert:</strong> I bought smart devices to avoid people. Now my house talks more than my coworkers. Alexa won't shut up. The fridge beeps. The doorbell has opinions. I automated my loneliness and got a chatty apartment instead.</li>
+  </ul>
+</section>
+
+<section id="refs" class="ref-section">
+  <h3>🔗 References</h3>
+  <a class="ref-card" href="https://www.youtube.com/shorts/FK5N-A8ftjo" target="_blank">YouTube — "Not EVERY thing needs to be a smart device" — stand-up on unnecessary smart gadgets<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.upworthy.com/womans-masterful-corporate-accent-parody-is-so-on-point-that-people-call-it-triggering/" target="_blank">Upworthy — Comedian's "corporate accent" parody triggers office PTSD in millions<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.instagram.com/reel/DFcK2aiI1AE/" target="_blank">Instagram — "Parenting with Corporate Jargon: Pay Rise Denied" — family meets boardroom<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+</section>
+
+</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
