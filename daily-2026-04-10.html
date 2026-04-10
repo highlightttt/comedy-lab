@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-04-10</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;padding-bottom:60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:4rem}
+section h2{font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.02em}
+section .premise-desc{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;font-style:italic}
+.tag{font-size:0.65rem;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;font-weight:500}
+.tag-hot{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-punch{background:rgba(255,59,48,0.12);color:var(--red)}
+.tag-build{background:rgba(10,132,255,0.12);color:var(--blue)}
+.tag-callback{background:rgba(191,90,242,0.12);color:var(--purple)}
+.tag-thesis{background:rgba(255,214,10,0.12);color:var(--gold)}
+.tag-new{background:rgba(48,209,88,0.15);color:var(--green)}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+.seeds{margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.seeds h3{font-size:1rem;margin-bottom:1rem;color:var(--gold)}
+.seeds ul{list-style:disc;padding-left:1.2rem}
+.seeds li{padding:0.4rem 0;font-size:0.9rem;color:var(--text-muted)}
+.ref-section{margin-top:3rem}
+.ref-section h3{font-size:1rem;margin-bottom:1rem;color:var(--text-muted)}
+.ref-card{display:block;padding:0.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;color:var(--cyan);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s}
+.ref-card:hover{border-color:var(--cyan)}
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> Friday, April 10, 2026</div>
+  <h1>Pray <span class="accent">Harder</span></h1>
+  <p class="subtitle">Birthdays and tomb sweeping are the same ritual with different catering. WFH cooking is a biohazard. And the train armrest is the last battlefield of masculinity.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">15</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Concept Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 Birthday = Tomb Sweeping</a>
+  <a href="#p2">02 WFH Cooking Hazard</a>
+  <a href="#p3">03 Train Armrest War</a>
+  <a href="#seeds">Seeds</a>
+  <a href="#refs">References</a>
+</div></div>
+
+<div class="content">
+
+<section id="p1">
+  <h2>Birthday and Tomb Sweeping Are the Same Event</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-thesis">💡 Thesis</span>
+  <p class="premise-desc">From #comedy 4/8: Both events = same wish (health &amp; wealth), both require gifts, one you pray to nobody and the other to ancestors. Concept collision: the living and the dead want the exact same things.</p>
+  <ol>
+    <li>Birthday and tomb sweeping — same wish, same gifts, different audience. One you pray to nobody, the other to someone who can't hear you.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Both times you say "I hope you're healthy and rich." At a birthday, it's optimistic. At a grave, it's a complaint.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Birthday: buy a gift they pretend to like. Tomb sweeping: burn a gift they can't return. Same economy, different refund policy.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>On your birthday you blow out candles and make a wish. At a tomb you light incense and make a wish. The dead have better lighting.<span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The only difference: at a birthday, people sing. At a grave, people cry. Both performances. Both equally sincere.<span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p2">
+  <h2>WFH Cooking Is a Daily Brush with Death</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-punch">🎯 Punch</span>
+  <p class="premise-desc">From #comedy 4/9: WFH means cooking for yourself, which increases your mortality risk. Mystery condiment bottles. Unknown expiry dates. Full ecosystems growing inside jars. Concept collision: remote work = remote dining = remote chance of survival.</p>
+  <ol>
+    <li>WFH means cooking for yourself. Nobody talks about the mortality rate increase. I'm not working from home — I'm surviving from home.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Opened a condiment I don't remember buying. No expiry date. But it had developed a complete ecosystem. I'm not a chef — I'm a biologist now.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Office workers get free lunch. WFH workers get food poisoning and no witnesses.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My fridge is a crime scene and I'm both the detective and the suspect. "When did this die?" I don't know. I live alone. There are no witnesses.<span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The real WFH perk isn't no commute — it's that nobody sees you smell the milk twice before deciding it's fine.<span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p3">
+  <h2>The Train Armrest Is the Last Battlefield</h2>
+  <span class="tag tag-new">🆕 NEW PREMISE</span>
+  <span class="tag tag-build">🧱 Build</span>
+  <p class="premise-desc">From #comedy 4/8: Two guys sit next to each other on a high-speed train, one of them MUST dominate the other — armrest, leg space, elbow angle. Concept collision: masculinity is a territory dispute measured in square centimeters.</p>
+  <ol>
+    <li>Two men sit next to each other on a train. Within 30 seconds, one of them must be on top. It's not a seat — it's a territory dispute.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The armrest is the DMZ of public transport. Nobody signed a treaty but everybody knows: whoever touches it first owns it for 4 hours.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Men don't fight over women anymore. We fight over 3 inches of plastic on a bullet train. Same energy, lower stakes, higher frequency.<span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Sit next to a woman — fine, peaceful, everyone stays in their lane. Sit next to a guy — it's a cold war fought with elbows and passive-aggressive leg spreading.<span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Masculinity in 2026 is measured in square centimeters of armrest occupied. We didn't evolve. We just shrank the battlefield.<span class="fb-wrap" data-jid="joke-15"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="seeds" class="seeds">
+  <h3>💡 Concept Seeds (for Jesse to grow)</h3>
+  <ul>
+    <li><strong>Girlfriend TikTok × Content Genre:</strong> "My girlfriend's TikTok is the short-video version of Pornhub." One-liner with legs — could build into: couples have separate algorithm lives. Your For You page is your real diary. You can lie to your partner but not to the algorithm.</li>
+    <li><strong>Posting Your Partner × Gender Gap:</strong> Girls post boyfriend's silhouette/back. Guys post girlfriend's full retouched photo shoot. Both trying to prove taste. One says "I'm mysterious." The other says "LOOK WHAT I GOT." Same insecurity, different aspect ratio.</li>
+    <li><strong>Gym Chest Pain × Gender Empathy:</strong> After working out, your chest bounces and hurts. First time a man truly empathizes with women. Conclusion: men should wear bras too. Counter: if women don't have this problem, just go to the gym. (careful — test with trusted audience first)</li>
+    <li><strong>WFH Cooking × Class:</strong> Rich WFH people order delivery. Middle-class WFH people cook badly. Poor WFH people eat whatever's left. The fridge is a class indicator. If your condiments have ecosystems, you're not middle class — you're a pioneer.</li>
+  </ul>
+</section>
+
+<section id="refs" class="ref-section">
+  <h3>🔗 References</h3>
+  <a class="ref-card" href="https://www.youtube.com/shorts/jycpHkZLuBo" target="_blank">YouTube — Derrick Stroup: "Middle seat culture is out of control" — armrest territory comedy<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.instagram.com/reel/DV8eop7jtfm/" target="_blank">Instagram — @brianacomedian: "Zero days without a work-related accident" — cooking comedy<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.facebook.com/ivandeckercomedian/videos/send-this-to-the-cooks-in-your-life-if-you-dont-want-to-tell-them-in-person-from/8302943816423681/" target="_blank">Facebook — Ivan Decker: "You might be thinking that heating up frozen food is cooking" — kitchen truths<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+</section>
+
+</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
