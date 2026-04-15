@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comedy Daily 🎤 2026-04-15</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#0e0e0e;--surface-2:#181818;--border:#1e1e1e;--text:#eaeaea;--text-muted:#777;--red:#ff3b30;--orange:#ff6b35;--gold:#ffd60a;--green:#30d158;--blue:#0a84ff;--purple:#bf5af2;--pink:#ff375f;--cyan:#64d2ff}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;padding-bottom:60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 40%,rgba(191,90,242,0.12),transparent),radial-gradient(ellipse 500px 500px at 70% 60%,rgba(255,107,53,0.08),transparent);animation:drift 12s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:scale(1) rotate(0deg)}100%{transform:scale(1.05) rotate(2deg)}}
+.hero .date-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:100px;font-size:0.8rem;color:var(--text-muted);backdrop-filter:blur(10px);background:rgba(14,14,14,0.6);margin-bottom:2rem;position:relative;z-index:1}
+.hero .date-badge .live{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.04em;position:relative;z-index:1}
+.hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .subtitle{font-size:clamp(0.95rem,2vw,1.2rem);color:var(--text-muted);margin-top:1.5rem;z-index:1;position:relative;max-width:600px}
+.hero .stats-row{display:flex;gap:3rem;margin-top:3rem;z-index:1;position:relative;flex-wrap:wrap;justify-content:center}
+.hero .stat{text-align:center}
+.hero .stat-num{font-size:2.5rem;font-weight:700;background:linear-gradient(135deg,var(--purple),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;overflow-x:auto}
+.nav::-webkit-scrollbar{display:none}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;gap:0;min-width:max-content}
+.nav a{color:var(--text-muted);text-decoration:none;font-size:0.78rem;padding:0.9rem 1.1rem;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s}
+.nav a:hover{color:var(--text);border-bottom-color:var(--purple)}
+.content{max-width:800px;margin:0 auto;padding:2rem 1.5rem}
+section{margin-bottom:4rem}
+section h2{font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.02em}
+section .premise-desc{color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;font-style:italic}
+.tag{font-size:0.65rem;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;font-weight:500}
+.tag-hot{background:rgba(255,107,53,0.15);color:var(--orange)}
+.tag-punch{background:rgba(255,59,48,0.12);color:var(--red)}
+.tag-build{background:rgba(10,132,255,0.12);color:var(--blue)}
+.tag-callback{background:rgba(191,90,242,0.12);color:var(--purple)}
+.tag-thesis{background:rgba(255,214,10,0.12);color:var(--gold)}
+.tag-new{background:rgba(48,209,88,0.15);color:var(--green)}
+.tag-crowd{background:rgba(255,55,95,0.12);color:var(--pink)}
+ol{list-style:none;counter-reset:joke}
+ol li{padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;counter-increment:joke;display:flex;align-items:flex-start;gap:0.8rem}
+ol li::before{content:counter(joke,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);min-width:24px;padding-top:4px}
+.seeds{margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.seeds h3{font-size:1rem;margin-bottom:1rem;color:var(--gold)}
+.seeds ul{list-style:disc;padding-left:1.2rem}
+.seeds li{padding:0.4rem 0;font-size:0.9rem;color:var(--text-muted)}
+.ref-section{margin-top:3rem}
+.ref-section h3{font-size:1rem;margin-bottom:1rem;color:var(--text-muted)}
+.ref-card{display:block;padding:0.8rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;color:var(--cyan);text-decoration:none;font-size:0.85rem;transition:border-color 0.2s}
+.ref-card:hover{border-color:var(--cyan)}
+.fb-wrap{display:inline-flex;gap:4px;margin-left:8px;vertical-align:middle}
+.fb-btn{background:none;border:1px solid transparent;border-radius:6px;cursor:pointer;font-size:0.85rem;padding:2px 6px;opacity:0;transition:all 0.2s;line-height:1}
+li:hover .fb-btn,.ref-card:hover .fb-btn{opacity:0.5}
+.fb-btn:hover{opacity:0.8!important;border-color:#333}
+.fb-btn.active-up{opacity:1!important;background:rgba(48,209,88,0.15);border-color:#30d158}
+.fb-btn.active-down{opacity:1!important;background:rgba(255,59,48,0.15);border-color:#ff3b30}
+.fb-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-top:1px solid #1e1e1e;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:#777;transform:translateY(100%);transition:transform 0.3s}
+.fb-bar.visible{transform:translateY(0)}
+.fb-bar .count{color:#30d158;font-weight:600}
+.fb-bar button{background:#ff6b35;color:#000;border:none;border-radius:8px;padding:8px 20px;font-weight:600;font-size:0.8rem;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="date-badge"><span class="live"></span> Wednesday, April 15, 2026</div>
+  <h1>Minimum <span class="accent">Viable</span> Man</h1>
+  <p class="subtitle">Men are the MVP of the human species — not Most Valuable Player, but Minimum Viable Product. Shipped fast, never updated, somehow still in production.</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">One-liners</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Premises</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Concept Seeds</div></div>
+  </div>
+</div>
+
+<div class="nav"><div class="nav-inner">
+  <a href="#p1">01 Men Are the Minimum Viable Product</a>
+  <a href="#p2">02 Your Fridge Is an Archaeological Dig</a>
+  <a href="#p3">03 The Hardest Workers Have the Least Holidays</a>
+  <a href="#seeds">Seeds</a>
+  <a href="#refs">References</a>
+</div></div>
+
+<div class="content">
+
+<section id="p1">
+  <h2>Men Are the Minimum Viable Product of Humanity</h2>
+  <span class="tag tag-thesis">💡 Thesis</span>
+  <p class="premise-desc">Deep dive on "For Men" premise — new angle. The product quality pyramid (男士&lt;通用&lt;女士&lt;孕妇&lt;婴儿) isn't about marketing. It's about how much society trusts you to notice quality. Men are the beta testers of the human race — lowest expectations, shipped anyway.</p>
+  <ol>
+    <li>Men are not the final product. Men are the MVP — Minimum Viable Product. Shipped early, no updates, somehow still in production.<span class="tag tag-hot">🔥</span><span class="tag tag-thesis">💡 Thesis</span><span class="fb-wrap" data-jid="joke-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>"For Men" on a product means they removed features and made it black. That's not a gender — that's a budget cut.<span class="tag tag-hot">🔥</span><span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The quality pyramid goes: For Men → Regular → For Women → For Pregnant Women → For Babies. Men and babies are on opposite ends. One can't read ingredients. The other won't.<span class="tag tag-hot">🔥</span><span class="tag tag-build">🧱 Build</span><span class="fb-wrap" data-jid="joke-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>I use one bottle for my hair, face, and body. The bottle says "hand soap." I am the cactus. I don't need a specialized watering can.<span class="tag tag-callback">🔄 Callback</span><span class="tag tag-hot">🔥</span><span class="fb-wrap" data-jid="joke-4"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>If you want quality, buy the pregnant women's version. Those ingredients have been through FDA, two trimesters of mom-blog reviews, and God's quality assurance.<span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-5"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p2">
+  <h2>Your Fridge Is an Archaeological Dig Site</h2>
+  <span class="tag tag-build">🧱 Build</span>
+  <p class="premise-desc">New angle on the WFH cooking/expired food premise. Your fridge isn't storage — it's a time capsule. Every shelf is a geological layer of ambition that died. The deeper you reach, the older the civilization. The back of your fridge is Pompeii.</p>
+  <ol>
+    <li>WFH means cooking for yourself. I opened a jar from the back of the fridge. It didn't have an expiration date — it had an origin story.<span class="tag tag-hot">🔥</span><span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-6"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My fridge has layers like an archaeological dig. Top shelf: this week's optimism. Middle: last month's ambition. Bottom: a civilization that died before COVID.<span class="tag tag-hot">🔥</span><span class="tag tag-build">🧱 Build</span><span class="fb-wrap" data-jid="joke-7"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>I found something in the back that had developed its own ecosystem. I'm not throwing it away — I'm destroying a habitat. That's an environmental crime.<span class="tag tag-hot">🔥</span><span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-8"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>If my landlord saw the back of my fridge, he'd charge me for an extra tenant.<span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-9"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="p3">
+  <h2>The Hardest Workers Have the Least Holidays</h2>
+  <span class="tag tag-thesis">💡 Thesis</span>
+  <p class="premise-desc">New angle on the ethnic makeup / globalization thesis. Not about the office — about the global system. The countries that make everything get the fewest days off. It's not a coincidence. It's a business model. Chinese, Indian, Mexican workers power the world's weekends.</p>
+  <ol>
+    <li>330 million Americans enjoy holidays because 1.4 billion Chinese work through theirs. That's not globalization — that's outsourced relaxation.<span class="tag tag-hot">🔥</span><span class="tag tag-thesis">💡 Thesis</span><span class="fb-wrap" data-jid="joke-10"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>My team is Chinese, Indian, and Mexican. Three countries famous for hard work and great food. Coincidence? No. You can't cook that good if you have free time — that's desperation seasoning.<span class="tag tag-hot">🔥</span><span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-11"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Work-life balance is a spectrum. On one end: Scandinavians, 6-hour days, free healthcare. On the other: my team, replying to Slack at 2 AM like it's a lifestyle choice.<span class="tag tag-build">🧱 Build</span><span class="fb-wrap" data-jid="joke-12"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>The harder a country works, the better the food. England had an empire and still eats beans on toast. Proof that colonizing doesn't count as effort.<span class="tag tag-hot">🔥</span><span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-13"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+    <li>Americans put tariffs on Chinese goods. But you can't put a tariff on work ethic. That's why you hired us in the first place.<span class="tag tag-punch">🎯 Punch</span><span class="fb-wrap" data-jid="joke-14"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></li>
+  </ol>
+</section>
+
+<section id="seeds" class="seeds">
+  <h3>🌱 Concept Seeds</h3>
+  <ul>
+    <li><strong>MVP Man × Smart Devices:</strong> Men are the only product that gets dumber as it gets more features. Smart TV needs 3 remotes. Smart Man needs 3 apps to remember his girlfriend's birthday.</li>
+    <li><strong>Fridge Archaeology × Career Layers:</strong> Your fridge and your resume have the same structure — the deeper you go, the more embarrassing it gets. "2019 me bought quinoa. 2019 me also thought I'd be VP by now."</li>
+    <li><strong>Food Quality × National Output:</strong> Countries with the best cuisine have the worst work-life balance. The flavor comes from centuries of "I only have 20 minutes to eat before my next shift."</li>
+    <li><strong>For Men × For Countries:</strong> "For Men" removes features and makes it black. "For developing countries" removes labor laws and makes it cheap. Same energy.</li>
+    <li><strong>Cactus Watering Can × Global Economy:</strong> You don't build a specialized watering can for a cactus. You also don't build labor protections for workers who'll work anyway. The cactus and the immigrant have the same business model: low maintenance, high output.</li>
+  </ul>
+</section>
+
+<section id="refs" class="ref-section">
+  <h3>📚 References</h3>
+  <a class="ref-card" href="https://www.tiktok.com/@comedy_castle_/video/7530277818840861970" target="_blank">Brutally Honest Immigrant Work Ethic — standup on the unspoken rules of who actually does the work<span class="fb-wrap" data-jid="ref-1"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.instagram.com/reel/DV_hM5jkZcZ/" target="_blank">Raanan Hershberg — "The jobs AI should replace" — blue collar immunity to automation<span class="fb-wrap" data-jid="ref-2"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+  <a class="ref-card" href="https://www.youtube.com/shorts/QUCj7VlPlXE" target="_blank">Kyle Grooms — An Immigrant's Perspective on Life in America<span class="fb-wrap" data-jid="ref-3"><button class="fb-btn" data-vote="up" onclick="vote(this)">👍</button><button class="fb-btn" data-vote="down" onclick="vote(this)">👎</button></span></a>
+</section>
+
+</div>
+
+<div class="fb-bar" id="fbBar"><span>Marked <span class="count" id="fbCount">0</span> votes</span><button onclick="exportFeedback()">📋 Copy Feedback</button></div>
+<script src="feedback.js"></script>
+</body>
+</html>
